@@ -28,7 +28,9 @@ const HeaderPwa = () => {
           <Grid item display='flex'>
             <img src={LogoPwa} height='48px' width='48px' />
             <Box mr={2}>
-              <Typography variant='h6' fontWeight={700}>دیجی واش من</Typography>
+              <Typography variant='h6' fontWeight={700}>
+                دیجی واش من
+              </Typography>
               <Typography variant='body2'>وارد حساب کاربری خود شوید</Typography>
             </Box>
           </Grid>
@@ -37,11 +39,13 @@ const HeaderPwa = () => {
               variant='contained'
               sx={{
                 bgcolor: "#0caeca",
+                p: ".5rem 1rem",fontWeight:"bold",
+                borderRadius: "30px",
                 "&:hover": {
                   background: "#0caeca"
                 }
               }}>
-              ثبتنام/ورود
+              ثبتنام / ورود
             </Button>
           </Grid>
         </Grid>
