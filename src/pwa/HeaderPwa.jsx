@@ -27,8 +27,8 @@ const HeaderPwa = () => {
           }}>
           <Grid item display='flex'>
             <img src={LogoPwa} height='48px' width='48px' />
-            <Box>
-              <Typography variant='body1'>دیجی واش من</Typography>
+            <Box mr={2}>
+              <Typography variant='h6' fontWeight={700}>دیجی واش من</Typography>
               <Typography variant='body2'>وارد حساب کاربری خود شوید</Typography>
             </Box>
           </Grid>
