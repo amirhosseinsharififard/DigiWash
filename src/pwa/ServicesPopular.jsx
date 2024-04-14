@@ -17,34 +17,36 @@ import { FreeMode, Pagination } from "swiper/modules";
 
 // image svg
 import manto from "../../assets/womenMantoo.7c04032e.svg";
+import { Link } from "react-router-dom";
 // Data
 const DataSwiper = [
-  { title: "مانتو", subTitle: "مجلسی، ساده، پاییزه", image: manto },
-  { title: "مانتو", subTitle: "مجلسی، ساده، پاییزه", image: manto },
-  { title: "مانتو", subTitle: "مجلسی، ساده، پاییزه", image: manto },
-  { title: "مانتو", subTitle: "مجلسی، ساده، پاییزه", image: manto },
-  { title: "مانتو", subTitle: "مجلسی، ساده، پاییزه", image: manto },
-  { title: "مانتو", subTitle: "مجلسی، ساده، پاییزه", image: manto },
-  { title: "مانتو", subTitle: "مجلسی، ساده، پاییزه", image: manto },
-  { title: "مانتو", subTitle: "مجلسی، ساده، پاییزه", image: manto },
-  { title: "مانتو", subTitle: "مجلسی، ساده، پاییزه", image: manto }
+  { title: "مانتو", subTitle: "مجلسی، ساده، پاییزه", image: manto ,linkProduct:'/'},
+  { title: "مانتو", subTitle: "مجلسی، ساده، پاییزه", image: manto ,linkProduct:'/'},
+  { title: "مانتو", subTitle: "مجلسی، ساده، پاییزه", image: manto ,linkProduct:'/'},
+  { title: "مانتو", subTitle: "مجلسی، ساده، پاییزه", image: manto ,linkProduct:'/'},
+  { title: "مانتو", subTitle: "مجلسی، ساده، پاییزه", image: manto ,linkProduct:'/'},
+  { title: "مانتو", subTitle: "مجلسی، ساده، پاییزه", image: manto ,linkProduct:'/'},
+  { title: "مانتو", subTitle: "مجلسی، ساده، پاییزه", image: manto ,linkProduct:'/'},
+  { title: "مانتو", subTitle: "مجلسی، ساده، پاییزه", image: manto ,linkProduct:'/'},
+  { title: "مانتو", subTitle: "مجلسی، ساده، پاییزه", image: manto ,linkProduct:'/'}
 ];
 const ServicesPopular = () => {
   return (
-    <Container>
+    <Container >
       <Box
         Container
         sx={{
           bgcolor: "rgb(242, 247, 247)",
           p: "1rem 0",
           m: "1rem 2rem",
-          borderRadius: "8px"
+          borderRadius: "8px",
+          overflow:"hidden"
         }}>
         <Typography variant='h5' fontWeight='bold ' m='1rem '>
           خدمات محبوب
         </Typography>
 
-        <Swiper
+        <Swiper 
           slidesPerView={5}
           spaceBetween={30}
           freeMode={true}
@@ -56,11 +58,15 @@ const ServicesPopular = () => {
           style={{ padding: "0 2rem" }}>
           {DataSwiper.map((item, index) => (
             <SwiperSlide style={{ background: "none" }} key={index}>
+             <Link style={{textDecoration:"none" ,color:"black"}}>
+
               <ServicesPopularComponent
                 title={item.title}
                 subTitle={item.subTitle}
                 image={item.image}
+                linkProduct={item.linkProduct}
               />
+             </Link>
             </SwiperSlide>
           ))}
         </Swiper>

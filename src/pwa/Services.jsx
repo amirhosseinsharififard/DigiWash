@@ -16,7 +16,7 @@ const Services = () => {
   return (
     <Container>
       <Box m='1rem 2rem'>
-        <Typography variant='h6' component='p' fontWeight={700}>
+        <Typography variant='h5' component='p' fontWeight={700}>
           خدمات دیجی واش
         </Typography>
       </Box>

@@ -7,6 +7,7 @@ import Offday from "./pwa/Offday";
 import OrderPhone from "./pwa/OrderPhone";
 import Services from "./pwa/Services";
 import ServicesPopular from "./pwa/ServicesPopular";
+import ServicesCategory from "./pwa/ServicesCategory";
 function App() {
   return (
     <>
@@ -16,6 +17,7 @@ function App() {
       <OrderPhone />
       <Services />
       <ServicesPopular />
+      <ServicesCategory />
     </>
   );
 }

@@ -1,6 +1,6 @@
 import { Box, Stack, Typography } from "@mui/material";
 
-const ServicesPopularComponent = ({ title, subTitle, image }) => {
+const ServicesPopularComponent = ({ title, subTitle, image ,linkProduct}) => {
   return (
     <Box
       bgcolor='none'
@@ -11,6 +11,7 @@ const ServicesPopularComponent = ({ title, subTitle, image }) => {
         alignItems: "center",
         alignContent: "center"
       }}>
+
       <Stack bgcolor='white' width='170px' borderRadius='8px'>
         <Typography variant='h5' fontWeight='bold'>
           {title}
