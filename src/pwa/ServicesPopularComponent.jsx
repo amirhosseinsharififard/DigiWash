@@ -4,7 +4,6 @@ const ServicesPopularComponent = ({ title, subTitle, image ,linkProduct}) => {
   return (
     <Box
       bgcolor='none'
-      width='200px'
       sx={{
         display: "flex",
         flexDirection: "column",
@@ -12,7 +11,7 @@ const ServicesPopularComponent = ({ title, subTitle, image ,linkProduct}) => {
         alignContent: "center"
       }}>
 
-      <Stack bgcolor='white' width='170px' borderRadius='8px'>
+      <Stack bgcolor='white'  p='1rem' borderRadius='8px'>
         <Typography variant='h5' fontWeight='bold'>
           {title}
         </Typography>

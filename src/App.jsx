@@ -1,23 +1,22 @@
 // header site asli
 // import Header from "./web/Header";
+import { Route, Routes } from "react-router-dom";
+import HeaderPwa from "./pwa/HeaderPwa";
+
+import HomePage from "./pwa/HomePage";
+import Footer from "./pwa/Footer";
 
 //pwa site component
-import HeaderPwa from "./pwa/HeaderPwa";
-import Offday from "./pwa/Offday";
-import OrderPhone from "./pwa/OrderPhone";
-import Services from "./pwa/Services";
-import ServicesPopular from "./pwa/ServicesPopular";
-import ServicesCategory from "./pwa/ServicesCategory";
+
 function App() {
   return (
     <>
-      {/* <Header /> */}
       <HeaderPwa />
-      <Offday />
-      <OrderPhone />
-      <Services />
-      <ServicesPopular />
-      <ServicesCategory />
+      <Routes>
+        <Route path='/' element={<HomePage />} />
+      </Routes>
+      <Footer />
+
     </>
   );
 }

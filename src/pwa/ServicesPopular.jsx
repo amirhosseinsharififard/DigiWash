@@ -57,14 +57,15 @@ const ServicesPopular = () => {
           className='mySwiper'
           style={{ padding: "0 2rem" }}>
           {DataSwiper.map((item, index) => (
-            <SwiperSlide style={{ background: "none" }} key={index}>
-             <Link style={{textDecoration:"none" ,color:"black"}}>
+            <SwiperSlide style={{ background: "none", }} key={index}>
+             <Link style={{textDecoration:"none" ,color:"black", }}>
 
               <ServicesPopularComponent
                 title={item.title}
                 subTitle={item.subTitle}
                 image={item.image}
                 linkProduct={item.linkProduct}
+                
               />
              </Link>
             </SwiperSlide>
