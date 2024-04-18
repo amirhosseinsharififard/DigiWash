@@ -56,6 +56,21 @@ const HeaderService = () => {
           spaceBetween={0}
           freeMode={true}
           modules={[FreeMode, Pagination]}
+          
+          breakpoints={{
+          // when window width is >= 640px
+          320: {
+            slidesPerView: 3.7,
+          },
+          480: {
+            slidesPerView: 5.5,
+          },
+          // when window width is >= 768px
+          768: {
+            slidesPerView: 6.5,
+          },
+        }}
+
           className='mySwiper'
           style={{marginBottom:"2rem"}}>
           {DataTagName.map((item, index) => (
