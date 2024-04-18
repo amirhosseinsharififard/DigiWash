@@ -2,7 +2,7 @@ import { Box, Container, Grid, Typography } from "@mui/material";
 import CategoryContent from "./CategoryContent";
 
 // import image
-import womenImage from "../../assets/women.1f966e74.svg";
+import womenImage from "../../../assets/women.1f966e74.svg";
 import { Link } from "react-router-dom";
 const categoryData = [
   { imageCategory: womenImage, titleCategory: "لباس زنانه" ,id:"1"},

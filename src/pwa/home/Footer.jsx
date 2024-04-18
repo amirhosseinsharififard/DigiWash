@@ -16,21 +16,21 @@ const Footer = () => {
           alignContent: "center",
           p: "0 0 0 0 ",
           border: "1px solid rgb(204, 204, 204)",
-          borderRadius: "8px 8px 0 0"
+          borderRadius: "8px 8px 0 0",
         }}>
-        <Grid xs={4} lg={12}>
+        <Grid item xs={4} lg={12}>
           <Link to='/' style={{ textDecoration: "none", color: "#0caeca" }}>
             <HomeIcon />
             <Typography>خانه</Typography>
           </Link>
         </Grid>
-        <Grid xs={4} lg={12}>
+        <Grid item xs={4} lg={12}>
           <Link to='/' style={{ textDecoration: "none", color: "#0caeca" }}>
             <LocalLaundryServiceOutlinedIcon />
             <Typography>خانه</Typography>
           </Link>
         </Grid>
-        <Grid xs={4} lg={12}>
+        <Grid item xs={4} lg={12}>
           <Link to='/' style={{ textDecoration: "none", color: "#0caeca" }}>
             <AccountCircleOutlinedIcon />
             <Typography>خانه</Typography>

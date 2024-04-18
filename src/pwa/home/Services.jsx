@@ -2,7 +2,7 @@ import { Box, Container, Grid, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 
 // svg
-import servicesSvg from "../../assets/services.svg";
+import servicesSvg from "../../../assets/services.svg";
 
 // Data
 const DataService = [

@@ -1,7 +1,7 @@
 import { Box, Container, Typography } from "@mui/material";
 
 // usable component
-import ServicesPopularComponent from "./home/ServicesPopularComponent";
+import ServicesPopularComponent from "./ServicesPopularComponent";
 
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";

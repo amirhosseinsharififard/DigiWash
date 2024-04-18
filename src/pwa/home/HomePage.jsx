@@ -1,9 +1,11 @@
-import Offday from "./home/Offday";
-import OrderPhone from "./home/OrderPhone";
-import Services from "./home/Services";
-import ServicesPopular from "./home/ServicesPopular";
-import ServicesCategory from "./home/ServicesCategory";
+import Offday from "./Offday";
+import OrderPhone from "./OrderPhone";
+import Services from "./Services";
+import ServicesPopular from "./ServicesPopular";
+import ServicesCategory from "./ServicesCategory";
 import { Container } from "@mui/material";
+// import HeaderPwa from "./HeaderPwa";
+import Footer from "./Footer";
 const HomePage = () => {
   return (
     <div>
@@ -14,6 +16,7 @@ const HomePage = () => {
         <Services />
         <ServicesPopular />
         <ServicesCategory />
+        <Footer/>
       </Container>
     </div>
   );
