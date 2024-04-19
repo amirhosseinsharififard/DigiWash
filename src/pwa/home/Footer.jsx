@@ -10,28 +10,74 @@ const Footer = () => {
       <Grid
         container
         sx={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-evenly",
-          alignContent: "center",
-          p: "0 0 0 0 ",
           border: "1px solid rgb(204, 204, 204)",
-          borderRadius: "8px 8px 0 0",
+          borderRadius: "8px 8px 0 0"
         }}>
-        <Grid item xs={4} lg={12}>
-          <Link to='/' style={{ textDecoration: "none", color: "#0caeca" }}>
+        <Grid
+          item
+          xs={4}
+          sm={4}
+          md={4}
+          lg={4}
+          display='flex'
+          alignItems='center'
+          justifyContent='center'
+          alignContent='center'>
+          <Link
+            to='/'
+            style={{
+              padding: "4px",
+              textDecoration: "none",
+              color: "#0caeca",
+              width: "100%",
+              textAlign: "center"
+            }}>
             <HomeIcon />
             <Typography>خانه</Typography>
           </Link>
         </Grid>
-        <Grid item xs={4} lg={12}>
-          <Link to='/' style={{ textDecoration: "none", color: "#0caeca" }}>
+        <Grid
+          item
+          xs={4}
+          sm={4}
+          md={4}
+          lg={4}
+          display='flex'
+          alignItems='center'
+          justifyContent='center'
+          alignContent='center'>
+          <Link
+            to='/'
+            style={{
+              padding: "4px",
+              textDecoration: "none",
+              color: "#0caeca",
+              width: "100%",
+              textAlign: "center"
+            }}>
             <LocalLaundryServiceOutlinedIcon />
             <Typography>خانه</Typography>
           </Link>
         </Grid>
-        <Grid item xs={4} lg={12}>
-          <Link to='/' style={{ textDecoration: "none", color: "#0caeca" }}>
+        <Grid
+          item
+          xs={4}
+          sm={4}
+          md={4}
+          lg={4}
+          display='flex'
+          alignItems='center'
+          justifyContent='center'
+          alignContent='center'>
+          <Link
+            to='/'
+            style={{
+              padding: "4px",
+              textDecoration: "none",
+              color: "#0caeca",
+              width: "100%",
+              textAlign: "center"
+            }}>
             <AccountCircleOutlinedIcon />
             <Typography>خانه</Typography>
           </Link>
