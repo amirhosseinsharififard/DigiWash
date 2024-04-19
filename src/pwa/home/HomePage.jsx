@@ -7,7 +7,7 @@ import { Container } from "@mui/material";
 // import HeaderPwa from "./HeaderPwa";
 const HomePage = () => {
   return (
-    <div>
+    <>
       <Container sx={{mb:"20px"}}>
         {/* <Header /> */}
         <Offday />
@@ -16,7 +16,7 @@ const HomePage = () => {
         <ServicesPopular />
         <ServicesCategory />
       </Container>
-    </div>
+    </>
   );
 };
 

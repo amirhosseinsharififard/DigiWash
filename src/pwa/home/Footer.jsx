@@ -8,7 +8,7 @@ const Footer = () => {
   return (
     <Container>
       <Grid
-        containter
+        container
         sx={{
           display: "flex",
           alignItems: "center",

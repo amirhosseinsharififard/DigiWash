@@ -17,20 +17,20 @@ const ServicesCoponent = ({ image, cost ,title,subTitle}) => {
             variant='h5'
             fontWeight={"bold"}
             sx={{
-              "@media only screen and (max-width: 1200px)": { fontSize: 22 },
-              "@media only screen and (max-width: 992px)": { fontSize: 20 },
-              "@media only screen and (max-width: 768px)": { fontSize: 14 },
-              "@media only screen and (max-width: 576px)": { fontSize: 12 }
+              "@media only screen and (maxWidth: 1200px)": { fontSize: 22 },
+              "@media only screen and (maxWidth: 992px)": { fontSize: 20 },
+              "@media only screen and (maxWidth: 768px)": { fontSize: 14 },
+              "@media only screen and (maxWidth: 576px)": { fontSize: 12 }
             }}>
             {title}
           </Typography>
           <Typography
             variant='body1'
             sx={{
-              "@media only screen and (max-width: 1200px)": { fontSize: 18 },
-              "@media only screen and (max-width: 992px)": { fontSize: 16 },
-              "@media only screen and (max-width: 768px)": { fontSize: 12 },
-              "@media only screen and (max-width: 576px)": { fontSize: 9 }
+              "@media only screen and (maxWidth: 1200px)": { fontSize: 18 },
+              "@media only screen and (maxWidth: 992px)": { fontSize: 16 },
+              "@media only screen and (maxWidth: 768px)": { fontSize: 12 },
+              "@media only screen and (maxWidth: 576px)": { fontSize: 9 }
             }}>
            {subTitle}
           </Typography>
@@ -46,10 +46,10 @@ const ServicesCoponent = ({ image, cost ,title,subTitle}) => {
             style={{
               height: "80px",
               width: "75px",
-              "@media only screen and (max-width: 1200px)": { fontSize: 14 },
-              "@media only screen and (max-width: 992px)": { fontSize: 12 },
-              "@media only screen and (max-width: 768px)": { fontSize: 8 },
-              "@media only screen and (max-width: 576px)": { fontSize: 7 }
+              "@media only screen and (maxWidth: 1200px)": { fontSize: 14 },
+              "@media only screen and (maxWidth: 992px)": { fontSize: 12 },
+              "@media only screen and (maxWidth: 768px)": { fontSize: 8 },
+              "@media only screen and (maxWidth: 576px)": { fontSize: 7 }
             }}
           />
           <Typography
@@ -58,10 +58,10 @@ const ServicesCoponent = ({ image, cost ,title,subTitle}) => {
             borderRadius='0 8px 8px 0'
             p='4px 8px'
             sx={{
-              "@media only screen and (max-width: 1200px)": { fontSize: 14 },
-              "@media only screen and (max-width: 992px)": { fontSize: 12 },
-              "@media only screen and (max-width: 768px)": { fontSize: 8 },
-              "@media only screen and (max-width: 576px)": { fontSize: 7 }
+              "@media only screen and (maxWidth: 1200px)": { fontSize: 14 },
+              "@media only screen and (maxWidth: 992px)": { fontSize: 12 },
+              "@media only screen and (maxWidth: 768px)": { fontSize: 8 },
+              "@media only screen and (maxWidth: 576px)": { fontSize: 7 }
             }}>
             از
             <span>{cost}</span>

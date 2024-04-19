@@ -3,10 +3,15 @@ import { Box, Button, Container, Grid, Typography } from "@mui/material";
 // logo
 import LogoPwa from "../../../assets/LogoPwa.png";
 import HeaderService from "../service/HeaderService";
+import { useLocation } from "react-router-dom";
 
 const HeaderPwa = () => {
-  // const [isHome, setIsHome] = true;
-  const isHome=false
+
+  const pathName = useLocation().pathname;
+
+
+  console.log(pathName);
+ 
   return (
     <Box sx={{ bgcolor: "#0caeca" }}>
       <Container
@@ -16,12 +21,12 @@ const HeaderPwa = () => {
           flexDirection: "column",
           p: "0 0 0 0 "
         }}>
-        {isHome ? (
+        { pathName =="/services" ? (
+          <HeaderService />
+        ) : (
           <Box sx={{ height: "22px", width: "98px", m: ".5rem auto" }}>
             LOGO
           </Box>
-        ) : (
-          <HeaderService />
         )}
 
         <Grid
