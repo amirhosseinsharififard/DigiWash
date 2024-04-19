@@ -1,6 +1,7 @@
 import { Box, Stack, Typography } from "@mui/material";
 
-const ServicesPopularComponent = ({ title, subTitle, image ,linkProduct}) => {
+// eslint-disable-next-line react/prop-types, no-unused-vars
+const ServicesPopularComponent = ({ title, subTitle, image }) => {
   return (
     <Box
       bgcolor='none'

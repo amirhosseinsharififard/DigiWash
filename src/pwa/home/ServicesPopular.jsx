@@ -24,55 +24,55 @@ const DataSwiper = [
     title: "مانتو",
     subTitle: "مجلسی، ساده، پاییزه",
     image: manto,
-    linkProduct: "/"
+    linkProduct: "/services"
   },
   {
     title: "مانتو",
     subTitle: "مجلسی، ساده، پاییزه",
     image: manto,
-    linkProduct: "/"
+    linkProduct: "/services"
   },
   {
     title: "مانتو",
     subTitle: "مجلسی، ساده، پاییزه",
     image: manto,
-    linkProduct: "/"
+    linkProduct: "/services"
   },
   {
     title: "مانتو",
     subTitle: "مجلسی، ساده، پاییزه",
     image: manto,
-    linkProduct: "/"
+    linkProduct: "/services"
   },
   {
     title: "مانتو",
     subTitle: "مجلسی، ساده، پاییزه",
     image: manto,
-    linkProduct: "/"
+    linkProduct: "/services"
   },
   {
     title: "مانتو",
     subTitle: "مجلسی، ساده، پاییزه",
     image: manto,
-    linkProduct: "/"
+    linkProduct: "/services"
   },
   {
     title: "مانتو",
     subTitle: "مجلسی، ساده، پاییزه",
     image: manto,
-    linkProduct: "/"
+    linkProduct: "/services"
   },
   {
     title: "مانتو",
     subTitle: "مجلسی، ساده، پاییزه",
     image: manto,
-    linkProduct: "/"
+    linkProduct: "/services"
   },
   {
     title: "مانتو",
     subTitle: "مجلسی، ساده، پاییزه",
     image: manto,
-    linkProduct: "/"
+    linkProduct: "/services"
   }
 ];
 const ServicesPopular = () => {
@@ -103,12 +103,11 @@ const ServicesPopular = () => {
           style={{ padding: "0 2rem" }}>
           {DataSwiper.map((item, index) => (
             <SwiperSlide style={{ background: "none" }} key={index}>
-              <Link style={{ textDecoration: "none", color: "black" }}>
+              <Link style={{ textDecoration: "none", color: "black" }} to={item.linkProduct}>
                 <ServicesPopularComponent
                   title={item.title}
                   subTitle={item.subTitle}
                   image={item.image}
-                  linkProduct={item.linkProduct}
                 />
               </Link>
             </SwiperSlide>
