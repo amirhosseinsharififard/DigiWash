@@ -3,7 +3,7 @@ import { Box, Grid, Stack, Typography } from "@mui/material";
 // eslint-disable-next-line react/prop-types
 const ServicesCoponent = ({ image, cost ,title,subTitle}) => {
   return (
-    <Grid item xs={6} sm={6} md={6} lg={4}>
+    <Grid item xs={12} sm={6} md={6} lg={4}>
       <Box bgcolor='rgb(237, 252, 255)' pt={2} borderRadius='12px' height='80%'>
         <Stack
           display='flex'
