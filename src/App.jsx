@@ -10,9 +10,11 @@ import HomePage from "./pwa/home/HomePage";
 import ServicePage from "./pwa/service/ServicePage";
 import HeaderPwa from "./pwa/home/HeaderPwa";
 import Footer from "./pwa/home/Footer";
+import ModalIncrease from "./share/ModalIncrease";
+import { Container } from "@mui/material";
 function App() {
   return (
-    <>
+    <Container>
       <HeaderPwa />
 
       <Routes>
@@ -21,8 +23,9 @@ function App() {
       </Routes>
       <Footer />
 
+      <ModalIncrease />
       {/* <TestResponsive/> */}
-    </>
+    </Container>
   );
 }
 
