@@ -13,11 +13,11 @@ const IncreaseItem = ({ title, image, cost }) => {
         m='2rem 0 0 2rem '
         borderRadius={"16px"}
         p={2}>
-        <Grid item xs={10} sm={10} md={10} lg={10}>
+        <Grid item xs={10} sm={10} md={10} lg={10} display={"flex"} >
           <Box>
-            <img src={image} />
+            <img src={image} style={{padding:"2rem"}}/>
           </Box>
-          <Box display='flex' flexDirection={"column"}>
+          <Box display='flex' flexDirection={"column"} justifyContent="center">
             <Typography variant='h6'>{title}</Typography>
             <Typography variant='h6' fontWeight='bold'>
               {cost}

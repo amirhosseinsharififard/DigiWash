@@ -1,59 +1,83 @@
-import { Box, Container, Grid, Stack, Typography } from "@mui/material";
+import { Box, Container, Grid,  Typography } from "@mui/material";
 import IncreaseItem from "./IncreaseItem";
-
+import CategoryModal from "./CategoryModal";
+import whashSvg from "../../assets/wash.c4124479.svg"
 const ModalIncrease = () => {
   return (
     <>
-      <Box
+      {/* <Box
         bgcolor='rgba(0,0,0,0.8)'
-        width={"100%"}
-        height={"100%"}
+        width="100vw"
+        height="100vh"
         zIndex={"1"}
         position={"absolute"}
         top={"0"}
         right={"0"}
-      />
-      
-        <Container sx={{
+        sx={{height:"100%"}}
+      /> */}
+
+      <Box
+        sx={{
           position: "fixed",
-m:"0 1.6rem",          zIndex: "1",
-          bottom: "0",
+          top: "0",
+          left: "0",
+          zIndex: "1",
+          width: "100vw",
+          height: "100vh",
+          backgroundColor: "rgba(0, 0, 0, 0.7)",
+          backdropFilter: "blur(15px)",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "flex-end"
+        }}>
+        {/* <Container
+        sx={{
+          position: "relative",
+          top: "",
+          zIndex: "1",
           bgcolor: "white",
-          borderRadius: "16px 16px 0 0",
-width:"1100px"
-        }} >
-
-
-        <Grid container position=''>
-          <Grid item xs={12} sm={12} md={12} lg={12}>
-            <Typography variant='h5' fontWeight={"bold"} m={3}>
-              کت و شلوار
-            </Typography>
+          borderRadius: "16px 16px 0 0"
+        }}> */}
+        <Container
+          >
+          <Grid container sx={{
+            display: "flex",
+            backgroundColor: "#fff",
+            borderRadius: "16px 16px 0 0",
+            p: "3rem 0"
+          }}>
+            <Grid item xs={12} sm={12} md={12} lg={12}>
+              <Typography variant='h5' fontWeight={"bold"} p={3}>
+                کت و شلوار
+              </Typography>
+            </Grid>
+            <Grid item xs={12} sm={12} md={12} lg={12}>
+            <CategoryModal/>
+            </Grid>
+            <Grid item xs={12} sm={12} md={12} lg={12}>
+              <IncreaseItem
+                image={whashSvg}
+                title={"خشکشویی + اتو"}
+                cost={"۱۵۴,۸۰۰ تومان"}
+              />
+            </Grid>
+            <Grid item xs={12} sm={12} md={12} lg={12}>
+              <IncreaseItem
+                image={whashSvg}
+                title={"خشکشویی + اتو"}
+                cost={"۱۵۴,۸۰۰ تومان"}
+              />
+            </Grid>
+            <Grid item xs={12} sm={12} md={12} lg={12}>
+              <IncreaseItem
+                image={whashSvg}
+                title={"خشکشویی + اتو"}
+                cost={"۱۵۴,۸۰۰ تومان"}
+              />
+            </Grid>
           </Grid>
-          <Grid item xs={12} sm={12} md={12} lg={12}>
-            <IncreaseItem
-              image='-'
-              title={"خشکشویی + اتو"}
-              cost={"۱۵۴,۸۰۰ تومان"}
-            />
-          </Grid>{" "}
-          <Grid item xs={12} sm={12} md={12} lg={12}>
-            <IncreaseItem
-              image='-'
-              title={"خشکشویی + اتو"}
-              cost={"۱۵۴,۸۰۰ تومان"}
-            />
-          </Grid>{" "}
-          <Grid item xs={12} sm={12} md={12} lg={12}>
-            <IncreaseItem
-              image='-'
-              title={"خشکشویی + اتو"}
-              cost={"۱۵۴,۸۰۰ تومان"}
-            />
-          </Grid>
-        </Grid>
-
         </Container>
+      </Box>
     </>
   );
 };
