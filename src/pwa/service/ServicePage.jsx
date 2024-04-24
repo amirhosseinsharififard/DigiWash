@@ -2,6 +2,7 @@ import { Container, Grid } from "@mui/material";
 
 import clothesServices from "../../../assets/clothesServices.svg";
 import ServicesCoponent from "./ServicesCoponent";
+import HeaderPwa from "../home/HeaderPwa";
 const DataServiceComponent = [
   {
     image: clothesServices,
@@ -68,6 +69,9 @@ const DataServiceComponent = [
 ];
 const ServicePage = () => {
   return (
+    <>
+    <HeaderPwa />
+
     <Container>
       <Grid container spacing={2} p={2}>
         {DataServiceComponent.map((item, index) => (
@@ -75,6 +79,7 @@ const ServicePage = () => {
         ))}
       </Grid>
     </Container>
+    </>
   );
 };
 

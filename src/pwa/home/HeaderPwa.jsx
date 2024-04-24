@@ -4,14 +4,13 @@ import { Box, Button, Container, Grid, Typography } from "@mui/material";
 import LogoPwa from "../../../assets/LogoPwa.png";
 import HeaderService from "../service/HeaderService";
 import { useLocation } from "react-router-dom";
+import LoginHeader from "../../share/LoginHeader";
 
 const HeaderPwa = () => {
-
   const pathName = useLocation().pathname;
-
-
+  const isLogin = true;
   console.log(pathName);
- 
+
   return (
     <Box sx={{ bgcolor: "#0caeca" }}>
       <Container
@@ -21,7 +20,7 @@ const HeaderPwa = () => {
           flexDirection: "column",
           p: "0 0 0 0 "
         }}>
-        { pathName =="/services" ? (
+        {pathName == "/services" ? (
           <HeaderService />
         ) : (
           <Box sx={{ height: "22px", width: "98px", m: ".5rem auto" }}>
@@ -39,30 +38,38 @@ const HeaderPwa = () => {
             justifyContent: "space-between",
             p: "1.5rem 1.5rem .7rem 1.5rem"
           }}>
-          <Grid item display='flex'>
-            <img src={LogoPwa} height='48px' width='48px' />
-            <Box mr={2}>
-              <Typography variant='h6' fontWeight={700}>
-                دیجی واش من
-              </Typography>
-              <Typography variant='body2'>وارد حساب کاربری خود شوید</Typography>
-            </Box>
-          </Grid>
-          <Grid item>
-            <Button
-              variant='contained'
-              sx={{
-                bgcolor: "#0caeca",
-                p: ".5rem 1rem",
-                fontWeight: "bold",
-                borderRadius: "30px",
-                "&:hover": {
-                  background: "#0caeca"
-                }
-              }}>
-              ثبتنام / ورود
-            </Button>
-          </Grid>
+          {isLogin ? (
+            <LoginHeader />
+          ) : (
+            <>
+              <Grid item display='flex'>
+                <img src={LogoPwa} height='48px' width='48px' />
+                <Box mr={2}>
+                  <Typography variant='h6' fontWeight={700}>
+                    دیجی واش من
+                  </Typography>
+                  <Typography variant='body2'>
+                    وارد حساب کاربری خود شوید
+                  </Typography>
+                </Box>
+              </Grid>
+              <Grid item>
+                <Button
+                  variant='contained'
+                  sx={{
+                    bgcolor: "#0caeca",
+                    p: ".5rem 1rem",
+                    fontWeight: "bold",
+                    borderRadius: "30px",
+                    "&:hover": {
+                      background: "#0caeca"
+                    }
+                  }}>
+                  ثبتنام / ورود
+                </Button>
+              </Grid>
+            </>
+          )}
         </Grid>
       </Container>
     </Box>

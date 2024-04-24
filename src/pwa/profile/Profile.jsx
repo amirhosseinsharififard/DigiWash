@@ -1,9 +1,10 @@
+import ProfleHeader from './ProfileHeader';
 
 const Profile = () => {
     return (
-        <div>
-            
-        </div>
+        <>
+         <ProfleHeader/>   
+        </>
     );
 }
 
