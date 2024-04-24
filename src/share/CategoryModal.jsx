@@ -1,31 +1,25 @@
-import { Button, Grid } from "@mui/material";
-
+import { Grid, Typography } from "@mui/material";
+import { Link } from "react-router-dom";
+import styles from "./Category.module.css";
 const CategoryModal = () => {
   return (
-    <Grid container p={2}>
-      <Grid item xs={4} sm={4} md={4} lg={4}>
-        {" "}
-        <Button
-          variant='contained'
-          fullWidth
-          sx={{ bgcolor: "rgba(0, 0, 0, .3)"  }} size="large">
-          slam
-        </Button>
+    <Grid container bgcolor='rgb(240, 244, 244)' color='black' width="98%" m="auto" borderRadius="30px">
+      <Grid item xs={4} sm={4} md={4} lg={4} display='flex'>
+        <Link className={styles.link}>
+        <Typography variant="h5"> مجلسی</Typography>
+        </Link>
       </Grid>
-      <Grid item xs={4} sm={4} md={4} lg={4}>
-        {" "}
-        <Button
-          variant='contained'
-          fullWidth
-          sx={{ bgcolor: "rgba(0, 0, 0, .3)"  }} size="large">
-          slam
-        </Button>
+      <Grid item xs={4} sm={4} md={4} lg={4} display='flex'>
+        <Link to='/' className={styles.link}>
+          
+          <Typography variant="h5"> مجلسی</Typography>
+
+        </Link>
       </Grid>
-      <Grid item xs={4} sm={4} md={4} lg={4}>
-        {" "}
-        <Button variant='contained' fullWidth sx={{ bgcolor: "rgba(0, 122, 255, .7)",  }} size="large">
-          slam
-        </Button>
+      <Grid item xs={4} sm={4} md={4} lg={4} display='flex'>
+        <Link className={styles.link}>
+        <Typography variant="h5"> مجلسی</Typography>
+        </Link>
       </Grid>
     </Grid>
   );

@@ -11,6 +11,7 @@ import ServicePage from "./pwa/service/ServicePage";
 import HeaderPwa from "./pwa/home/HeaderPwa";
 import Footer from "./pwa/home/Footer";
 import ModalIncrease from "./share/ModalIncrease";
+import Profile from "./pwa/profile/Profile";
 function App() {
   return (
     <>
@@ -19,10 +20,11 @@ function App() {
       <Routes>
         <Route path='/' element={<HomePage />} />
         <Route path='/services' element={<ServicePage />} />
+        <Route path='/Modal' element={<ModalIncrease />} />
+        <Route path='/Modal' element={<Profile />} />
       </Routes>
       <Footer />
 
-      <ModalIncrease />
       {/* <TestResponsive/> */}
     </>
   );
