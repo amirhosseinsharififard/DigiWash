@@ -1,8 +1,11 @@
 import { Box, Button, Container, Grid, Typography } from "@mui/material";
+import { Link, useLocation } from "react-router-dom";
 
 // logo
 import LogoPwa from "../../../assets/LogoPwa.png";
-import { useLocation } from "react-router-dom";
+import CreateOutlinedIcon from "@mui/icons-material/CreateOutlined";
+import WalletIcon from "@mui/icons-material/Wallet";
+import CardGiftcardIcon from "@mui/icons-material/CardGiftcard";
 
 const ProfleHeader = () => {
   const pathName = useLocation().pathname;
@@ -29,6 +32,7 @@ const ProfleHeader = () => {
             sx={{
               display: "flex",
               alignContent: "space-betweens",
+              alignItems: "center",
               justifyContent: "space-between",
               p: "1.5rem 1.5rem .7rem 1.5rem",
               color: "white"
@@ -46,19 +50,13 @@ const ProfleHeader = () => {
                 </Box>
               </Grid>
               <Grid item>
-                <Button
-                  variant='contained'
-                  sx={{
-                    bgcolor: "#0caeca",
-                    p: ".5rem 1rem",
-                    fontWeight: "bold",
-                    borderRadius: "30px",
-                    "&:hover": {
-                      background: "#0caeca"
-                    }
+                <Link
+                  style={{
+                    padding: "1.5rem 2rem",
+                    fontWeight: "bold"
                   }}>
-                  ICon Pencil
-                </Button>
+                  <CreateOutlinedIcon sx={{ color: "white" }} />
+                </Link>
               </Grid>
             </>
           </Grid>
@@ -66,15 +64,15 @@ const ProfleHeader = () => {
           {/* white zone */}
           <Grid
             container
-            border='1px solid rgba(0,0,0,.1)' borderBottom="none"
+            border='1px solid rgba(0,0,0,.1)'
+            borderBottom='none'
             sx={{
               bgcolor: "white",
               borderRadius: "16px 16px 0 0",
               display: "flex",
               alignContent: "space-betweens",
               justifyContent: "space-between",
-              p: "1.5rem 1.5rem .7rem 1.5rem",
-              
+              p: "1.5rem 1.5rem .7rem 1.5rem"
             }}>
             <Grid item display='flex' xs={10} sm={10} md={10} lg={10}>
               <Typography variant='h6' fontWeight='bold'>
@@ -102,7 +100,11 @@ const ProfleHeader = () => {
         </Container>
       </Box>
       <Container>
-        <Grid container bgcolor='white' border='1px solid rgba(0,0,0,.1)' borderTop="none">
+        <Grid
+          container
+          bgcolor='white'
+          border='1px solid rgba(0,0,0,.1)'
+          borderTop='none'>
           <Grid
             item
             xs={12}
@@ -113,13 +115,14 @@ const ProfleHeader = () => {
             flexDirection='column'
             justifyContent='center'
             alignContent='center'
-            alignItems='center' mb={10}>
+            alignItems='center'
+            m='2rem 0'>
             <Box
               display='flex'
               justifyContent='center'
               alignContent='center'
               alignItems='center'>
-              <img src='1' />
+              <WalletIcon sx={{ color: "#0caeca" }} />
               <Typography variant='h6' fontWeight='bold' mr={2}>
                 کیف پول
               </Typography>
@@ -139,15 +142,17 @@ const ProfleHeader = () => {
             justifyContent='center'
             alignContent='center'
             alignItems='center'
-            borderRight='1px solid rgba(0,0,0,.1)' mb={10}>
+            borderRight='1px solid rgba(0,0,0,.1)'
+            m='2rem 0'>
             <Box
               display='flex'
               justifyContent='center'
               alignContent='center'
               alignItems='center'>
-              <img src='1' />
+              <CardGiftcardIcon sx={{ color: "#0caeca" }} />
+
               <Typography variant='h6' fontWeight='bold' mr={2}>
-                کیف پول
+                اعتبار هدیه
               </Typography>
             </Box>
             <Typography variant='body1'>

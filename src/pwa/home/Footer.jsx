@@ -70,7 +70,7 @@ const Footer = () => {
           justifyContent='center'
           alignContent='center'>
           <Link
-            to='/'
+            to='/profile'
             style={{
               padding: "4px",
               textDecoration: "none",
