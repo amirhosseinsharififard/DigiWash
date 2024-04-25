@@ -19,7 +19,8 @@ const MyDigiwashSectionsIncrease = ({
       justifyContent='space-between'
       alignContent='center'
       alignItems='center'
-      padding='2rem'>
+      m="1rem"
+      >
       <Link
         to={address}
         style={{
@@ -29,7 +30,8 @@ const MyDigiwashSectionsIncrease = ({
           justifyContent: "space-between",
           textDecoration: "none",
           color: "black",
-          width: "100%"
+          width: "100%",
+          padding:'1rem'
         }}>
         <Box display='flex'>
           {dataIcon}
