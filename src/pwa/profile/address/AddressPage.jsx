@@ -1,4 +1,4 @@
-import HeaderProfileLinks from "../../share/HeaderProfileLinks";
+import HeaderProfileLinks from "../../../share/HeaderProfileLinks";
 import BodyProfiles from "./BodyProfiles";
 
 const AddressPage = () => {
