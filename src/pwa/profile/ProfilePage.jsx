@@ -1,7 +1,7 @@
 import ProfleHeader from "./HeaderProfile";
 import MyDigiWash from "./MyDigiWash";
 
-const Profile = () => {
+const ProfilePge = () => {
   return (
     <>
       <ProfleHeader />
@@ -10,4 +10,4 @@ const Profile = () => {
   );
 };
 
-export default Profile;
+export default ProfilePge;
