@@ -1,4 +1,4 @@
-import ProfleHeader from "./ProfileHeader";
+import ProfleHeader from "./HeaderProfile";
 import MyDigiWash from "./MyDigiWash";
 
 const Profile = () => {

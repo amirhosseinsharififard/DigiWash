@@ -7,7 +7,7 @@ import CreateOutlinedIcon from "@mui/icons-material/CreateOutlined";
 import WalletIcon from "@mui/icons-material/Wallet";
 import CardGiftcardIcon from "@mui/icons-material/CardGiftcard";
 
-const ProfleHeader = () => {
+const HeaderProfile = () => {
   const pathName = useLocation().pathname;
   const personAccout = {
     nameAccount: "amir sharifi",
@@ -165,4 +165,4 @@ const ProfleHeader = () => {
   );
 };
 
-export default ProfleHeader;
+export default HeaderProfile;
