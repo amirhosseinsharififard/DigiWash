@@ -9,6 +9,8 @@ import MyDigiwashSectionsIncrease from "./MyDigiwashSectionsIncrease";
 
 // eslint-disable-next-line react/prop-types
 const MyDigiWashSection = ({data}) => {
+  
+
   return (
     <Grid
       container
@@ -20,10 +22,10 @@ const MyDigiWashSection = ({data}) => {
       
       
 
-      {data.map((data,i)=> <MyDigiwashSectionsIncrease key={i} title={data.title} dataIcon={data.dataIcon} address={data.address} speciaStyle={data.specialStyle}/>)
+      {data.map((data,i)=> <MyDigiwashSectionsIncrease key={i} title={data.title} dataIcon={data.dataIcon} address={data.address} speciaStyle={data.specialStyle} clickData={data.clickData}/>)
       }
       
-      
+   
     </Grid>
   );
 };

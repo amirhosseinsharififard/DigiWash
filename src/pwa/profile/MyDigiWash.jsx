@@ -12,13 +12,15 @@ import LogoutIcon from "@mui/icons-material/Logout";
 // data
 const dataMyDigiWash = [
   {
-    specialStyle:"",
+    clickData:false,
+    specialStyle: "",
     address: "/profile/address",
     title: "ادرس",
     dataIcon: <LocationOnIcon style={{ color: "#0caeca", fontSize: "35" }} />
   },
   {
-    specialStyle:"",
+    clickData:false,
+    specialStyle: "",
     address: "/profile/transactions",
     title: "لیست تراکنش ها",
     dataIcon: <CreditCardIcon style={{ color: "#0caeca", fontSize: "35" }} />
@@ -27,15 +29,17 @@ const dataMyDigiWash = [
 
 const dataMyDigiWashSecond = [
   {
-    specialStyle:"",
-    address: "/profile/call-us",
+    clickData: true,
+    specialStyle: "",
+    address: "",
     title: "تماس با پشتیبانی",
     dataIcon: (
       <PhoneInTalkOutlinedIcon style={{ opacity: "50%", fontSize: "35" }} />
     )
   },
   {
-    specialStyle:"",
+    clickData:false,
+    specialStyle: "",
     address: "/profile/question",
     title: "سوالات متداول",
     dataIcon: (
@@ -43,7 +47,8 @@ const dataMyDigiWashSecond = [
     )
   },
   {
-    specialStyle:"",
+    clickData:false,
+    specialStyle: "",
     address: "/profile/rules",
     title: "قوانین و مقررات",
     dataIcon: <DescriptionIcon style={{ opacity: "50%", fontSize: "35" }} />
@@ -57,7 +62,8 @@ const dataMyDigiWashLive = [
     dataIcon: (
       <LogoutIcon style={{ color: "red", opacity: "50%", fontSize: "35" }} />
     ),
-    specialStyle: "red"
+    specialStyle: "red",
+    clickData:false,
   }
 ];
 const MyDigiWash = () => {

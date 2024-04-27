@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/prop-types */
 import { Box, Grid, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
@@ -7,6 +9,7 @@ const MyDigiwashSectionsIncrease = ({
   title,
   dataIcon,
   address,
+  clickData
 }) => {
   return (
     <Grid
@@ -19,10 +22,16 @@ const MyDigiwashSectionsIncrease = ({
       justifyContent='space-between'
       alignContent='center'
       alignItems='center'
-      m="1rem"
-      >
+      m='1rem'>
       <Link
         to={address}
+        onClick={
+          clickData &&
+          (() =>
+            navigator.clipboard.writeText(
+              "AmirHosseinSHarifiFard 0917-238-4087"
+            ))
+        }
         style={{
           display: "flex",
           alignContent: "center",
@@ -31,16 +40,12 @@ const MyDigiwashSectionsIncrease = ({
           textDecoration: "none",
           color: "black",
           width: "100%",
-          padding:'1rem'
+          padding: "1rem"
         }}>
         <Box display='flex'>
           {dataIcon}
 
-          <Typography
-            variant='h6'
-            mr={2}
-            fontWeight='bold'
-            >
+          <Typography variant='h6' mr={2} fontWeight='bold'>
             {title}
           </Typography>
         </Box>
