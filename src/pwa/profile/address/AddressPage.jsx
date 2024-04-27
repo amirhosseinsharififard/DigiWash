@@ -5,7 +5,7 @@ const AddressPage = () => {
   return (
     <>
       <HeaderProfileLinks />
-      <BodyProfiles />
+      <BodyProfiles pageAddress="آدرس ها" />
     </>
   );
 };

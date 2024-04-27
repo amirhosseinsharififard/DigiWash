@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 // icon
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 
-const HeaderProfileLinks = ({pageAddress}) => {
+const HeaderTransa = ({ pageAddress }) => {
   return (
     <Box sx={{ bgcolor: "#0caeca" }}>
       <Container
@@ -42,7 +42,7 @@ const HeaderProfileLinks = ({pageAddress}) => {
                 color: "white"
               }}>
               <Typography variant='h5' fontWeight={700}>
-               {pageAddress}
+                {pageAddress}
               </Typography>
             </Link>
           </Grid>
@@ -61,10 +61,22 @@ const HeaderProfileLinks = ({pageAddress}) => {
             justifyContent: "space-between",
             p: "1.5rem 1.5rem .7rem 1.5rem"
           }}>
-          <Grid item display='flex' xs={10} sm={10} md={10} lg={10}>
-            <Typography variant='h5' fontWeight='bold'>
-              ادرس های ثبت شده
-            </Typography>
+          <Grid item display='flex' xs={12} sm={12} md={12} lg={12}>
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "space-between",
+                textDecoration: "none",
+                color: "black",
+                bgcolor: "rgb(235, 248, 250)",
+                borderRadius: "16px ",
+                p: "1rem",
+                width: "100%"
+              }}>
+              <Typography variant='h6'>مانده اعتبار</Typography>
+
+              <Typography variant='body1'>{0} تومان</Typography>
+            </Box>
           </Grid>
         </Grid>
       </Container>
@@ -72,4 +84,4 @@ const HeaderProfileLinks = ({pageAddress}) => {
   );
 };
 
-export default HeaderProfileLinks;
+export default HeaderTransa;

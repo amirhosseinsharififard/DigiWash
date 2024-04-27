@@ -12,6 +12,7 @@ import Footer from "./pwa/home/Footer";
 import ModalIncrease from "./share/ModalIncrease";
 import ProfilePage from "./pwa/profile/ProfilePage";
 import AddressPage from "./pwa/profile/address/AddressPage";
+import TransactionsPage from "./pwa/profile/transactions/TransactionsPage";
 function App() {
   return (
     <>
@@ -21,7 +22,7 @@ function App() {
         <Route path='/Modal' element={<ModalIncrease />} />
         <Route path='/profile' element={<ProfilePage />} />
         <Route path='/profile/address' element={<AddressPage />} />
-        <Route path='/profile/transactions' element={<AddressPage />} />
+        <Route path='/profile/transactions' element={<TransactionsPage />} />
       </Routes>
       <Footer />
 
