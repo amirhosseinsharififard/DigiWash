@@ -1,4 +1,4 @@
-import { Container, Grid, Typography } from "@mui/material";
+import { Box, Container, Grid, Typography } from "@mui/material";
 
 import HomeIcon from "@mui/icons-material/Home";
 import LocalLaundryServiceOutlinedIcon from "@mui/icons-material/LocalLaundryServiceOutlined";
@@ -6,13 +6,34 @@ import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined
 import { Link } from "react-router-dom";
 const Footer = () => {
   return (
+      
+      <Box
+        sx={{
+          position: "fixed",
+          top: "0",
+          left: "0",
+          zIndex: "1",
+          width: "100vw",
+          height: "100vh",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "flex-end",
+          "@media only screen and (maxWidth: 768px)":{width:"110vh"}
+
+        }}>
     <Container>
+
+
       <Grid
+
         container
+        
         sx={{
           border: "1px solid rgb(204, 204, 204)",
-          borderRadius: "8px 8px 0 0"
+          borderRadius: "8px 8px 0 0",
+          bgcolor:"white"
         }}>
+
         <Grid
           item
           xs={4}
@@ -26,7 +47,6 @@ const Footer = () => {
           <Link
             to='/'
             style={{
-              padding: "4px",
               textDecoration: "none",
               color: "#0caeca",
               width: "100%",
@@ -49,7 +69,6 @@ const Footer = () => {
           <Link
             to='/'
             style={{
-              padding: "4px",
               textDecoration: "none",
               color: "#0caeca",
               width: "100%",
@@ -72,7 +91,6 @@ const Footer = () => {
           <Link
             to='/profile'
             style={{
-              padding: "4px",
               textDecoration: "none",
               color: "#0caeca",
               width: "100%",
@@ -82,8 +100,10 @@ const Footer = () => {
             <Typography>خانه</Typography>
           </Link>
         </Grid>
+        
       </Grid>
     </Container>
+      </Box>
   );
 };
 

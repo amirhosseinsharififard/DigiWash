@@ -16,7 +16,7 @@ const HomePage = () => {
         <OrderPhone />
         <Services />
         <ServicesPopular />
-        <ServicesCategory />
+        <ServicesCategory  />
       </Container>
     </>
   );

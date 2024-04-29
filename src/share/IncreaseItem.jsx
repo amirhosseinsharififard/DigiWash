@@ -1,5 +1,5 @@
+/* eslint-disable react/prop-types */
 import { Box, Button, Container, Grid, Typography } from "@mui/material";
-import styles from "./IncreaseItem.module.css";
 const IncreaseItem = ({ title, image, cost }) => {
   return (
     <Container>

@@ -5,7 +5,7 @@ const CategoryContent = ({imageCategory,titleCategory,id}) => {
   return (
     <Box>
       <img src={imageCategory} style={{
-        height:'200px' , width:'200px',
+        height:'100%' , width:'100%',
       }}/>
       <Typography variant="h6" fontWeight={700}>
         {titleCategory}

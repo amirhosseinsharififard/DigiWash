@@ -79,7 +79,6 @@ const ServicesPopular = () => {
   return (
     <Container>
       <Box
-        
         sx={{
           bgcolor: "rgb(242, 247, 247)",
           p: "1rem 0",
@@ -94,6 +93,22 @@ const ServicesPopular = () => {
         <Swiper
           slidesPerView={5}
           spaceBetween={30}
+          breakpoints={{
+            // when window width is >= 640px
+            320: {
+              slidesPerView: 1.5
+            },
+            480: {
+              slidesPerView: 2.5
+            },
+            // when window width is >= 768px
+            768: {
+              slidesPerView: 3.2
+            },
+            992: {
+              slidesPerView: 4.5
+            }
+          }}
           freeMode={true}
           pagination={{
             clickable: true
@@ -103,7 +118,9 @@ const ServicesPopular = () => {
           style={{ padding: "0 2rem" }}>
           {DataSwiper.map((item, index) => (
             <SwiperSlide style={{ background: "none" }} key={index}>
-              <Link  style={{ textDecoration: "none", color: "black" }} to={item.linkProduct}>
+              <Link
+                style={{ textDecoration: "none", color: "black" }}
+                to={item.linkProduct}>
                 <ServicesPopularComponent
                   title={item.title}
                   subTitle={item.subTitle}
