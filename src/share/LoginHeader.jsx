@@ -5,14 +5,14 @@ const LoginHeader = () => {
 
   return (
       <Grid item  display="flex" alignContent="center" alignItems='center' >
-        <Avatar src='' sx={{ width: "70px", height: "70px" }}>
+        <Avatar src='' sx={{ width: "48px", height: "48px" }}>
           {personName.nameAcount[0]}
         </Avatar>
-        <Box display="flex" flexDirection="column" alignContent="center" alignItems='center' mr={3}>
-        <Typography variant='h5' fontWeight='bold'>
+        <Box display="flex" flexDirection="column" alignContent="center" alignItems='center' pr="8px">
+        <Typography variant='h5' fontWeight='bold' fontSize="16px">
           {personName.nameAcount}
         </Typography>
-        <Typography variant="h6" color="rgb(56, 90, 118)"> {personName.cost} تومان اعتبار </Typography>
+        <Typography variant="h6" fontWeight="bold" fontSize="12px" color="rgb(56, 90, 118)"> {personName.cost} تومان اعتبار </Typography>
         </Box>
       </Grid>
   );

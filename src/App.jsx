@@ -13,9 +13,14 @@ import ModalIncrease from "./share/ModalIncrease";
 import ProfilePage from "./pwa/profile/ProfilePage";
 import AddressPage from "./pwa/profile/address/AddressPage";
 import TransactionsPage from "./pwa/profile/transactions/TransactionsPage";
+
+import { Box, ThemeProvider } from "@mui/material";
+import theme from "./Theme";
 function App() {
   return (
     <>
+    <ThemeProvider theme={theme}>
+
       <Routes>
         <Route path='/' element={<HomePage />} />
         <Route path='/services' element={<ServicePage />} />
@@ -24,7 +29,8 @@ function App() {
         <Route path='/profile/address' element={<AddressPage />} />
         <Route path='/profile/transactions' element={<TransactionsPage />} />
       </Routes>
-      <Footer />
+      {/* <Footer /> */}
+      </ThemeProvider>
 
       {/* <TestResponsive/> */}
     </>

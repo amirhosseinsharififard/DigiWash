@@ -3,21 +3,21 @@ import OrderPhone from "./OrderPhone";
 import Services from "./Services";
 import ServicesPopular from "./ServicesPopular";
 import ServicesCategory from "./ServicesCategory";
-import { Container } from "@mui/material";
+import { Box } from "@mui/material";
 import HeaderPwa from "./HeaderPwa";
 // import HeaderPwa from "./HeaderPwa";
 const HomePage = () => {
   return (
     <>
-    <HeaderPwa />
-      <Container sx={{mb:"20px"}}>
+      <HeaderPwa />
+      <Box sx={{maxWidth:"768px" ,m:"auto"}}>
         {/* <Header /> */}
         <Offday />
         <OrderPhone />
-        <Services />
-        <ServicesPopular />
-        <ServicesCategory  />
-      </Container>
+        {/* <Services /> */}
+        {/* <ServicesPopular /> */}
+        {/* <ServicesCategory /> */}
+        </Box>
     </>
   );
 };
