@@ -11,18 +11,38 @@ const ServicesPopularComponent = ({ title, subTitle, image }) => {
         alignItems: "center",
         alignContent: "center"
       }}>
-
-      <Stack bgcolor='white'  p='1rem' borderRadius='8px'>
-        <Typography variant='h5' fontWeight='bold'>
-          {title}
-        </Typography>
-        <Typography variant='h6'  >
-          {subTitle}
-        </Typography>
+      <Stack
+        display='flex'
+        alignContent='center'
+        alignItems='center'
+        bgcolor='white'
+        borderRadius='8px'
+        width='128px'
+        height='124'>
+        <Box m='.5rem auto' width='120px'>
+          <Typography
+            variant='h5'
+            textAlign='center'
+            fontSize='14px'
+            fontWeight='bold'
+            fontFamily='Vazir-Medium'
+            height="20px"
+            >
+            {title}
+          </Typography>
+          <Typography
+            variant='h6'
+            fontSize='14px'
+            height="20px"
+            fontFamily='Vazir-Light'
+            color='rgb(85, 100, 102)'>
+            {subTitle}
+          </Typography>
+        </Box>
       </Stack>
       <img
         src={image}
-        style={{ backgroundColor: "none", width: "100px", height: "100px" }}
+        style={{ backgroundColor: "none", width: "64px", height: "64px" }}
       />
     </Box>
   );

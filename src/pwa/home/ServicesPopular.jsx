@@ -82,7 +82,7 @@ const ServicesPopular = () => {
         sx={{
           bgcolor: "rgb(242, 247, 247)",
           p: "1rem 0",
-          m: "1rem 2rem",
+          m: "1rem 0",
           borderRadius: "8px",
           overflow: "hidden"
         }}>
@@ -90,23 +90,28 @@ const ServicesPopular = () => {
           خدمات محبوب
         </Typography>
 
-        <Swiper
-          slidesPerView={5}
+        <Swiper 
+
+
+          slidesPerView={5.5}
           spaceBetween={30}
           breakpoints={{
+            0: {
+              slidesPerView: 1.6
+            },
             // when window width is >= 640px
             320: {
-              slidesPerView: 1.5
+              slidesPerView: 2.4
             },
             480: {
-              slidesPerView: 2.5
+              slidesPerView: 3.6
             },
             // when window width is >= 768px
             768: {
-              slidesPerView: 3.2
+              slidesPerView: 5
             },
             992: {
-              slidesPerView: 4.5
+              slidesPerView: 5.5
             }
           }}
           freeMode={true}
@@ -115,7 +120,7 @@ const ServicesPopular = () => {
           }}
           modules={[FreeMode, Pagination]}
           className='mySwiper'
-          style={{ padding: "0 2rem" }}>
+          style={{marginRight:".2rem"}}>
           {DataSwiper.map((item, index) => (
             <SwiperSlide style={{ background: "none" }} key={index}>
               <Link

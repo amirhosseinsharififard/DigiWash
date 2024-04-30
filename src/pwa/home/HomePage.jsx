@@ -14,8 +14,8 @@ const HomePage = () => {
         {/* <Header /> */}
         <Offday />
         <OrderPhone />
-        {/* <Services /> */}
-        {/* <ServicesPopular /> */}
+        <Services />
+        <ServicesPopular />
         {/* <ServicesCategory /> */}
         </Box>
     </>

@@ -10,8 +10,9 @@ const OrderPhone = () => {
           justifyContent: "center",
           flexDirection: "column",
           alignContent: "center",
-          p: "0.5rem ",m:"1rem 0 ",
-          borderRadius:"8px"
+          p: "0.5rem ",
+          m: "1rem 0 ",
+          borderRadius: "8px"
         }}>
         <Box
           m='1rem auto'
@@ -24,9 +25,9 @@ const OrderPhone = () => {
             sx={{
               bgcolor: "#0caeca",
               p: "8px",
-              fontSize:"16px",
-            fontWeight:"bold",
-              fontFamily:"Vazir",
+              fontSize: "16px",
+              fontWeight: "bold",
+              fontFamily: "Vazir",
               borderRadius: "16px",
               "&:hover": {
                 background: "#0caeca"
@@ -34,9 +35,19 @@ const OrderPhone = () => {
             }}>
             ثبت سفارش تلفنی
           </Button>
-          <Typography variant='h5' mt='1rem' fontFamily="vazir" fontWeight="bold">
-          {toFarsiNumber('02145802000')}
-            
+          <Typography
+            variant='h5'
+            mt='1rem'
+            fontFamily='vazir'
+            fontWeight='bold'
+            sx={{
+              
+              fontSize: "16px",
+              fontWeight: "bold",
+              fontFamily: "Vazir",
+              textAlign:"center"
+            }}>
+            {toFarsiNumber("02145802000")}
           </Typography>
         </Box>
       </Box>

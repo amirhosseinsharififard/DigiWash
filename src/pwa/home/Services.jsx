@@ -1,4 +1,4 @@
-import { Box, Container, Grid, Typography } from "@mui/material";
+import { Box, Container, Typography } from "@mui/material";
 // import { Link } from "react-router-dom";
 
 // svg
@@ -16,43 +16,38 @@ const Services = () => {
   return (
     <Container>
       <Box m='1rem 2rem'>
-        <Typography variant='h5' component='p' fontWeight={700}>
+        <Typography
+          variant='h5'
+          component='p'
+          fontSize='18px'
+          fontFamily='Vazir-Bold'>
           خدمات دیجی واش
         </Typography>
       </Box>
-      <Grid
-        container
-        m='1rem 2rem'
+      <Box
         display='flex'
-        justifyContent='space-between'
-        width='60%'
+        justifyContent='space-evenly'
+        maxWidth='420px'
         alignContent='center'
-        spacing={4}
-        margin="2rem auto"
-        >
+        margin='0 auto'>
         {DataService.map((item, i) => (
-          <Grid item key={i} textAlign="center" 
-          
-             xs={6}
-          sm={3}
-          md={3}
-          lg={3}
-          sx={{
-              "@media only screen and (maxWidth: 1200px)": { fontSize: 18 },
-              "@media only screen and (maxWidth: 992px)": { fontSize: 16 },
-              "@media only screen and (maxWidth: 768px)": { fontSize: 12 },
-              "@media only screen and (maxWidth: 576px)": { fontSize: 9 }
-            }}
-          >
+          <Box
+            key={i}
+            textAlign='center'
+            sx={{
+              fontFamily: "vazir",
+              fontSize: "16px",
+              width: "auto"
+            }}>
             {/* <Link to='/' style={{ textDecoration: "none" }}> */}
-              <img src={item.serviceImg} style={{margin:"0 auto"}} />
-              <Typography variant='h6' color='black' fontWeight='bold'>
-                {item.serviceName}
-              </Typography>
+            <img src={item.serviceImg} style={{ margin: "0 auto" }} />
+            <Typography variant='h6' color='black'>
+              {item.serviceName}
+            </Typography>
             {/* </Link> */}
-          </Grid>
+          </Box>
         ))}
-      </Grid>
+      </Box>
     </Container>
   );
 };

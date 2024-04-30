@@ -65,7 +65,7 @@ const HeaderPwa = () => {
                     <Typography variant='h6'  fontSize="16px" fontWeight="bold">
                       دیجی واش من
                     </Typography>
-                    <Typography variant='body2' fontSize="14px" color="rgb(56, 90, 118)">
+                    <Typography variant='body2' fontSize="12px" color="rgb(56, 90, 118)" width="auto">
                       وارد حساب کاربری خود شوید
                     </Typography>
                   </Box>
@@ -78,6 +78,7 @@ const HeaderPwa = () => {
                       p: ".5rem 1rem",
                       fontWeight: "bold",
                       borderRadius: "30px",
+                      width:"auto",
                       "&:hover": {
                         background: "#0caeca"
                       }
