@@ -77,7 +77,7 @@ const DataSwiper = [
 ];
 const ServicesPopular = () => {
   return (
-    <Container>
+    <>
       <Box
         sx={{
           bgcolor: "rgb(242, 247, 247)",
@@ -86,7 +86,7 @@ const ServicesPopular = () => {
           borderRadius: "8px",
           overflow: "hidden"
         }}>
-        <Typography variant='h5' fontWeight='bold ' m='1rem '>
+        <Typography variant='h5' fontWeight='bold' fontSize="18px" fontFamily="Vazir" m='1rem '>
           خدمات محبوب
         </Typography>
 
@@ -120,7 +120,7 @@ const ServicesPopular = () => {
           }}
           modules={[FreeMode, Pagination]}
           className='mySwiper'
-          style={{marginRight:".2rem"}}>
+          style={{marginRight:".5rem"}}>
           {DataSwiper.map((item, index) => (
             <SwiperSlide style={{ background: "none" }} key={index}>
               <Link
@@ -136,7 +136,7 @@ const ServicesPopular = () => {
           ))}
         </Swiper>
       </Box>
-    </Container>
+    </>
   );
 };
 

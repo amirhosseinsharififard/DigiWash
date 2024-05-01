@@ -68,29 +68,47 @@ const categoryData = [
 ];
 const ServicesCategory = () => {
   return (
-    <Container>
-      <Box m='2rem'>
-        <Typography variant='h5' fontWeight='bold' m='1rem 0'>
-          دسته بندی خدمات
-        </Typography>
+    <Box m='rem'>
+      <Typography
+        variant='h5'
+        fontWeight='bold'
+        fontSize='18px'
+        fontFamily='Vazir'
+        m='1rem 0'>
+        دسته بندی خدمات
+      </Typography>
 
-        <Grid container spacing={10} >
-          {categoryData.map((item) => (
-            <Grid item key={item.id} xs={12} sm={6} md={6} lg={4}>
-              <Link
-                to={item.link}
-                style={{ textDecoration: "none", color: "black" }}>
-                <CategoryContent
-                  imageCategory={item.imageCategory}
-                  titleCategory={item.titleCategory}
-                  id={item.id}
-                />
-              </Link>
-            </Grid>
-          ))}
-        </Grid>
+      <Box
+        display='flex'
+        flexWrap='wrap'
+        justifyContent='flex-start'>
+        {categoryData.map((item) => (
+          <Box
+            key={item.id}
+            sx={{
+              width: "calc((100% / 4) - 1rem)",
+              p: ".5rem",
+              overflow: "hidden"
+            }}>
+            <Link
+              to={item.link}
+              style={{
+                textDecoration: "none",
+                color: "black",
+                maxWidth: "163px",
+                height: "143px",
+                borderRadius:"12px"
+              }}>
+              <CategoryContent
+                imageCategory={item.imageCategory}
+                titleCategory={item.titleCategory}
+                id={item.id}
+              />
+            </Link>
+          </Box>
+        ))}
       </Box>
-    </Container>
+    </Box>
   );
 };
 

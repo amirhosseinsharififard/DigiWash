@@ -1,16 +1,26 @@
 import { Box, Typography } from "@mui/material";
 
-
-const CategoryContent = ({imageCategory,titleCategory,id}) => {
+const CategoryContent = ({ imageCategory, titleCategory, id }) => {
   return (
-    <Box>
-      <img src={imageCategory} style={{
-        height:'100%' , width:'100%',
-      }}/>
-      <Typography variant="h6" fontWeight={700}>
+    <>
+      <Box
+        sx={{
+          backgroundImage: `url(${imageCategory})`,
+          backgroundSize: "cover",
+          backgroundRepeat: "no-repeat",
+          backgroundPosition:"center center",
+          height: "142px",
+          width: "auto",
+          overflow: "hidden",
+          display: "block",
+          borderRadius:"12px"
+        }}>
+  
+      </Box>
+      <Typography variant='h6' fontFamily="Vazir" fontSize="16px">
         {titleCategory}
       </Typography>
-    </Box>
+    </>
   );
 };
 

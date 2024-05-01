@@ -1,4 +1,4 @@
-import { Box, Container, Typography } from "@mui/material";
+import { Box,  Typography } from "@mui/material";
 // import { Link } from "react-router-dom";
 
 // svg
@@ -14,13 +14,15 @@ const DataService = [
 
 const Services = () => {
   return (
-    <Container>
+    <>
+
       <Box m='1rem 2rem'>
         <Typography
           variant='h5'
           component='p'
           fontSize='18px'
-          fontFamily='Vazir-Bold'>
+          fontFamily='Vazir'
+          fontWeight="bold">
           خدمات دیجی واش
         </Typography>
       </Box>
@@ -35,20 +37,19 @@ const Services = () => {
             key={i}
             textAlign='center'
             sx={{
-              fontFamily: "vazir",
-              fontSize: "16px",
               width: "auto"
             }}>
             {/* <Link to='/' style={{ textDecoration: "none" }}> */}
             <img src={item.serviceImg} style={{ margin: "0 auto" }} />
-            <Typography variant='h6' color='black'>
+              
+            <Typography variant='h6' color='black' sx={{fontFamily:"Vazir" , fontSize:"12px"}}>
               {item.serviceName}
             </Typography>
             {/* </Link> */}
           </Box>
         ))}
       </Box>
-    </Container>
+    </>
   );
 };
 
