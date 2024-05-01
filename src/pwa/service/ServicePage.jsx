@@ -1,4 +1,4 @@
-import { Container, Grid } from "@mui/material";
+import { Box } from "@mui/material";
 
 import clothesServices from "../../../assets/clothesServices.svg";
 import ServicesCoponent from "./ServicesCoponent";
@@ -72,13 +72,12 @@ const ServicePage = () => {
     <>
     <HeaderPwa />
 
-    <Container>
-      <Grid container spacing={2} p={2}>
+  
+      <Box   maxWidth= "724px" m="auto" display="flex" justifyContent="space-evenly" flexWrap="wrap" >
         {DataServiceComponent.map((item, index) => (
           <ServicesCoponent image={item.image} cost={item.cost} title={item.title} subTitle={item.subTitle} key={index} />
         ))}
-      </Grid>
-    </Container>
+      </Box>
     </>
   );
 };

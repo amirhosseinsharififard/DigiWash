@@ -1,4 +1,4 @@
-import { Box, Container, Grid, Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import CategoryContent from "./CategoryContent";
 
 // import image
@@ -68,7 +68,7 @@ const categoryData = [
 ];
 const ServicesCategory = () => {
   return (
-    <Box m='rem'>
+    <>
       <Typography
         variant='h5'
         fontWeight='bold'
@@ -86,8 +86,8 @@ const ServicesCategory = () => {
           <Box
             key={item.id}
             sx={{
-              width: "calc((100% / 4) - 1rem)",
-              p: ".5rem",
+              width: "calc((100% / 4) - 2rem)",
+              p: "1rem",
               overflow: "hidden"
             }}>
             <Link
@@ -97,7 +97,7 @@ const ServicesCategory = () => {
                 color: "black",
                 maxWidth: "163px",
                 height: "143px",
-                borderRadius:"12px"
+                borderRadius:"12px",
               }}>
               <CategoryContent
                 imageCategory={item.imageCategory}
@@ -108,7 +108,7 @@ const ServicesCategory = () => {
           </Box>
         ))}
       </Box>
-    </Box>
+    </>
   );
 };
 

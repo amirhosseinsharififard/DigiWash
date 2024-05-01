@@ -1,75 +1,78 @@
-import { Box, Grid, Stack, Typography } from "@mui/material";
+import { Box, Stack, Typography } from "@mui/material";
+import toFarsiNumber from "../../share/functions";
 
 // eslint-disable-next-line react/prop-types
-const ServicesCoponent = ({ image, cost ,title,subTitle}) => {
+const ServicesCoponent = ({ image, cost, title, subTitle }) => {
   return (
-    <Grid item xs={12} sm={6} md={6} lg={4}>
-      <Box bgcolor='rgb(237, 252, 255)' pt={2} borderRadius='12px' height='80%'>
-        <Stack
-          display='flex'
-          justifyContent='center'
-          alignContent='center'
-          alignItems='center'
-          flexDirection='column'
-          bgcolor='white'
-          m='0 16px'>
-          <Typography
-            variant='h5'
-            fontWeight={"bold"}
-            sx={{
-              "@media only screen and (maxWidth: 1200px)": { fontSize: 22 },
-              "@media only screen and (maxWidth: 992px)": { fontSize: 20 },
-              "@media only screen and (maxWidth: 768px)": { fontSize: 14 },
-              "@media only screen and (maxWidth: 576px)": { fontSize: 12 }
-            }}>
-            {title}
-          </Typography>
-          <Typography
-            variant='body1'
-            sx={{
-              "@media only screen and (maxWidth: 1200px)": { fontSize: 18 },
-              "@media only screen and (maxWidth: 992px)": { fontSize: 16 },
-              "@media only screen and (maxWidth: 768px)": { fontSize: 12 },
-              "@media only screen and (maxWidth: 576px)": { fontSize: 9 }
-            }}>
-           {subTitle}
-          </Typography>
-        </Stack>
-        <Stack
-          display='flex'
-          justifyContent='space-between'
-          flexDirection='row'
-          alignContent='center'
-          alignItems={"center"}>
-          <img
-            src={image}
-            style={{
-              height: "80px",
-              width: "75px",
-              "@media only screen and (maxWidth: 1200px)": { fontSize: 14 },
-              "@media only screen and (maxWidth: 992px)": { fontSize: 12 },
-              "@media only screen and (maxWidth: 768px)": { fontSize: 8 },
-              "@media only screen and (maxWidth: 576px)": { fontSize: 7 }
-            }}
-          />
-          <Typography
-            variant='body2'
-            bgcolor={"white"}
-            borderRadius='0 8px 8px 0'
-            p='4px 8px'
-            sx={{
-              "@media only screen and (maxWidth: 1200px)": { fontSize: 14 },
-              "@media only screen and (maxWidth: 992px)": { fontSize: 12 },
-              "@media only screen and (maxWidth: 768px)": { fontSize: 8 },
-              "@media only screen and (maxWidth: 576px)": { fontSize: 7 }
-            }}>
-            از
-            <span>{cost}</span>
-            تومان
-          </Typography>
-        </Stack>
-      </Box>
-    </Grid>
+    <Box
+      bgcolor='rgb(237, 252, 255)'
+      m="2rem 1rem"
+      borderRadius='12px'
+      height='80%'
+      width='calc((100% / 3) - 2rem)'>
+      <Stack
+        display='flex'
+        justifyContent='center'
+        alignContent='center'
+        alignItems='center'
+        flexDirection='column'
+        bgcolor='white'
+        overflow="hidden"
+        m='.5rem .5rem'>
+        <Typography
+          variant='h5'
+          fontFamily='Vazir'
+          fontWeight='bold'
+          fontSize='14px'
+          height='auto'
+          pt='1rem'>
+          {title}
+        </Typography>
+        <Typography
+          variant='body1'
+          sx={{
+            fontFamily: "Vazir",
+            fontSize: "14px",
+            height: "auto"
+          }}>
+          {subTitle}
+        </Typography>
+      </Stack>
+      <Stack
+        display='flex'
+        justifyContent='space-between'
+        flexDirection='row'
+        alignContent='center'
+        alignItems={"center"}>
+        <Box
+        sx={{  backgroundImage: `url(${image})`,
+          backgroundSize: "cover",
+          backgroundRepeat: "no-repeat",
+          backgroundPosition:"center center",
+          height: "80px",
+            width: "75px",
+          overflow: "hidden",
+          display: "block",}}
+       
+        />
+        <Typography
+          variant='body2'
+          bgcolor={"white"}
+          borderRadius='0 8px 8px 0'
+          fontFamily="Vazir"
+fontSize="10px"
+          textAlign="right"
+          alignContent="center"
+          sx={{
+            maxWidth: "77px",
+            height: "23px"
+          }}>
+          از
+          <span>{toFarsiNumber(cost)}</span>
+          تومان
+        </Typography>
+      </Stack>
+    </Box>
   );
 };
 

@@ -1,4 +1,4 @@
-import { Box, Container, Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 
 // usable component
 import ServicesPopularComponent from "./ServicesPopularComponent";
@@ -122,7 +122,7 @@ const ServicesPopular = () => {
           className='mySwiper'
           style={{marginRight:".5rem"}}>
           {DataSwiper.map((item, index) => (
-            <SwiperSlide style={{ background: "none" }} key={index}>
+            <SwiperSlide style={{ background: "none" }} key={index} >
               <Link
                 style={{ textDecoration: "none", color: "black" }}
                 to={item.linkProduct}>

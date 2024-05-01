@@ -36,7 +36,7 @@ const DataTagName = [
 ];
 const HeaderService = () => {
   return (
-    <Container>
+    <>
       <Grid container m='2rem 0'>
         <Grid item lg={5} md={5} xs={5}>
           <Link to='/'>
@@ -44,7 +44,7 @@ const HeaderService = () => {
           </Link>
         </Grid>
         <Grid item lg={7} md={7} xs={7}>
-          <Typography variant='h5' color={"white"}>
+          <Typography variant='h5' color={"white"} fontFamily="Vazir-Bold" fontSize="18px" fontWeight="bold">
             انتخاب لباس ها
           </Typography>
         </Grid>
@@ -52,22 +52,25 @@ const HeaderService = () => {
       <Container>
       
         <Swiper
-          slidesPerView={7.5}
-          spaceBetween={0}
+          slidesPerView={6}
           freeMode={true}
           modules={[FreeMode, Pagination]}
           
           breakpoints={{
+            0:{
+            slidesPerView: 1.7,
+
+            },
           // when window width is >= 640px
           320: {
-            slidesPerView: 3.7,
+            slidesPerView: 2.7,
           },
           480: {
-            slidesPerView: 5.5,
+            slidesPerView: 4,
           },
           // when window width is >= 768px
           768: {
-            slidesPerView: 6.5,
+            slidesPerView: 6,
           },
         }}
 
@@ -84,7 +87,7 @@ const HeaderService = () => {
 
         
       </Container>
-    </Container>
+    </>
   );
 };
 
