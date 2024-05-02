@@ -4,7 +4,22 @@ import HomeIcon from "@mui/icons-material/Home";
 import LocalLaundryServiceOutlinedIcon from "@mui/icons-material/LocalLaundryServiceOutlined";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 import { Link } from "react-router-dom";
+// import { useState } from "react";
+// import ModalIncrease from "../../share/ModalIncrease";
 const Footer = () => {
+  // const [anchorEl, setAnchorEl] = useState(null);
+
+  // const handleClick = (event) => {
+  //   setAnchorEl(event.currentTarget);
+  // };
+
+  // const handleClose = () => {
+  //   setAnchorEl(null);
+  // };
+
+  // const open = Boolean(anchorEl);
+  // const id = open ? "simple-popover" : undefined;
+
   return (
     <Box
       sx={{
@@ -60,7 +75,8 @@ const Footer = () => {
             justifyContent='center'
             alignContent='center'>
             <Link
-              to='/'
+              to='/modal'
+              // onClick={handleClick}
               style={{
                 textDecoration: "none",
                 color: "#0caeca",
@@ -69,6 +85,7 @@ const Footer = () => {
               }}>
               <LocalLaundryServiceOutlinedIcon />
               <Typography>خانه</Typography>
+              {/* {console.log(handleClick)} */}
             </Link>
           </Grid>
           <Grid
@@ -95,6 +112,7 @@ const Footer = () => {
           </Grid>
         </Grid>
       </Container>
+  
     </Box>
   );
 };
