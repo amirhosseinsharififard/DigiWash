@@ -15,7 +15,6 @@ const HeaderTransa = ({ pageAddress }) => {
           display: "flex",
           alignItems: "container",
           flexDirection: "column",
-          p: "0 0 0 0 ",
           maxWidth: "768px"
         }}>
         {/* blue zone */}
@@ -24,18 +23,16 @@ const HeaderTransa = ({ pageAddress }) => {
           sx={{
             display: "flex",
             alignContent: "space-betweens",
-            alignItems: "center",
+            alignItems: "center",m:"1rem auto",
             justifyContent: "space-between",
-            p: "1.5rem 1.5rem .7rem 1.5rem",
+            p: ".5rem 1.5rem .7rem 1.5rem",
             color: "white"
           }}>
           <Grid item xs={4} sm={4} md={4} lg={4}>
-            <Link to='/profile'>
-              <Typography variant='h6' fontWeight={700}>
+            <Link to='/profile' style={{display:"flex",alignItems:"center"}}>
                 <ArrowForwardIosIcon
-                  style={{ color: "white", padding: ".5rem" }}
+                  style={{ color: "white", width:"32px" , height :"32px"}}
                 />
-              </Typography>
             </Link>
           </Grid>
           <Grid item xs={7} sm={7} md={7} lg={7}>
@@ -44,7 +41,7 @@ const HeaderTransa = ({ pageAddress }) => {
                 textDecoration: "none",
                 color: "white"
               }}>
-              <Typography variant='h5' fontWeight={700}>
+              <Typography variant='h5' fontFamily="Vazir" fontWeight="bold" fontSize="18px">
                 {pageAddress}
               </Typography>
             </Link>
