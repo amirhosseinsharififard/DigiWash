@@ -9,12 +9,14 @@ import toFarsiNumber from "../../../share/functions";
 const HeaderTransa = ({ pageAddress }) => {
   return (
     <Box sx={{ bgcolor: "#0caeca" }}>
-      <Container
+      <Box
         sx={{
+          m: "auto",
           display: "flex",
           alignItems: "container",
           flexDirection: "column",
-          p: "0 0 0 0 "
+          p: "0 0 0 0 ",
+          maxWidth: "768px"
         }}>
         {/* blue zone */}
         <Grid
@@ -74,15 +76,22 @@ const HeaderTransa = ({ pageAddress }) => {
                 p: "1rem",
                 width: "100%"
               }}>
-              <Typography variant='h6' fontFamily="Vazir" fontSize="16px">مانده اعتبار</Typography>
+              <Typography variant='h6' fontFamily='Vazir' fontSize='16px'>
+                مانده اعتبار
+              </Typography>
 
-              <Typography variant='body1' fontSize="12px" fontFamily="Vazir" fontWeight="bold">
-               <span style={{marginLeft:".3rem"}}> {toFarsiNumber(0)}</span>تومان
-               </Typography>
+              <Typography
+                variant='body1'
+                fontSize='12px'
+                fontFamily='Vazir'
+                fontWeight='bold'>
+                <span style={{ marginLeft: ".3rem" }}> {toFarsiNumber(0)}</span>
+                تومان
+              </Typography>
             </Box>
           </Grid>
         </Grid>
-      </Container>
+      </Box>
     </Box>
   );
 };
