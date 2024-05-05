@@ -1,4 +1,4 @@
-import { Box, Container, Grid,  Typography } from "@mui/material";
+import { Box,  Grid,  Typography } from "@mui/material";
 import IncreaseItem from "./IncreaseItem";
 import CategoryModal from "./CategoryModal";
 import whashSvg from "../../assets/wash.c4124479.svg"

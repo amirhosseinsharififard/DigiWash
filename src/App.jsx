@@ -24,14 +24,14 @@ function App() {
       <Routes>
         <Route path='/' element={<HomePage />} />
         <Route path='/services' element={<ServicePage />} />
-        <Route path='/modal' element={<ModalIncrease />} />
+        {/* <Route path='' element={<ModalIncrease />} /> */}
         <Route path='/profile' element={<ProfilePage />} />
         <Route path='/profile/address' element={<AddressPage />} />
         <Route path='/profile/transactions' element={<TransactionsPage />} />
       </Routes>
       <Footer />
       </ThemeProvider>
-
+      {/* <ModalIncrease /> */}
       {/* <TestResponsive/> */}
     </>
   );

@@ -10,7 +10,7 @@ const HomePage = () => {
   return (
     <>
       <HeaderPwa />
-      <Box sx={{maxWidth:"768px" ,m:"auto"}}>
+      <Box sx={{maxWidth:"768px" ,m:"0rem auto 5rem"}}>
         {/* <Header /> */}
         <Offday />
         <OrderPhone />
