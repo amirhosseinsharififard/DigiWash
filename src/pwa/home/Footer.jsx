@@ -1,41 +1,15 @@
-import { Box, Container, Grid, Typography } from "@mui/material";
+import { Grid, Typography } from "@mui/material";
 
 import HomeIcon from "@mui/icons-material/Home";
 import LocalLaundryServiceOutlinedIcon from "@mui/icons-material/LocalLaundryServiceOutlined";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 import { Link } from "react-router-dom";
-// import { useState } from "react";
-// import ModalIncrease from "../../share/ModalIncrease";
+
 const Footer = () => {
-  // const [anchorEl, setAnchorEl] = useState(null);
 
-  // const handleClick = (event) => {
-  //   setAnchorEl(event.currentTarget);
-  // };
-
-  // const handleClose = () => {
-  //   setAnchorEl(null);
-  // };
-
-  // const open = Boolean(anchorEl);
-  // const id = open ? "simple-popover" : undefined;
 
   return (
-    // <Box
-    //   sx={{
-    //     position: "fixed",
-    //     top: "0",
-    //     left: "0",
-    //     zIndex: "1",
-    //     height: "100vh",
-    //     display: "flex",
-    //     flexDirection: "column",
-    //     justifyContent: "flex-end",
-    //     width: "768px",
-    //     paddingTop: "1rem",
-    //     paddingBottom: "1rem",backgrounde:"none",
-    //     "@media only screen and (maxWidth: 768px)": { width: "110vh" }
-    //   }}>
+
     <Grid
       container
       sx={{
@@ -94,7 +68,7 @@ const Footer = () => {
           <LocalLaundryServiceOutlinedIcon
             style={{ width: "24px", height: "24px" }}
           />
-          <Typography>خانه</Typography>
+          <Typography>سفارش ها</Typography>
           {/* {console.log(handleClick)} */}
         </Link>
       </Grid>
@@ -119,7 +93,7 @@ const Footer = () => {
           <AccountCircleOutlinedIcon
             style={{ width: "24px", height: "24px" }}
           />
-          <Typography>خانه</Typography>
+          <Typography>پروفایل</Typography>
         </Link>
       </Grid>
     </Grid>
