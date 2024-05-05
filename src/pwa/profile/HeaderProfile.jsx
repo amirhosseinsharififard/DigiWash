@@ -6,6 +6,7 @@ import LogoPwa from "../../../assets/LogoPwa.png";
 import CreateOutlinedIcon from "@mui/icons-material/CreateOutlined";
 import WalletIcon from "@mui/icons-material/Wallet";
 import CardGiftcardIcon from "@mui/icons-material/CardGiftcard";
+import toFarsiNumber from "../../share/functions";
 
 const HeaderProfile = () => {
   const pathName = useLocation().pathname;
@@ -41,16 +42,25 @@ const HeaderProfile = () => {
               <Grid item display='flex'>
                 <img src={LogoPwa} height='48px' width='48px' />
                 <Box mr={2}>
-                  <Typography variant='h6' fontWeight={700}>
+                  <Typography
+                    variant='h6'
+                    fontSize='16px'
+                    fontFamily='Vazir-Bold'
+                    fontWeight='bold'>
                     {personAccout.nameAccount}
                   </Typography>
-                  <Typography variant='body2'>
-                    {personAccout.cellPhoneNumber}
+                  <Typography
+                    variant='body2'
+                    fontSize='14px'
+                    fontFamily='Vazir'
+                    fontWeight='bold'>
+                    {toFarsiNumber(personAccout.cellPhoneNumber)}
                   </Typography>
                 </Box>
               </Grid>
               <Grid item>
                 <Link
+                  to='/profile/edit'
                   style={{
                     padding: "1.5rem 2rem",
                     fontWeight: "bold"
@@ -72,21 +82,28 @@ const HeaderProfile = () => {
               display: "flex",
               alignContent: "space-betweens",
               justifyContent: "space-between",
-              p: "1.5rem 1.5rem .7rem 1.5rem"
+              p: "1rem 1.5rem .7rem 1.5rem"
             }}>
-            <Grid item display='flex' xs={10} sm={10} md={10} lg={10}>
-              <Typography variant='h6' fontWeight='bold'>
-                {personAccout.costAccount} تومان اعتبار
+            <Grid item display='flex' xs={6} sm={6} md={6} lg={6}>
+              <Typography
+                variant='h6'
+                fontWeight='bold'
+                fontFamily='Vazir-Bold'
+                fontSize='16px'>
+                <span>
+                {toFarsiNumber(personAccout.costAccount)}
+                </span> تومان اعتبار
               </Typography>
             </Grid>
-            <Grid item xs={2} sm={2} md={2} lg={2} textAlign='end'>
+            <Grid item xs={6} sm={6} md={6} lg={6} textAlign='end'>
               <Button
                 sx={{
                   color: "#0caeca",
                   bgcolor: "white",
                   p: ".5rem 1rem",
                   fontWeight: "bold",
-                  fontSize: 18,
+                  fontSize: "16px",
+                  fontFamily: "Vazir",
 
                   "&:hover": {
                     background: "none"
@@ -96,19 +113,23 @@ const HeaderProfile = () => {
               </Button>
             </Grid>
           </Grid>
+
+
+
           {/* secound white zone */}
         </Container>
       </Box>
-      <Container>
+      <Container sx={{ mt: "-1rem" }}>
         <Grid
           container
           bgcolor='white'
           border='1px solid rgba(0,0,0,.1)'
+          borderRadius='16px'
           borderTop='none'>
           <Grid
             item
-            xs={12}
-            sm={12}
+            xs={6}
+            sm={6}
             md={6}
             lg={6}
             display='flex'
@@ -123,18 +144,20 @@ const HeaderProfile = () => {
               alignContent='center'
               alignItems='center'>
               <WalletIcon sx={{ color: "#0caeca" }} />
-              <Typography variant='h6' fontWeight='bold' mr={2}>
+              <Typography variant='h6' fontWeight='bold' fontFamily="Vazir-Bold" fontSize="16px" mr={2}>
                 کیف پول
               </Typography>
             </Box>
-            <Typography variant='body1'>
-              {personAccout.costAccount} تومان
+            <Typography variant='body1' fontFamily="Vazir-Light" fontSize="14px" >
+              <span>
+              {toFarsiNumber(personAccout.costAccount)}
+              </span> تومان
             </Typography>
           </Grid>
           <Grid
             item
-            xs={12}
-            sm={12}
+            xs={6}
+            sm={6}
             md={6}
             lg={6}
             display='flex'
@@ -151,12 +174,14 @@ const HeaderProfile = () => {
               alignItems='center'>
               <CardGiftcardIcon sx={{ color: "#0caeca" }} />
 
-              <Typography variant='h6' fontWeight='bold' mr={2}>
+              <Typography variant='h6' fontWeight='bold' fontFamily="Vazir-Bold" fontSize="16px" mr={2}>
                 اعتبار هدیه
               </Typography>
             </Box>
-            <Typography variant='body1'>
-              {personAccout.costAccount} تومان
+            <Typography variant='body1' fontFamily="Vazir-Light" fontSize="14px" >
+              <span>
+              {toFarsiNumber(personAccout.costAccount)}
+              </span> تومان
             </Typography>
           </Grid>
         </Grid>
