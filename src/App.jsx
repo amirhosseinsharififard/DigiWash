@@ -16,6 +16,7 @@ import TransactionsPage from "./pwa/profile/transactions/TransactionsPage";
 
 import { ThemeProvider } from "@mui/material";
 import theme from "./Theme";
+import EditPage from "./pwa/profile/edit/EditPage";
 function App() {
   return (
     <>
@@ -28,6 +29,7 @@ function App() {
         <Route path='/profile' element={<ProfilePage />} />
         <Route path='/profile/address' element={<AddressPage />} />
         <Route path='/profile/transactions' element={<TransactionsPage />} />
+        <Route path='/profile/edit' element={<EditPage />} />
       </Routes>
       <Footer />
       </ThemeProvider>
