@@ -40,12 +40,21 @@ const MyDigiwashSectionsIncrease = ({
           textDecoration: "none",
           color: "black",
           width: "100%",
-          padding: "1rem"
+          padding: ".5rem"
         }}>
-        <Box display='flex'>
-          {dataIcon}
+        <Box
+          sx={{
+            display: "flex",
+            alignContent: "center",
+            alignItems: "center"
+          }}>
+          <span style={{ maxWidth: "24px", maxHeight: "24px" }}>{dataIcon}</span>
 
-          <Typography variant='h6' mr={2} fontWeight='bold'>
+          <Typography
+            variant='h6'
+            fontFamily='Vazir'
+            fontSize='14px'
+            m='auto 1rem'>
             {title}
           </Typography>
         </Box>

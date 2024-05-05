@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 
 // icon
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import toFarsiNumber from "../../../share/functions";
 
 const HeaderTransa = ({ pageAddress }) => {
   return (
@@ -73,9 +74,11 @@ const HeaderTransa = ({ pageAddress }) => {
                 p: "1rem",
                 width: "100%"
               }}>
-              <Typography variant='h6'>مانده اعتبار</Typography>
+              <Typography variant='h6' fontFamily="Vazir" fontSize="16px">مانده اعتبار</Typography>
 
-              <Typography variant='body1'>{0} تومان</Typography>
+              <Typography variant='body1' fontSize="12px" fontFamily="Vazir" fontWeight="bold">
+               <span style={{marginLeft:".3rem"}}> {toFarsiNumber(0)}</span>تومان
+               </Typography>
             </Box>
           </Grid>
         </Grid>

@@ -1,4 +1,4 @@
-import { Box, Button, Container, Grid, Typography } from "@mui/material";
+import { Box, Button, Grid, Typography } from "@mui/material";
 import { Link, useLocation } from "react-router-dom";
 
 // logo
@@ -20,8 +20,10 @@ const HeaderProfile = () => {
   return (
     <>
       <Box sx={{ bgcolor: "#0caeca" }}>
-        <Container
+        <Box
           sx={{
+            maxWidth: "768px",
+            m: "auto",
             display: "flex",
             alignItems: "container",
             flexDirection: "column",
@@ -82,7 +84,9 @@ const HeaderProfile = () => {
               display: "flex",
               alignContent: "space-betweens",
               justifyContent: "space-between",
-              p: "1rem 1.5rem .7rem 1.5rem"
+              p: "1rem 1.5rem .7rem 1.5rem",
+              maxWidth: "768px",
+              m: "auto"
             }}>
             <Grid item display='flex' xs={6} sm={6} md={6} lg={6}>
               <Typography
@@ -90,9 +94,8 @@ const HeaderProfile = () => {
                 fontWeight='bold'
                 fontFamily='Vazir-Bold'
                 fontSize='16px'>
-                <span>
-                {toFarsiNumber(personAccout.costAccount)}
-                </span> تومان اعتبار
+                <span>{toFarsiNumber(personAccout.costAccount)}</span> تومان
+                اعتبار
               </Typography>
             </Grid>
             <Grid item xs={6} sm={6} md={6} lg={6} textAlign='end'>
@@ -113,18 +116,15 @@ const HeaderProfile = () => {
               </Button>
             </Grid>
           </Grid>
-
-
-
-          {/* secound white zone */}
-        </Container>
+        </Box>
       </Box>
-      <Container sx={{ mt: "-1rem" }}>
+      {/* secound white zone */}
+      <Box sx={{ mt: "-1rem", maxWidth: "768px", m: "auto" }}>
         <Grid
           container
           bgcolor='white'
           border='1px solid rgba(0,0,0,.1)'
-          borderRadius='16px'
+          borderRadius=' 0 0 16px 16px'
           borderTop='none'>
           <Grid
             item
@@ -144,14 +144,19 @@ const HeaderProfile = () => {
               alignContent='center'
               alignItems='center'>
               <WalletIcon sx={{ color: "#0caeca" }} />
-              <Typography variant='h6' fontWeight='bold' fontFamily="Vazir-Bold" fontSize="16px" mr={2}>
+              <Typography
+                variant='h6'
+                fontFamily='Vazir'
+                fontSize='16px'
+                mr={2}>
                 کیف پول
               </Typography>
             </Box>
-            <Typography variant='body1' fontFamily="Vazir-Light" fontSize="14px" >
-              <span>
-              {toFarsiNumber(personAccout.costAccount)}
-              </span> تومان
+            <Typography
+              variant='body1'
+              fontFamily='Vazir-Light'
+              fontSize='14px'>
+              <span>{toFarsiNumber(personAccout.costAccount)}</span> تومان
             </Typography>
           </Grid>
           <Grid
@@ -174,18 +179,23 @@ const HeaderProfile = () => {
               alignItems='center'>
               <CardGiftcardIcon sx={{ color: "#0caeca" }} />
 
-              <Typography variant='h6' fontWeight='bold' fontFamily="Vazir-Bold" fontSize="16px" mr={2}>
+              <Typography
+                variant='h6'
+                fontFamily='Vazir'
+                fontSize='16px'
+                mr={2}>
                 اعتبار هدیه
               </Typography>
             </Box>
-            <Typography variant='body1' fontFamily="Vazir-Light" fontSize="14px" >
-              <span>
-              {toFarsiNumber(personAccout.costAccount)}
-              </span> تومان
+            <Typography
+              variant='body1'
+              fontFamily='Vazir-Light'
+              fontSize='14px'>
+              <span>{toFarsiNumber(personAccout.costAccount)}</span> تومان
             </Typography>
           </Grid>
         </Grid>
-      </Container>
+      </Box>
     </>
   );
 };

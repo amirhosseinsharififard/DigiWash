@@ -1,4 +1,4 @@
-import { Container, Typography } from "@mui/material";
+import { Box, Container, Typography } from "@mui/material";
 import MyDigiWashSection from "./MyDigiWashSection";
 
 // Icons
@@ -12,18 +12,26 @@ import LogoutIcon from "@mui/icons-material/Logout";
 // data
 const dataMyDigiWash = [
   {
-    clickData:false,
+    clickData: false,
     specialStyle: "",
     address: "/profile/address",
     title: "ادرس",
-    dataIcon: <LocationOnIcon style={{ color: "#0caeca", fontSize: "35" }} />
+    dataIcon: (
+      <LocationOnIcon
+        style={{ color: "#0caeca", width: "24px", height: "24px" }}
+      />
+    )
   },
   {
-    clickData:false,
+    clickData: false,
     specialStyle: "",
     address: "/profile/transactions",
     title: "لیست تراکنش ها",
-    dataIcon: <CreditCardIcon style={{ color: "#0caeca", fontSize: "35" }} />
+    dataIcon: (
+      <CreditCardIcon
+        style={{ color: "#0caeca", width: "24px", height: "24px" }}
+      />
+    )
   }
 ];
 
@@ -38,7 +46,7 @@ const dataMyDigiWashSecond = [
     )
   },
   {
-    clickData:false,
+    clickData: false,
     specialStyle: "",
     address: "/profile/question",
     title: "سوالات متداول",
@@ -47,7 +55,7 @@ const dataMyDigiWashSecond = [
     )
   },
   {
-    clickData:false,
+    clickData: false,
     specialStyle: "",
     address: "/profile/rules",
     title: "قوانین و مقررات",
@@ -60,22 +68,28 @@ const dataMyDigiWashLive = [
     address: "/",
     title: "خروج از حساب کاربری",
     dataIcon: (
-      <LogoutIcon style={{ color: "red", opacity: "50%", fontSize: "35" }} />
+      <LogoutIcon
+        style={{ color: "red", opacity: "50%", width: "24px", height: "24px" }}
+      />
     ),
     specialStyle: "red",
-    clickData:false,
+    clickData: false
   }
 ];
 const MyDigiWash = () => {
   return (
-    <Container sx={{ mt: "6rem" }}>
-      <Typography variant='h5' fontWeight='bold'>
+    <Box sx={{ maxWidth: "768px", m: "3rem auto" }}>
+      <Typography
+        variant='h5'
+        fontSize='18px'
+        fontFamily='Vazir-bOLD'
+        fontWeight='Bold'>
         دیجی واش من
       </Typography>
       <MyDigiWashSection data={dataMyDigiWash} />
       <MyDigiWashSection data={dataMyDigiWashSecond} />
       <MyDigiWashSection data={dataMyDigiWashLive} />
-    </Container>
+    </Box>
   );
 };
 
