@@ -76,6 +76,8 @@ const DataSwiper = [
   }
 ];
 const ServicesPopular = () => {
+
+
   return (
     <>
       <Box
@@ -92,28 +94,11 @@ const ServicesPopular = () => {
 
         <Swiper 
 
+loop={true}
+          slidesPerView={"auto"}
+         spaceBetween={30}
 
-          slidesPerView={5.5}
-          spaceBetween={30}
-          breakpoints={{
-            0: {
-              slidesPerView: 1.6
-            },
-            // when window width is >= 640px
-            320: {
-              slidesPerView: 2.4
-            },
-            480: {
-              slidesPerView: 3.6
-            },
-            // when window width is >= 768px
-            768: {
-              slidesPerView: 5
-            },
-            992: {
-              slidesPerView: 5.5
-            }
-          }}
+ 
           freeMode={true}
           pagination={{
             clickable: true
@@ -122,7 +107,7 @@ const ServicesPopular = () => {
           className='mySwiper'
           style={{marginRight:".5rem"}}>
           {DataSwiper.map((item, index) => (
-            <SwiperSlide style={{ background: "none" }} key={index} >
+            <SwiperSlide style={{ background: "none", }} key={index} >
               <Link
                 style={{ textDecoration: "none", color: "black" }}
                 to={item.linkProduct}>
