@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { Box, Typography } from "@mui/material";
 
 const CategoryContent = ({ imageCategory, titleCategory, id }) => {
@@ -7,7 +8,6 @@ const CategoryContent = ({ imageCategory, titleCategory, id }) => {
         sx={{
           backgroundImage: `url(${imageCategory})`,
           backgroundSize: "cover",
-          backgroundRepeat: "no-repeat",
           backgroundPosition:"center center",
           height: "142px",
           width: "auto",

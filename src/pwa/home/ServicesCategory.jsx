@@ -1,4 +1,4 @@
-import { Box, Typography } from "@mui/material";
+import {  Grid, Typography } from "@mui/material";
 import CategoryContent from "./CategoryContent";
 
 // import image
@@ -78,12 +78,14 @@ const ServicesCategory = () => {
         دسته بندی خدمات
       </Typography>
 
-      <Box
-        display='flex'
-        flexWrap='wrap'
-        justifyContent='flex-start'>
+      <Grid container>
         {categoryData.map((item) => (
-          <Box
+          <Grid item
+          lx={3}
+          lg={3}
+          md={4}
+          sm={4}
+          xs={6}
             key={item.id}
             sx={{
               width: "calc((100% / 4) - 2rem)",
@@ -97,7 +99,7 @@ const ServicesCategory = () => {
                 color: "black",
                 maxWidth: "163px",
                 height: "143px",
-                borderRadius:"12px",
+                borderRadius: "12px"
               }}>
               <CategoryContent
                 imageCategory={item.imageCategory}
@@ -105,9 +107,9 @@ const ServicesCategory = () => {
                 id={item.id}
               />
             </Link>
-          </Box>
+          </Grid>
         ))}
-      </Box>
+      </Grid>
     </>
   );
 };

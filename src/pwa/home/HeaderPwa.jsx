@@ -26,11 +26,11 @@ const HeaderPwa = () => {
           {pathName == "/services" ? (
             <HeaderService />
           ) : (
-            <Box sx={{ height: "22x", width: "98px", m: " auto ", p: "16px" }}>
+            <Box sx={{  m: " auto ",  }}>
               <Link to='/'>
                 <img
                   src={persianDigiWash}
-                  style={{ width: "100%", height: "100%" }}
+                  style={{ width: "98px", height: "22px",padding:"16px" }}
                 />
               </Link>
             </Box>
