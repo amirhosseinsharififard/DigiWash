@@ -19,7 +19,9 @@ const HeaderProfile = () => {
 
   return (
     <>
-      <Box sx={{ bgcolor: "#0caeca" }}>
+      <Box sx={{ bgcolor: "#0caeca" 
+            ,borderRadius:"0 0 24px 24px "
+      }}>
         <Box
           sx={{
             maxWidth: "768px",
@@ -27,7 +29,7 @@ const HeaderProfile = () => {
             display: "flex",
             alignItems: "container",
             flexDirection: "column",
-            p: "0 0 0 0 "
+            p: "2rem 1rem 0 1rem "
           }}>
           {/* blue zone */}
           <Grid
@@ -42,7 +44,7 @@ const HeaderProfile = () => {
             }}>
             <>
               <Grid item display='flex'>
-                <img src={LogoPwa} height='48px' width='48px' />
+                <img src={LogoPwa} height='64px' width='64px' />
                 <Box mr={2}>
                   <Typography
                     variant='h6'
@@ -119,7 +121,8 @@ const HeaderProfile = () => {
         </Box>
       </Box>
       {/* secound white zone */}
-      <Box sx={{ mt: "-1rem", maxWidth: "768px", m: "auto" }}>
+      <Box sx={{ mt: "-1rem", maxWidth: "768px",                   m:"auto 1rem",
+ }}>
         <Grid
           container
           bgcolor='white'

@@ -1,4 +1,4 @@
-import { Box, Container, Typography } from "@mui/material";
+import { Box,  Typography } from "@mui/material";
 import MyDigiWashSection from "./MyDigiWashSection";
 
 // Icons
@@ -78,7 +78,7 @@ const dataMyDigiWashLive = [
 ];
 const MyDigiWash = () => {
   return (
-    <Box sx={{ maxWidth: "768px", m: "3rem auto" }}>
+    <Box sx={{ maxWidth: "768px", m: "3rem 1rem" }}>
       <Typography
         variant='h5'
         fontSize='18px'

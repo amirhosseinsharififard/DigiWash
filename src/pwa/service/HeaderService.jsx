@@ -52,27 +52,13 @@ const HeaderService = () => {
       <Container>
       
         <Swiper
-          slidesPerView={6}
+          slidesPerView={"auto"}
+          spaceBetween={5}
           freeMode={true}
           modules={[FreeMode, Pagination]}
           
-          breakpoints={{
-            0:{
-            slidesPerView: 1.7,
-
-            },
-          // when window width is >= 640px
-          320: {
-            slidesPerView: 2.7,
-          },
-          480: {
-            slidesPerView: 4,
-          },
-          // when window width is >= 768px
-          768: {
-            slidesPerView: 6,
-          },
-        }}
+       
+      
 
           className='mySwiper'
           style={{marginBottom:"2rem"}}>
