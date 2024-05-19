@@ -1,13 +1,13 @@
 /* eslint-disable react/prop-types */
 import { Box, Grid, Typography } from "@mui/material";
-import IncreaseItem from "./IncreaseItem";
+import IncreaseItem from "./IncreaseItemModal";
 import CategoryModal from "./CategoryModal";
 import whashSvg from "../../assets/wash.c4124479.svg";
 import { Link } from "react-router-dom";
 
 
-const ModalIncrease = ({  toggleHandler}) => {
-
+const ModalIncrease = ({  toggleHandler,dataModal,checkIndex}) => {
+console.log(`Modla ${checkIndex}`)
 
   return (
     <>
@@ -17,7 +17,7 @@ const ModalIncrease = ({  toggleHandler}) => {
             position: "fixed",
             top: "0",
             left: "0",
-            zIndex: "2",
+            zIndex: "4",
             width: "100vw",
             height: "100vh",
             backgroundColor: "rgba(0, 0, 0, 0.7)",
@@ -57,8 +57,11 @@ const ModalIncrease = ({  toggleHandler}) => {
                   کت و شلوار
                 </Typography>
               </Grid>
+
+
+              {/* BUTTON FOR CHOOSE CATEGORY */}
               <Grid item xs={12} sm={12} md={12} lg={12}>
-                <CategoryModal />
+                <CategoryModal dataModal={dataModal} checkIndex={checkIndex}/>
               </Grid>
               <Grid item xs={12} sm={12} md={12} lg={12}>
                 <IncreaseItem

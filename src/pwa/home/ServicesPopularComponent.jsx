@@ -1,7 +1,6 @@
 /* eslint-disable react/prop-types */
 import { Box, Stack, Typography } from "@mui/material";
 
-
 // eslint-disable-next-line react/prop-types, no-unused-vars
 const ServicesPopularComponent = ({
   // eslint-disable-next-line react/prop-types
@@ -9,13 +8,14 @@ const ServicesPopularComponent = ({
   // eslint-disable-next-line react/prop-types
   subTitle,
   image,
-  toggleHandler
-  
+  toggleHandler,
+
 }) => {
+
   return (
     <>
       <Box
-      onClick={toggleHandler}
+        onClick={toggleHandler}
         bgcolor='none'
         sx={{
           display: "flex",
@@ -56,8 +56,6 @@ const ServicesPopularComponent = ({
           style={{ backgroundColor: "none", width: "64px", height: "64px" }}
         />
       </Box>
-
-      
     </>
   );
 };

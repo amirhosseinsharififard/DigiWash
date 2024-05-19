@@ -78,7 +78,7 @@ const dataMyDigiWashLive = [
 ];
 const MyDigiWash = () => {
   return (
-    <Box sx={{ maxWidth: "768px", m: "3rem 1rem" }}>
+    <Box sx={{ maxWidth: "768px", m: "3rem auto" }}>
       <Typography
         variant='h5'
         fontSize='18px'

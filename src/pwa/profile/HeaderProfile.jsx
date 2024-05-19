@@ -19,9 +19,7 @@ const HeaderProfile = () => {
 
   return (
     <>
-      <Box sx={{ bgcolor: "#0caeca" 
-            ,borderRadius:"0 0 24px 24px "
-      }}>
+      <Box sx={{ bgcolor: "#0caeca", borderRadius: "0 0 24px 24px " }}>
         <Box
           sx={{
             maxWidth: "768px",
@@ -121,8 +119,7 @@ const HeaderProfile = () => {
         </Box>
       </Box>
       {/* secound white zone */}
-      <Box sx={{ mt: "-1rem", maxWidth: "768px",                   m:"auto 1rem",
- }}>
+      <Box sx={{ maxWidth: "768px", m: "auto" }}>
         <Grid
           container
           bgcolor='white'
