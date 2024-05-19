@@ -1,14 +1,14 @@
 import { Button, Typography } from "@mui/material";
 
 // eslint-disable-next-line react/prop-types
-const TagConent = ({ tagName }) => {
+const TagConent = ({ tagName,handleFilterButtonClick }) => {
   return (
     <>
       <Button
         variant='contained'
         fontFamily='Vazir-Bold'
         fontSize='16px'
-        onClick={() => alert("slam")}
+        onClick={() => handleFilterButtonClick(tagName)}
         sx={{
           width: "100px",
           height: "40px",
@@ -26,9 +26,8 @@ const TagConent = ({ tagName }) => {
         <Typography
           variant='h6'
           color='white'
-          fontFamily="Vazir-Bold"
-          fontSize="16px"
-         >
+          fontFamily='Vazir-Bold'
+          fontSize='16px'>
           {tagName}
         </Typography>
       </Button>

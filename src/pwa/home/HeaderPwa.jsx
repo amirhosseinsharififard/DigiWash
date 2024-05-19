@@ -6,7 +6,10 @@ import HeaderService from "../service/HeaderService";
 import { Link, useLocation } from "react-router-dom";
 import LoginHeader from "../../share/LoginHeader";
 import persianDigiWash from "../../../assets/persianDigiWash.png";
-const HeaderPwa = () => {
+const HeaderPwa = ({
+// eslint-disable-next-line react/prop-types
+handleFilterButtonClick,buttonFilter
+}) => {
   const pathName = useLocation().pathname;
   const isLogin = false;
   console.log(pathName);
@@ -24,13 +27,16 @@ const HeaderPwa = () => {
             mr: "auto"
           }}>
           {pathName == "/services" ? (
-            <HeaderService />
+            <HeaderService 
+             handleFilterButtonClick={handleFilterButtonClick}
+             buttonFilter={buttonFilter}
+            />
           ) : (
-            <Box sx={{  m: " auto ",  }}>
+            <Box sx={{ m: " auto " }}>
               <Link to='/'>
                 <img
                   src={persianDigiWash}
-                  style={{ width: "98px", height: "22px",padding:"16px" }}
+                  style={{ width: "98px", height: "22px", padding: "16px" }}
                 />
               </Link>
             </Box>
@@ -58,19 +64,30 @@ const HeaderPwa = () => {
             {isLogin ? (
               <LoginHeader />
             ) : (
-              <Grid item xs={12} sm={12} md={12} lg={12} display="flex" justifyContent="space-between">
-                <Grid  display='flex' >
+              <Grid
+                item
+                xs={12}
+                sm={12}
+                md={12}
+                lg={12}
+                display='flex'
+                justifyContent='space-between'>
+                <Grid display='flex'>
                   <img src={LogoPwa} height='48px' width='48px' />
                   <Box mr={2}>
-                    <Typography variant='h6'  fontSize="16px" fontWeight="bold">
+                    <Typography variant='h6' fontSize='16px' fontWeight='bold'>
                       دیجی واش من
                     </Typography>
-                    <Typography variant='body2' fontSize="12px" color="rgb(56, 90, 118)" width="auto">
+                    <Typography
+                      variant='body2'
+                      fontSize='12px'
+                      color='rgb(56, 90, 118)'
+                      width='auto'>
                       وارد حساب کاربری خود شوید
                     </Typography>
                   </Box>
                 </Grid>
-                <Grid >
+                <Grid>
                   <Button
                     variant='contained'
                     sx={{
@@ -78,7 +95,7 @@ const HeaderPwa = () => {
                       p: ".5rem 1rem",
                       fontWeight: "bold",
                       borderRadius: "30px",
-                      width:"auto",
+                      width: "auto",
                       "&:hover": {
                         background: "#0caeca"
                       }
