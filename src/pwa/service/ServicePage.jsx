@@ -108,7 +108,10 @@ const ServicePage = () => {
 
   useEffect(() => {
     filterItems();
+<<<<<<< HEAD
   // eslint-disable-next-line react-hooks/exhaustive-deps
+=======
+>>>>>>> 4a43fe6157a45098f74b9de462339918f559595f
   }, [selectedFilters]);
 
 
