@@ -17,6 +17,8 @@ import { FreeMode, Pagination } from "swiper/modules";
 
 // image svg
 import manto from "../../../assets/womenMantoo.7c04032e.svg";
+import whashSvg from "../../../assets/wash.c4124479.svg";
+
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import ModalIncrease from "../../share/ModalIncrease";
@@ -30,25 +32,25 @@ const DataSwiper = [
       {
         categoryName: "1مجلسی",
         categoryDo: [
-          { job: "خشکشویی + اتو", price: 131040 },
-          { job: "اتو", price: 131040 },
-          { job: "خیاطی و تعمیارت", price: 131040 }
+          { job: "مجلسی خشک3شویی + اتو", price: 131040, subImage: whashSvg },
+          { job: "مجلسی اتو3", price: 131040, subImage: whashSvg },
+          { job: "مجلسی خیا3طی و تعمیارت", price: 131040, subImage: whashSvg }
         ]
       },
       {
         categoryName: "ساده",
         categoryDo: [
-          { job: "خشکشویی + اتو", price: 131040 },
-          { job: "اتو", price: 131040 },
-          { job: "خیاطی و تعمیارت", price: 131040 }
+          { job: "ساده خشک2شویی + اتو", price: 131040, subImage: whashSvg },
+          { job: "ساده اتو2", price: 131040, subImage: whashSvg },
+          { job: "ساده خیا2طی و تعمیارت", price: 131040, subImage: whashSvg }
         ]
       },
       {
         categoryName: "پاییزه",
         categoryDo: [
-          { job: "خشکشویی + اتو", price: 131040 },
-          { job: "اتو", price: 131040 },
-          { job: "خیاطی و تعمیارت", price: 131040 }
+          { job: "پاییزه 1خشکشویی + اتو", price: 131040, subImage: whashSvg },
+          { job: "پاییزه 1اتو", price: 131040, subImage: whashSvg },
+          { job: "پاییزه 1خیاطی و تعمیارت", price: 131040, subImage: whashSvg }
         ]
       }
     ]
@@ -61,25 +63,25 @@ const DataSwiper = [
       {
         categoryName: "2مجلسی",
         categoryDo: [
-          { job: "خشکشویی + اتو", price: 131040 },
-          { job: "اتو", price: 131040 },
-          { job: "خیاطی و تعمیارت", price: 131040 }
+          { job: "خشکشویی + اتو", price: 131040, subImage: whashSvg },
+          { job: "اتو", price: 131040, subImage: whashSvg },
+          { job: "خیاطی و تعمیارت", price: 131040, subImage: whashSvg }
         ]
       },
       {
         categoryName: "ساده",
         categoryDo: [
-          { job: "خشکشویی + اتو", price: 131040 },
-          { job: "اتو", price: 131040 },
-          { job: "خیاطی و تعمیارت", price: 131040 }
+          { job: "خشکشویی + اتو", price: 131040, subImage: whashSvg },
+          { job: "اتو", price: 131040, subImage: whashSvg },
+          { job: "خیاطی و تعمیارت", price: 131040, subImage: whashSvg }
         ]
       },
       {
         categoryName: "پاییزه",
         categoryDo: [
-          { job: "خشکشویی + اتو", price: 131040 },
-          { job: "اتو", price: 131040 },
-          { job: "خیاطی و تعمیارت", price: 131040 }
+          { job: "خشکشویی + اتو", price: 131040, subImage: whashSvg },
+          { job: "اتو", price: 131040, subImage: whashSvg },
+          { job: "خیاطی و تعمیارت", price: 131040, subImage: whashSvg }
         ]
       }
     ]
@@ -92,25 +94,25 @@ const DataSwiper = [
       {
         categoryName: "3مجلسی",
         categoryDo: [
-          { job: "خشکشویی + اتو", price: 131040 },
-          { job: "اتو", price: 131040 },
-          { job: "خیاطی و تعمیارت", price: 131040 }
+          { job: "خشکشویی + اتو", price: 131040, subImage: whashSvg },
+          { job: "اتو", price: 131040, subImage: whashSvg },
+          { job: "خیاطی و تعمیارت", price: 131040, subImage: whashSvg }
         ]
       },
       {
         categoryName: "ساده",
         categoryDo: [
-          { job: "خشکشویی + اتو", price: 131040 },
-          { job: "اتو", price: 131040 },
-          { job: "خیاطی و تعمیارت", price: 131040 }
+          { job: "خشکشویی + اتو", price: 131040, subImage: whashSvg },
+          { job: "اتو", price: 131040, subImage: whashSvg },
+          { job: "خیاطی و تعمیارت", price: 131040, subImage: whashSvg }
         ]
       },
       {
         categoryName: "4پاییزه",
         categoryDo: [
-          { job: "خشکشویی + اتو", price: 131040 },
-          { job: "اتو", price: 131040 },
-          { job: "خیاطی و تعمیارت", price: 131040 }
+          { job: "خشکشویی + اتو", price: 131040, subImage: whashSvg },
+          { job: "اتو", price: 131040, subImage: whashSvg },
+          { job: "خیاطی و تعمیارت", price: 131040, subImage: whashSvg }
         ]
       }
     ]
@@ -123,25 +125,25 @@ const DataSwiper = [
       {
         categoryName: "5مجلسی",
         categoryDo: [
-          { job: "خشکشویی + اتو", price: 131040 },
-          { job: "اتو", price: 131040 },
-          { job: "خیاطی و تعمیارت", price: 131040 }
+          { job: "خشکشویی + اتو", price: 131040, subImage: whashSvg },
+          { job: "اتو", price: 131040, subImage: whashSvg },
+          { job: "خیاطی و تعمیارت", price: 131040, subImage: whashSvg }
         ]
       },
       {
         categoryName: "ساده",
         categoryDo: [
-          { job: "خشکشویی + اتو", price: 131040 },
-          { job: "اتو", price: 131040 },
-          { job: "خیاطی و تعمیارت", price: 131040 }
+          { job: "خشکشویی + اتو", price: 131040, subImage: whashSvg },
+          { job: "اتو", price: 131040, subImage: whashSvg },
+          { job: "خیاطی و تعمیارت", price: 131040, subImage: whashSvg }
         ]
       },
       {
         categoryName: "پاییزه",
         categoryDo: [
-          { job: "خشکشویی + اتو", price: 131040 },
-          { job: "اتو", price: 131040 },
-          { job: "خیاطی و تعمیارت", price: 131040 }
+          { job: "خشکشویی + اتو", price: 131040, subImage: whashSvg },
+          { job: "اتو", price: 131040, subImage: whashSvg },
+          { job: "خیاطی و تعمیارت", price: 131040, subImage: whashSvg }
         ]
       }
     ]
@@ -154,25 +156,25 @@ const DataSwiper = [
       {
         categoryName: "6مجلسی",
         categoryDo: [
-          { job: "خشکشویی + اتو", price: 131040 },
-          { job: "اتو", price: 131040 },
-          { job: "خیاطی و تعمیارت", price: 131040 }
+          { job: "خشکشویی + اتو", price: 131040, subImage: whashSvg },
+          { job: "اتو", price: 131040, subImage: whashSvg },
+          { job: "خیاطی و تعمیارت", price: 131040, subImage: whashSvg }
         ]
       },
       {
         categoryName: "ساده",
         categoryDo: [
-          { job: "خشکشویی + اتو", price: 131040 },
-          { job: "اتو", price: 131040 },
-          { job: "خیاطی و تعمیارت", price: 131040 }
+          { job: "خشکشویی + اتو", price: 131040, subImage: whashSvg },
+          { job: "اتو", price: 131040, subImage: whashSvg },
+          { job: "خیاطی و تعمیارت", price: 131040, subImage: whashSvg }
         ]
       },
       {
         categoryName: "پاییزه",
         categoryDo: [
-          { job: "خشکشویی + اتو", price: 131040 },
-          { job: "اتو", price: 131040 },
-          { job: "خیاطی و تعمیارت", price: 131040 }
+          { job: "خشکشویی + اتو", price: 131040, subImage: whashSvg },
+          { job: "اتو", price: 131040, subImage: whashSvg },
+          { job: "خیاطی و تعمیارت", price: 131040, subImage: whashSvg }
         ]
       }
     ]
@@ -185,25 +187,25 @@ const DataSwiper = [
       {
         categoryName: "7مجلسی",
         categoryDo: [
-          { job: "خشکشویی + اتو", price: 131040 },
-          { job: "اتو", price: 131040 },
-          { job: "خیاطی و تعمیارت", price: 131040 }
+          { job: "خشکشویی + اتو", price: 131040, subImage: whashSvg },
+          { job: "اتو", price: 131040, subImage: whashSvg },
+          { job: "خیاطی و تعمیارت", price: 131040, subImage: whashSvg }
         ]
       },
       {
         categoryName: "ساده",
         categoryDo: [
-          { job: "خشکشویی + اتو", price: 131040 },
-          { job: "اتو", price: 131040 },
-          { job: "خیاطی و تعمیارت", price: 131040 }
+          { job: "خشکشویی + اتو", price: 131040, subImage: whashSvg },
+          { job: "اتو", price: 131040, subImage: whashSvg },
+          { job: "خیاطی و تعمیارت", price: 131040, subImage: whashSvg }
         ]
       },
       {
         categoryName: "پاییزه",
         categoryDo: [
-          { job: "خشکشویی + اتو", price: 131040 },
-          { job: "اتو", price: 131040 },
-          { job: "خیاطی و تعمیارت", price: 131040 }
+          { job: "خشکشویی + اتو", price: 131040, subImage: whashSvg },
+          { job: "اتو", price: 131040, subImage: whashSvg },
+          { job: "خیاطی و تعمیارت", price: 131040, subImage: whashSvg }
         ]
       }
     ]
@@ -217,10 +219,9 @@ const ServicesPopular = () => {
   };
 
   const toggleAndIndexHandler = (index) => {
-  
-      setCheckIndex(index)
-      console.log("wring" + checkIndex)
-    
+    setCheckIndex(index);
+    console.log("wring" + checkIndex);
+
     toggleHandler();
   };
   return (
@@ -258,7 +259,6 @@ const ServicesPopular = () => {
               <Link style={{ textDecoration: "none", color: "black" }}>
                 <ServicesPopularComponent
                   toggleHandler={() => toggleAndIndexHandler(index)}
-                
                   checkIndex={checkIndex}
                   title={item.title}
                   subTitle={item.subTitle}
@@ -273,8 +273,7 @@ const ServicesPopular = () => {
       {isShowModal && (
         <ModalIncrease
           isShowModal={isShowModal}
-          toggleHandler={() =>toggleAndIndexHandler(checkIndex)}
-       
+          toggleHandler={() => toggleAndIndexHandler(checkIndex)}
           checkIndex={checkIndex}
           dataModal={DataSwiper}
         />

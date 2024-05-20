@@ -9,22 +9,11 @@ function toFarsiNumber(n) {
 }
 export default toFarsiNumber;
 
-// function toPersianNum(num, dontTrim) {
-//   var i = 0,
-//     dontTrim = dontTrim || false,
-//     num = dontTrim ? num.toString() : num.toString().trim(),
-//     len = num.length,
-//     res = "",
-//     pos,
-//     persianNumbers =
-//       typeof persianNumber == "undefined"
-//         ? ["۰", "۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "۹"]
-//         : persianNumbers;
+const persianPrice = (cost) => {
+  return new Intl.NumberFormat("fa", {
+    currency: "IRR",
+  }).format(cost);
+};
 
-//   for (; i < len; i++)
-//     if ((pos = persianNumbers[num.charAt(i)])) res += pos;
-//     else res += num.charAt(i);
+export { persianPrice };
 
-//   return res;
-// }
-// export { toPersianNum };

@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { Grid } from "@mui/material";
 
 import clothesServices from "../../../assets/clothesServices.svg";
@@ -104,16 +105,10 @@ const ServicePage = () => {
     }
   };
 
-  
-
   useEffect(() => {
     filterItems();
-<<<<<<< HEAD
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-=======
->>>>>>> 4a43fe6157a45098f74b9de462339918f559595f
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedFilters]);
-
 
   useEffect(() => {
     filterItems();
@@ -128,17 +123,17 @@ const ServicePage = () => {
         return temp;
       });
       setFilteredItmes(tempItems.flat());
-    }else{
-      setFilteredItmes([...DataServiceComponent])
+    } else {
+      setFilteredItmes([...DataServiceComponent]);
     }
   };
 
+  
   return (
     <>
-      <HeaderPwa 
-      handleFilterButtonClick={handleFilterButtonClick}
-       buttonFilter={buttonFilter}
-
+      <HeaderPwa
+        handleFilterButtonClick={handleFilterButtonClick}
+        buttonFilter={buttonFilter}
       />
 
       <Grid
