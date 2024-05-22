@@ -1,7 +1,14 @@
 /* eslint-disable react/prop-types */
 import { Box, Button, Grid, Typography } from "@mui/material";
 import toFarsiNumber, { persianPrice } from "./functions";
+import { useSelector,useDispatch } from "react-redux";
+import { decrement, increment } from "../pwa/features/counter/counterSlice";
+import select from "../pwa/features/counter/counterSlice";
+
 const IncreaseItem = ({ title, image, cost }) => {
+  const storeCounter = useSelector(store => store.counter.counterValue);
+  const dispatch = useDispatch();
+  console.log(storeCounter);
   return (
     <>
       <Grid
@@ -40,6 +47,7 @@ const IncreaseItem = ({ title, image, cost }) => {
           alignContent='center'
           sx={{ textAlign: "right" }}>
           <Button
+            onClick={() => dispatch(increment())}
             sx={{
               minWidth: "48px",
               height: "48px",
@@ -62,9 +70,10 @@ const IncreaseItem = ({ title, image, cost }) => {
               fontWeight: "bold",
               margin: "8px"
             }}>
-            {toFarsiNumber(0)}
+            {toFarsiNumber(storeCounter)}
           </span>
           <Button
+            onClick={() => dispatch(decrement())}
             sx={{
               minWidth: "48px",
               height: "48px",
