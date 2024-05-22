@@ -8,7 +8,7 @@ import { useState } from "react";
 const ModalIncrease = ({ toggleHandler, dataModal, checkIndex }) => {
   const buttons = dataModal[checkIndex].useThis;
   const [buttonActive, setButtonActive] = useState(0);
-  const useDataModal = dataModal[checkIndex].useThis;
+  const useDataModal = dataModal[checkIndex].useThis[buttonActive].categoryDo;
   const buttonsActiveHandler = (id) => {
     setButtonActive(id);
   };
@@ -71,11 +71,10 @@ const ModalIncrease = ({ toggleHandler, dataModal, checkIndex }) => {
 
             {useDataModal.map((item, id) => (
               <Grid item xs={12} sm={12} md={12} lg={12} key={id}>
-                {console.log(item.categoryDo)}
                 <IncreaseItem
-                  image={item.categoryDo[id].subImage}
-                  title={item.categoryDo[id].job}
-                  cost={item.categoryDo[id].price}
+                  image={item.subImage}
+                  title={item.job}
+                  cost={item.price}
                 />
               </Grid>
             ))}

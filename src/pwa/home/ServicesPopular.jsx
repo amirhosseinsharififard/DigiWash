@@ -32,9 +32,9 @@ const DataSwiper = [
       {
         categoryName: "1مجلسی",
         categoryDo: [
-          { job: "مجلسی خشک3شویی + اتو", price: 131040, subImage: whashSvg },
-          { job: "مجلسی اتو3", price: 131040, subImage: whashSvg },
-          { job: "مجلسی خیا3طی و تعمیارت", price: 131040, subImage: whashSvg }
+          { job: "پاییزه 1خشکشویی + اتو", price: 131040, subImage: whashSvg },
+          { job: "پاییزه 1اتو", price: 131040, subImage: whashSvg },
+          { job: "پاییزه 1خیاطی و تعمیارت", price: 131040, subImage: whashSvg }
         ]
       },
       {
@@ -48,9 +48,9 @@ const DataSwiper = [
       {
         categoryName: "پاییزه",
         categoryDo: [
-          { job: "پاییزه 1خشکشویی + اتو", price: 131040, subImage: whashSvg },
-          { job: "پاییزه 1اتو", price: 131040, subImage: whashSvg },
-          { job: "پاییزه 1خیاطی و تعمیارت", price: 131040, subImage: whashSvg }
+          { job: "مجلسی خشک3شویی + اتو", price: 131040, subImage: whashSvg },
+          { job: "مجلسی اتو3", price: 131040, subImage: whashSvg },
+          { job: "مجلسی خیا3طی و تعمیارت", price: 131040, subImage: whashSvg }
         ]
       }
     ]
