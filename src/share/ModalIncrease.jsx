@@ -12,8 +12,7 @@ const ModalIncrease = ({ toggleHandler, dataModal, checkIndex }) => {
   const buttonsActiveHandler = (id) => {
     setButtonActive(id);
   };
-
-  console.log(useDataModal);
+    console.log();
   return (
     <>
       <Box
@@ -43,34 +42,45 @@ const ModalIncrease = ({ toggleHandler, dataModal, checkIndex }) => {
           <Grid
             container
             sx={{
-              height: "450px",
-
               display: "flex",
               backgroundColor: "#fff",
               borderRadius: "16px 16px 0 0",
-              p: ".5rem 0"
+              p: "2rem 8px"
             }}>
             <Grid item xs={12} sm={12} md={12} lg={12}>
               <Typography
                 variant='h5'
                 fontWeight={"bold"}
                 fontSize='16px'
-                fontFamily='Vazir-Bold'
-                p=' 1rem 3rem 0 0'>
+                mr='8px'
+                mb='16px'
+                fontFamily='Vazir'>
                 کت و شلوار
               </Typography>
             </Grid>
             {/* BUTTON FOR CHOOSE CATEGORY */}
-            <Grid item xs={12} sm={12} md={12} lg={12}>
+            {buttons.length ==1
+            ?
+            "":
+            <Grid item xs={12} sm={12} md={12} lg={12} m=' .5rem 8px'>
               <CategoryModal
                 buttonsActiveHandler={buttonsActiveHandler}
                 buttonActive={buttonActive}
                 buttons={buttons}
               />
             </Grid>
+            }
 
             {useDataModal.map((item, id) => (
-              <Grid item xs={12} sm={12} md={12} lg={12} key={id}>
+              <Grid
+                item
+                xs={12}
+                sm={12}
+                md={12}
+                lg={12}
+                key={id}
+                p=' .5rem 8px '
+                width='100%'>
                 <IncreaseItem
                   image={item.subImage}
                   title={item.job}

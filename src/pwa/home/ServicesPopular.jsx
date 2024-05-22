@@ -37,22 +37,7 @@ const DataSwiper = [
           { job: "پاییزه 1خیاطی و تعمیارت", price: 131040, subImage: whashSvg }
         ]
       },
-      {
-        categoryName: "ساده",
-        categoryDo: [
-          { job: "ساده خشک2شویی + اتو", price: 131040, subImage: whashSvg },
-          { job: "ساده اتو2", price: 131040, subImage: whashSvg },
-          { job: "ساده خیا2طی و تعمیارت", price: 131040, subImage: whashSvg }
-        ]
-      },
-      {
-        categoryName: "پاییزه",
-        categoryDo: [
-          { job: "مجلسی خشک3شویی + اتو", price: 131040, subImage: whashSvg },
-          { job: "مجلسی اتو3", price: 131040, subImage: whashSvg },
-          { job: "مجلسی خیا3طی و تعمیارت", price: 131040, subImage: whashSvg }
-        ]
-      }
+    
     ]
   },
   {

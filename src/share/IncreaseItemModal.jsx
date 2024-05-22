@@ -1,9 +1,9 @@
 /* eslint-disable react/prop-types */
-import { Box, Button, Container, Grid, Typography } from "@mui/material";
+import { Box, Button, Grid, Typography } from "@mui/material";
 import toFarsiNumber, { persianPrice } from "./functions";
 const IncreaseItem = ({ title, image, cost }) => {
   return (
-    <Container>
+    <>
       <Grid
         container
         display='flex'
@@ -11,16 +11,13 @@ const IncreaseItem = ({ title, image, cost }) => {
         alignItems='center'
         alignContent={"center"}
         bgcolor='rgb(237, 252, 255)'
-        m='.2rem 0 0 .2rem '
+        m='.2rem auto'
         borderRadius={"16px"}
         height='80px'
-        p={2}>
-        <Grid item xs={9} sm={9} md={9} lg={9} display={"flex"}>
+        p={1}>
+        <Grid item xs={8} sm={8} md={8} lg={8} display={"flex"}>
           <Box>
-            <img
-              src={image}
-              style={{ padding: "1rem", width: "48px", height: "48px" }}
-            />
+            <img src={image} style={{ maxWidth: "48px", maxHeight: "48px" }} />
           </Box>
           <Box display='flex' flexDirection={"column"} justifyContent='center'>
             <Typography variant='h6' fontSize='16px' fontFamily='Vazir-Bold'>
@@ -33,14 +30,15 @@ const IncreaseItem = ({ title, image, cost }) => {
         </Grid>
         <Grid
           item
-          xs={3}
-          sm={3}
-          md={3}
-          lg={3}
+          xs={4}
+          sm={4}
+          md={4}
+          lg={4}
           display='flex'
-          justifyContent='space-between'
+          justifyContent='center'
           alignItems='center'
-          alignContent='center'>
+          alignContent='center'
+          sx={{ textAlign: "right" }}>
           <Button
             sx={{
               minWidth: "48px",
@@ -61,7 +59,8 @@ const IncreaseItem = ({ title, image, cost }) => {
             style={{
               fontFamily: "Vazir-Bold",
               fontSize: "16px",
-              fontWeight: "bold"
+              fontWeight: "bold",
+              margin: "8px"
             }}>
             {toFarsiNumber(0)}
           </span>
@@ -73,6 +72,7 @@ const IncreaseItem = ({ title, image, cost }) => {
               borderRadius: "50%",
               alignItems: "center",
               color: "rgba(0,0,0,0.5)",
+              ml: "2rem",
               fontSize: "14px",
               "&:hover": {
                 background: "#fff"
@@ -82,7 +82,7 @@ const IncreaseItem = ({ title, image, cost }) => {
           </Button>
         </Grid>
       </Grid>
-    </Container>
+    </>
   );
 };
 
