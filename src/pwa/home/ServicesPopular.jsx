@@ -1,4 +1,4 @@
-import { Box, Typography } from "@mui/material";
+import { Box, Typography, AppBar, Toolbar } from "@mui/material";
 
 // usable component
 import ServicesPopularComponent from "./ServicesPopularComponent";
@@ -15,200 +15,210 @@ import "./SwiperStyle.css";
 // import required modules
 import { FreeMode, Pagination } from "swiper/modules";
 
-// image svg
-import manto from "../../../assets/womenMantoo.7c04032e.svg";
-import whashSvg from "../../../assets/wash.c4124479.svg";
+// // image svg
+// import manto from "../../../assets/womenMantoo.7c04032e.svg";
+// import whashSvg from "../../../assets/wash.c4124479.svg";
 
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ModalIncrease from "../../share/ModalIncrease";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchProducts, product } from "../features/products/productsSlice";
 // Data
-const DataSwiper = [
-  {
-    title: "مانتو",
-    subTitle: "مجلسی، ساده، پاییزه",
-    image: manto,
-    useThis: [
-      {
-        categoryName: "1مجلسی",
-        categoryDo: [
-          { job: "پاییزه 1خشکشویی + اتو", price: 131040, subImage: whashSvg },
-          { job: "پاییزه 1اتو", price: 131040, subImage: whashSvg },
-          { job: "پاییزه 1خیاطی و تعمیارت", price: 131040, subImage: whashSvg }
-        ]
-      },
-    
-    ]
-  },
-  {
-    title: "مانتو",
-    subTitle: "مجلسی، ساده، پاییزه",
-    image: manto,
-    useThis: [
-      {
-        categoryName: "2مجلسی",
-        categoryDo: [
-          { job: "خشکشویی + اتو", price: 131040, subImage: whashSvg },
-          { job: "اتو", price: 131040, subImage: whashSvg },
-          { job: "خیاطی و تعمیارت", price: 131040, subImage: whashSvg }
-        ]
-      },
-      {
-        categoryName: "ساده",
-        categoryDo: [
-          { job: "خشکشویی + اتو", price: 131040, subImage: whashSvg },
-          { job: "اتو", price: 131040, subImage: whashSvg },
-          { job: "خیاطی و تعمیارت", price: 131040, subImage: whashSvg }
-        ]
-      },
-      {
-        categoryName: "پاییزه",
-        categoryDo: [
-          { job: "خشکشویی + اتو", price: 131040, subImage: whashSvg },
-          { job: "اتو", price: 131040, subImage: whashSvg },
-          { job: "خیاطی و تعمیارت", price: 131040, subImage: whashSvg }
-        ]
-      }
-    ]
-  },
-  {
-    title: "مانتو",
-    subTitle: "مجلسی، ساده، پاییزه",
-    image: manto,
-    useThis: [
-      {
-        categoryName: "3مجلسی",
-        categoryDo: [
-          { job: "خشکشویی + اتو", price: 131040, subImage: whashSvg },
-          { job: "اتو", price: 131040, subImage: whashSvg },
-          { job: "خیاطی و تعمیارت", price: 131040, subImage: whashSvg }
-        ]
-      },
-      {
-        categoryName: "ساده",
-        categoryDo: [
-          { job: "خشکشویی + اتو", price: 131040, subImage: whashSvg },
-          { job: "اتو", price: 131040, subImage: whashSvg },
-          { job: "خیاطی و تعمیارت", price: 131040, subImage: whashSvg }
-        ]
-      },
-      {
-        categoryName: "4پاییزه",
-        categoryDo: [
-          { job: "خشکشویی + اتو", price: 131040, subImage: whashSvg },
-          { job: "اتو", price: 131040, subImage: whashSvg },
-          { job: "خیاطی و تعمیارت", price: 131040, subImage: whashSvg }
-        ]
-      }
-    ]
-  },
-  {
-    title: "مانتو",
-    subTitle: "مجلسی، ساده، پاییزه",
-    image: manto,
-    useThis: [
-      {
-        categoryName: "5مجلسی",
-        categoryDo: [
-          { job: "خشکشویی + اتو", price: 131040, subImage: whashSvg },
-          { job: "اتو", price: 131040, subImage: whashSvg },
-          { job: "خیاطی و تعمیارت", price: 131040, subImage: whashSvg }
-        ]
-      },
-      {
-        categoryName: "ساده",
-        categoryDo: [
-          { job: "خشکشویی + اتو", price: 131040, subImage: whashSvg },
-          { job: "اتو", price: 131040, subImage: whashSvg },
-          { job: "خیاطی و تعمیارت", price: 131040, subImage: whashSvg }
-        ]
-      },
-      {
-        categoryName: "پاییزه",
-        categoryDo: [
-          { job: "خشکشویی + اتو", price: 131040, subImage: whashSvg },
-          { job: "اتو", price: 131040, subImage: whashSvg },
-          { job: "خیاطی و تعمیارت", price: 131040, subImage: whashSvg }
-        ]
-      }
-    ]
-  },
-  {
-    title: "مانتو",
-    subTitle: "مجلسی، ساده، پاییزه",
-    image: manto,
-    useThis: [
-      {
-        categoryName: "6مجلسی",
-        categoryDo: [
-          { job: "خشکشویی + اتو", price: 131040, subImage: whashSvg },
-          { job: "اتو", price: 131040, subImage: whashSvg },
-          { job: "خیاطی و تعمیارت", price: 131040, subImage: whashSvg }
-        ]
-      },
-      {
-        categoryName: "ساده",
-        categoryDo: [
-          { job: "خشکشویی + اتو", price: 131040, subImage: whashSvg },
-          { job: "اتو", price: 131040, subImage: whashSvg },
-          { job: "خیاطی و تعمیارت", price: 131040, subImage: whashSvg }
-        ]
-      },
-      {
-        categoryName: "پاییزه",
-        categoryDo: [
-          { job: "خشکشویی + اتو", price: 131040, subImage: whashSvg },
-          { job: "اتو", price: 131040, subImage: whashSvg },
-          { job: "خیاطی و تعمیارت", price: 131040, subImage: whashSvg }
-        ]
-      }
-    ]
-  },
-  {
-    title: "مانتو",
-    subTitle: "مجلسی، ساده، پاییزه",
-    image: manto,
-    useThis: [
-      {
-        categoryName: "7مجلسی",
-        categoryDo: [
-          { job: "خشکشویی + اتو", price: 131040, subImage: whashSvg },
-          { job: "اتو", price: 131040, subImage: whashSvg },
-          { job: "خیاطی و تعمیارت", price: 131040, subImage: whashSvg }
-        ]
-      },
-      {
-        categoryName: "ساده",
-        categoryDo: [
-          { job: "خشکشویی + اتو", price: 131040, subImage: whashSvg },
-          { job: "اتو", price: 131040, subImage: whashSvg },
-          { job: "خیاطی و تعمیارت", price: 131040, subImage: whashSvg }
-        ]
-      },
-      {
-        categoryName: "پاییزه",
-        categoryDo: [
-          { job: "خشکشویی + اتو", price: 131040, subImage: whashSvg },
-          { job: "اتو", price: 131040, subImage: whashSvg },
-          { job: "خیاطی و تعمیارت", price: 131040, subImage: whashSvg }
-        ]
-      }
-    ]
-  }
-];
+// const DataSwiper = [
+//   {
+//     title: "مانتو",
+//     subTitle: "مجلسی، ساده، پاییزه",
+//     image: manto,
+//     useThis: [
+//       {
+//         categoryName: "1مجلسی",
+//         categoryDo: [
+//           { job: "پاییزه 1خشکشویی + اتو", price: 131040, subImage: whashSvg },
+//           { job: "پاییزه 1اتو", price: 131040, subImage: whashSvg },
+//           { job: "پاییزه 1خیاطی و تعمیارت", price: 131040, subImage: whashSvg }
+//         ]
+//       },
+
+//     ]
+//   },
+//   {
+//     title: "مانتو",
+//     subTitle: "مجلسی، ساده، پاییزه",
+//     image: manto,
+//     useThis: [
+//       {
+//         categoryName: "2مجلسی",
+//         categoryDo: [
+//           { job: "خشکشویی + اتو", price: 131040, subImage: whashSvg },
+//           { job: "اتو", price: 131040, subImage: whashSvg },
+//           { job: "خیاطی و تعمیارت", price: 131040, subImage: whashSvg }
+//         ]
+//       },
+//       {
+//         categoryName: "ساده",
+//         categoryDo: [
+//           { job: "خشکشویی + اتو", price: 131040, subImage: whashSvg },
+//           { job: "اتو", price: 131040, subImage: whashSvg },
+//           { job: "خیاطی و تعمیارت", price: 131040, subImage: whashSvg }
+//         ]
+//       },
+//       {
+//         categoryName: "پاییزه",
+//         categoryDo: [
+//           { job: "خشکشویی + اتو", price: 131040, subImage: whashSvg },
+//           { job: "اتو", price: 131040, subImage: whashSvg },
+//           { job: "خیاطی و تعمیارت", price: 131040, subImage: whashSvg }
+//         ]
+//       }
+//     ]
+//   },
+//   {
+//     title: "مانتو",
+//     subTitle: "مجلسی، ساده، پاییزه",
+//     image: manto,
+//     useThis: [
+//       {
+//         categoryName: "3مجلسی",
+//         categoryDo: [
+//           { job: "خشکشویی + اتو", price: 131040, subImage: whashSvg },
+//           { job: "اتو", price: 131040, subImage: whashSvg },
+//           { job: "خیاطی و تعمیارت", price: 131040, subImage: whashSvg }
+//         ]
+//       },
+//       {
+//         categoryName: "ساده",
+//         categoryDo: [
+//           { job: "خشکشویی + اتو", price: 131040, subImage: whashSvg },
+//           { job: "اتو", price: 131040, subImage: whashSvg },
+//           { job: "خیاطی و تعمیارت", price: 131040, subImage: whashSvg }
+//         ]
+//       },
+//       {
+//         categoryName: "4پاییزه",
+//         categoryDo: [
+//           { job: "خشکشویی + اتو", price: 131040, subImage: whashSvg },
+//           { job: "اتو", price: 131040, subImage: whashSvg },
+//           { job: "خیاطی و تعمیارت", price: 131040, subImage: whashSvg }
+//         ]
+//       }
+//     ]
+//   },
+//   {
+//     title: "مانتو",
+//     subTitle: "مجلسی، ساده، پاییزه",
+//     image: manto,
+//     useThis: [
+//       {
+//         categoryName: "5مجلسی",
+//         categoryDo: [
+//           { job: "خشکشویی + اتو", price: 131040, subImage: whashSvg },
+//           { job: "اتو", price: 131040, subImage: whashSvg },
+//           { job: "خیاطی و تعمیارت", price: 131040, subImage: whashSvg }
+//         ]
+//       },
+//       {
+//         categoryName: "ساده",
+//         categoryDo: [
+//           { job: "خشکشویی + اتو", price: 131040, subImage: whashSvg },
+//           { job: "اتو", price: 131040, subImage: whashSvg },
+//           { job: "خیاطی و تعمیارت", price: 131040, subImage: whashSvg }
+//         ]
+//       },
+//       {
+//         categoryName: "پاییزه",
+//         categoryDo: [
+//           { job: "خشکشویی + اتو", price: 131040, subImage: whashSvg },
+//           { job: "اتو", price: 131040, subImage: whashSvg },
+//           { job: "خیاطی و تعمیارت", price: 131040, subImage: whashSvg }
+//         ]
+//       }
+//     ]
+//   },
+//   {
+//     title: "مانتو",
+//     subTitle: "مجلسی، ساده، پاییزه",
+//     image: manto,
+//     useThis: [
+//       {
+//         categoryName: "6مجلسی",
+//         categoryDo: [
+//           { job: "خشکشویی + اتو", price: 131040, subImage: whashSvg },
+//           { job: "اتو", price: 131040, subImage: whashSvg },
+//           { job: "خیاطی و تعمیارت", price: 131040, subImage: whashSvg }
+//         ]
+//       },
+//       {
+//         categoryName: "ساده",
+//         categoryDo: [
+//           { job: "خشکشویی + اتو", price: 131040, subImage: whashSvg },
+//           { job: "اتو", price: 131040, subImage: whashSvg },
+//           { job: "خیاطی و تعمیارت", price: 131040, subImage: whashSvg }
+//         ]
+//       },
+//       {
+//         categoryName: "پاییزه",
+//         categoryDo: [
+//           { job: "خشکشویی + اتو", price: 131040, subImage: whashSvg },
+//           { job: "اتو", price: 131040, subImage: whashSvg },
+//           { job: "خیاطی و تعمیارت", price: 131040, subImage: whashSvg }
+//         ]
+//       }
+//     ]
+//   },
+//   {
+//     title: "مانتو",
+//     subTitle: "مجلسی، ساده، پاییزه",
+//     image: manto,
+//     useThis: [
+//       {
+//         categoryName: "7مجلسی",
+//         categoryDo: [
+//           { job: "خشکشویی + اتو", price: 131040, subImage: whashSvg },
+//           { job: "اتو", price: 131040, subImage: whashSvg },
+//           { job: "خیاطی و تعمیارت", price: 131040, subImage: whashSvg }
+//         ]
+//       },
+//       {
+//         categoryName: "ساده",
+//         categoryDo: [
+//           { job: "خشکشویی + اتو", price: 131040, subImage: whashSvg },
+//           { job: "اتو", price: 131040, subImage: whashSvg },
+//           { job: "خیاطی و تعمیارت", price: 131040, subImage: whashSvg }
+//         ]
+//       },
+//       {
+//         categoryName: "پاییزه",
+//         categoryDo: [
+//           { job: "خشکشویی + اتو", price: 131040, subImage: whashSvg },
+//           { job: "اتو", price: 131040, subImage: whashSvg },
+//           { job: "خیاطی و تعمیارت", price: 131040, subImage: whashSvg }
+//         ]
+//       }
+//     ]
+//   }
+// ];
 const ServicesPopular = () => {
   const [isShowModal, setIsShowModal] = useState(false);
   const [checkIndex, setCheckIndex] = useState();
+  const dispatch = useDispatch();
+  const products = useSelector(product);
+
   const toggleHandler = () => {
     setIsShowModal(!isShowModal);
   };
 
   const toggleAndIndexHandler = (index) => {
     setCheckIndex(index);
-    console.log("wring" + checkIndex);
 
     toggleHandler();
   };
+
+  useEffect(() => {
+    dispatch(fetchProducts());
+  }, []);
+  // console.log(products.products);
+
   return (
     <>
       <Box
@@ -217,7 +227,7 @@ const ServicesPopular = () => {
           p: "1rem 0",
           m: "1rem 0",
           borderRadius: "8px",
-          overflow: "hidden"
+          overflow: "hidden",
         }}>
         <Typography
           variant='h5'
@@ -234,24 +244,25 @@ const ServicesPopular = () => {
           spaceBetween={30}
           freeMode={true}
           pagination={{
-            clickable: true
+            clickable: true,
           }}
           modules={[FreeMode, Pagination]}
           className='mySwiper'
           style={{ marginRight: ".5rem" }}>
-          {DataSwiper.map((item, index) => (
-            <SwiperSlide style={{ background: "none" }} key={index}>
-              <Link style={{ textDecoration: "none", color: "black" }}>
-                <ServicesPopularComponent
+          {products.length &&
+            products.map((item, index) => (
+              <SwiperSlide style={{ background: "none" }} key={index}>
+                <Link style={{ textDecoration: "none", color: "black" }}>
+                  <ServicesPopularComponent
                   toggleHandler={() => toggleAndIndexHandler(index)}
                   checkIndex={checkIndex}
                   title={item.title}
                   subTitle={item.subTitle}
                   image={item.image}
                 />
-              </Link>
-            </SwiperSlide>
-          ))}
+                </Link>
+              </SwiperSlide>
+            ))}
         </Swiper>
       </Box>
 
@@ -260,10 +271,9 @@ const ServicesPopular = () => {
           isShowModal={isShowModal}
           toggleHandler={() => toggleAndIndexHandler(checkIndex)}
           checkIndex={checkIndex}
-          dataModal={DataSwiper}
+          dataModal={products}
         />
       )}
-      {/* {console.log(checkIndex)} */}
     </>
   );
 };

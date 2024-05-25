@@ -3,7 +3,7 @@ import { Box, Button, Grid, Typography } from "@mui/material";
 import toFarsiNumber, { persianPrice } from "./functions";
 import { useSelector,useDispatch } from "react-redux";
 import { decrement, increment } from "../pwa/features/counter/counterSlice";
-import select from "../pwa/features/counter/counterSlice";
+// import select from "../pwa/features/counter/counterSlice";
 
 const IncreaseItem = ({ title, image, cost }) => {
   const storeCounter = useSelector(store => store.counter.counterValue);
