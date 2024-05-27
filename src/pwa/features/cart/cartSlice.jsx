@@ -13,11 +13,7 @@ const cartSlice = createSlice({
   initialState,
   reducers: {
     addItem: (state, action) => {
-      if (
-        !state.selectedItems.find(
-          (item) => item.id === action.payload.id && item.job === action.payload.job
-        )
-      ) {
+      if (!state.selectedItems.find((item) => item.id === action.payload.id)) {
         state.selectedItems.push({ ...action.payload, quantity: 1 });
         state.total = sumPrice(state.selectedItems);
         state.itemsCounter = sumQuanitiy(state.selectedItems);
@@ -26,7 +22,7 @@ const cartSlice = createSlice({
     },
     removeItem: (state, action) => {
       const newSelectedItems = state.selectedItems.filter(
-        (item) => item.id !== action.payload.id && item.job === action.payload.job
+        (item) => item.id !== action.payload.id
       );
       state.selectedItems = newSelectedItems;
       state.total = sumPrice(state.selectedItems);
@@ -34,8 +30,7 @@ const cartSlice = createSlice({
     },
     increase: (state, action) => {
       const increaseIndex = state.selectedItems.findIndex(
-        (item) =>
-          item.id === action.payload.id && item.job === action.payload.job
+        (item) => item.id === action.payload.id
       );
       state.selectedItems[increaseIndex].quantity++;
       state.total = sumPrice(state.selectedItems);
@@ -43,8 +38,7 @@ const cartSlice = createSlice({
     },
     decrease: (state, action) => {
       const decreaseIndex = state.selectedItems.findIndex(
-        (item) =>
-          item.id === action.payload.id && item.job === action.payload.job
+        (item) => item.id === action.payload.id
       );
       state.selectedItems[decreaseIndex].quantity--;
       state.total = sumPrice(state.selectedItems);

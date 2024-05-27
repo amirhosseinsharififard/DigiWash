@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import {
   addItem,
   cart,
+  decrease,
   increase,
   removeItem,
 } from "../pwa/features/cart/cartSlice";
@@ -16,7 +17,8 @@ const IncreaseItem = ({ data, title, image, cost, id, whichButton }) => {
   const dispatch = useDispatch();
 
   // bayad data khas behesh ersal beshe
-  const quantiy = productQuantity(state, id,data);
+  const quantiy = productQuantity(state, id, data);
+
   console.log(state);
   console.log(whichButton);
   return (
@@ -56,40 +58,44 @@ const IncreaseItem = ({ data, title, image, cost, id, whichButton }) => {
           alignItems='center'
           alignContent='center'
           sx={{ textAlign: "right" }}>
-          <Button
-            onClick={() => dispatch(addItem(data))}
-            sx={{
-              minWidth: "48px",
-              height: "48px",
-              bgcolor: "rgb(12, 174, 202)",
-              borderRadius: "50%",
-              display: "flex",
-              alignItems: "center",
-              alignContent: "center",
-              color: "white",
-              "&:hover": {
+          {quantiy == 0 ? (
+            <Button
+              onClick={() => dispatch(addItem(data))}
+              sx={{
+                minWidth: "48px",
+                height: "48px",
                 bgcolor: "rgb(12, 174, 202)",
-              },
-            }}>
-            +1
-          </Button>{" "}
-          <Button
-            onClick={() => dispatch(increase(data))}
-            sx={{
-              minWidth: "48px",
-              height: "48px",
-              bgcolor: "rgb(12, 174, 202)",
-              borderRadius: "50%",
-              display: "flex",
-              alignItems: "center",
-              alignContent: "center",
-              color: "white",
-              "&:hover": {
+                borderRadius: "50%",
+                display: "flex",
+                alignItems: "center",
+                alignContent: "center",
+                color: "white",
+                "&:hover": {
+                  bgcolor: "rgb(12, 174, 202)",
+                },
+              }}>
+              +
+            </Button>
+          ) : (
+            <Button
+              onClick={() => dispatch(increase(data))}
+              sx={{
+                minWidth: "48px",
+                height: "48px",
                 bgcolor: "rgb(12, 174, 202)",
-              },
-            }}>
-            +
-          </Button>
+                borderRadius: "50%",
+                display: "flex",
+                alignItems: "center",
+                alignContent: "center",
+                color: "white",
+                "&:hover": {
+                  bgcolor: "rgb(12, 174, 202)",
+                },
+              }}>
+              +
+            </Button>
+          )}
+
           <span
             style={{
               fontFamily: "Vazir-Bold",
@@ -99,23 +105,53 @@ const IncreaseItem = ({ data, title, image, cost, id, whichButton }) => {
             }}>
             {toFarsiNumber(quantiy)}
           </span>
-          <Button
-            onClick={() => dispatch(removeItem(data))}
-            sx={{
-              minWidth: "48px",
-              height: "48px",
-              bgcolor: "#fff",
-              borderRadius: "50%",
-              alignItems: "center",
-              color: "rgba(0,0,0,0.5)",
-              ml: "2rem",
-              fontSize: "14px",
-              "&:hover": {
-                background: "#fff",
-              },
-            }}>
-            -
-          </Button>
+
+          {quantiy > 1 ? (
+            <Button
+              onClick={() => dispatch(decrease(data))}
+              sx={{
+                minWidth: "48px",
+                height: "48px",
+                borderRadius: "50%",
+                alignItems: "center",
+                color: "white",
+
+                bgcolor: quantiy >=1  ?   "rgb(12, 174, 202)":"white",
+
+
+
+                ml: "2rem",
+                fontSize: "14px",
+                "&:hover": {
+                  bgcolor:"rgb(12, 174, 202)"
+
+                },
+              }}>
+              -
+            </Button>
+          ):
+          (<Button
+              onClick={() => dispatch(removeItem(data))}
+              sx={{
+                minWidth: "48px",
+                height: "48px",
+                bgcolor: quantiy >=1  ?   "rgb(12, 174, 202)":"white",
+                borderRadius: "50%",
+                alignItems: "center",
+                color: "rgba(0,0,0,0.5)",
+                ml: "2rem",
+                fontSize: "14px",
+
+                "&:hover": {
+                  bgcolor:   "rgb(12, 174, 202)"
+
+
+
+                },
+              }}>
+              -
+            </Button>)}
+       
         </Grid>
       </Grid>
     </>

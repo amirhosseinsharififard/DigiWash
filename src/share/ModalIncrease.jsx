@@ -94,7 +94,6 @@ const ModalIncrease = ({ toggleHandler, checkIndex }) => {
                   cost={item.price}
                   id={item.id}
                 />
-                {console.log(item)}
               </Grid>
             ))}
           </Grid>
