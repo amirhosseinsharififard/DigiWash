@@ -1,14 +1,24 @@
 /* eslint-disable react/prop-types */
 import { Box, Button, Grid, Typography } from "@mui/material";
 import toFarsiNumber, { persianPrice } from "./functions";
-import { useSelector,useDispatch } from "react-redux";
-import { decrement, increment } from "../pwa/features/counter/counterSlice";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  addItem,
+  cart,
+  increase,
+  removeItem,
+} from "../pwa/features/cart/cartSlice";
+import { productQuantity } from "../helper/helper";
 // import select from "../pwa/features/counter/counterSlice";
 
-const IncreaseItem = ({ title, image, cost }) => {
-  const storeCounter = useSelector(store => store.counter.counterValue);
+const IncreaseItem = ({ data, title, image, cost, id, whichButton }) => {
+  const state = useSelector(cart);
   const dispatch = useDispatch();
-  console.log(storeCounter);
+
+  // bayad data khas behesh ersal beshe
+  const quantiy = productQuantity(state, id,data);
+  console.log(state);
+  console.log(whichButton);
   return (
     <>
       <Grid
@@ -47,7 +57,7 @@ const IncreaseItem = ({ title, image, cost }) => {
           alignContent='center'
           sx={{ textAlign: "right" }}>
           <Button
-            onClick={() => dispatch(increment())}
+            onClick={() => dispatch(addItem(data))}
             sx={{
               minWidth: "48px",
               height: "48px",
@@ -58,8 +68,25 @@ const IncreaseItem = ({ title, image, cost }) => {
               alignContent: "center",
               color: "white",
               "&:hover": {
-                bgcolor: "rgb(12, 174, 202)"
-              }
+                bgcolor: "rgb(12, 174, 202)",
+              },
+            }}>
+            +1
+          </Button>{" "}
+          <Button
+            onClick={() => dispatch(increase(data))}
+            sx={{
+              minWidth: "48px",
+              height: "48px",
+              bgcolor: "rgb(12, 174, 202)",
+              borderRadius: "50%",
+              display: "flex",
+              alignItems: "center",
+              alignContent: "center",
+              color: "white",
+              "&:hover": {
+                bgcolor: "rgb(12, 174, 202)",
+              },
             }}>
             +
           </Button>
@@ -68,12 +95,12 @@ const IncreaseItem = ({ title, image, cost }) => {
               fontFamily: "Vazir-Bold",
               fontSize: "16px",
               fontWeight: "bold",
-              margin: "8px"
+              margin: "8px",
             }}>
-            {toFarsiNumber(storeCounter)}
+            {toFarsiNumber(quantiy)}
           </span>
           <Button
-            onClick={() => dispatch(decrement())}
+            onClick={() => dispatch(removeItem(data))}
             sx={{
               minWidth: "48px",
               height: "48px",
@@ -84,8 +111,8 @@ const IncreaseItem = ({ title, image, cost }) => {
               ml: "2rem",
               fontSize: "14px",
               "&:hover": {
-                background: "#fff"
-              }
+                background: "#fff",
+              },
             }}>
             -
           </Button>

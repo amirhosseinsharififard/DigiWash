@@ -32,4 +32,4 @@ const productSlice = createSlice({
 
 export default productSlice.reducer;
 export { fetchProducts };
-  export const product = (state) => state.product.products
+export const product = (state) => state.product.products;

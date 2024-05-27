@@ -4,15 +4,21 @@ import IncreaseItem from "./IncreaseItemModal";
 import CategoryModal from "./CategoryModal";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import { useSelector } from "react-redux";
+import { product } from "../pwa/features/products/productsSlice";
 
-const ModalIncrease = ({ toggleHandler, dataModal, checkIndex }) => {
-  const buttons = dataModal[checkIndex].useThis;
+const ModalIncrease = ({ toggleHandler, checkIndex }) => {
+  const products = useSelector(product);
+
+  const buttons = products[checkIndex].useThis;
+
   const [buttonActive, setButtonActive] = useState(0);
-  const useDataModal = dataModal[checkIndex].useThis[buttonActive].categoryDo;
+
+  const useProducts = products[checkIndex].useThis[buttonActive].categoryDo;
   const buttonsActiveHandler = (id) => {
     setButtonActive(id);
   };
-    console.log();
+
   return (
     <>
       <Box
@@ -27,7 +33,7 @@ const ModalIncrease = ({ toggleHandler, dataModal, checkIndex }) => {
           backdropFilter: "blur(15px)",
           display: "flex",
           flexDirection: "column",
-          justifyContent: "flex-end"
+          justifyContent: "flex-end",
         }}>
         <Link
           onClick={() => toggleHandler()}
@@ -35,7 +41,7 @@ const ModalIncrease = ({ toggleHandler, dataModal, checkIndex }) => {
             width: "100vw",
             height: "100vh",
             zIndex: 2,
-            position: "absolute"
+            position: "absolute",
           }}
         />
         <Box maxWidth='768px' m='0 auto' zIndex={3}>
@@ -45,7 +51,7 @@ const ModalIncrease = ({ toggleHandler, dataModal, checkIndex }) => {
               display: "flex",
               backgroundColor: "#fff",
               borderRadius: "16px 16px 0 0",
-              p: "2rem 8px"
+              p: "2rem 8px",
             }}>
             <Grid item xs={12} sm={12} md={12} lg={12}>
               <Typography
@@ -59,19 +65,19 @@ const ModalIncrease = ({ toggleHandler, dataModal, checkIndex }) => {
               </Typography>
             </Grid>
             {/* BUTTON FOR CHOOSE CATEGORY */}
-            {buttons.length ==1
-            ?
-            "":
-            <Grid item xs={12} sm={12} md={12} lg={12} m=' .5rem 8px'>
-              <CategoryModal
-                buttonsActiveHandler={buttonsActiveHandler}
-                buttonActive={buttonActive}
-                buttons={buttons}
-              />
-            </Grid>
-            }
+            {buttons.length == 1 ? (
+              ""
+            ) : (
+              <Grid item xs={12} sm={12} md={12} lg={12} m=' .5rem 8px'>
+                <CategoryModal
+                  buttonsActiveHandler={buttonsActiveHandler}
+                  buttonActive={buttonActive}
+                  buttons={buttons}
+                />
+              </Grid>
+            )}
 
-            {useDataModal.map((item, id) => (
+            {useProducts.map((item, id) => (
               <Grid
                 item
                 xs={12}
@@ -82,10 +88,13 @@ const ModalIncrease = ({ toggleHandler, dataModal, checkIndex }) => {
                 p=' .5rem 8px '
                 width='100%'>
                 <IncreaseItem
+                  data={item}
                   image={item.subImage}
                   title={item.job}
                   cost={item.price}
+                  id={item.id}
                 />
+                {console.log(item)}
               </Grid>
             ))}
           </Grid>

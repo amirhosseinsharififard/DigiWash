@@ -249,6 +249,8 @@ const ServicesPopular = () => {
           modules={[FreeMode, Pagination]}
           className='mySwiper'
           style={{ marginRight: ".5rem" }}>
+
+
           {products.length &&
             products.map((item, index) => (
               <SwiperSlide style={{ background: "none" }} key={index}>
@@ -263,6 +265,8 @@ const ServicesPopular = () => {
                 </Link>
               </SwiperSlide>
             ))}
+
+            
         </Swiper>
       </Box>
 
