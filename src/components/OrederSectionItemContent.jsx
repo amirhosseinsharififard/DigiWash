@@ -1,26 +1,28 @@
 /* eslint-disable react/prop-types */
 import { Box, Button, Grid, Typography } from "@mui/material";
-import toFarsiNumber, { persianPrice } from "./functions";
-import { useSelector, useDispatch } from "react-redux";
+// import { useSelector, useDispatch } from "react-redux";
 import {
-  addItem,
-  cart,
-  decrease,
-  increase,
-  removeItem,
+//   addItem,
+// //   cart,
+//   decrease,
+//   increase,
+//   removeItem,
 } from "../pwa/features/cart/cartSlice";
-import { productQuantity } from "../helper/helper";
+// import { productQuantity } from "../helper/helper";
 // import select from "../pwa/features/counter/counterSlice";
 
-const IncreaseItem = ({ data, title, image, cost, id, whichButton }) => {
-  const state = useSelector(cart);
-  const dispatch = useDispatch();
+import washMashin from "../../assets/wash.c4124479.svg"
+import toFarsiNumber, { persianPrice } from "../share/functions";
 
-  // bayad data khas behesh ersal beshe
-  const quantiy = productQuantity(state, id, data);
+const OrderSectionItemContent = ({ data, title, image, cost, id, whichButton }) => {
+//   const state = useSelector(cart);
+//   const dispatch = useDispatch();
 
-  console.log(state);
-  console.log(whichButton);
+//   // bayad data khas behesh ersal beshe
+//   const quantiy = productQuantity(state, id, data);
+
+//   console.log(state);
+//   console.log(whichButton);
   return (
     <>
       <Grid
@@ -29,21 +31,25 @@ const IncreaseItem = ({ data, title, image, cost, id, whichButton }) => {
         justifyContent={"space-between"}
         alignItems='center'
         alignContent={"center"}
-        bgcolor='rgb(237, 252, 255)'
         m='.2rem auto'
         borderRadius={"16px"}
         height='80px'
-        p={1}>
+        p={1}
+        bgcolor="white" >
         <Grid item xs={8} sm={8} md={8} lg={8} display={"flex"}>
           <Box>
-            <img src={image} style={{ maxWidth: "48px", maxHeight: "48px" }} />
+            <img src={washMashin} style={{ maxWidth: "48px", maxHeight: "48px" }} />
           </Box>
           <Box display='flex' flexDirection={"column"} justifyContent='center'>
             <Typography variant='h6' fontSize='16px' fontFamily='Vazir-Bold'>
-              {title}
+              {/* {title} */}
+              خشکشویی + اتو
             </Typography>
             <Typography variant='h6' fontSize='16px' fontFamily='Vazir'>
-              {persianPrice(cost)} تومان
+              {/* {persianPrice(cost)} */}
+              {persianPrice(220000)}
+
+               تومان
             </Typography>
           </Box>
         </Grid>
@@ -54,13 +60,13 @@ const IncreaseItem = ({ data, title, image, cost, id, whichButton }) => {
           md={4}
           lg={4}
           display='flex'
-          justifyContent='center'
+          justifyContent='end'
           alignItems='center'
-          alignContent='center'
-          sx={{ textAlign: "right" }}>
-          {quantiy == 0 ? (
+          textAlign="left"
+    >
+          {/* {quantiy == 0 ? ( */}
             <Button
-              onClick={() => dispatch(addItem(data))}
+            //   onClick={() => dispatch(addItem(data))}
               sx={{
                 minWidth: "48px",
                 height: "48px",
@@ -76,9 +82,9 @@ const IncreaseItem = ({ data, title, image, cost, id, whichButton }) => {
               }}>
               +
             </Button>
-          ) : (
-            <Button
-              onClick={() => dispatch(increase(data))}
+          {/* ) : ( */}
+            {/* <Button
+            //   onClick={() => dispatch(increase(data))}
               sx={{
                 minWidth: "48px",
                 height: "48px",
@@ -93,8 +99,8 @@ const IncreaseItem = ({ data, title, image, cost, id, whichButton }) => {
                 },
               }}>
               +
-            </Button>
-          )}
+            </Button> */}
+          {/* )} */}
 
           <span
             style={{
@@ -103,12 +109,13 @@ const IncreaseItem = ({ data, title, image, cost, id, whichButton }) => {
               fontWeight: "bold",
               margin: "8px",
             }}>
-            {toFarsiNumber(quantiy)}
+            {/* {toFarsiNumber(quantiy)} */}
+            {toFarsiNumber(10)}
           </span>
 
-          {quantiy > 1 ? (
+          {/* {quantiy > 1 ? ( */}
             <Button
-              onClick={() => dispatch(decrease(data))}
+            //   onClick={() => dispatch(decrease(data))}
               sx={{
                 minWidth: "48px",
                 height: "48px",
@@ -116,7 +123,8 @@ const IncreaseItem = ({ data, title, image, cost, id, whichButton }) => {
                 alignItems: "center",
                 color: "white",
 
-                bgcolor: quantiy >= 1 ? "rgb(12, 174, 202)" : "white",
+                // bgcolor: quantiy >= 1 ? "rgb(12, 174, 202)" : "white",
+                bgcolor:  "rgb(12, 174, 202)" ,
 
                 ml: "2rem",
                 fontSize: "14px",
@@ -126,16 +134,16 @@ const IncreaseItem = ({ data, title, image, cost, id, whichButton }) => {
               }}>
               -
             </Button>
-          ) : (
-            <Button
-              onClick={() => dispatch(removeItem(data))}
+          {/* ) : ( */}
+            {/* <Button
+            //   onClick={() => dispatch(removeItem(data))}
               sx={{
                 minWidth: "48px",
                 height: "48px",
-                bgcolor: quantiy >= 1 ? "rgb(12, 174, 202)" : "white",
+                // bgcolor: quantiy >= 1 ? "rgb(12, 174, 202)" : "white",
                 borderRadius: "50%",
                 alignItems: "center",
-                color: quantiy >= 1 ? "white" : "black",
+                // color: quantiy >= 1 ? "white" : "black",
                 ml: "2rem",
                 fontSize: "14px",
 
@@ -144,12 +152,12 @@ const IncreaseItem = ({ data, title, image, cost, id, whichButton }) => {
                 },
               }}>
               -
-            </Button>
-          )}
+            </Button> */}
+          {/* )} */}
         </Grid>
       </Grid>
     </>
   );
 };
 
-export default IncreaseItem;
+export default OrderSectionItemContent;

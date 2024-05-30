@@ -4,18 +4,20 @@ import { Link } from "react-router-dom";
 
 // icon
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
-
+import BasketIcon from "../../assets/ordersBasket.c57a891b.svg";
+import toFarsiNumber from "../share/functions";
 const HeaderProfileLinks = ({ pageAddress }) => {
   return (
     <Box sx={{ bgcolor: "#0caeca" }}>
       <Box
         sx={{
           maxWidth: "768px",
-          m: "0rem auto 5rem",
+          m: "0rem auto ",
           display: "flex",
           alignItems: "container",
           flexDirection: "column",
           p: "0 0 0 0 ",
+          bgcolor: "",
         }}>
         {/* blue zone */}
         <Grid
@@ -25,7 +27,7 @@ const HeaderProfileLinks = ({ pageAddress }) => {
             alignContent: "space-betweens",
             alignItems: "center",
             justifyContent: "space-between",
-            p: "1.5rem 1.5rem .7rem 1.5rem",
+            p: "1rem 1rem .7rem 1rem",
             color: "white",
           }}>
           <Grid item xs={4} sm={4} md={4} lg={4}>
@@ -60,17 +62,59 @@ const HeaderProfileLinks = ({ pageAddress }) => {
           border='1px solid rgba(0,0,0,.1)'
           borderBottom='none'
           sx={{
-            bgcolor: "white",
+            bgcolor: "rgb(242, 247, 247)",
             borderRadius: "30px 30px 0 0",
             display: "flex",
             alignContent: "space-betweens",
             justifyContent: "space-between",
             p: "1.5rem 1.5rem .7rem 1.5rem",
           }}>
-          <Grid item display='flex' xs={10} sm={10} md={10} lg={10}>
-            <Typography variant='h5' fontWeight='bold'>
-              ادرس های ثبت شده
-            </Typography>
+          <Grid
+            item
+            display='flex'
+            xs={12}
+            sm={12}
+            md={12}
+            lg={12}
+            justifyContent='space-between'>
+            <Box
+              display='flex'
+              justifyContent='start'
+              alignContent='center'
+              alignItems={"center"}>
+              <img src={BasketIcon} height='32px' width='32px' />
+              <Typography
+                fontSize='16px'
+                fontFamily='Vazir'
+                fontWeight='bold'
+                color='rgb(0, 77, 100)'
+                mr='8px'>
+                سفارش شما
+              </Typography>
+            </Box>
+            <Box
+              display='flex'
+              justifyContent='start'
+              alignContent='center'
+              alignItems={"center"}>
+              <span
+                style={{
+                  fontSize: "16px",
+                  fontFamily: "Vazir",
+                  fontWeight: "bold",
+                  color: "rgb(0, 77, 100)",
+                }}>
+                {toFarsiNumber(0)}
+              </span>
+              <Typography
+                fontSize='16px'
+                fontFamily='Vazir'
+                fontWeight='bold'
+                color='rgb(0, 77, 100)'
+                mr='8px'>
+                مورد
+              </Typography>
+            </Box>
           </Grid>
         </Grid>
       </Box>

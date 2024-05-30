@@ -8,9 +8,9 @@
           {
             "categoryName": "1مجلسی",
             "categoryDo": [
-              { "job": "پاییزه 1خشکشویی + اتو", "price": 131040, "subImage": "../../assets/wash.c4124479.svg" },
-              { "job": "پاییزه 1اتو", "price": 131040, "subImage": "../../assets/wash.c4124479.svg" },
-              { "job": "پاییزه 1خیاطی و تعمیارت", "price": 131040, "subImage": "../../assets/wash.c4124479.svg" }
+              {  "categoryName": "1مجلسی", "job": "پاییزه 1خشکشویی + اتو", "price": 131040, "subImage": "../../assets/wash.c4124479.svg" },
+              {  "categoryName": "1مجلسی","job": "پاییزه 1اتو", "price": 131040, "subImage": "../../assets/wash.c4124479.svg" },
+              {  "categoryName": "1مجلسی","job": "پاییزه 1خیاطی و تعمیارت", "price": 131040, "subImage": "../../assets/wash.c4124479.svg" }
             ]
           }
         
@@ -24,25 +24,25 @@
           {
             "categoryName": "2مجلسی",
             "categoryDo": [
-              { "job": "خشکشویی + اتو", "price": 131040, "subImage": "../../assets/wash.c4124479.svg" },
-              { "job": "اتو", "price": 131040, "subImage": "../../assets/wash.c4124479.svg" },
-              { "job": "خیاطی و تعمیارت", "price": 131040, "subImage": "../../assets/wash.c4124479.svg" }
+              { "categoryName": "2مجلسی","job": "خشکشویی + اتو", "price": 131040, "subImage": "../../assets/wash.c4124479.svg" },
+              { "categoryName": "2مجلسی","job": "اتو", "price": 131040, "subImage": "../../assets/wash.c4124479.svg" },
+              { "categoryName": "2مجلسی","job": "خیاطی و تعمیارت", "price": 131040, "subImage": "../../assets/wash.c4124479.svg" }
             ]
           },
           {
             "categoryName": "ساده",
             "categoryDo": [
-              { "job": "خشکشویی + اتو", "price": 131040, "subImage": "../../assets/wash.c4124479.svg" },
-              { "job": "اتو", "price": 131040, "subImage": "../../assets/wash.c4124479.svg" },
-              { "job": "خیاطی و تعمیارت", "price": 131040, "subImage": "../../assets/wash.c4124479.svg" }
+              { "categoryName": "ساده","job": "خشکشویی + اتو", "price": 131040, "subImage": "../../assets/wash.c4124479.svg" },
+              { "categoryName": "ساده","job": "اتو", "price": 131040, "subImage": "../../assets/wash.c4124479.svg" },
+              { "categoryName": "ساده","job": "خیاطی و تعمیارت", "price": 131040, "subImage": "../../assets/wash.c4124479.svg" }
             ]
           },
           {
             "categoryName": "پاییزه",
             "categoryDo": [
-              { "job": "خشکشویی + اتو", "price": 131040, "subImage": "../../assets/wash.c4124479.svg" },
-              { "job": "اتو", "price": 131040, "subImage": "../../assets/wash.c4124479.svg" },
-              { "job": "خیاطی و تعمیارت", "price": 131040, "subImage": "../../assets/wash.c4124479.svg" }
+              { "categoryName": "پاییزه","job": "خشکشویی + اتو", "price": 131040, "subImage": "../../assets/wash.c4124479.svg" },
+              { "categoryName": "پاییزه","job": "اتو", "price": 131040, "subImage": "../../assets/wash.c4124479.svg" },
+              { "categoryName": "پاییزه","job": "خیاطی و تعمیارت", "price": 131040, "subImage": "../../assets/wash.c4124479.svg" }
             ]
           }
         ]
@@ -55,25 +55,25 @@
           {
             "categoryName": "3مجلسی",
             "categoryDo": [
-              { "job": "خشکشویی + اتو", "price": 131040, "subImage": "../../assets/wash.c4124479.svg" },
-              { "job": "اتو", "price": 131040, "subImage": "../../assets/wash.c4124479.svg" },
-              { "job": "خیاطی و تعمیارت", "price": 131040, "subImage": "../../assets/wash.c4124479.svg" }
+              { "categoryName": "3مجلسی","job": "خشکشویی + اتو", "price": 131040, "subImage": "../../assets/wash.c4124479.svg" },
+              { "categoryName": "3مجلسی","job": "اتو", "price": 131040, "subImage": "../../assets/wash.c4124479.svg" },
+              { "categoryName": "3مجلسی","job": "خیاطی و تعمیارت", "price": 131040, "subImage": "../../assets/wash.c4124479.svg" }
             ]
           },
           {
             "categoryName": "ساده",
             "categoryDo": [
-              { "job": "خشکشویی + اتو", "price": 131040, "subImage": "../../assets/wash.c4124479.svg" },
-              { "job": "اتو", "price": 131040, "subImage": "../../assets/wash.c4124479.svg" },
-              { "job": "خیاطی و تعمیارت", "price": 131040, "subImage": "../../assets/wash.c4124479.svg" }
+              { "categoryName": "ساده","job": "خشکشویی + اتو", "price": 131040, "subImage": "../../assets/wash.c4124479.svg" },
+              { "categoryName": "ساده","job": "اتو", "price": 131040, "subImage": "../../assets/wash.c4124479.svg" },
+              { "categoryName": "ساده","job": "خیاطی و تعمیارت", "price": 131040, "subImage": "../../assets/wash.c4124479.svg" }
             ]
           },
           {
             "categoryName": "4پاییزه",
             "categoryDo": [
-              { "job": "خشکشویی + اتو", "price": 131040, "subImage": "../../assets/wash.c4124479.svg" },
-              { "job": "اتو", "price": 131040, "subImage": "../../assets/wash.c4124479.svg" },
-              { "job": "خیاطی و تعمیارت", "price": 131040, "subImage": "../../assets/wash.c4124479.svg" }
+              {"categoryName": "4پاییزه", "job": "خشکشویی + اتو", "price": 131040, "subImage": "../../assets/wash.c4124479.svg" },
+              {"categoryName": "4پاییزه", "job": "اتو", "price": 131040, "subImage": "../../assets/wash.c4124479.svg" },
+              {"categoryName": "4پاییزه", "job": "خیاطی و تعمیارت", "price": 131040, "subImage": "../../assets/wash.c4124479.svg" }
             ]
           }
         ]
@@ -86,25 +86,27 @@
           {
             "categoryName": "5مجلسی",
             "categoryDo": [
-              { "job": "خشکشویی + اتو", "price": 131040, "subImage": "../../assets/wash.c4124479.svg" },
-              { "job": "اتو", "price": 131040, "subImage": "../../assets/wash.c4124479.svg" },
-              { "job": "خیاطی و تعمیارت", "price": 131040, "subImage": "../../assets/wash.c4124479.svg" }
+              {
+            "categoryName": "5مجلسی","job": "خشکشویی + اتو", "price": 131040, "subImage": "../../assets/wash.c4124479.svg" },
+              {
+            "categoryName": "5مجلسی","job": "اتو", "price": 131040, "subImage": "../../assets/wash.c4124479.svg" },
+              {
+            "categoryName": "5مجلسی","job": "خیاطی و تعمیارت", "price": 131040, "subImage": "../../assets/wash.c4124479.svg" }
             ]
           },
           {
             "categoryName": "ساده",
             "categoryDo": [
-              { "job": "خشکشویی + اتو", "price": 131040, "subImage": "../../assets/wash.c4124479.svg" },
-              { "job": "اتو", "price": 131040, "subImage": "../../assets/wash.c4124479.svg" },
-              { "job": "خیاطی و تعمیارت", "price": 131040, "subImage": "../../assets/wash.c4124479.svg" }
+              {"categoryName": "ساده", "job": "اتو", "price": 131040, "subImage": "../../assets/wash.c4124479.svg" },
+              {"categoryName": "ساده", "job": "خیاطی و تعمیارت", "price": 131040, "subImage": "../../assets/wash.c4124479.svg" }
             ]
           },
           {
             "categoryName": "پاییزه",
             "categoryDo": [
-              { "job": "خشکشویی + اتو", "price": 131040, "subImage": "../../assets/wash.c4124479.svg" },
-              { "job": "اتو", "price": 131040, "subImage": "../../assets/wash.c4124479.svg" },
-              { "job": "خیاطی و تعمیارت", "price": 131040, "subImage": "../../assets/wash.c4124479.svg" }
+              {"categoryName": "پاییزه", "job": "خشکشویی + اتو", "price": 131040, "subImage": "../../assets/wash.c4124479.svg" },
+              {"categoryName": "پاییزه", "job": "اتو", "price": 131040, "subImage": "../../assets/wash.c4124479.svg" },
+              {"categoryName": "پاییزه", "job": "خیاطی و تعمیارت", "price": 131040, "subImage": "../../assets/wash.c4124479.svg" }
             ]
           }
         ]
@@ -117,25 +119,25 @@
           {
             "categoryName": "6مجلسی",
             "categoryDo": [
-              { "job": "خشکشویی + اتو", "price": 131040, "subImage": "../../assets/wash.c4124479.svg" },
-              { "job": "اتو", "price": 131040, "subImage": "../../assets/wash.c4124479.svg" },
-              { "job": "خیاطی و تعمیارت", "price": 131040, "subImage": "../../assets/wash.c4124479.svg" }
+              {  "categoryName": "6مجلسی","job": "خشکشویی + اتو", "price": 131040, "subImage": "../../assets/wash.c4124479.svg" },
+              {  "categoryName": "6مجلسی","job": "اتو", "price": 131040, "subImage": "../../assets/wash.c4124479.svg" },
+              {  "categoryName": "6مجلسی","job": "خیاطی و تعمیارت", "price": 131040, "subImage": "../../assets/wash.c4124479.svg" }
             ]
           },
           {
             "categoryName": "ساده",
             "categoryDo": [
-              { "job": "خشکشویی + اتو", "price": 131040, "subImage": "../../assets/wash.c4124479.svg" },
-              { "job": "اتو", "price": 131040, "subImage": "../../assets/wash.c4124479.svg" },
-              { "job": "خیاطی و تعمیارت", "price": 131040, "subImage": "../../assets/wash.c4124479.svg" }
+              {"categoryName": "ساده", "job": "خشکشویی + اتو", "price": 131040, "subImage": "../../assets/wash.c4124479.svg" },
+              {"categoryName": "ساده", "job": "اتو", "price": 131040, "subImage": "../../assets/wash.c4124479.svg" },
+              {"categoryName": "ساده", "job": "خیاطی و تعمیارت", "price": 131040, "subImage": "../../assets/wash.c4124479.svg" }
             ]
           },
           {
             "categoryName": "پاییزه",
             "categoryDo": [
-              { "job": "خشکشویی + اتو", "price": 131040, "subImage": "../../assets/wash.c4124479.svg" },
-              { "job": "اتو", "price": 131040, "subImage": "../../assets/wash.c4124479.svg" },
-              { "job": "خیاطی و تعمیارت", "price": 131040, "subImage": "../../assets/wash.c4124479.svg" }
+              { "categoryName": "پاییزه","job": "خشکشویی + اتو", "price": 131040, "subImage": "../../assets/wash.c4124479.svg" },
+              { "categoryName": "پاییزه","job": "اتو", "price": 131040, "subImage": "../../assets/wash.c4124479.svg" },
+              { "categoryName": "پاییزه","job": "خیاطی و تعمیارت", "price": 131040, "subImage": "../../assets/wash.c4124479.svg" }
             ]
           }
         ]
@@ -148,25 +150,25 @@
           {
             "categoryName": "7مجلسی",
             "categoryDo": [
-              { "job": "خشکشویی + اتو", "price": 131040, "subImage": "../../assets/wash.c4124479.svg" },
-              { "job": "اتو", "price": 131040, "subImage": "../../assets/wash.c4124479.svg" },
-              { "job": "خیاطی و تعمیارت", "price": 131040, "subImage": "../../assets/wash.c4124479.svg" }
+              { "categoryName": "7مجلسی","job": "خشکشویی + اتو", "price": 131040, "subImage": "../../assets/wash.c4124479.svg" },
+              { "categoryName": "7مجلسی","job": "اتو", "price": 131040, "subImage": "../../assets/wash.c4124479.svg" },
+              { "categoryName": "7مجلسی","job": "خیاطی و تعمیارت", "price": 131040, "subImage": "../../assets/wash.c4124479.svg" }
             ]
           },
           {
             "categoryName": "ساده",
             "categoryDo": [
-              { "job": "خشکشویی + اتو", "price": 131040, "subImage": "../../assets/wash.c4124479.svg" },
-              { "job": "اتو", "price": 131040, "subImage": "../../assets/wash.c4124479.svg" },
-              { "job": "خیاطی و تعمیارت", "price": 131040, "subImage": "../../assets/wash.c4124479.svg" }
+              { "categoryName": "ساده","job": "خشکشویی + اتو", "price": 131040, "subImage": "../../assets/wash.c4124479.svg" },
+              { "categoryName": "ساده","job": "اتو", "price": 131040, "subImage": "../../assets/wash.c4124479.svg" },
+              { "categoryName": "ساده","job": "خیاطی و تعمیارت", "price": 131040, "subImage": "../../assets/wash.c4124479.svg" }
             ]
           },
           {
             "categoryName": "پاییزه",
             "categoryDo": [
-              { "job": "خشکشویی + اتو", "price": 131040, "subImage": "../../assets/wash.c4124479.svg" },
-              { "job": "اتو", "price": 131040, "subImage": "../../assets/wash.c4124479.svg" },
-              { "job": "خیاطی و تعمیارت", "price": 131040, "subImage": "../../assets/wash.c4124479.svg" }
+              {"categoryName": "پاییزه", "job": "خشکشویی + اتو", "price": 131040, "subImage": "../../assets/wash.c4124479.svg" },
+              {"categoryName": "پاییزه", "job": "اتو", "price": 131040, "subImage": "../../assets/wash.c4124479.svg" },
+              {"categoryName": "پاییزه", "job": "خیاطی و تعمیارت", "price": 131040, "subImage": "../../assets/wash.c4124479.svg" }
             ]
           }
         ]
