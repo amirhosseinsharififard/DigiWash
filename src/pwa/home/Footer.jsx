@@ -63,7 +63,8 @@ const Footer = () => {
           justifyContent='center'
           alignContent='center'>
           <Link
-            onClick={() => toggleHandler()}
+            // onClick={() => toggleHandler()}
+            to='/b'
             style={{
               textDecoration: "none",
               color: "#0caeca",

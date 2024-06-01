@@ -1,6 +1,15 @@
 .link {
   
+   width: 100%;
+   text-align: center;
+   padding: 1rem 0;
+   text-decoration: none;
+   color: black ;
+   transition: 5 ;
+   border-radius: 30px;
 }
 .link:hover{
-   cursor: pointer;
+   background-color:rgb(12, 174, 202) ;
+   color: #fff;
+  cursor: pointer;
 }

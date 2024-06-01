@@ -10,7 +10,7 @@ const CategoryModal = ({ buttonsActiveHandler, buttonActive, buttons }) => {
       color='black'
       borderRadius='30px'>
       {buttons.map((item, id) => (
-        <Grid item xs={4} sm={4} md={4} lg={4} display='flex' key={id} sx={{}}>
+        <Grid item xs={4} sm={4} md={4} lg={4} display='flex' key={id} >
             <Typography
               className={styles.link}
               onClick={() => buttonsActiveHandler(id)}

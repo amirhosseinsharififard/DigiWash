@@ -13,7 +13,7 @@ const cartSlice = createSlice({
   initialState,
   reducers: {
     addItem: (state, action) => {
-      if (!state.selectedItems.find((item) => item.id === action.payload.id)) {
+      if (!state.selectedItems.find((item) => item.id === action.payload.id && item.title !== action.payload.title)) {
         state.selectedItems.push({ ...action.payload, quantity: 1 });
         state.total = sumPrice(state.selectedItems);
         state.itemsCounter = sumQuanitiy(state.selectedItems);

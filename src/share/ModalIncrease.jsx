@@ -61,7 +61,7 @@ const ModalIncrease = ({ toggleHandler, checkIndex }) => {
                 mr='8px'
                 mb='16px'
                 fontFamily='Vazir'>
-                کت و شلوار
+               {products[checkIndex].title}
               </Typography>
             </Grid>
             {/* BUTTON FOR CHOOSE CATEGORY */}

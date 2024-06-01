@@ -12,7 +12,7 @@ import {
 import { productQuantity } from "../helper/helper";
 // import select from "../pwa/features/counter/counterSlice";
 
-const IncreaseItem = ({ data, title, image, cost, id, whichButton }) => {
+const IncreaseItem = ({ data, title, image, cost, id, }) => {
   const state = useSelector(cart);
   const dispatch = useDispatch();
 
@@ -20,7 +20,6 @@ const IncreaseItem = ({ data, title, image, cost, id, whichButton }) => {
   const quantiy = productQuantity(state, id, data);
 
   console.log(state);
-  console.log(whichButton);
   return (
     <>
       <Grid

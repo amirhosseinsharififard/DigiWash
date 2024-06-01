@@ -6,7 +6,7 @@ import { Route, Routes } from "react-router-dom";
 //pwa site component
 
 import HomePage from "./pwa/home/HomePage";
-import TestResponsive from "./pwa/TestResponsive";
+// import TestResponsive from "./pwa/TestResponsive";
 import ServicePage from "./pwa/service/ServicePage";
 import Footer from "./pwa/home/Footer";
 import ModalIncrease from "./share/ModalIncrease";
@@ -24,14 +24,14 @@ function App() {
     <ThemeProvider theme={theme}>
 
       <Routes>
-        {/* <Route path='/' element={<HomePage />} /> */}
-        {/* <Route path='/services' element={<ServicePage />} /> */}
-        {/* <Route path='' element={<ModalIncrease />} /> */}
-        {/* <Route path='/profile' element={<ProfilePage />} /> */}
-        {/* <Route path='/profile/address' element={<AddressPage />} /> */}
-        {/* <Route path='/profile/transactions' element={<TransactionsPage />} /> */}
-        {/* <Route path='/profile/edit' element={<EditPage />} /> */}
-        <Route path="/" element={<Basket/>}/>
+        <Route path='/' element={<HomePage />} />
+        <Route path='/services' element={<ServicePage />} />
+        <Route path='' element={<ModalIncrease />} />
+        <Route path='/profile' element={<ProfilePage />} />
+        <Route path='/profile/address' element={<AddressPage />} />
+        <Route path='/profile/transactions' element={<TransactionsPage />} />
+        <Route path='/profile/edit' element={<EditPage />} />
+        <Route path="/b" element={<Basket/>}/>
       </Routes>
       <Footer />
       </ThemeProvider>
