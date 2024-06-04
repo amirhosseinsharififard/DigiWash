@@ -1,28 +1,25 @@
 /* eslint-disable react/prop-types */
 import { Box, Button, Grid, Typography } from "@mui/material";
-// import { useSelector, useDispatch } from "react-redux";
-import {
-//   addItem,
-// //   cart,
-//   decrease,
-//   increase,
-//   removeItem,
-} from "../pwa/features/cart/cartSlice";
-// import { productQuantity } from "../helper/helper";
+import { addItem, cart, decrease, increase, removeItem } from "../pwa/features/cart/cartSlice";
 // import select from "../pwa/features/counter/counterSlice";
 
 import washMashin from "../../assets/wash.c4124479.svg"
 import toFarsiNumber, { persianPrice } from "../share/functions";
+import { useDispatch, useSelector } from "react-redux";
+import { productQuantity } from "../helper/helper";
 
+// eslint-disable-next-line no-unused-vars
 const OrderSectionItemContent = ({ data, title, image, cost, id, whichButton }) => {
-//   const state = useSelector(cart);
-//   const dispatch = useDispatch();
+  const state = useSelector(cart);
+  const dispatch = useDispatch();
 
 //   // bayad data khas behesh ersal beshe
-//   const quantiy = productQuantity(state, id, data);
+  const quantiy = productQuantity(state, id, data);
 
-//   console.log(state);
-//   console.log(whichButton);
+  // console.log("data");
+  // console.log(data);
+  // console.log("state");
+  // console.log(state);
   return (
     <>
       <Grid
@@ -42,12 +39,12 @@ const OrderSectionItemContent = ({ data, title, image, cost, id, whichButton }) 
           </Box>
           <Box display='flex' flexDirection={"column"} justifyContent='center'>
             <Typography variant='h6' fontSize='16px' fontFamily='Vazir-Bold'>
-              {/* {title} */}
-              خشکشویی + اتو
+              {title}
+              {/* خشکشویی + اتو */}
             </Typography>
             <Typography variant='h6' fontSize='16px' fontFamily='Vazir'>
-              {/* {persianPrice(cost)} */}
-              {persianPrice(220000)}
+              {persianPrice(cost)}
+              {/* {persianPrice(220000)} */}
 
                تومان
             </Typography>
@@ -64,9 +61,9 @@ const OrderSectionItemContent = ({ data, title, image, cost, id, whichButton }) 
           alignItems='center'
           textAlign="left"
     >
-          {/* {quantiy == 0 ? ( */}
+          {quantiy == 0 ? (
             <Button
-            //   onClick={() => dispatch(addItem(data))}
+              onClick={() => dispatch(addItem(data))}
               sx={{
                 minWidth: "48px",
                 height: "48px",
@@ -82,9 +79,9 @@ const OrderSectionItemContent = ({ data, title, image, cost, id, whichButton }) 
               }}>
               +
             </Button>
-          {/* ) : ( */}
-            {/* <Button
-            //   onClick={() => dispatch(increase(data))}
+          ) : (
+            <Button
+              onClick={() => dispatch(increase(data))}
               sx={{
                 minWidth: "48px",
                 height: "48px",
@@ -99,8 +96,8 @@ const OrderSectionItemContent = ({ data, title, image, cost, id, whichButton }) 
                 },
               }}>
               +
-            </Button> */}
-          {/* )} */}
+            </Button>
+          )}
 
           <span
             style={{
@@ -109,13 +106,13 @@ const OrderSectionItemContent = ({ data, title, image, cost, id, whichButton }) 
               fontWeight: "bold",
               margin: "8px",
             }}>
-            {/* {toFarsiNumber(quantiy)} */}
-            {toFarsiNumber(10)}
+            {toFarsiNumber(quantiy)}
+            {/* {toFarsiNumber(10)} */}
           </span>
 
-          {/* {quantiy > 1 ? ( */}
+          {quantiy > 1 ? (
             <Button
-            //   onClick={() => dispatch(decrease(data))}
+              onClick={() => dispatch(decrease(data))}
               sx={{
                 minWidth: "48px",
                 height: "48px",
@@ -123,8 +120,8 @@ const OrderSectionItemContent = ({ data, title, image, cost, id, whichButton }) 
                 alignItems: "center",
                 color: "white",
 
-                // bgcolor: quantiy >= 1 ? "rgb(12, 174, 202)" : "white",
-                bgcolor:  "rgb(12, 174, 202)" ,
+                bgcolor: quantiy >= 1 ? "rgb(12, 174, 202)" : "white",
+                // bgcolor:  "rgb(12, 174, 202)" ,
 
                 ml: "2rem",
                 fontSize: "14px",
@@ -134,16 +131,16 @@ const OrderSectionItemContent = ({ data, title, image, cost, id, whichButton }) 
               }}>
               -
             </Button>
-          {/* ) : ( */}
-            {/* <Button
-            //   onClick={() => dispatch(removeItem(data))}
+          ) : (
+            <Button
+              onClick={() => dispatch(removeItem(data))}
               sx={{
                 minWidth: "48px",
                 height: "48px",
-                // bgcolor: quantiy >= 1 ? "rgb(12, 174, 202)" : "white",
+                bgcolor: quantiy >= 1 ? "rgb(12, 174, 202)" : "white",
                 borderRadius: "50%",
                 alignItems: "center",
-                // color: quantiy >= 1 ? "white" : "black",
+                color: quantiy >= 1 ? "white" : "black",
                 ml: "2rem",
                 fontSize: "14px",
 
@@ -152,8 +149,8 @@ const OrderSectionItemContent = ({ data, title, image, cost, id, whichButton }) 
                 },
               }}>
               -
-            </Button> */}
-          {/* )} */}
+            </Button>
+          )}
         </Grid>
       </Grid>
     </>

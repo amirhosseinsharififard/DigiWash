@@ -4,15 +4,37 @@ import OrederSectionItemContent from "./OrederSectionItemContent";
 import { useSelector } from "react-redux";
 import { cart } from "../pwa/features/cart/cartSlice";
 
-
 const OrederSectionItem = () => {
   const products = useSelector(cart);
   const selectedItems = products.selectedItems;
-  console.log(selectedItems);
+  // // console.log("selectedItems");
+  // console.log(selectedItems[0]);
 
+  const findCategoryTitle = () => {
+    const category = selectedItems.map((item) => item.categoryTitle);
+    category.filter((value, index) => selectedItems.indexOf(value) !== index);
+    return category;
+  };
+  function removeDuplicates(arr) {
+    return arr.filter((item, index) => arr.indexOf(item) === index);
+  }
+  const newCategory = removeDuplicates(findCategoryTitle());
 
+  const reducerPrice = (category) => {
+    return category.map((item) => {
+      const sumPrice = selectedItems.map(
+        (data) => data.categoryTitle == item && data.quantity * data.price
+      );
 
+      let reducePrice2 = sumPrice.reduce((acc, curr) => acc + curr, 0);
+      console.log(reducePrice2);
+      return reducePrice2;
+      // console.log(item),
+      // console.log("item"),
+    });
+  };
 
+  const categorysPrice = reducerPrice(newCategory);
   return (
     <>
       <Grid
@@ -34,7 +56,7 @@ const OrederSectionItem = () => {
               display: "flex",
               justifyContent: "space-between",
             }}>
-            {selectedItems.map((item, i) => (
+            {newCategory.map((item, i) => (
               <>
                 <Grid
                   key={i}
@@ -46,7 +68,56 @@ const OrederSectionItem = () => {
                   sm={12}
                   md={12}
                   lg={12}>
-                  {i === 0 && (
+                  <>
+                    <Typography fontSize='16px' fontFamily='Vazir'>
+                      {item}
+                    </Typography>
+
+                    <Typography fontSize='12px' fontFamily='Vazir'>
+                      درمجموع
+                      <span
+                        style={{
+                          fontFamily: "Vazir",
+                          fontWeight: "bold",
+                        }}>
+                        {persianPrice(categorysPrice[i])} تومان
+                      </span>
+                    </Typography>
+                  </>
+                </Grid>
+                <Grid item m='1rem .7rem ' xs={12} sm={12} md={12} lg={12}>
+                  {selectedItems.map((item2, i) => (
+                    <>
+                      {item2.categoryTitle == item && (
+                        <>
+                          <OrederSectionItemContent
+                            key={i}
+                            id={item2.id}
+                            cost={item2.price}
+                            title={item2.job}
+                            data={item2}
+                          />
+                        </>
+                      )}
+                    </>
+                  ))}
+                </Grid>
+              </>
+            ))}
+
+            {/* {selectedItems.map((item, i) => (
+              <>
+                <Grid
+                  key={i}
+                  item
+                  m='1rem .7rem '
+                  display='flex'
+                  justifyContent='space-between'
+                  xs={12}
+                  sm={12}
+                  md={12}
+                  lg={12}>
+                  {spread.length && (
                     <>
                       <Typography fontSize='16px' fontFamily='Vazir'>
                         {item.categoryTitle}
@@ -65,18 +136,16 @@ const OrederSectionItem = () => {
                     </>
                   )}
                 </Grid>
-                <Grid
-                  item
-                  m='1rem .7rem '
-                  xs={12}
-                  sm={12}
-                  md={12}
-                  lg={12}
-                 >
-                  <OrederSectionItemContent item={item} />
+                <Grid item m='1rem .7rem ' xs={12} sm={12} md={12} lg={12}>
+                  <OrederSectionItemContent
+                    id={item.id}
+                    cost={item.price}
+                    title={item.job}
+                    data={item}
+                  />
                 </Grid>
               </>
-            ))}
+            ))} */}
 
             {/* <Grid
               item
