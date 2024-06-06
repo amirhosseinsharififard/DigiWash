@@ -67,14 +67,14 @@ const OrderSectionItemContent = ({ data, title, image, cost, id, whichButton }) 
               sx={{
                 minWidth: "48px",
                 height: "48px",
-                bgcolor: "rgb(12, 174, 202)",
+                bgcolor: "rgba(12, 174, 202,.5)",
                 borderRadius: "50%",
                 display: "flex",
                 alignItems: "center",
                 alignContent: "center",
                 color: "white",
                 "&:hover": {
-                  bgcolor: "rgb(12, 174, 202)",
+                  bgcolor: "rgba(12, 174, 202,.5)",
                 },
               }}>
               +
@@ -85,14 +85,14 @@ const OrderSectionItemContent = ({ data, title, image, cost, id, whichButton }) 
               sx={{
                 minWidth: "48px",
                 height: "48px",
-                bgcolor: "rgb(12, 174, 202)",
+                bgcolor: "rgba(12, 174, 202,.5)",
                 borderRadius: "50%",
                 display: "flex",
                 alignItems: "center",
                 alignContent: "center",
                 color: "white",
                 "&:hover": {
-                  bgcolor: "rgb(12, 174, 202)",
+                  bgcolor: "rgba(12, 174, 202,.5)",
                 },
               }}>
               +
@@ -120,13 +120,13 @@ const OrderSectionItemContent = ({ data, title, image, cost, id, whichButton }) 
                 alignItems: "center",
                 color: "white",
 
-                bgcolor: quantiy >= 1 ? "rgb(12, 174, 202)" : "white",
-                // bgcolor:  "rgb(12, 174, 202)" ,
+                bgcolor: quantiy >= 1 ? "rgba(12, 174, 202,.5)" : "white",
+                // bgcolor:  "rgba(12, 174, 202,.5)" ,
 
                 ml: "2rem",
                 fontSize: "14px",
                 "&:hover": {
-                  bgcolor: "rgb(12, 174, 202)",
+                  bgcolor: "rgba(12, 174, 202,.5)",
                 },
               }}>
               -
@@ -137,7 +137,7 @@ const OrderSectionItemContent = ({ data, title, image, cost, id, whichButton }) 
               sx={{
                 minWidth: "48px",
                 height: "48px",
-                bgcolor: quantiy >= 1 ? "rgb(12, 174, 202)" : "white",
+                bgcolor: quantiy >= 1 ? "rgba(12, 174, 202,.5)" : "white",
                 borderRadius: "50%",
                 alignItems: "center",
                 color: quantiy >= 1 ? "white" : "black",
@@ -145,7 +145,7 @@ const OrderSectionItemContent = ({ data, title, image, cost, id, whichButton }) 
                 fontSize: "14px",
 
                 "&:hover": {
-                  bgcolor: "rgb(12, 174, 202)",
+                  bgcolor: "rgba(12, 174, 202,.5)",
                 },
               }}>
               -

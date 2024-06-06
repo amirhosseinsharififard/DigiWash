@@ -63,14 +63,14 @@ const IncreaseItem = ({ data, title, image, cost, id, }) => {
               sx={{
                 minWidth: "48px",
                 height: "48px",
-                bgcolor: "rgb(12, 174, 202)",
+                bgcolor: "rgba(12, 174, 202,.5)",
                 borderRadius: "50%",
                 display: "flex",
                 alignItems: "center",
                 alignContent: "center",
                 color: "white",
                 "&:hover": {
-                  bgcolor: "rgb(12, 174, 202)",
+                  bgcolor: "rgba(12, 174, 202,.5)",
                 },
               }}>
               +
@@ -81,14 +81,14 @@ const IncreaseItem = ({ data, title, image, cost, id, }) => {
               sx={{
                 minWidth: "48px",
                 height: "48px",
-                bgcolor: "rgb(12, 174, 202)",
+                bgcolor: "rgba(12, 174, 202,.5)",
                 borderRadius: "50%",
                 display: "flex",
                 alignItems: "center",
                 alignContent: "center",
                 color: "white",
                 "&:hover": {
-                  bgcolor: "rgb(12, 174, 202)",
+                  bgcolor: "rgba(12, 174, 202,.5)",
                 },
               }}>
               +
@@ -115,12 +115,12 @@ const IncreaseItem = ({ data, title, image, cost, id, }) => {
                 alignItems: "center",
                 color: "white",
 
-                bgcolor: quantiy >= 1 ? "rgb(12, 174, 202)" : "white",
+                bgcolor: quantiy >= 1 ? "rgba(12, 174, 202,.5)" : "white",
 
                 ml: "2rem",
                 fontSize: "14px",
                 "&:hover": {
-                  bgcolor: "rgb(12, 174, 202)",
+                  bgcolor: "rgba(12, 174, 202,.5)",
                 },
               }}>
               -
@@ -131,7 +131,7 @@ const IncreaseItem = ({ data, title, image, cost, id, }) => {
               sx={{
                 minWidth: "48px",
                 height: "48px",
-                bgcolor: quantiy >= 1 ? "rgb(12, 174, 202)" : "white",
+                bgcolor: quantiy >= 1 ? "rgba(12, 174, 202,.5)" : "white",
                 borderRadius: "50%",
                 alignItems: "center",
                 color: quantiy >= 1 ? "white" : "black",
@@ -139,7 +139,7 @@ const IncreaseItem = ({ data, title, image, cost, id, }) => {
                 fontSize: "14px",
 
                 "&:hover": {
-                  bgcolor: "rgb(12, 174, 202)",
+                  bgcolor: "rgba(12, 174, 202,.5)",
                 },
               }}>
               -

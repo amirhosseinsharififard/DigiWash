@@ -64,12 +64,14 @@ const ModalIncrease = ({ toggleHandler, checkIndex }) => {
                {products[checkIndex].title}
               </Typography>
             </Grid>
+            
             {/* BUTTON FOR CHOOSE CATEGORY */}
             {buttons.length == 1 ? (
               ""
             ) : (
               <Grid item xs={12} sm={12} md={12} lg={12} m=' .5rem 8px'>
                 <CategoryModal
+                gridItem={buttons.length}
                   buttonsActiveHandler={buttonsActiveHandler}
                   buttonActive={buttonActive}
                   buttons={buttons}
