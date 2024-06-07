@@ -10,7 +10,7 @@ import Typography from "@mui/material/Typography";
 import { TimelineOppositeContent } from "@mui/lab";
 const TransportationsWhiteSection = () => {
   return (
-    <Box mb={30} bgcolor="white" borderRadius="30px" p="8px 16px">
+    <Box  bgcolor="white" borderRadius="30px" p="8px 16px">
       <Timeline
         sx={{
           display: "flex",
