@@ -1,6 +1,7 @@
 import { Grid, Stack, Typography } from "@mui/material";
 import recipt from "../../assets/receipt.d74dde96.svg";
 import BillContentComponent from "./BillContentComponent";
+
 const BillComponent = () => {
   return (
     <Grid item xs={12} mt='2rem' width='100%'>
@@ -9,6 +10,7 @@ const BillComponent = () => {
         display='flex'
         flexDirection='row'
         justifyContent='start'
+        alignItems="center"
         alignContent='center'>
         <img src={recipt} />
         <Typography
@@ -21,6 +23,7 @@ const BillComponent = () => {
         </Typography>
       </Stack>
       <BillContentComponent />
+
       
     </Grid>
   );
