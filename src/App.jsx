@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import {Route, Routes} from "react-router-dom";
 
 // header site asli
 // import Header from "./web/Header";
@@ -14,26 +14,27 @@ import ProfilePage from "./pwa/profile/ProfilePage";
 import AddressPage from "./pwa/profile/address/AddressPage";
 import TransactionsPage from "./pwa/profile/transactions/TransactionsPage";
 
-import { ThemeProvider } from "@mui/material";
+import {ThemeProvider} from "@mui/material";
 import theme from "./Theme";
 import EditPage from "./pwa/profile/edit/EditPage";
 import Basket from "./page/Basket";
+
 function App() {
+  
   return (
     <>
-    <ThemeProvider theme={theme}>
-
-      <Routes>
-        <Route path='/' element={<HomePage />} />
-        <Route path='/services' element={<ServicePage />} />
-        <Route path='' element={<ModalIncrease />} />
-        <Route path='/profile' element={<ProfilePage />} />
-        <Route path='/profile/address' element={<AddressPage />} />
-        <Route path='/profile/transactions' element={<TransactionsPage />} />
-        <Route path='/profile/edit' element={<EditPage />} />
-        <Route path="/b" element={<Basket/>}/>
-      </Routes>
-      <Footer />
+      <ThemeProvider theme={theme}>
+        <Routes>
+          <Route path='/' element={<HomePage />} />
+          <Route path='/services' element={<ServicePage />} />
+          <Route path='' element={<ModalIncrease />} />
+          <Route path='/profile' element={<ProfilePage />} />
+          <Route path='/profile/address' element={<AddressPage />} />
+          <Route path='/profile/transactions' element={<TransactionsPage />} />
+          <Route path='/profile/edit' element={<EditPage />} />
+          <Route path='/b' element={<Basket />} />
+        </Routes>
+        <Footer />
       </ThemeProvider>
     </>
   );

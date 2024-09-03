@@ -1,5 +1,5 @@
-import { Box, Button, Grid, Typography } from "@mui/material";
-import { Link, useLocation } from "react-router-dom";
+import {Box, Button, Grid, Typography} from "@mui/material";
+import {Link, useLocation} from "react-router-dom";
 
 // logo
 import LogoPwa from "../../../assets/LogoPwa.png";
@@ -7,19 +7,37 @@ import CreateOutlinedIcon from "@mui/icons-material/CreateOutlined";
 import WalletIcon from "@mui/icons-material/Wallet";
 import CardGiftcardIcon from "@mui/icons-material/CardGiftcard";
 import toFarsiNumber from "../../share/functions";
+import {useEffect, useState} from "react";
+import {BASE_URL, BEARER_TOKEN, getFindUser} from "../../API/config";
+import axios from "axios";
 
 const HeaderProfile = () => {
+  const [user, setUser] = useState();
   const pathName = useLocation().pathname;
   const personAccout = {
     nameAccount: "amir sharifi",
     cellPhoneNumber: "09172384087",
-    costAccount: "0"
+    costAccount: "0",
   };
   console.log(pathName);
-
+  useEffect(() => {
+    const fetchData = async () => {
+      setUser( await axios
+        .get(`${BASE_URL}api/findUser`, {
+          headers: {Authorization: "Bearer " + BEARER_TOKEN},
+        })
+        .then((result) => {
+          console.log(result.data.message);
+          return result.data.message;
+        }));
+    };
+    fetchData();
+   
+  }, []);
+  
   return (
     <>
-      <Box sx={{ bgcolor: "#0caeca", borderRadius: "0 0 24px 24px " }}>
+      <Box sx={{bgcolor: "#0caeca", borderRadius: "0 0 24px 24px "}}>
         <Box
           sx={{
             maxWidth: "768px",
@@ -27,7 +45,7 @@ const HeaderProfile = () => {
             display: "flex",
             alignItems: "container",
             flexDirection: "column",
-            p: "2rem 1rem 0 1rem "
+            p: "2rem 1rem 0 1rem ",
           }}>
           {/* blue zone */}
           <Grid
@@ -38,7 +56,7 @@ const HeaderProfile = () => {
               alignItems: "center",
               justifyContent: "space-between",
               p: "1.5rem 1.5rem .7rem 1.5rem",
-              color: "white"
+              color: "white",
             }}>
             <>
               <Grid item display='flex'>
@@ -49,14 +67,14 @@ const HeaderProfile = () => {
                     fontSize='16px'
                     fontFamily='Vazir-Bold'
                     fontWeight='bold'>
-                    {personAccout.nameAccount}
+                    {(user ? user.name:'')}
                   </Typography>
                   <Typography
                     variant='body2'
                     fontSize='14px'
                     fontFamily='Vazir'
                     fontWeight='bold'>
-                    {toFarsiNumber(personAccout.cellPhoneNumber)}
+                    {toFarsiNumber(user ? user.number : '')}
                   </Typography>
                 </Box>
               </Grid>
@@ -65,9 +83,9 @@ const HeaderProfile = () => {
                   to='/profile/edit'
                   style={{
                     padding: "1.5rem 2rem",
-                    fontWeight: "bold"
+                    fontWeight: "bold",
                   }}>
-                  <CreateOutlinedIcon sx={{ color: "white" }} />
+                  <CreateOutlinedIcon sx={{color: "white"}} />
                 </Link>
               </Grid>
             </>
@@ -86,7 +104,7 @@ const HeaderProfile = () => {
               justifyContent: "space-between",
               p: "1rem 1.5rem .7rem 1.5rem",
               maxWidth: "768px",
-              m: "auto"
+              m: "auto",
             }}>
             <Grid item display='flex' xs={6} sm={6} md={6} lg={6}>
               <Typography
@@ -109,8 +127,8 @@ const HeaderProfile = () => {
                   fontFamily: "Vazir",
 
                   "&:hover": {
-                    background: "none"
-                  }
+                    background: "none",
+                  },
                 }}>
                 افزایش اعتبار
               </Button>
@@ -119,7 +137,7 @@ const HeaderProfile = () => {
         </Box>
       </Box>
       {/* secound white zone */}
-      <Box sx={{ maxWidth: "768px", m: "auto" }}>
+      <Box sx={{maxWidth: "768px", m: "auto"}}>
         <Grid
           container
           bgcolor='white'
@@ -143,7 +161,7 @@ const HeaderProfile = () => {
               justifyContent='center'
               alignContent='center'
               alignItems='center'>
-              <WalletIcon sx={{ color: "#0caeca" }} />
+              <WalletIcon sx={{color: "#0caeca"}} />
               <Typography
                 variant='h6'
                 fontFamily='Vazir'
@@ -156,6 +174,7 @@ const HeaderProfile = () => {
               variant='body1'
               fontFamily='Vazir-Light'
               fontSize='14px'>
+              need Api
               <span>{toFarsiNumber(personAccout.costAccount)}</span> تومان
             </Typography>
           </Grid>
@@ -177,7 +196,7 @@ const HeaderProfile = () => {
               justifyContent='center'
               alignContent='center'
               alignItems='center'>
-              <CardGiftcardIcon sx={{ color: "#0caeca" }} />
+              <CardGiftcardIcon sx={{color: "#0caeca"}} />
 
               <Typography
                 variant='h6'
@@ -191,6 +210,8 @@ const HeaderProfile = () => {
               variant='body1'
               fontFamily='Vazir-Light'
               fontSize='14px'>
+              need Api
+
               <span>{toFarsiNumber(personAccout.costAccount)}</span> تومان
             </Typography>
           </Grid>

@@ -17,7 +17,7 @@ const Basket = () => {
         <Grid container m='auto' maxWidth='768px'>
           <Box alignItems='center' alignContent='center' width='100%'>
             {selectedItems === 0 && <OrderSection />}
-            {selectedItems === 1 && <OrederSectionItem />}
+            {selectedItems >= 1 && <OrederSectionItem />}
           </Box>
           <Transportations />
           <BillComponent />

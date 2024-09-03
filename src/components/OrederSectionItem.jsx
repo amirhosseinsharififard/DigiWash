@@ -1,8 +1,8 @@
-import { Box, Grid, Typography } from "@mui/material";
-import { persianPrice } from "../share/functions";
+import {Box, Grid, Typography} from "@mui/material";
+import {persianPrice} from "../share/functions";
 import OrederSectionItemContent from "./OrederSectionItemContent";
-import { useSelector } from "react-redux";
-import { cart } from "../pwa/features/cart/cartSlice";
+import {useSelector} from "react-redux";
+import {cart} from "../pwa/features/cart/cartSlice";
 
 const OrederSectionItem = () => {
   const products = useSelector(cart);
@@ -35,6 +35,7 @@ const OrederSectionItem = () => {
   };
 
   const categorysPrice = reducerPrice(newCategory);
+  console.log(categorysPrice);
   return (
     <>
       <Grid
@@ -58,8 +59,10 @@ const OrederSectionItem = () => {
             }}>
             {newCategory.map((item, i) => (
               <>
+                {console.log(item)}
+                {console.log("item")}
                 <Grid
-                  key={i}
+                  key={item + i}
                   item
                   m='1rem .7rem '
                   display='flex'
@@ -90,8 +93,10 @@ const OrederSectionItem = () => {
                     <>
                       {item2.categoryTitle == item && (
                         <>
+           
                           <OrederSectionItemContent
-                            key={i}
+                             key={item + i}
+
                             id={item2.id}
                             cost={item2.price}
                             title={item2.job}
