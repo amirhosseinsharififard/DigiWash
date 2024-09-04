@@ -8,7 +8,7 @@ import WalletIcon from "@mui/icons-material/Wallet";
 import CardGiftcardIcon from "@mui/icons-material/CardGiftcard";
 import toFarsiNumber from "../../share/functions";
 import {useEffect, useState} from "react";
-import {BASE_URL, BEARER_TOKEN, getFindUser} from "../../API/config";
+import {BASE_URL, BEARER_TOKEN} from "../../API/requests";
 import axios from "axios";
 
 const HeaderProfile = () => {
@@ -20,6 +20,8 @@ const HeaderProfile = () => {
     costAccount: "0",
   };
   console.log(pathName);
+
+  
   useEffect(() => {
     const fetchData = async () => {
       setUser( await axios
