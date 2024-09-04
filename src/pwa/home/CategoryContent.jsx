@@ -1,12 +1,14 @@
 /* eslint-disable react/prop-types */
 import { Box, Typography } from "@mui/material";
 
-const CategoryContent = ({ imageCategory, titleCategory, id }) => {
+const CategoryContent = ({ imageCategory, titleCategory }) => {
+
   return (
     <>
       <Box
         sx={{
           backgroundImage: `url(${imageCategory})`,
+          bgcolor:imageCategory,
           backgroundSize: "cover",
           backgroundPosition:"center center",
           height: "142px",

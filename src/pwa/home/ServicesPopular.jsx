@@ -204,6 +204,9 @@ const ServicesPopular = () => {
   const dispatch = useDispatch();
   const products = useSelector(product);
 
+
+  
+
   const toggleHandler = () => {
     setIsShowModal(!isShowModal);
   };
@@ -216,6 +219,7 @@ const ServicesPopular = () => {
 
   useEffect(() => {
     dispatch(fetchProducts());
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   // console.log(products.products);
 

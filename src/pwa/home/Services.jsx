@@ -3,7 +3,7 @@ import {Box, Grid, Typography} from "@mui/material";
 
 // svg
 // import servicesSvg from "../../../assets/services.svg";
-import {BASE_URL, BEARER_TOKEN} from "../../API/requests";
+// import {BASE_URL, BEARER_TOKEN} from "../../API/requests";
 // Data
 // const DataService = [
 //   {serviceName: "اتو", serviceImg: servicesSvg},
@@ -11,27 +11,12 @@ import {BASE_URL, BEARER_TOKEN} from "../../API/requests";
 //   {serviceName: "لکه بری", serviceImg: servicesSvg},
 //   {serviceName: "خیاطی و تعمیرات", serviceImg: servicesSvg},
 // ];
-import {useEffect, useState} from "react";
-import axios from "axios";
+// import {useEffect, useState} from "react";
+// import axios from "axios";
 
-const Services = () => {
-  const [indexData, setIndexData] = useState();
-  useEffect(() => {
-    const fetchData = async () => {
-      setIndexData(
-        await axios
-          .get(`${BASE_URL}api/index`, {
-            headers: {Authorization: "Bearer " + BEARER_TOKEN},
-          })
-          .then((res) => {
-            // console.log(res.data);
-            return res.data;
-          })
-      );
-    };
+// eslint-disable-next-line react/prop-types
+const Services = ({indexData}) => {
 
-    fetchData();
-  }, []);
 
   return (
     <>
@@ -48,6 +33,7 @@ const Services = () => {
       </Box>
       <Grid container maxWidth='420px' alignContent='center' margin='0 auto'>
         {indexData &&
+          // eslint-disable-next-line react/prop-types
           indexData.data.service_types.map((item) => (
             <Grid
               item
