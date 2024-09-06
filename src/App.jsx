@@ -20,13 +20,12 @@ import EditPage from "./pwa/profile/edit/EditPage";
 import Basket from "./page/Basket";
 
 function App() {
-  
   return (
     <>
       <ThemeProvider theme={theme}>
         <Routes>
           <Route path='/' element={<HomePage />} />
-          <Route path='/services' element={<ServicePage />} />
+          <Route path='/services/:id' element={<ServicePage />} />
           <Route path='' element={<ModalIncrease />} />
           <Route path='/profile' element={<ProfilePage />} />
           <Route path='/profile/address' element={<AddressPage />} />

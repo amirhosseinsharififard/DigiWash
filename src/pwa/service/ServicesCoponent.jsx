@@ -2,7 +2,7 @@ import { Box, Grid, Stack, Typography } from "@mui/material";
 import toFarsiNumber from "../../share/functions";
 
 // eslint-disable-next-line react/prop-types
-const ServicesCoponent = ({ image, cost, title, subTitle }) => {
+const ServicesCoponent = ({ image, cost, name, subTitle }) => {
   return (
     <Grid item lx={4} lg={4} md={4} sm={4} xs={6}>
       <Box
@@ -26,7 +26,7 @@ const ServicesCoponent = ({ image, cost, title, subTitle }) => {
             fontSize='14px'
             height='auto'
             pt='1rem'>
-            {title}
+            {name}
           </Typography>
           <Typography
             variant='body1'
@@ -46,7 +46,7 @@ const ServicesCoponent = ({ image, cost, title, subTitle }) => {
           alignItems={"center"}>
           <Box
             sx={{
-              backgroundImage: `url(${image})`,
+              backgroundImage: `url(${image?image:""})`,
               backgroundSize: "cover",
               backgroundRepeat: "no-repeat",
               backgroundPosition: "center center",
@@ -69,7 +69,7 @@ const ServicesCoponent = ({ image, cost, title, subTitle }) => {
               height: "23px"
             }}>
             از
-            <span>{toFarsiNumber(cost)}</span>
+            <span>{toFarsiNumber(cost?cost:"0")}</span>
             تومان
           </Typography>
         </Stack>

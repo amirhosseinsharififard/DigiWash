@@ -1,10 +1,10 @@
 /* eslint-disable react/prop-types */
-import {  Grid, Typography } from "@mui/material";
+import {Grid, Typography} from "@mui/material";
 import CategoryContent from "./CategoryContent";
 
 // import image
 // import womenImage from "../../../assets/women.1f966e74.svg";
-import { Link } from "react-router-dom";
+import {Link} from "react-router-dom";
 // const categoryData = [
 //   {
 //     imageCategory: womenImage,
@@ -81,36 +81,41 @@ const ServicesCategory = ({indexData}) => {
       </Typography>
 
       <Grid container>
-        {indexData? indexData.data.categories.map((item) => (
-          <Grid item
-          lx={3}
-          lg={3}
-          md={4}
-          sm={4}
-          xs={6}
-            key={item.id}
-            sx={{
-              width: "calc((100% / 4) - 2rem)",
-              p: "1rem",
-              overflow: "hidden"
-            }}>
-            <Link
-              to={item.src}
-              style={{
-                textDecoration: "none",
-                color: "black",
-                maxWidth: "163px",
-                height: "143px",
-                borderRadius: "12px"
-              }}>
-              <CategoryContent
-                imageCategory={item.imageCategory? item.imageCategory :" black"}
-                titleCategory={item.name}
-                id={item.id}
-              />
-            </Link>
-          </Grid>
-        )):""}
+        {indexData
+          ? indexData.data.categories.map((item) => (
+              <Grid
+                item
+                lx={3}
+                lg={3}
+                md={4}
+                sm={4}
+                xs={6}
+                key={item.id}
+                sx={{
+                  width: "calc((100% / 4) - 2rem)",
+                  p: "1rem",
+                  overflow: "hidden",
+                }}>
+                <Link
+                  to={`/services/${item.id}`}
+                  style={{
+                    textDecoration: "none",
+                    color: "black",
+                    maxWidth: "163px",
+                    height: "143px",
+                    borderRadius: "12px",
+                  }}>
+                  <CategoryContent
+                    imageCategory={
+                      item.imageCategory ? item.imageCategory : " black"
+                    }
+                    titleCategory={item.name}
+                    id={item.id}
+                  />
+                </Link>
+              </Grid>
+            ))
+          : ""}
       </Grid>
     </>
   );

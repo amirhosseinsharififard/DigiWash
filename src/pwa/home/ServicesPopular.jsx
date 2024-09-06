@@ -1,10 +1,11 @@
-import { Box, Typography,} from "@mui/material";
+/* eslint-disable react/prop-types */
+import {Box, Typography} from "@mui/material";
 
 // usable component
 import ServicesPopularComponent from "./ServicesPopularComponent";
 
 // Import Swiper React components
-import { Swiper, SwiperSlide } from "swiper/react";
+import {Swiper, SwiperSlide} from "swiper/react";
 
 // Import Swiper styles
 import "swiper/css";
@@ -13,17 +14,17 @@ import "swiper/css/pagination";
 import "./SwiperStyle.css";
 
 // import required modules
-import { FreeMode, Pagination } from "swiper/modules";
+import {FreeMode, Pagination} from "swiper/modules";
 
 // // image svg
 // import manto from "../../../assets/womenMantoo.7c04032e.svg";
 // import whashSvg from "../../../assets/wash.c4124479.svg";
 
-import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
+import {Link} from "react-router-dom";
+import {useEffect, useState} from "react";
 import ModalIncrease from "../../share/ModalIncrease";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchProducts, product } from "../features/products/productsSlice";
+import {useDispatch, useSelector} from "react-redux";
+import {fetchProducts, product} from "../features/products/productsSlice";
 // Data
 // const DataSwiper = [
 //   {
@@ -198,14 +199,11 @@ import { fetchProducts, product } from "../features/products/productsSlice";
 //     ]
 //   }
 // ];
-const ServicesPopular = () => {
+const ServicesPopular = ({indexData}) => {
   const [isShowModal, setIsShowModal] = useState(false);
   const [checkIndex, setCheckIndex] = useState();
   const dispatch = useDispatch();
   const products = useSelector(product);
-
-
-  
 
   const toggleHandler = () => {
     setIsShowModal(!isShowModal);
@@ -216,13 +214,12 @@ const ServicesPopular = () => {
 
     toggleHandler();
   };
-
   useEffect(() => {
     dispatch(fetchProducts());
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   // console.log(products.products);
-
+  // console.log(indexData? indexData.success :"")
   return (
     <>
       <Box
@@ -252,25 +249,22 @@ const ServicesPopular = () => {
           }}
           modules={[FreeMode, Pagination]}
           className='mySwiper'
-          style={{ marginRight: ".5rem" }}>
-
-
-          {products.length &&
-            products.map((item, index) => (
-              <SwiperSlide style={{ background: "none" }} key={index}>
-                <Link style={{ textDecoration: "none", color: "black" }}>
-                  <ServicesPopularComponent
-                  toggleHandler={() => toggleAndIndexHandler(index)}
-                  checkIndex={checkIndex}
-                  title={item.title}
-                  subTitle={item.subTitle}
-                  image={item.image}
-                />
-                </Link>
-              </SwiperSlide>
-            ))}
-
-            
+          style={{marginRight: ".5rem"}}>
+          {indexData
+            ? indexData.data.favorite_services.map((item, index) => (
+                <SwiperSlide style={{background: "none"}} key={index}>
+                  <Link style={{textDecoration: "none", color: "black"}}>
+                    <ServicesPopularComponent
+                      toggleHandler={() => toggleAndIndexHandler(index)}
+                      checkIndex={checkIndex}
+                      title={item.title}
+                      subTitle={item.subTitle}
+                      image={item.image}
+                    />
+                  </Link>
+                </SwiperSlide>
+              ))
+            : "we need data"}
         </Swiper>
       </Box>
 
