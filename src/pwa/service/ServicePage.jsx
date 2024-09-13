@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import {Grid} from "@mui/material";
+import {Button, Grid} from "@mui/material";
 
 import clothesServices from "../../../assets/clothesServices.svg";
 import ServicesCoponent from "./ServicesCoponent";
@@ -8,6 +8,7 @@ import {useEffect, useState} from "react";
 import axios from "axios";
 import {BASE_URL, BEARER_TOKEN} from "../../API/requests";
 import {useLocation} from "react-router-dom";
+import ModalIncrease from "../../share/ModalIncrease";
 const DataServiceComponent = [
   {
     image: clothesServices,
@@ -99,6 +100,18 @@ const ServicePage = () => {
   const [filteredItmes, setFilteredItmes] = useState(DataServiceComponent);
   let buttonFilter = ["کت", "شلوار", "لباس"];
 
+  const [isShowModal, setIsShowModal] = useState(false);
+  const [checkIndex, setCheckIndex] = useState();
+
+  const toggleHandler = () => {
+    setIsShowModal(!isShowModal);
+  };
+
+  const toggleAndIndexHandler = (index) => {
+    setCheckIndex(index);
+    toggleHandler();
+  };
+
   const handleFilterButtonClick = (selectedCategory) => {
     if (selectedFilters.includes(selectedCategory)) {
       let filters = selectedFilters.filter((el) => el !== selectedCategory);
@@ -111,9 +124,8 @@ const ServicePage = () => {
   const location = useLocation();
   const {hash, pathname, search} = location;
   const splitAndIndexPathname = pathname.split("/")[2];
-const [categoriesServices,setCategoriesServices]=useState()
-const {categories,services}= categoriesServices? categoriesServices:''
-
+  const [categoriesServices, setCategoriesServices] = useState();
+  const {categories, services} = categoriesServices ? categoriesServices : "";
 
   // useEffect(() => {
   //   filterItems();
@@ -123,29 +135,31 @@ const {categories,services}= categoriesServices? categoriesServices:''
   useEffect(() => {
     const fetchData = async () => {
       await axios
-      .get(`${BASE_URL}api/category-services/${splitAndIndexPathname}`, BEARER_TOKEN)
-      .then((res) =>  setCategoriesServices(res.data.data)     
-      );
+        .get(
+          `${BASE_URL}api/category-services/${splitAndIndexPathname}`,
+          BEARER_TOKEN
+        )
+        .then((res) => setCategoriesServices(res.data.data));
     };
     fetchData();
   }, []);
 
-  console.log(categoriesServices)
-  console.log(categoriesServices ? categories:'')
-  console.log(categoriesServices ? services:'')
-  const filterItems = () => {
-    if (selectedFilters.length > 0) {
-      let tempItems = selectedFilters.map((selectedCategory) => {
-        let temp = DataServiceComponent.filter(
-          (item) => item.category === selectedCategory
-        );
-        return temp;
-      });
-      setFilteredItmes(tempItems.flat());
-    } else {
-      setFilteredItmes([...DataServiceComponent]);
-    }
-  };
+  console.log(categoriesServices);
+  console.log(categoriesServices ? categories : "");
+  console.log(categoriesServices ? services[0].services["ساده"] : "");
+  // const filterItems = () => {
+  //   if (selectedFilters.length > 0) {
+  //     let tempItems = selectedFilters.map((selectedCategory) => {
+  //       let temp = DataServiceComponent.filter(
+  //         (item) => item.category === selectedCategory
+  //       );
+  //       return temp;
+  //     });
+  //     setFilteredItmes(tempItems.flat());
+  //   } else {
+  //     setFilteredItmes([...DataServiceComponent]);
+  //   }
+  // };
 
   return (
     <>
@@ -160,17 +174,31 @@ const {categories,services}= categoriesServices? categoriesServices:''
         m='0 auto 5rem'
         p='0 1rem'
         spacing='2rem'>
-        {services&& services.map((item) => (
-          <ServicesCoponent
-            key={item.id}
-            subTitle={item.unique_subs }
-            image={item.icon}
-            cost={item.cost}
-            name={item.name}
-            category={item.cat_id}
-          />
-        ))}
+        {services &&
+          services.map((item) => (
+            <>
+              <ServicesCoponent
+                toggleHandler={() => toggleAndIndexHandler(checkIndex)}
+                key={item.id}
+                subTitle={item.unique_subs}
+                image={item.icon}
+                cost={item.cost}
+                name={item.name}
+                category={item.cat_id}
+              />
+            </>
+          ))}
       </Grid>
+      {console.log(isShowModal)}
+      {isShowModal && (
+        <ModalIncrease
+        data={services[0]}
+          isShowModal={isShowModal}
+          toggleHandler={() => toggleAndIndexHandler(checkIndex)}
+          checkIndex={checkIndex}
+          // dataModal={products}
+        />
+      )}
     </>
   );
 };

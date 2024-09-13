@@ -1,10 +1,15 @@
 import { Box, Grid, Stack, Typography } from "@mui/material";
 import toFarsiNumber from "../../share/functions";
+import { Link } from "react-router-dom";
 
 // eslint-disable-next-line react/prop-types
-const ServicesCoponent = ({ image, cost, name, subTitle }) => {
+const ServicesCoponent = ({ image, cost, name, subTitle ,toggleHandler}) => {
   return (
+    
+    
     <Grid item lx={4} lg={4} md={4} sm={4} xs={6}>
+    <Link style={{textDecoration: "none", color: "black"}}
+    onClick={toggleHandler}>
       <Box
         bgcolor='rgb(237, 252, 255)'
         borderRadius='12px'
@@ -74,6 +79,7 @@ const ServicesCoponent = ({ image, cost, name, subTitle }) => {
           </Typography>
         </Stack>
       </Box>
+    </Link>
     </Grid>
   );
 };

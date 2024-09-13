@@ -14,7 +14,14 @@ const HomePage = () => {
   useEffect(() => {
     const fetchData = async () => {
       setIndexData(
-        
+        await axios
+          .get(`${BASE_URL}api/index`, {
+            headers: {Authorization: "Bearer " + BEARER_TOKEN},
+          })
+          .then((res) => {
+            console.log(res.data);
+            return res.data;
+          })
       );
     };
 

@@ -31,7 +31,7 @@ function App() {
           <Route path='/profile/address' element={<AddressPage />} />
           <Route path='/profile/transactions' element={<TransactionsPage />} />
           <Route path='/profile/edit' element={<EditPage />} />
-          <Route path='/b' element={<Basket />} />
+          <Route path='/basket' element={<Basket />} />
         </Routes>
         <Footer />
       </ThemeProvider>

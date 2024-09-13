@@ -64,7 +64,7 @@ const Footer = () => {
           alignContent='center'>
           <Link
             // onClick={() => toggleHandler()}
-            to='/b'
+            to='/basket'
             style={{
               textDecoration: "none",
               color: "#0caeca",

@@ -6,8 +6,15 @@ import Transportations from "../components/Transportations";
 import { useSelector } from "react-redux";
 import { cart } from "../pwa/features/cart/cartSlice";
 import BillComponent from "../components/BillComponent";
+import { useEffect, useState } from "react";
 
 const Basket = () => {
+  const [order,setOrder]=useState()
+  const [addToOpenOrder,setAddToOpenOrder]=useState()
+  const [removeToOpenOrder,setRemoveToOpenOrder]=useState()
+  useEffect(()=>{
+    
+  },[addToOpenOrder,removeToOpenOrder,order])
   const cartItem = useSelector(cart);
   const selectedItems = cartItem.itemsCounter;
   return (

@@ -35,7 +35,7 @@ const IncreaseItem = ({ data, title, image, cost, id, }) => {
         p={1}>
         <Grid item xs={8} sm={8} md={8} lg={8} display={"flex"}>
           <Box>
-            <img src={image} style={{ maxWidth: "48px", maxHeight: "48px" }} />
+            <img src={"image"} style={{ maxWidth: "48px", maxHeight: "48px" }} />
           </Box>
           <Box display='flex' flexDirection={"column"} justifyContent='center'>
             <Typography variant='h6' fontSize='16px' fontFamily='Vazir-Bold'>
@@ -59,7 +59,7 @@ const IncreaseItem = ({ data, title, image, cost, id, }) => {
           sx={{ textAlign: "right" }}>
           {quantiy == 0 ? (
             <Button
-              onClick={() => dispatch(addItem(data))}
+              // onClick={() => dispatch(addItem(data))}
               sx={{
                 minWidth: "48px",
                 height: "48px",
@@ -77,7 +77,7 @@ const IncreaseItem = ({ data, title, image, cost, id, }) => {
             </Button>
           ) : (
             <Button
-              onClick={() => dispatch(increase(data))}
+              // onClick={() => dispatch(increase(data))}
               sx={{
                 minWidth: "48px",
                 height: "48px",
@@ -107,7 +107,7 @@ const IncreaseItem = ({ data, title, image, cost, id, }) => {
 
           {quantiy > 1 ? (
             <Button
-              onClick={() => dispatch(decrease(data))}
+              // onClick={() => dispatch(decrease(data))}
               sx={{
                 minWidth: "48px",
                 height: "48px",
@@ -127,7 +127,7 @@ const IncreaseItem = ({ data, title, image, cost, id, }) => {
             </Button>
           ) : (
             <Button
-              onClick={() => dispatch(removeItem(data))}
+              // onClick={() => dispatch(removeItem(data))}
               sx={{
                 minWidth: "48px",
                 height: "48px",
