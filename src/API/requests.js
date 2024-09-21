@@ -19,11 +19,22 @@ const setHeader = {headers: {Authorization: "Bearer " + BEARER_TOKEN}};
 const getIndex =  () => {
    axios
     .get(`${BASE_URL}/api/index`, setHeader)
-    .then((res) => res)
+    .then((res) => res.data)
     .catch((error) => {
       throw error;
     });
 };
 
-export {BASE_URL, BEARER_TOKEN, getIndex,setHeader};
+export {BASE_URL, BEARER_TOKEN, getIndex,setHeader,fetchIndex};
 
+const fetchIndex=async ()=>{
+  return await axios
+          .get(`${BASE_URL}api/index`, {
+            headers: {Authorization: "Bearer " + BEARER_TOKEN},
+          })
+          .then((res) => {
+            console.log(res.data);
+            return res.data;
+          })
+      
+}
