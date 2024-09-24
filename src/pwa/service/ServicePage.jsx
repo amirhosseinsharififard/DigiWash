@@ -122,6 +122,8 @@ console.log('====================================');
                 <ServicesCoponent
                   // toggleHandler={() => toggleAndIndexHandler(checkIndex)}
                   key={item.id}
+
+                  // moshkel az injas va bayad data az samt api dorost she yebar araye miad yebar object
                   subTitle={item.unique_subs}
                   image={item.icon}
                   cost={item.cost}
