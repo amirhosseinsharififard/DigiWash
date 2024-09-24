@@ -16,25 +16,27 @@ const setHeader = {headers: {Authorization: "Bearer " + BEARER_TOKEN}};
 //     });
 // };
 
-const getIndex =  () => {
-   axios
-    .get(`${BASE_URL}/api/index`, setHeader)
-    .then((res) => res.data)
-    .catch((error) => {
-      throw error;
+const fetchHomePage = async () => {
+  return await axios
+    .get(`${BASE_URL}api/index`, {
+      headers: {Authorization: "Bearer " + BEARER_TOKEN},
+    })
+    .then((res) => {
+      console.log(res.data);
+      return res.data;
     });
 };
 
-export {BASE_URL, BEARER_TOKEN, getIndex,setHeader,fetchIndex};
-
-const fetchIndex=async ()=>{
+const fetchCategory_services=async () => {
   return await axios
-          .get(`${BASE_URL}api/index`, {
-            headers: {Authorization: "Bearer " + BEARER_TOKEN},
-          })
-          .then((res) => {
-            console.log(res.data);
-            return res.data;
-          })
-      
-}
+    .get(`${BASE_URL}api/category-services/1`, {
+      headers: {Authorization: "Bearer " + BEARER_TOKEN},
+    })
+    .then((res) => {
+      console.log(res.data);
+      return res.data;
+    });
+};
+
+
+export {BASE_URL, BEARER_TOKEN, setHeader, fetchHomePage,fetchCategory_services};

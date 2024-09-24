@@ -1,9 +1,11 @@
+/* eslint-disable no-unused-vars */
 import { Box, Grid, Stack, Typography } from "@mui/material";
 import toFarsiNumber from "../../share/functions";
 import { Link } from "react-router-dom";
 
 // eslint-disable-next-line react/prop-types
 const ServicesCoponent = ({ image, cost, name, subTitle ,toggleHandler}) => {
+
   return (
     
     
@@ -33,6 +35,7 @@ const ServicesCoponent = ({ image, cost, name, subTitle ,toggleHandler}) => {
             pt='1rem'>
             {name}
           </Typography>
+          
           <Typography
             variant='body1'
             sx={{
@@ -40,7 +43,11 @@ const ServicesCoponent = ({ image, cost, name, subTitle ,toggleHandler}) => {
               fontSize: "14px",
               height: "auto"
             }}>
-            {subTitle}
+            {
+              
+            console.log(subTitle?subTitle:'')
+           
+            }
           </Typography>
         </Stack>
         <Stack
@@ -74,7 +81,7 @@ const ServicesCoponent = ({ image, cost, name, subTitle ,toggleHandler}) => {
               height: "23px"
             }}>
             از
-            <span>{toFarsiNumber(cost?cost:"0")}</span>
+            {/* <span>{toFarsiNumber(cost?cost:"0")}</span> */}
             تومان
           </Typography>
         </Stack>

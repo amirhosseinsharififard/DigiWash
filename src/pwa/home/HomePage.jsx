@@ -9,7 +9,7 @@ import Services from "./Services";
 import ServicesPopular from "./ServicesPopular";
 import ServicesCategory from "./ServicesCategory";
 import HeaderPwa from "./HeaderPwa";
-import { fetchIndex } from "../../API/requests"; // import کردن فقط متغیرهای لازم
+import { fetchHomePage } from "../../API/requests"; // import کردن فقط متغیرهای لازم
 // import PhoneRegisterModal from "../../components/PhoneRegisterModal";
 
 const HomePage = () => {
@@ -19,7 +19,7 @@ const HomePage = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const data = await fetchIndex();
+        const data = await fetchHomePage();
         setIndexData(data);
       } catch (err) {
         setError("Error fetching data");
