@@ -1,37 +1,3 @@
-// import Offday from "./Offday";
-// import OrderPhone from "./OrderPhone";
-// import Services from "./Services";
-// import ServicesPopular from "./ServicesPopular";
-// import ServicesCategory from "./ServicesCategory";
-// import {Box} from "@mui/material";
-// import HeaderPwa from "./HeaderPwa";
-// import {useEffect, useState} from "react";
-// import axios from "axios";
-// import {BASE_URL, BEARER_TOKEN, fetchIndex} from "../../API/requests";
-// // import HeaderPwa from "./HeaderPwa";
-// const HomePage = () => {
-//   const [indexData, setIndexData] = useState();
-//   useEffect(() => {
- 
-// fetchIndex().then(res=>setIndexData(res))
-//   }, []);
-//   console.log(indexData?indexData:"")
-//   return (
-//     <>
-//       <HeaderPwa />
-//       <Box sx={{maxWidth: "768px", m: "0rem auto 5rem"}}>
-//         {/* <Header /> */}
-//         <Offday />
-//         <OrderPhone />
-//         <Services indexData={indexData} />
-//         <ServicesPopular indexData={indexData} />
-//         <ServicesCategory indexData={indexData} />
-//       </Box>
-//     </>
-//   );
-// };
-
-// export default HomePage;
 
 
 
@@ -44,7 +10,7 @@ import ServicesPopular from "./ServicesPopular";
 import ServicesCategory from "./ServicesCategory";
 import HeaderPwa from "./HeaderPwa";
 import { fetchIndex } from "../../API/requests"; // import کردن فقط متغیرهای لازم
-import PhoneRegisterModal from "../../components/PhoneRegisterModal";
+// import PhoneRegisterModal from "../../components/PhoneRegisterModal";
 
 const HomePage = () => {
   const [indexData, setIndexData] = useState(null); // مقدار اولیه null به جای undefined
@@ -78,7 +44,7 @@ const HomePage = () => {
         <Services indexData={indexData} />
         <ServicesPopular indexData={indexData} />
         <ServicesCategory indexData={indexData} />
-      <PhoneRegisterModal />
+      {/* <PhoneRegisterModal /> */}
       </Box>
     </>
   );
