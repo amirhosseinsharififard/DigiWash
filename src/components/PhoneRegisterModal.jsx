@@ -1,15 +1,35 @@
 import {ArrowForwardIos} from "@mui/icons-material";
 import {Box, Button, Grid, TextField, Typography} from "@mui/material";
 import {Link} from "react-router-dom";
-
+import {useState} from "react";
+import CountdownTimer from "./CountdownTimer";
 const PhoneRegisterModal = () => {
-  let regex = new RegExp("^(\\+98|0)?9\\d{9}$");
-  let result = regex.test("09172384087");
+  const [fieldRegister, setFieldRegister] = useState({
+    phoneNumber: "09172384087",
+    send: true,
+    codeConfirm: "",
+  });
 
-  const confrimSend = true;
-  const inputPhoneNumber = "09172384087";
-  const timer = false;
-  console.log(result);
+  const changeHandler = (e) => {
+    const {name, value} = e.target;
+    setFieldRegister((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
+  };
+  const buttonHandler = () => {
+    setFieldRegister((prevState) => ({
+      ...prevState,
+      send: !prevState.send,
+    }));
+  };
+
+
+
+  let regex = new RegExp("^(\\+98|0)?9\\d{9}$");
+  let result = regex.test(fieldRegister.phoneNumber);
+
+
   return (
     <>
       <Box
@@ -46,7 +66,7 @@ const PhoneRegisterModal = () => {
             p: "2rem 8px",
             zIndex: 3,
           }}>
-          {!confrimSend && (
+          {!fieldRegister.send && (
             <>
               <Grid item xs={12} sm={12} md={12} lg={12}>
                 <Typography>ورود/نام‌نویسی</Typography>
@@ -61,22 +81,28 @@ const PhoneRegisterModal = () => {
 
               <Grid item xs={12} sm={12} md={12} lg={12}>
                 <TextField
+                  name='phoneNumber'
+                  value={fieldRegister.phoneNumber}
                   id='outlined-basic'
                   variant='outlined'
                   placeholder='مثلا 09172384087'
                   type='number'
+                  onChange={changeHandler}
                 />
               </Grid>
 
               <Grid item xs={12} sm={12} md={12} lg={12}>
-                <Button variant='outlined' disabled={!result}>
+                <Button
+                  variant='outlined'
+                  disabled={!result}
+                  onClick={buttonHandler}>
                   لطفا شماره موبایل خود را وارد کنید تا کد فعال سازی برایتان
                   فرستاده شود.
                 </Button>
               </Grid>
             </>
           )}
-          {confrimSend && (
+          {fieldRegister.send && (
             <>
               <Grid
                 item
@@ -92,7 +118,8 @@ const PhoneRegisterModal = () => {
                     justifyContent: "center",
                     alignContent: "center",
                     alignItems: "center",
-                  }}>
+                  }}
+                  onClick={buttonHandler}>
                   <ArrowForwardIos style={{fontSize: "14px"}} />
                   <Typography>اصلاح شماره موبایل</Typography>
                 </Link>
@@ -100,11 +127,11 @@ const PhoneRegisterModal = () => {
 
               <Grid item xs={12} sm={12} md={12} lg={12}>
                 <Typography>
-                  کد ارسال شده به {inputPhoneNumber} را وارد کنید.
+                  کد ارسال شده به {fieldRegister.phoneNumber} را وارد کنید.
                 </Typography>
               </Grid>
 
-              <Grid item xs={12} sm={12} md={12} lg={12} position='relative' >
+              <Grid item xs={12} sm={12} md={12} lg={12} position='relative'>
                 <Box
                   display='flex'
                   justifyContent='space-evenly'
@@ -113,10 +140,18 @@ const PhoneRegisterModal = () => {
                   position='absolute'
                   top='0'
                   mt='1rem'>
-                  <Typography>5</Typography>
-                  <Typography>5</Typography>
-                  <Typography>5</Typography>
-                  <Typography>5</Typography>
+                  {fieldRegister.codeConfirm ? (
+                    fieldRegister.codeConfirm
+                      .split()
+                      .map((item, i) => <Typography key={i}>{item}</Typography>)
+                  ) : (
+                    <>
+                      <Typography>-</Typography>
+                      <Typography>-</Typography>
+                      <Typography>-</Typography>
+                      <Typography>-</Typography>
+                    </>
+                  )}
                 </Box>
               </Grid>
               <TextField
@@ -125,30 +160,26 @@ const PhoneRegisterModal = () => {
                     .toString()
                     .slice(0, 4);
                 }}
+                name='codeConfirm'
+                value={fieldRegister.codeConfirm}
                 id='outlined-basic'
                 variant='outlined'
                 placeholder='مثلا 09172384087'
-                type='number'
-                style={{opacity:"0%"}}
+                type='text'
+                style={{opacity: "0%"}}
                 fullWidth
                 zIndex='3'
+                onChange={changeHandler}
               />
 
-              <Grid item xs={12} sm={12} md={12} lg={12}  borderTop="1px solid rgba(0,0,0,0.2)">
-                {timer ? (
-                  <>
-                    <Typography>تا درخواست دوباره کد تایید:</Typography>
-                    <Typography>timer 5:00</Typography>
-                  </>
-                ) : (
-                  <Box display='flex'>
-                    <Typography color='initial'>
-                      {" "}
-                      کد را دریافت نکرده اید؟
-                    </Typography>
-                    <Link>فرستادن دوباره کد</Link>
-                  </Box>
-                )}
+              <Grid
+                item
+                xs={12}
+                sm={12}
+                md={12}
+                lg={12}
+                borderTop='1px solid rgba(0,0,0,0.2)'>
+                <CountdownTimer />
               </Grid>
             </>
           )}

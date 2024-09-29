@@ -2,7 +2,10 @@
 import { Box, Typography } from "@mui/material";
 
 const CategoryContent = ({ imageCategory, titleCategory }) => {
-
+const image=imageCategory
+console.log('====================================');
+console.log(image);
+console.log('====================================');
   return (
     <>
       <Box
@@ -20,7 +23,7 @@ const CategoryContent = ({ imageCategory, titleCategory }) => {
         >
   
       </Box>
-      <img src={imageCategory} />
+      <img src={image} />
       <Typography variant='h6' fontFamily="Vazir" fontSize="16px">
         {titleCategory}
       </Typography>

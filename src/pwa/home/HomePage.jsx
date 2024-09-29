@@ -1,16 +1,13 @@
-
-
-
-import { useEffect, useState } from "react";
-import { Box } from "@mui/material";
+import {useEffect, useState} from "react";
+import {Box} from "@mui/material";
 import Offday from "./Offday";
 import OrderPhone from "./OrderPhone";
 import Services from "./Services";
 import ServicesPopular from "./ServicesPopular";
 import ServicesCategory from "./ServicesCategory";
 import HeaderPwa from "./HeaderPwa";
-import { fetchHomePage } from "../../API/requests"; // import کردن فقط متغیرهای لازم
-// import PhoneRegisterModal from "../../components/PhoneRegisterModal";
+import {fetchHomePage} from "../../API/requests"; // import کردن فقط متغیرهای لازم
+import PhoneRegisterModal from "../../components/PhoneRegisterModal";
 
 const HomePage = () => {
   const [indexData, setIndexData] = useState(null); // مقدار اولیه null به جای undefined
@@ -38,13 +35,16 @@ const HomePage = () => {
   return (
     <>
       <HeaderPwa />
-      <Box sx={{ maxWidth: "768px", m: "0rem auto 5rem" }}>
+      <Box sx={{maxWidth: "768px", m: "0rem auto 5rem"}}>
         <Offday />
         <OrderPhone />
         <Services indexData={indexData} />
         <ServicesPopular indexData={indexData} />
         <ServicesCategory indexData={indexData} />
-      {/* <PhoneRegisterModal /> */}
+
+
+        {/* rigester Form completed need css */}
+        {/* <PhoneRegisterModal /> */}
       </Box>
     </>
   );

@@ -1,42 +1,35 @@
 import axios from "axios";
+
 const BASE_URL = "https://laundry.rahcode.co/";
-const BEARER_TOKEN =
-  "Jbfy467FdVFjJ7s92eiHCeTwxQf5oE3WQWgcsoCBlyld9AwWQJcvHmf9YitW";
-const setHeader = {headers: {Authorization: "Bearer " + BEARER_TOKEN}};
-// export const getFindUser = () => {
-//   axios
-//     .get(`${BASE_URL}api/findUser`, setHeader)
-//     .then((result) => {
-//       console.log(result.data.message);
-//       return result.data.message;
-//     })
-//     .catch((error) => {
-//       console.error(error);
-//       throw error;
-//     });
-// };
+const BEARER_TOKEN = "Jbfy467FdVFjJ7s92eiHCeTwxQf5oE3WQWgcsoCBlyld9AwWQJcvHmf9YitW";
+
+const axiosInstance = axios.create({
+  baseURL: BASE_URL,
+  headers: {
+    Authorization: `Bearer ${BEARER_TOKEN}`,
+  },
+});
 
 const fetchHomePage = async () => {
-  return await axios
-    .get(`${BASE_URL}api/index`, {
-      headers: {Authorization: "Bearer " + BEARER_TOKEN},
-    })
-    .then((res) => {
-      console.log(res.data);
-      return res.data;
-    });
+  try {
+    const response = await axiosInstance.get("api/index");
+    console.log(response.data);
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching home page:", error);
+    throw error; // بازگرداندن خطا برای مدیریت در جای دیگر
+  }
 };
 
-const fetchCategory_services=async () => {
-  return await axios
-    .get(`${BASE_URL}api/category-services/1`, {
-      headers: {Authorization: "Bearer " + BEARER_TOKEN},
-    })
-    .then((res) => {
-      console.log(res.data);
-      return res.data;
-    });
+const fetchCategoryServices = async () => {
+  try {
+    const response = await axiosInstance.get("api/category-services/1");
+    console.log(response.data);
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching category services:", error);
+    throw error; // بازگرداندن خطا برای مدیریت در جای دیگر
+  }
 };
 
-
-export {BASE_URL, BEARER_TOKEN, setHeader, fetchHomePage,fetchCategory_services};
+export { BASE_URL, BEARER_TOKEN, fetchHomePage, fetchCategoryServices };
