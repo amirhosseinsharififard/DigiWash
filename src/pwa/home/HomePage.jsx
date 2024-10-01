@@ -7,7 +7,7 @@ import ServicesPopular from "./ServicesPopular";
 import ServicesCategory from "./ServicesCategory";
 import HeaderPwa from "./HeaderPwa";
 import {fetchHomePage} from "../../API/requests"; // import کردن فقط متغیرهای لازم
-import PhoneRegisterModal from "../../components/PhoneRegisterModal";
+// import PhoneRegisterModal from "../../components/PhoneRegisterModal";
 
 const HomePage = () => {
   const [indexData, setIndexData] = useState(null); // مقدار اولیه null به جای undefined

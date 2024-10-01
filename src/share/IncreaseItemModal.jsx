@@ -1,7 +1,9 @@
+/* eslint-disable no-constant-condition */
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
-import { Box, Button, Grid, Typography } from "@mui/material";
-import toFarsiNumber, { persianPrice } from "./functions";
-import { useSelector, useDispatch } from "react-redux";
+import {Box, Button, Grid, Typography} from "@mui/material";
+import toFarsiNumber, {persianPrice} from "./functions";
+import {useSelector, useDispatch} from "react-redux";
 import {
   addItem,
   cart,
@@ -9,17 +11,17 @@ import {
   increase,
   removeItem,
 } from "../pwa/features/cart/cartSlice";
-import { productQuantity } from "../helper/helper";
+import {productQuantity} from "../helper/helper";
 // import select from "../pwa/features/counter/counterSlice";
 
-const IncreaseItem = ({ data, title, image, cost, id, }) => {
-  const state = useSelector(cart);
-  const dispatch = useDispatch();
+const IncreaseItem = ({data, title, image, cost, id}) => {
+  // const state = useSelector(cart);
+  // const dispatch = useDispatch();
 
   // bayad data khas behesh ersal beshe
-  const quantiy = productQuantity(state, id, data);
+  // const quantiy = productQuantity(state, id, data);
 
-  console.log(state);
+  // console.log(state);
   return (
     <>
       <Grid
@@ -35,7 +37,7 @@ const IncreaseItem = ({ data, title, image, cost, id, }) => {
         p={1}>
         <Grid item xs={8} sm={8} md={8} lg={8} display={"flex"}>
           <Box>
-            <img src={"image"} style={{ maxWidth: "48px", maxHeight: "48px" }} />
+            {/* <img src={image} style={{ maxWidth: "48px", maxHeight: "48px" }} /> */}
           </Box>
           <Box display='flex' flexDirection={"column"} justifyContent='center'>
             <Typography variant='h6' fontSize='16px' fontFamily='Vazir-Bold'>
@@ -56,8 +58,8 @@ const IncreaseItem = ({ data, title, image, cost, id, }) => {
           justifyContent='center'
           alignItems='center'
           alignContent='center'
-          sx={{ textAlign: "right" }}>
-          {quantiy == 0 ? (
+          sx={{textAlign: "right"}}>
+          {0 == 0 ? (
             <Button
               // onClick={() => dispatch(addItem(data))}
               sx={{
@@ -102,10 +104,10 @@ const IncreaseItem = ({ data, title, image, cost, id, }) => {
               fontWeight: "bold",
               margin: "8px",
             }}>
-            {toFarsiNumber(quantiy)}
+            {toFarsiNumber(0)}
           </span>
-
-          {quantiy > 1 ? (
+          {/* check shavad baraye fix data */}
+          {0 > 1 ? (
             <Button
               // onClick={() => dispatch(decrease(data))}
               sx={{
@@ -114,8 +116,8 @@ const IncreaseItem = ({ data, title, image, cost, id, }) => {
                 borderRadius: "50%",
                 alignItems: "center",
                 color: "white",
-
-                bgcolor: quantiy >= 1 ? "rgba(12, 174, 202,.5)" : "white",
+                // check shavad baraye fix data
+                bgcolor: 0 >= 1 ? "rgba(12, 174, 202,.5)" : "white",
 
                 ml: "2rem",
                 fontSize: "14px",
@@ -131,10 +133,12 @@ const IncreaseItem = ({ data, title, image, cost, id, }) => {
               sx={{
                 minWidth: "48px",
                 height: "48px",
-                bgcolor: quantiy >= 1 ? "rgba(12, 174, 202,.5)" : "white",
+                // check shavad baraye fix data
+                bgcolor: 0 >= 1 ? "rgba(12, 174, 202,.5)" : "white",
                 borderRadius: "50%",
                 alignItems: "center",
-                color: quantiy >= 1 ? "white" : "black",
+                // check shavad baraye fix data
+                color: 0 >= 1 ? "white" : "black",
                 ml: "2rem",
                 fontSize: "14px",
 

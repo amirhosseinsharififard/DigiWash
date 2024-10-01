@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import {Box, Typography} from "@mui/material";
 
@@ -21,31 +22,35 @@ import {FreeMode, Pagination} from "swiper/modules";
 // import whashSvg from "../../../assets/wash.c4124479.svg";
 
 import {Link} from "react-router-dom";
-import {useEffect, useState} from "react";
+import { useState} from "react";
 import ModalIncrease from "../../share/ModalIncrease";
-import {useDispatch, useSelector} from "react-redux";
-import {fetchProducts, product} from "../features/products/productsSlice";
+// import {useDispatch, useSelector} from "react-redux";
+// import {fetchProducts, product} from "../features/products/productsSlice";
 const ServicesPopular = ({indexData}) => {
   const [isShowModal, setIsShowModal] = useState(false);
   const [checkIndex, setCheckIndex] = useState();
-  const dispatch = useDispatch();
-  const products = useSelector(product);
+  const [data, setData] = useState();
+  const [nameData,setNameData]=useState()
+  const dataObjectKeys = data && Object.keys(data);
+  // const dispatch = useDispatch();
+  // const products = useSelector(product);
 
   const toggleHandler = () => {
     setIsShowModal(!isShowModal);
   };
 
-  const toggleAndIndexHandler = (index) => {
-    setCheckIndex(index);
+  const toggleAndIndexHandler = (id) => {
+    setCheckIndex(id);
 
     toggleHandler();
   };
-  useEffect(() => {
-    dispatch(fetchProducts());
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-  // console.log(products.products);
-  // console.log(indexData? indexData.success :"")
+
+  console.log("service favorite");
+  console.log(indexData.data.favorite_services);
+  console.log(data);
+  if (data) {
+    console.log(Object.keys(data));
+  }
   return (
     <>
       <Box
@@ -55,7 +60,8 @@ const ServicesPopular = ({indexData}) => {
           m: "1rem 0",
           borderRadius: "8px",
           overflow: "hidden",
-        }}>
+        }}
+        >
         <Typography
           variant='h5'
           fontWeight='bold'
@@ -77,14 +83,18 @@ const ServicesPopular = ({indexData}) => {
           className='mySwiper'
           style={{marginRight: ".5rem"}}>
           {indexData
-            ? indexData.data.favorite_services.map((item, index) => (
-                <SwiperSlide style={{background: "none"}} key={index}>
-                  <Link style={{textDecoration: "none", color: "black"}}>
+            ? indexData.data.favorite_services.map((item) => (
+                <SwiperSlide style={{background: "none"}} key={item.id}>
+                  <Link
+                    style={{textDecoration: "none", color: "black"}}
+                    onClick={() => (setData(item.services),setNameData(item.name))}>
+                    {console.log(item)}
+                    {console.log("item")}
                     <ServicesPopularComponent
-                      toggleHandler={() => toggleAndIndexHandler(index)}
-                      checkIndex={checkIndex}
-                      title={item.title}
-                      subTitle={item.subTitle}
+                      toggleHandler={() => toggleAndIndexHandler(item.id)}
+                      checkIndex={item.id}
+                      title={item.name}
+                      subTitle={item.unique_subs}
                       image={item.image}
                     />
                   </Link>
@@ -96,10 +106,13 @@ const ServicesPopular = ({indexData}) => {
 
       {isShowModal && (
         <ModalIncrease
+          data={data[dataObjectKeys]}
           isShowModal={isShowModal}
-          toggleHandler={() => toggleAndIndexHandler(checkIndex)}
-          checkIndex={checkIndex}
-          dataModal={products}
+          toggleHandler={toggleHandler}
+          nameData={nameData}
+          // toggleHandler={() => toggleAndIndexHandler(checkIndex)}
+          // checkIndex={checkIndex}
+          // dataModal={products}
         />
       )}
     </>

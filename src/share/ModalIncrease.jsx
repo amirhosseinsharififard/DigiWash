@@ -1,86 +1,68 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
-import { Box, Grid, Typography } from "@mui/material";
-import IncreaseItem from "./IncreaseItemModal";
-import CategoryModal from "./CategoryModal";
+
+
+
+import { Box, Grid, Typography, Button } from "@mui/material";
 import { Link } from "react-router-dom";
-// import { useState } from "react";
-// import { useSelector } from "react-redux";
-// import { product } from "../pwa/features/products/productsSlice";
+import { useState } from "react";
+import IncreaseItem from "./IncreaseItemModal";
 
-const ModalIncrease = ({ toggleHandler, checkIndex ,data}) => {
-  // const products = useSelector(product);
+const ModalIncrease = ({ toggleHandler, data,dataObjectKeys,categoryData,nameData}) => {
+  const [showMore, setShowMore] = useState(false);
+const dataList= data
+  const handleShowMore = () => {
+    setShowMore(!showMore);
+  };
 
-  // const buttons = products[checkIndex].useThis;
-
-  // const [buttonActive, setButtonActive] = useState(0);
-
-  // const useProducts = products[checkIndex].useThis[buttonActive].categoryDo;
-  // const buttonsActiveHandler = (id) => {
-  //   setButtonActive(id);
-  // };
-console.log(data)
+  console.log('====================================');
+  console.log(data);
+  console.log('====================================');
   return (
-    <>
-      <Box
-        sx={{
-          position: "fixed",
-          top: "0",
-          left: "0",
-          zIndex: "4",
+    <Box
+      sx={{
+        position: "fixed",
+        top: "0",
+        left: "0",
+        zIndex: "4",
+        width: "100vw",
+        height: "100vh",
+        backgroundColor: "rgba(0, 0, 0, 0.7)",
+        backdropFilter: "blur(15px)",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "flex-end",
+      }}
+    >
+      <Link
+        onClick={toggleHandler}
+        style={{
           width: "100vw",
           height: "100vh",
-          backgroundColor: "rgba(0, 0, 0, 0.7)",
-          backdropFilter: "blur(15px)",
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "flex-end",
-        }}>
-        <Link
-          onClick={() => toggleHandler()}
-          style={{
-            width: "100vw",
-            height: "100vh",
-            zIndex: 2,
-            position: "absolute",
-          }}
-        />
-        <Box maxWidth='768px' m='0 auto' zIndex={3}>
-          <Grid
-            container
+          zIndex: 2,
+          position: "absolute",
+        }}
+      />
 
-            sx={{
-              backgroundColor: "#FFF",
-              borderRadius: "16px 16px 0 0",
-              p: "2rem 8px",
-            }}>
-            <Grid item xs={12} sm={12} md={12} lg={12}>
-              <Typography
-                variant='h5'
-                fontWeight={"bold"}
-                fontSize='16px'
-                mr='8px'
-                mb='16px'
-                fontFamily='Vazir'>
-               {data.name}
-              </Typography>
-            </Grid>
-            
-            {/* BUTTON FOR CHOOSE CATEGORY */}
-            {/* {buttons.length == 1 ? (
-              ""
-            ) : (
-              <Grid item xs={12} sm={12} md={12} lg={12} m=' .5rem 8px'>
-                <CategoryModal
-                gridItem={buttons.length}
-                  buttonsActiveHandler={buttonsActiveHandler}
-                  buttonActive={buttonActive}
-                  buttons={buttons}
-                />
-              </Grid>
-            )} */}
+      <Grid
+        container
+        sx={{
+          backgroundColor: "#FFF",
+          borderRadius: "16px 16px 0 0",
+          m: "0 auto",
+          maxWidth: "768px",
+          p: "2rem 8px",
+          zIndex: 3,
+        }}
+      >
+        <Grid item xs={12}>
+          <Typography variant='h5' fontWeight={"bold"} fontSize='16px' mr='8px' mb='16px' fontFamily='Vazir'>
+            {nameData}
+          </Typography>
+        </Grid>
 
-             { console.log(data.services["ساده"])}
-            {data.services["ساده"].map((item, id) => (
+     
+        {dataList.map((item, id) => (
               <Grid
                 item
                 xs={12}
@@ -91,18 +73,19 @@ console.log(data)
                 p=' .5rem 8px '
                 width='100%'>
                 <IncreaseItem
-                  data={item}
+                  // data={item}
                   // image={item.subImage}
                   title={item.serviceType}
                   cost={item.value}
-                  // id={item.id}
+                  id={id}
                 />
               </Grid>
             ))}
-          </Grid>
-        </Box>
-      </Box>
-    </>
+  
+
+     
+      </Grid>
+    </Box>
   );
 };
 
