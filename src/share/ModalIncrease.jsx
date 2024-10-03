@@ -16,7 +16,7 @@ const dataList= data
   };
 
   console.log('====================================');
-  console.log(data);
+  console.log("data");
   console.log('====================================');
   return (
     <Box
@@ -62,7 +62,7 @@ const dataList= data
         </Grid>
 
      
-        {dataList.map((item, id) => (
+         {dataList.map((item, id) => (
               <Grid
                 item
                 xs={12}
@@ -80,7 +80,7 @@ const dataList= data
                   id={id}
                 />
               </Grid>
-            ))}
+            ))} 
   
 
      

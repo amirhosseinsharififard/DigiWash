@@ -1,7 +1,8 @@
 import axios from "axios";
 
 const BASE_URL = "https://laundry.rahcode.co/";
-const BEARER_TOKEN = "Jbfy467FdVFjJ7s92eiHCeTwxQf5oE3WQWgcsoCBlyld9AwWQJcvHmf9YitW";
+const BEARER_TOKEN =
+  "2gEQgFviCaN9A5tcyiyFE66TvGuIjwYFaOyw000BVnrowKscDym2YhgMYLlF";
 
 const axiosInstance = axios.create({
   baseURL: BASE_URL,
@@ -21,9 +22,9 @@ const fetchHomePage = async () => {
   }
 };
 
-const fetchCategoryServices = async () => {
+const fetchCategoryServices = async (index) => {
   try {
-    const response = await axiosInstance.get("api/category-services/1");
+    const response = await axiosInstance.get(`api/category-services/${index}`);
     console.log(response.data);
     return response.data;
   } catch (error) {
@@ -32,4 +33,4 @@ const fetchCategoryServices = async () => {
   }
 };
 
-export { BASE_URL, BEARER_TOKEN, fetchHomePage, fetchCategoryServices };
+export {BASE_URL, BEARER_TOKEN, fetchHomePage, fetchCategoryServices};
