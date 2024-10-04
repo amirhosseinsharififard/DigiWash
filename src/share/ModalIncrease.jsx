@@ -8,16 +8,14 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import IncreaseItem from "./IncreaseItemModal";
 
-const ModalIncrease = ({ toggleHandler, data,dataObjectKeys,categoryData,nameData}) => {
+const ModalIncrease = ({ toggleHandler, data,nameData}) => {
   const [showMore, setShowMore] = useState(false);
 const dataList= data
   const handleShowMore = () => {
     setShowMore(!showMore);
   };
 
-  console.log('====================================');
-  console.log("data");
-  console.log('====================================');
+  console.log(nameData)
   return (
     <Box
       sx={{

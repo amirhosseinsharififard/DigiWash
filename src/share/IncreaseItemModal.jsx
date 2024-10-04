@@ -3,15 +3,15 @@
 /* eslint-disable react/prop-types */
 import {Box, Button, Grid, Typography} from "@mui/material";
 import toFarsiNumber, {persianPrice} from "./functions";
-import {useSelector, useDispatch} from "react-redux";
-import {
-  addItem,
-  cart,
-  decrease,
-  increase,
-  removeItem,
-} from "../pwa/features/cart/cartSlice";
-import {productQuantity} from "../helper/helper";
+// import {useSelector, useDispatch} from "react-redux";
+// import {
+//   addItem,
+//   cart,
+//   decrease,
+//   increase,
+//   removeItem,
+// } from "../pwa/features/cart/cartSlice";
+// import {productQuantity} from "../helper/helper";
 // import select from "../pwa/features/counter/counterSlice";
 
 const IncreaseItem = ({data, title, image, cost, id}) => {

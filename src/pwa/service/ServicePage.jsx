@@ -14,6 +14,12 @@ import ModalIncrease from "../../share/ModalIncrease";
 const ServicePage = () => {
   const [isShowModal, setIsShowModal] = useState(false);
 
+  const [categories, setCategories] = useState(null); // مقدار اولیه null به جای undefined
+  const [services, setServices] = useState(null); // مقدار اولیه null به جای undefined
+  const [dataId, setDataID] = useState(); // id برای مودال
+  const [key, setKey] = useState(null); // key modal
+  const [value, setValue] = useState(null); // key modal
+  const [error, setError] = useState(null); // برای مدیریت خطا
   let buttonFilter = ["کت", "شلوار", "لباس"];
 
   const locationIndex = useLocation().pathname.split("/")[2];
@@ -26,17 +32,12 @@ const ServicePage = () => {
     }
   };
 
-  const [categories, setCategories] = useState(null); // مقدار اولیه null به جای undefined
-  const [services, setServices] = useState(null); // مقدار اولیه null به جای undefined
-  const [error, setError] = useState(null); // برای مدیریت خطا
-
   useEffect(() => {
     const fetchData = async (fetchIndex) => {
       try {
         const data = await fetchCategoryServices(fetchIndex);
         setCategories(data.data.categories);
         setServices(data.data.services);
-        console.log(data);
       } catch (err) {
         setError("Error fetching data");
         console.error(err);
@@ -46,9 +47,17 @@ const ServicePage = () => {
     fetchData(locationIndex); // فراخوانی تابع غیرهمزمان
   }, []);
 
-  const toggleHandler = () => {
+  const toggleHandler = (id, services) => {
     setIsShowModal((prev) => !prev);
+    setDataID(id);
+    Object.entries(services).forEach(([key, val]) => {
+      setKey(key); // تنظیم کلید
+      setValue(val); // تنظیم مقدار
+    });
   };
+
+  // console.log(key && key)
+  // console.log(value && value)
 
   return (
     <>
@@ -66,9 +75,11 @@ const ServicePage = () => {
         {services &&
           services.map((item) => (
             <>
+              {/* {console.log(item[dataId])} */}
+
               <ServicesCoponent
                 item={item}
-                toggleHandler={() => toggleHandler(locationIndex)}
+                toggleHandler={() => toggleHandler(item.id, item.services)}
                 key={item.id}
                 // moshkel az injas va bayad data az samt api dorost she yebar araye miad yebar object
                 subTitle={item.unique_subs}
@@ -86,10 +97,11 @@ const ServicePage = () => {
           // isShowModal={isShowModal}
           // toggleHandler={toggleHandler}
           // nameData={nameData}
-               data={''}
-          isShowModal={''}
-          toggleHandler={''}
-          nameData={''}
+          // data={services[dataId].services} // negahesh dar
+          data={value}
+          isShowModal={isShowModal}
+          toggleHandler={(() => toggleHandler())}
+          nameData={services[dataId-1].name}
           // toggleHandler={() => toggleAndIndexHandler(checkIndex)}
           // checkIndex={checkIndex}
           // dataModal={products}

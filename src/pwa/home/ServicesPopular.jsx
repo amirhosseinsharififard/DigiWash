@@ -45,12 +45,6 @@ const ServicesPopular = ({indexData}) => {
     toggleHandler();
   };
 
-  console.log("service favorite");
-  console.log(indexData.data.favorite_services);
-  console.log(data);
-  if (data) {
-    console.log(Object.keys(data));
-  }
   return (
     <>
       <Box
@@ -88,8 +82,7 @@ const ServicesPopular = ({indexData}) => {
                   <Link
                     style={{textDecoration: "none", color: "black"}}
                     onClick={() => (setData(item.services),setNameData(item.name))}>
-                    {console.log(item)}
-                    {console.log("item")}
+               
                     <ServicesPopularComponent
                       toggleHandler={() => toggleAndIndexHandler(item.id)}
                       checkIndex={item.id}
@@ -103,7 +96,7 @@ const ServicesPopular = ({indexData}) => {
             : "we need data"}
         </Swiper>
       </Box>
-
+{console.log(data)}
       {isShowModal && (
         <ModalIncrease
           data={data[dataObjectKeys]}

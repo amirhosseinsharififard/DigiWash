@@ -4,8 +4,10 @@ import toFarsiNumber from "../../share/functions";
 import { Link } from "react-router-dom";
 
 // eslint-disable-next-line react/prop-types
-const ServicesCoponent = ({ image, cost, name, subTitle ,toggleHandler}) => {
+const ServicesCoponent = ({ image, cost, name, subTitle ,toggleHandler,item}) => {
 
+  
+  // console.log(item)
   return (
     
     
@@ -43,11 +45,11 @@ const ServicesCoponent = ({ image, cost, name, subTitle ,toggleHandler}) => {
               fontSize: "14px",
               height: "auto"
             }}>
-            {
+            {/* {
               
             console.log(subTitle?subTitle:'')
            
-            }
+            } */}
           </Typography>
         </Stack>
         <Stack
