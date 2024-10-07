@@ -7,9 +7,8 @@ import ServicesPopular from "./ServicesPopular";
 import ServicesCategory from "./ServicesCategory";
 import HeaderPwa from "./HeaderPwa";
 import {fetchHomePage} from "../../API/requests"; // import کردن فقط متغیرهای لازم
-// import PhoneRegisterModal from "../../components/PhoneRegisterModal";
 
-const HomePage = () => {
+const HomePage = ({setIsPhoneRegisterModalOpen}) => {
   const [indexData, setIndexData] = useState(null); // مقدار اولیه null به جای undefined
   const [error, setError] = useState(null); // برای مدیریت خطا
 
@@ -34,7 +33,7 @@ const HomePage = () => {
 
   return (
     <>
-      <HeaderPwa />
+      <HeaderPwa setIsPhoneRegisterModalOpen={setIsPhoneRegisterModalOpen} />
       <Box sx={{maxWidth: "768px", m: "0rem auto 5rem"}}>
         <Offday />
         <OrderPhone />
@@ -44,7 +43,6 @@ const HomePage = () => {
 
 
         {/* rigester Form completed need css */}
-        {/* <PhoneRegisterModal /> */}
       </Box>
     </>
   );

@@ -1,22 +1,28 @@
-import { Box, Button, Container, Grid, Typography } from "@mui/material";
+import {Box, Button, Container, Grid, Typography} from "@mui/material";
 
 // logo
 import LogoPwa from "../../../assets/LogoPwa.png";
 import HeaderService from "../service/HeaderService";
-import { Link, useLocation } from "react-router-dom";
+import {Link, useLocation} from "react-router-dom";
 import LoginHeader from "../../share/LoginHeader";
 import persianDigiWash from "../../../assets/persianDigiWash.png";
 const HeaderPwa = ({
-// eslint-disable-next-line react/prop-types
-handleFilterButtonClick,buttonFilter
+  // eslint-disable-next-line react/prop-types
+  handleFilterButtonClick,
+  buttonFilter,
+  setIsPhoneRegisterModalOpen,
 }) => {
   const pathName = useLocation().pathname;
   const isLogin = false;
   console.log(pathName);
 
+  const registerHandler = () => {
+    setIsPhoneRegisterModalOpen(true);
+    console.log("object")
+  };
   return (
-    <Box sx={{ bgcolor: "#0caeca" }}>
-      <Box sx={{ maxWidth: "768px", m: "auto" }}>
+    <Box sx={{bgcolor: "#0caeca"}}>
+      <Box sx={{maxWidth: "768px", m: "auto"}}>
         <Container
           sx={{
             display: "flex",
@@ -24,19 +30,19 @@ handleFilterButtonClick,buttonFilter
             flexDirection: "column",
 
             ml: "auto",
-            mr: "auto"
+            mr: "auto",
           }}>
           {pathName == "/services" ? (
-            <HeaderService 
-             handleFilterButtonClick={handleFilterButtonClick}
-             buttonFilter={buttonFilter}
+            <HeaderService
+              handleFilterButtonClick={handleFilterButtonClick}
+              buttonFilter={buttonFilter}
             />
           ) : (
-            <Box sx={{ m: " auto " }}>
+            <Box sx={{m: " auto "}}>
               <Link to='/'>
                 <img
                   src={persianDigiWash}
-                  style={{ width: "98px", height: "22px", padding: "16px" }}
+                  style={{width: "98px", height: "22px", padding: "16px"}}
                 />
               </Link>
             </Box>
@@ -47,7 +53,7 @@ handleFilterButtonClick,buttonFilter
             marginLeft: "auto",
             marginRight: "auto",
             maxWidth: " 768px",
-            top: "-76px"
+            top: "-76px",
           }}>
           <Grid
             container
@@ -59,7 +65,7 @@ handleFilterButtonClick,buttonFilter
               justifyContent: "space-between",
               p: "1.5rem 1.5rem .7rem 1.5rem",
               ml: "auto",
-              mr: "auto"
+              mr: "auto",
             }}>
             {isLogin ? (
               <LoginHeader />
@@ -97,9 +103,10 @@ handleFilterButtonClick,buttonFilter
                       borderRadius: "30px",
                       width: "auto",
                       "&:hover": {
-                        background: "#0caeca"
-                      }
-                    }}>
+                        background: "#0caeca",
+                      },
+                    }}
+                    onClick={registerHandler}>
                     ثبتنام / ورود
                   </Button>
                 </Grid>

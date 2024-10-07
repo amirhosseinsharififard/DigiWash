@@ -18,13 +18,16 @@ import {ThemeProvider} from "@mui/material";
 import theme from "./Theme";
 import EditPage from "./pwa/profile/edit/EditPage";
 import Basket from "./page/Basket";
+import PhoneRegisterModal from "./components/PhoneRegisterModal";
+import { useState } from "react";
 
 function App() {
+  const  [isPhoneRegisterModalOpen,setIsPhoneRegisterModalOpen]=useState(false)
   return (
     <>
       <ThemeProvider theme={theme}>
         <Routes>
-          <Route path='/' element={<HomePage />} />
+          <Route path='/' element={<HomePage setIsPhoneRegisterModalOpen={setIsPhoneRegisterModalOpen}/>} />
           <Route path='/services/:id' element={<ServicePage />} />
           <Route path='' element={<ModalIncrease />} />
           <Route path='/profile' element={<ProfilePage />} />
@@ -34,6 +37,8 @@ function App() {
           <Route path='/basket' element={<Basket />} />
         </Routes>
         <Footer />
+        <PhoneRegisterModal isPhoneRegisterModalOpen={isPhoneRegisterModalOpen} setIsPhoneRegisterModalOpen={setIsPhoneRegisterModalOpen}/>
+
       </ThemeProvider>
     </>
   );

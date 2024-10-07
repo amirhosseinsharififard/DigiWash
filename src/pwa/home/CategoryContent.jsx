@@ -3,9 +3,7 @@ import { Box, Typography } from "@mui/material";
 
 const CategoryContent = ({ imageCategory, titleCategory }) => {
 const image=imageCategory
-console.log('====================================');
-console.log(image);
-console.log('====================================');
+
   return (
     <>
       <Box

@@ -33,4 +33,20 @@ const fetchCategoryServices = async (index) => {
   }
 };
 
-export {BASE_URL, BEARER_TOKEN, fetchHomePage, fetchCategoryServices};
+const fetchSendOtp= async (phoneNumber)=>{
+  console.log(phoneNumber)
+  
+  try {
+    const response = await axiosInstance.post(`api/send-otp?phone_number=${phoneNumber}`);
+
+    console.log(response.data);
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching send Otp:", error);
+    throw error; // بازگرداندن خطا برای مدیریت در جای دیگر
+  }
+}
+
+
+
+export {BASE_URL, BEARER_TOKEN, fetchHomePage, fetchCategoryServices,fetchSendOtp};

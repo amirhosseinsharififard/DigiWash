@@ -75,7 +75,7 @@ const Footer = () => {
               style={{ width: "24px", height: "24px" }}
             />
             <Typography>سفارش ها</Typography>
-            {console.log(isShowModal)}
+            
           </Link>
         </Grid>
         <Grid
