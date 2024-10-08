@@ -9,7 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { productQuantity } from "../helper/helper";
 
 // eslint-disable-next-line no-unused-vars
-const OrderSectionItemContent = ({ data, title, image, cost, id, whichButton }) => {
+const OrderSectionItemContent = ({ data, title, image, cost, id, whichButton,quantity }) => {
   const state = useSelector(cart);
   const dispatch = useDispatch();
 
@@ -106,7 +106,7 @@ const OrderSectionItemContent = ({ data, title, image, cost, id, whichButton }) 
               fontWeight: "bold",
               margin: "8px",
             }}>
-            {toFarsiNumber(quantiy)}
+            {toFarsiNumber(quantity)}
             {/* {toFarsiNumber(10)} */}
           </span>
 

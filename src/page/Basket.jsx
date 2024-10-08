@@ -7,16 +7,31 @@ import { useSelector } from "react-redux";
 import { cart } from "../pwa/features/cart/cartSlice";
 import BillComponent from "../components/BillComponent";
 import { useEffect, useState } from "react";
+import { fetchOpenOrder } from "../API/requests";
 
 const Basket = () => {
-  const [order,setOrder]=useState()
-  const [addToOpenOrder,setAddToOpenOrder]=useState()
-  const [removeToOpenOrder,setRemoveToOpenOrder]=useState()
+  // const [order,setOrder]=useState()
+  // const [addToOpenOrder,setAddToOpenOrder]=useState()
+  // const [removeToOpenOrder,setRemoveToOpenOrder]=useState()
+  const [openOrders,setOpenOrders]=useState()
+  const [error, setError] = useState(null); // برای مدیریت خطا
+
   useEffect(()=>{
-    
-  },[addToOpenOrder,removeToOpenOrder,order])
-  const cartItem = useSelector(cart);
-  const selectedItems = cartItem.itemsCounter;
+    const fetchData = async () => {
+      try {
+        const data = await fetchOpenOrder();
+        setOpenOrders(data)
+        
+      } catch (err) {
+        setError("Error fetching data");
+        console.error(err);
+      }
+    };
+
+    fetchData(); // فراخوانی تابع غیرهمزمان
+  },[])
+  // const cartItem = useSelector(cart);
+  const selectedItems = openOrders? openOrders.data.length :0
   return (
     <>
       <HeaderBasket pageAddress={"تکمیل سفارش"} />
@@ -24,7 +39,7 @@ const Basket = () => {
         <Grid container m='auto' maxWidth='768px'>
           <Box alignItems='center' alignContent='center' width='100%'>
             {selectedItems === 0 && <OrderSection />}
-            {selectedItems >= 1 && <OrederSectionItem />}
+            {selectedItems >= 1 && <OrederSectionItem orders={openOrders ? openOrders.data:null }/>}
           </Box>
           <Transportations />
           <BillComponent />

@@ -4,7 +4,7 @@ import OrederSectionItemContent from "./OrederSectionItemContent";
 import {useSelector} from "react-redux";
 import {cart} from "../pwa/features/cart/cartSlice";
 
-const OrederSectionItem = () => {
+const OrederSectionItem = ({orders}) => {
   const products = useSelector(cart);
   const selectedItems = products.selectedItems;
   // // console.log("selectedItems");
@@ -27,7 +27,7 @@ const OrederSectionItem = () => {
       );
 
       let reducePrice2 = sumPrice.reduce((acc, curr) => acc + curr, 0);
-      console.log(reducePrice2);
+      // console.log(reducePrice2);
       return reducePrice2;
       // console.log(item),
       // console.log("item"),
@@ -35,7 +35,9 @@ const OrederSectionItem = () => {
   };
 
   const categorysPrice = reducerPrice(newCategory);
-  console.log(categorysPrice);
+  // console.log(categorysPrice);
+
+  // console.log(orders)
   return (
     <>
       <Grid
@@ -57,10 +59,65 @@ const OrederSectionItem = () => {
               display: "flex",
               justifyContent: "space-between",
             }}>
+            {orders && orders.map((item,i)=>(
+              <>
+              {/* {console.log(item)} */}
+              <Grid
+                  key={item.id}
+                  item
+                  m='1rem .7rem '
+                  display='flex'
+                  justifyContent='space-between'
+                  xs={12}
+                  sm={12}
+                  md={12}
+                  lg={12}>
+                  <>
+                    <Typography fontSize='16px' fontFamily='Vazir'>
+                      {item.name}
+                    </Typography>
+
+                    <Typography fontSize='12px' fontFamily='Vazir'>
+                      درمجموع
+                      <span
+                        style={{
+                          fontFamily: "Vazir",
+                          fontWeight: "bold",
+                        }}>
+                        {persianPrice(item.value)} تومان
+                        {/* {console.log(item)} */}
+                      </span>
+                    </Typography>
+                  </>
+                </Grid>
+                <Grid item m='1rem .7rem ' xs={12} sm={12} md={12} lg={12}>
+                  {item.service_list.map((item2, i) => (
+                    <>
+                    {console.log(item2)}
+                 
+                        <>
+           
+                          <OrederSectionItemContent
+                             key={item2.id}
+
+                            id={item2.id}
+                            cost={item2.value}
+                            title={item2.service_type}
+                            quantity={item2.qty}
+                            data={item2}
+                          />
+                        </>
+                      
+                    </>
+                  ))}
+                </Grid>
+              </>
+            ))
+
+            }
             {newCategory.map((item, i) => (
               <>
-                {console.log(item)}
-                {console.log("item")}
+              
                 <Grid
                   key={item + i}
                   item

@@ -34,11 +34,13 @@ const fetchCategoryServices = async (index) => {
 };
 
 // baraye set kardan shomare mobaile
-const fetchSendOtp= async (phoneNumber)=>{
-  console.log(phoneNumber)
-  
+const fetchSendOtp = async (phoneNumber) => {
+  console.log(phoneNumber);
+
   try {
-    const response = await axiosInstance.post(`api/send-otp?phone_number=${phoneNumber}`);
+    const response = await axiosInstance.post(
+      `api/send-otp?phone_number=${phoneNumber}`
+    );
 
     console.log(response.data);
     return response.data;
@@ -46,15 +48,17 @@ const fetchSendOtp= async (phoneNumber)=>{
     console.error("Error fetching send Otp:", error);
     throw error; // بازگرداندن خطا برای مدیریت در جای دیگر
   }
-}
+};
 
 //baraye vorod mojadad be site
-const fetchVerifyOtp= async (phoneNumber,code)=>{
-  console.log(phoneNumber)
-  console.log(code)
-  
+const fetchVerifyOtp = async (phoneNumber, code) => {
+  console.log(phoneNumber);
+  console.log(code);
+
   try {
-    const response = await axiosInstance.post(`api/verify-otp?phone_number=${phoneNumber}&code=${code}`);
+    const response = await axiosInstance.post(
+      `api/verify-otp?phone_number=${phoneNumber}&code=${code}`
+    );
 
     console.log(response.data);
     return response.data;
@@ -62,17 +66,19 @@ const fetchVerifyOtp= async (phoneNumber,code)=>{
     console.error("Error fetching send Otp:", error);
     throw error; // بازگرداندن خطا برای مدیریت در جای دیگر
   }
-}
+};
 
 //baraye sabtnam avalye
-const fetchregisterOtp= async (firstName,phoneNumber,code,lastName)=>{
-  console.log(firstName)
-  console.log(phoneNumber)
-  console.log(code)
-  console.log(lastName)
-  
+const fetchregisterOtp = async (firstName, phoneNumber, code, lastName) => {
+  console.log(firstName);
+  console.log(phoneNumber);
+  console.log(code);
+  console.log(lastName);
+
   try {
-    const response = await axiosInstance.post(`api/api/register?first_name=${firstName}&phone_number=${phoneNumber}&code=${code}&last_name=${lastName}`);
+    const response = await axiosInstance.post(
+      `api/register?first_name=${firstName}&phone_number=${phoneNumber}&code=${code}&last_name=${lastName}`
+    );
 
     console.log(response.data);
     return response.data;
@@ -80,7 +86,27 @@ const fetchregisterOtp= async (firstName,phoneNumber,code,lastName)=>{
     console.error("Error fetching send Otp:", error);
     throw error; // بازگرداندن خطا برای مدیریت در جای دیگر
   }
-}
+};
 
+const fetchOpenOrder = async () => {
+  try {
+    const response = await axiosInstance.get(`api/open-orders`);
 
-export {BASE_URL, BEARER_TOKEN, fetchHomePage, fetchCategoryServices,fetchSendOtp,fetchVerifyOtp,fetchregisterOtp};
+    // console.log(response.data);
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching send Otp:", error);
+    throw error; // بازگرداندن خطا برای مدیریت در جای دیگر
+  }
+};
+
+export {
+  BASE_URL,
+  BEARER_TOKEN,
+  fetchHomePage,
+  fetchCategoryServices,
+  fetchSendOtp,
+  fetchVerifyOtp,
+  fetchregisterOtp,
+  fetchOpenOrder
+};
