@@ -3,7 +3,8 @@ import {Box, Button, Grid, TextField, Typography} from "@mui/material";
 import {Link} from "react-router-dom";
 import {useState} from "react";
 import CountdownTimer from "./CountdownTimer";
-import {fetchSendOtp} from "../API/requests";
+import {fetchSendOtp, fetchVerifyOtp} from "../API/requests";
+import toFarsiNumber from "../share/functions";
 const PhoneRegisterModal = ({
   isPhoneRegisterModalOpen,
   setIsPhoneRegisterModalOpen,
@@ -154,7 +155,7 @@ const PhoneRegisterModal = ({
                     {fieldRegister.codeConfirm ? (
                       fieldRegister.codeConfirm.split("").map((item, i) => (
                         <Typography mr={5} key={i}>
-                          {item}
+                          {toFarsiNumber(item)}
                         </Typography>
                       ))
                     ) : (
@@ -182,9 +183,8 @@ const PhoneRegisterModal = ({
         codeConfirm: value.slice(0, 4), // محدودیت به 4 کاراکتر
       }));
     }
-    if(fieldRegister.codeConfirm.length === 4){
-      console.log("confrim ok")
-    }
+  (fieldRegister.codeConfirm.length >= 2) && fetchVerifyOtp(fieldRegister.phoneNumber,fieldRegister.codeConfirm)
+    
   }}
                   name='codeConfirm'
                   value={fieldRegister.codeConfirm}
@@ -192,11 +192,27 @@ const PhoneRegisterModal = ({
                   variant='outlined'
                   placeholder='مثلا 09172384087'
                   type='text'
-                  style={{opacity: "50%"}}
+                  style={{opacity: "0%"}}
+                  
                   fullWidth
                   zIndex='3'
                   inputProps={{min: 0, style: { textAlign: 'left' }}} 
+                  sx={{
+                    cursor:"default"
+                  }}
                   // onChange={changeHandler}
+                  onKeyUp={(e) => {
+    const value = e.target.value;
+    if (/^\d*$/.test(value)) {
+      // چک می‌کند که آیا ورودی فقط شامل اعداد است
+      setFieldRegister((prevState) => ({
+        ...prevState,
+        codeConfirm: value.slice(0, 4), // محدودیت به 4 کاراکتر
+      }));
+    }
+  (fieldRegister.codeConfirm.length >= 2) && fetchVerifyOtp(fieldRegister.phoneNumber,fieldRegister.codeConfirm)
+    
+  }}
                 />
 
                 <Grid
