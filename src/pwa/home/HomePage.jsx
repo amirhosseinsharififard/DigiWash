@@ -38,8 +38,8 @@ const HomePage = ({setIsPhoneRegisterModalOpen}) => {
         <Offday />
         <OrderPhone />
         <Services indexData={indexData} />
-        <ServicesPopular indexData={indexData} />
-        <ServicesCategory indexData={indexData} />
+        {/* <ServicesPopular indexData={indexData} /> */}
+        {/* <ServicesCategory indexData={indexData} /> */}
 
 
         {/* rigester Form completed need css */}

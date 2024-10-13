@@ -48,14 +48,14 @@ const Services = ({indexData}) => {
               }}>
               {/* check shavad */}
               <img
-                src={item.icon ? item.icon : "nadarad"}
-                style={{margin: "0 auto"}}
+                src={item.image ? item.image : "nadarad"}
+                style={{margin: "0 auto",height:"32px",width:"32px"}}
               />
 
               <Typography
                 variant='h6'
                 color='black'
-                sx={{fontFamily: "Vazir", fontSize: "12px"}}>
+                sx={{fontFamily: "Vazir", fontSize: "16px"}}>
                 {item.name}
               </Typography>
             </Grid>
