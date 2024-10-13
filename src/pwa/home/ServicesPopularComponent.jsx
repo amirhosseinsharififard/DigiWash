@@ -1,16 +1,17 @@
 /* eslint-disable react/prop-types */
-import { Box, Stack, Typography } from "@mui/material";
 
-// eslint-disable-next-line react/prop-types, no-unused-vars
+import {Box, Stack, Typography} from "@mui/material";
+
 const ServicesPopularComponent = ({
-  // eslint-disable-next-line react/prop-types
   title,
-  // eslint-disable-next-line react/prop-types
+
   subTitle,
   image,
   toggleHandler,
-
 }) => {
+  // {
+  //   console.log(Array.isArray(subTitle) ? false : subTitle); // helper to find is array or Object
+  // }
 
   return (
     <>
@@ -21,7 +22,7 @@ const ServicesPopularComponent = ({
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-          alignContent: "center"
+          alignContent: "center",
         }}>
         <Stack
           display='flex'
@@ -47,13 +48,16 @@ const ServicesPopularComponent = ({
               height='20px'
               fontFamily='Vazir-Light'
               color='rgb(85, 100, 102)'>
-              {subTitle}
+              {/* {subTitle} */}
+              {Array.isArray(subTitle)
+                ? subTitle.join(",")
+                : Object.values(subTitle).join(" , ")}
             </Typography>
           </Box>
         </Stack>
         <img
           src={image}
-          style={{ backgroundColor: "none", width: "64px", height: "64px" }}
+          style={{backgroundColor: "none", width: "64px", height: "64px"}}
         />
       </Box>
     </>

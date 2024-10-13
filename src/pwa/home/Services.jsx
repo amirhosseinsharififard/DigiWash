@@ -16,7 +16,7 @@ import {Box, Grid, Typography} from "@mui/material";
 
 // eslint-disable-next-line react/prop-types
 const Services = ({indexData}) => {
-
+  // console.log(indexData && indexData);
   return (
     <>
       <Box maxWidth='768px'>
@@ -33,7 +33,7 @@ const Services = ({indexData}) => {
       <Grid container maxWidth='420px' alignContent='center' margin='0 auto'>
         {indexData &&
           // eslint-disable-next-line react/prop-types
-          indexData.data.service_types.map((item) => (
+          indexData.map((item) => (
             <Grid
               item
               lx={3}
@@ -46,10 +46,9 @@ const Services = ({indexData}) => {
               sx={{
                 width: "auto",
               }}>
-              {/* check shavad */}
               <img
                 src={item.image ? item.image : "nadarad"}
-                style={{margin: "0 auto",height:"32px",width:"32px"}}
+                style={{margin: "0 auto", height: "32px", width: "32px"}}
               />
 
               <Typography

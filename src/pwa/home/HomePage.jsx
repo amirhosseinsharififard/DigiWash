@@ -37,10 +37,9 @@ const HomePage = ({setIsPhoneRegisterModalOpen}) => {
       <Box sx={{maxWidth: "768px", m: "0rem auto 5rem"}}>
         <Offday />
         <OrderPhone />
-        <Services indexData={indexData} />
-        {/* <ServicesPopular indexData={indexData} /> */}
+        <Services indexData={indexData && indexData.data.service_types} />
+        <ServicesPopular indexData={indexData.data.favorite_services} />
         {/* <ServicesCategory indexData={indexData} /> */}
-
 
         {/* rigester Form completed need css */}
       </Box>

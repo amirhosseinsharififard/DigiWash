@@ -45,6 +45,8 @@ const ServicesPopular = ({indexData}) => {
     toggleHandler();
   };
 
+
+  console.log(indexData)
   return (
     <>
       <Box
@@ -77,7 +79,7 @@ const ServicesPopular = ({indexData}) => {
           className='mySwiper'
           style={{marginRight: ".5rem"}}>
           {indexData
-            ? indexData.data.favorite_services.map((item) => (
+            ? indexData.map((item) => (
                 <SwiperSlide style={{background: "none"}} key={item.id}>
                   <Link
                     style={{textDecoration: "none", color: "black"}}
@@ -96,7 +98,6 @@ const ServicesPopular = ({indexData}) => {
             : "we need data"}
         </Swiper>
       </Box>
-{console.log(data)}
       {isShowModal && (
         <ModalIncrease
           data={data[dataObjectKeys]}
