@@ -1,14 +1,14 @@
 /* eslint-disable react/prop-types */
-import { Box, Grid, Typography } from "@mui/material";
-import { Link } from "react-router-dom";
+import {Box, Grid, Typography} from "@mui/material";
+import {Link} from "react-router-dom";
 
 // icon
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import BasketIcon from "../../assets/ordersBasket.c57a891b.svg";
 import toFarsiNumber from "../share/functions";
-const HeaderProfileLinks = ({ pageAddress }) => {
+const HeaderProfileLinks = ({pageAddress, collectAllProductLength}) => {
   return (
-    <Box sx={{ bgcolor: "#0caeca" }}>
+    <Box sx={{bgcolor: "#0caeca"}}>
       <Box
         sx={{
           maxWidth: "768px",
@@ -34,7 +34,7 @@ const HeaderProfileLinks = ({ pageAddress }) => {
             <Link to='/profile'>
               <Typography variant='h6' fontWeight={700}>
                 <ArrowForwardIosIcon
-                  style={{ color: "white", padding: ".5rem" }}
+                  style={{color: "white", padding: ".5rem"}}
                 />
               </Typography>
             </Link>
@@ -104,7 +104,7 @@ const HeaderProfileLinks = ({ pageAddress }) => {
                   fontWeight: "bold",
                   color: "rgb(0, 77, 100)",
                 }}>
-                {toFarsiNumber(0)}
+                {toFarsiNumber(collectAllProductLength)}
               </span>
               <Typography
                 fontSize='16px'

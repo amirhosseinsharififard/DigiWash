@@ -1,43 +1,60 @@
 import {Box, Grid, Typography} from "@mui/material";
 import {persianPrice} from "../share/functions";
 import OrederSectionItemContent from "./OrederSectionItemContent";
-import {useSelector} from "react-redux";
-import {cart} from "../pwa/features/cart/cartSlice";
+import {useEffect, useState} from "react";
 
-const OrederSectionItem = ({orders}) => {
-  const products = useSelector(cart);
-  const selectedItems = products.selectedItems;
-  // // console.log("selectedItems");
-  // console.log(selectedItems[0]);
+const OrederSectionItem = ({orders, setCollectAllProductLength}) => {
+  // ایجاد یک Map برای ذخیره مجموع هزینه‌ها
+  const reduceCost = new Map();
 
-  const findCategoryTitle = () => {
-    const category = selectedItems.map((item) => item.categoryTitle);
-    category.filter((value, index) => selectedItems.indexOf(value) !== index);
-    return category;
+  // تابع برای اضافه کردن مقدار به آرایه
+  const addValueToArrayInMap = (key, value) => {
+    // اضافه کردن یا به‌روزرسانی آرایه برای یک کلید مشخص
+    reduceCost.set(key, [...(reduceCost.get(key) || []), value]);
   };
-  function removeDuplicates(arr) {
-    return arr.filter((item, index) => arr.indexOf(item) === index);
-  }
-  const newCategory = removeDuplicates(findCategoryTitle());
 
-  const reducerPrice = (category) => {
-    return category.map((item) => {
-      const sumPrice = selectedItems.map(
-        (data) => data.categoryTitle == item && data.quantity * data.price
-      );
+  const [sums, setSums] = useState(new Map()); // state برای ذخیره مجموع هزینه‌ها
 
-      let reducePrice2 = sumPrice.reduce((acc, curr) => acc + curr, 0);
-      // console.log(reducePrice2);
-      return reducePrice2;
-      // console.log(item),
-      // console.log("item"),
+  const calculateSums = () => {
+    const reduceCost = new Map(); // Map برای ذخیره مجموع هزینه‌ها
+
+    // محاسبه مجموع هزینه‌ها بر اساس خدمات
+    orders.forEach((item) => {
+      const {name, service_list} = item;
+
+      if (service_list && Array.isArray(service_list)) {
+        service_list.forEach((service) => {
+          const totalValue = Number(service.qty) * Number(service.value);
+
+          // به‌روزرسانی reduceCost
+          if (reduceCost.has(name)) {
+            reduceCost.set(name, reduceCost.get(name) + totalValue);
+          } else {
+            reduceCost.set(name, totalValue);
+          }
+        });
+      }
     });
+
+    setSums(reduceCost); // به‌روزرسانی State
   };
 
-  const categorysPrice = reducerPrice(newCategory);
-  // console.log(categorysPrice);
+  // محاسبه مجموع‌ها هنگام بارگذاری کامپوننت
+  useEffect(() => {
+    calculateSums(); // محاسبه مجموع هزینه‌ها
+    if (sums.size > 0) {
+      setCollectAllProductLength(productLength(sums)); // ارسال طول محصولات به تابع
+    }
+    // console.log(sums)
+  }, [orders]); // وابسته به orders و sums
 
-  // console.log(orders)
+  const productLength = (item) => {
+    const keys = Array.from(item.keys()); // گرفتن کلیدهای Map
+    console.log(item); // نمایش Map
+    console.log(keys); // نمایش کلیدها
+    return keys;
+  };
+
   return (
     <>
       <Grid
@@ -48,203 +65,68 @@ const OrederSectionItem = ({orders}) => {
         }}>
         <Box
           sx={{
-            p: "1.5rem",
+            p: "1.50rem",
           }}>
-          <Grid
-            container
-            sx={{
-              border: "1px solid rgb(235, 241, 242)",
-              borderRadius: "12px",
-              bgcolor: "rgb(237, 252, 255)",
-              display: "flex",
-              justifyContent: "space-between",
-            }}>
-            {orders && orders.map((item,i)=>(
-              <>
-              {/* {console.log(item)} */}
-              <Grid
-                  key={item.id}
-                  item
-                  m='1rem .7rem '
-                  display='flex'
-                  justifyContent='space-between'
-                  xs={12}
-                  sm={12}
-                  md={12}
-                  lg={12}>
-                  <>
-                    <Typography fontSize='16px' fontFamily='Vazir'>
-                      {item.name}
-                    </Typography>
-
-                    <Typography fontSize='12px' fontFamily='Vazir'>
-                      درمجموع
-                      <span
-                        style={{
-                          fontFamily: "Vazir",
-                          fontWeight: "bold",
-                        }}>
-                        {persianPrice(item.value)} تومان
-                        {/* {console.log(item)} */}
-                      </span>
-                    </Typography>
-                  </>
-                </Grid>
-                <Grid item m='1rem .7rem ' xs={12} sm={12} md={12} lg={12}>
-                  {item.service_list.map((item2, i) => (
-                    <>
-                    {console.log(item2)}
-                 
-                        <>
-           
-                          <OrederSectionItemContent
-                             key={item2.id}
-
-                            id={item2.id}
-                            cost={item2.value}
-                            title={item2.service_type}
-                            quantity={item2.qty}
-                            data={item2}
-                          />
-                        </>
-                      
-                    </>
-                  ))}
-                </Grid>
-              </>
-            ))
-
-            }
-            {newCategory.map((item, i) => (
-              <>
-              
-                <Grid
-                  key={item + i}
-                  item
-                  m='1rem .7rem '
-                  display='flex'
-                  justifyContent='space-between'
-                  xs={12}
-                  sm={12}
-                  md={12}
-                  lg={12}>
-                  <>
-                    <Typography fontSize='16px' fontFamily='Vazir'>
-                      {item}
-                    </Typography>
-
-                    <Typography fontSize='12px' fontFamily='Vazir'>
-                      درمجموع
-                      <span
-                        style={{
-                          fontFamily: "Vazir",
-                          fontWeight: "bold",
-                        }}>
-                        {persianPrice(categorysPrice[i])} تومان
-                      </span>
-                    </Typography>
-                  </>
-                </Grid>
-                <Grid item m='1rem .7rem ' xs={12} sm={12} md={12} lg={12}>
-                  {selectedItems.map((item2, i) => (
-                    <>
-                      {item2.categoryTitle == item && (
-                        <>
-           
-                          <OrederSectionItemContent
-                             key={item + i}
-
-                            id={item2.id}
-                            cost={item2.price}
-                            title={item2.job}
-                            data={item2}
-                          />
-                        </>
-                      )}
-                    </>
-                  ))}
-                </Grid>
-              </>
-            ))}
-
-            {/* {selectedItems.map((item, i) => (
+          {orders &&
+            orders.map((item) => (
               <>
                 <Grid
-                  key={i}
-                  item
-                  m='1rem .7rem '
-                  display='flex'
-                  justifyContent='space-between'
-                  xs={12}
-                  sm={12}
-                  md={12}
-                  lg={12}>
-                  {spread.length && (
+                  container
+                  sx={{
+                    border: "1px solid rgb(235, 241, 242)",
+                    borderRadius: "12px",
+                    bgcolor: "rgb(237, 252, 255)",
+                    display: "flex",
+                    justifyContent: "space-between",
+                   
+                    mb:2
+                  }}>
+                  {/* {console.log(item.name)} */}
+                  <Grid
+                    key={item.id}
+                    item
+                    m='1rem .7rem '
+                    display='flex'
+                    justifyContent='space-between'
+                    xs={12}
+                    sm={12}
+                    md={12}
+                    lg={12}>
                     <>
                       <Typography fontSize='16px' fontFamily='Vazir'>
-                        {item.categoryTitle}
+                        {item.name}
                       </Typography>
-
                       <Typography fontSize='12px' fontFamily='Vazir'>
-                        درمجموع
+                        درمجموع:
                         <span
                           style={{
                             fontFamily: "Vazir",
                             fontWeight: "bold",
+                            marginRight: "2px",
                           }}>
-                          {persianPrice(products.total)} تومان
+                          {persianPrice(sums && sums.get(item.name))} تومان
                         </span>
                       </Typography>
+
+                      {/* {console.log(sums["شلوار"])} برای بررسی مقادیر */}
+                      {/* {console.log(reduceCost)} برای بررسی مقادیر */}
                     </>
-                  )}
-                </Grid>
-                <Grid item m='1rem .7rem ' xs={12} sm={12} md={12} lg={12}>
-                  <OrederSectionItemContent
-                    id={item.id}
-                    cost={item.price}
-                    title={item.job}
-                    data={item}
-                  />
+                  </Grid>
+                  <Grid item m='1rem .7rem ' xs={12} sm={12} md={12} lg={12}>
+                    {item.service_list.map((item2) => (
+                      <OrederSectionItemContent
+                        key={item2.id}
+                        id={item2.id}
+                        cost={item2.value}
+                        title={item2.service_type}
+                        quantity={item2.qty}
+                        data={item2}
+                      />
+                    ))}
+                  </Grid>
                 </Grid>
               </>
-            ))} */}
-
-            {/* <Grid
-              item
-              m='1rem .7rem '
-              display='flex'
-              justifyContent='space-between'
-              xs={12}
-              sm={12}
-              md={12}
-              lg={12}>
-              <Typography fontSize='16px' fontFamily='Vazir'>
-                {selectedItems.title}
-              </Typography>
-              <Typography fontSize='12px' fontFamily='Vazir'>
-                درمجموع
-                <span
-                  style={{
-                    fontFamily: "Vazir",
-                    fontWeight: "bold",
-                  }}>
-                  {persianPrice(products.total)} تومان
-                </span>
-              </Typography>
-            </Grid> */}
-            {/* {selectedItems.map((item, i) => (
-            
-            ))} */}
-            {/* <Grid item m='1rem .7rem ' xs={12} sm={12} md={12} lg={12}>
-              <OrederSectionItemContent />
-            </Grid>
-            <Grid item m='1rem .7rem ' xs={12} sm={12} md={12} lg={12}>
-              <OrederSectionItemContent />
-            </Grid>
-            <Grid item m='1rem .7rem ' xs={12} sm={12} md={12} lg={12}>
-              <OrederSectionItemContent />
-            </Grid> */}
-          </Grid>
+            ))}
         </Box>
       </Grid>
     </>

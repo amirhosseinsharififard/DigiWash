@@ -9,7 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { productQuantity } from "../helper/helper";
 
 // eslint-disable-next-line no-unused-vars
-const OrderSectionItemContent = ({ data, title, image, cost, id, whichButton,quantity }) => {
+const OrderSectionItemContent = ({ data, title, image, cost, id, whichButton,quantity ,reduceCostEachMap}) => {
   const state = useSelector(cart);
   const dispatch = useDispatch();
 
@@ -20,6 +20,7 @@ const OrderSectionItemContent = ({ data, title, image, cost, id, whichButton,qua
   // console.log(data);
   // console.log("state");
   // console.log(state);
+  // console.log(reduceCostEachMap  )
   return (
     <>
       <Grid
@@ -33,18 +34,18 @@ const OrderSectionItemContent = ({ data, title, image, cost, id, whichButton,qua
         height='80px'
         p={1}
         bgcolor="white" >
-        <Grid item xs={8} sm={8} md={8} lg={8} display={"flex"}>
+        <Grid item xs={7} sm={7} md={7} lg={7} display={"flex"}  alignItems={"center"}>
           <Box>
-            <img src={washMashin} style={{ maxWidth: "48px", maxHeight: "48px" }} />
+            {/* <img src={washMashin} style={{ maxWidth: "32px", maxHeight: "32px",marginLeft:"1rem" }} /> */}
           </Box>
           <Box display='flex' flexDirection={"column"} justifyContent='center'>
-            <Typography variant='h6' fontSize='16px' fontFamily='Vazir-Bold'>
+            <Typography variant='h6' fontSize='14px' fontFamily='Vazir-Bold'>
               {title}
-              {/* خشکشویی + اتو */}
+   
             </Typography>
-            <Typography variant='h6' fontSize='16px' fontFamily='Vazir'>
+            <Typography variant='h6' fontSize='14px' fontFamily='Vazir'>
               {persianPrice(cost)}
-              {/* {persianPrice(220000)} */}
+           
 
                تومان
             </Typography>
@@ -52,12 +53,12 @@ const OrderSectionItemContent = ({ data, title, image, cost, id, whichButton,qua
         </Grid>
         <Grid
           item
-          xs={4}
-          sm={4}
-          md={4}
-          lg={4}
+          xs={5}
+          sm={5}
+          md={5}
+          lg={5}
           display='flex'
-          justifyContent='end'
+          justifyContent='flex-end'
           alignItems='center'
           textAlign="left"
     >
@@ -65,8 +66,8 @@ const OrderSectionItemContent = ({ data, title, image, cost, id, whichButton,qua
             <Button
               onClick={() => dispatch(addItem(data))}
               sx={{
-                minWidth: "48px",
-                height: "48px",
+                minWidth: "32px",
+                height: "32px",
                 bgcolor: "rgba(12, 174, 202,.5)",
                 borderRadius: "50%",
                 display: "flex",
@@ -83,8 +84,8 @@ const OrderSectionItemContent = ({ data, title, image, cost, id, whichButton,qua
             <Button
               onClick={() => dispatch(increase(data))}
               sx={{
-                minWidth: "48px",
-                height: "48px",
+                minWidth: "32px",
+                height: "32px",
                 bgcolor: "rgba(12, 174, 202,.5)",
                 borderRadius: "50%",
                 display: "flex",
@@ -114,8 +115,8 @@ const OrderSectionItemContent = ({ data, title, image, cost, id, whichButton,qua
             <Button
               onClick={() => dispatch(decrease(data))}
               sx={{
-                minWidth: "48px",
-                height: "48px",
+                minWidth: "32px",
+                height: "32px",
                 borderRadius: "50%",
                 alignItems: "center",
                 color: "white",
@@ -135,14 +136,14 @@ const OrderSectionItemContent = ({ data, title, image, cost, id, whichButton,qua
             <Button
               onClick={() => dispatch(removeItem(data))}
               sx={{
-                minWidth: "48px",
-                height: "48px",
-                bgcolor: quantiy >= 1 ? "rgba(12, 174, 202,.5)" : "white",
+                minWidth: "32px",
+                height: "32px",
+                bgcolor:  "rgba(12, 174, 202,.5)" ,
                 borderRadius: "50%",
                 alignItems: "center",
-                color: quantiy >= 1 ? "white" : "black",
+                color:"white" ,
                 ml: "2rem",
-                fontSize: "14px",
+                fontSize: "2rem",
 
                 "&:hover": {
                   bgcolor: "rgba(12, 174, 202,.5)",
