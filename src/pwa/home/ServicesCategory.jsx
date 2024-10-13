@@ -13,13 +13,15 @@ const ServicesCategory = ({indexData}) => {
         fontWeight='bold'
         fontSize='18px'
         fontFamily='Vazir'
-        m='1rem 0'>
+        m='1rem 1rem'>
         دسته بندی خدمات
       </Typography>
 
-      <Grid container>
-        {indexData
-          ? indexData.data.categories.map((item) => (
+      <Grid container >
+      {indexData
+          ? indexData.map((item) => (
+         <>
+     
               <Grid
                 item
                 lx={3}
@@ -29,7 +31,7 @@ const ServicesCategory = ({indexData}) => {
                 xs={6}
                 key={item.id}
                 sx={{
-                  width: "calc((100% / 4) - 2rem)",
+                  width: "calc((100% / 1) - 2rem)",
                   p: "1rem",
                   overflow: "hidden",
                 }}>
@@ -51,8 +53,10 @@ const ServicesCategory = ({indexData}) => {
                   />
                 </Link>
               </Grid>
+         </>
             ))
-          : "didn't work"}
+          : "didn't work"} 
+        
       </Grid>
 
 

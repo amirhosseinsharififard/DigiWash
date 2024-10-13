@@ -39,7 +39,7 @@ const HomePage = ({setIsPhoneRegisterModalOpen}) => {
         <OrderPhone />
         <Services indexData={indexData && indexData.data.service_types} />
         <ServicesPopular indexData={indexData.data.favorite_services} />
-        {/* <ServicesCategory indexData={indexData} /> */}
+        <ServicesCategory indexData={indexData.data.categories} />
 
         {/* rigester Form completed need css */}
       </Box>
