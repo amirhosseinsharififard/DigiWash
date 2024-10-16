@@ -28,7 +28,7 @@ function App() {
       <ThemeProvider theme={theme}>
         <Routes>
           <Route path='/' element={<HomePage setIsPhoneRegisterModalOpen={setIsPhoneRegisterModalOpen}/>} />
-          {/* <Route path='/services/:id' element={<ServicePage />} /> */}
+          <Route path='/services/:id' element={<ServicePage />} />
           {/* <Route path='' element={<ModalIncrease />} /> */}
           {/* <Route path='/profile' element={<ProfilePage />} /> */}
           {/* <Route path='/profile/address' element={<AddressPage />} /> */}

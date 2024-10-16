@@ -38,6 +38,8 @@ const HomePage = ({setIsPhoneRegisterModalOpen}) => {
         <Offday />
         <OrderPhone />
         <Services indexData={indexData && indexData.data.service_types} />
+
+        {/* LINK ha va tedad data ha niaz be update dare alan kar nmikone */}
         <ServicesPopular indexData={indexData.data.favorite_services} />
         <ServicesCategory indexData={indexData.data.categories} />
 
