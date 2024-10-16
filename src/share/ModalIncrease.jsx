@@ -15,7 +15,13 @@ const dataList= data
     setShowMore(!showMore);
   };
 
-  console.log(nameData)
+  //   {
+  //   console.log(Array.isArray(data.services) ? false : data.services); // helper to find is array or Object
+  // }
+  // console.log(nameData)
+  // console.log(toggleHandler)
+  // console.log(data)
+  
   return (
     <Box
       sx={{

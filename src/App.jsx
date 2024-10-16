@@ -29,7 +29,7 @@ function App() {
         <Routes>
           <Route path='/' element={<HomePage setIsPhoneRegisterModalOpen={setIsPhoneRegisterModalOpen}/>} />
           <Route path='/services/:id' element={<ServicePage />} />
-          {/* <Route path='' element={<ModalIncrease />} /> */}
+          <Route path='' element={<ModalIncrease />} />
           {/* <Route path='/profile' element={<ProfilePage />} /> */}
           {/* <Route path='/profile/address' element={<AddressPage />} /> */}
           {/* <Route path='/profile/transactions' element={<TransactionsPage />} /> */}

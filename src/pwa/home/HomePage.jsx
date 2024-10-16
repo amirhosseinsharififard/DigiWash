@@ -8,6 +8,7 @@ import ServicesCategory from "./ServicesCategory";
 import HeaderPwa from "./HeaderPwa";
 import {fetchHomePage} from "../../API/requests"; // import کردن فقط متغیرهای لازم
 
+// eslint-disable-next-line react/prop-types
 const HomePage = ({setIsPhoneRegisterModalOpen}) => {
   const [indexData, setIndexData] = useState(null); // مقدار اولیه null به جای undefined
   const [error, setError] = useState(null); // برای مدیریت خطا

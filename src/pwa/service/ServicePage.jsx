@@ -8,7 +8,7 @@ import ServicesCoponent from "./ServicesCoponent";
 import HeaderPwa from "../home/HeaderPwa";
 import {useEffect, useState} from "react";
 import {fetchCategoryServices} from "../../API/requests";
-import {useLocation} from "react-router-dom";
+import {Link, useLocation} from "react-router-dom";
 import ModalIncrease from "../../share/ModalIncrease";
 
 const ServicePage = () => {
@@ -16,10 +16,12 @@ const ServicePage = () => {
 
   const [categories, setCategories] = useState(null); // مقدار اولیه null به جای undefined
   const [services, setServices] = useState(null); // مقدار اولیه null به جای undefined
+  const [data, setData] = useState(); // id برای مودال
   const [dataId, setDataID] = useState(); // id برای مودال
   const [key, setKey] = useState(null); // key modal
   const [value, setValue] = useState(null); // key modal
   const [error, setError] = useState(null); // برای مدیریت خطا
+  
   let buttonFilter = ["کت", "شلوار", "لباس"];
 
   const locationIndex = useLocation().pathname.split("/")[2];
@@ -58,7 +60,9 @@ const ServicePage = () => {
 
   // console.log(key && key)
   // console.log(value && value)
+  console.log(data)
 
+  
   return (
     <>
       <HeaderPwa
@@ -73,13 +77,14 @@ const ServicePage = () => {
         p='0 1rem'
         spacing='2rem'>
         {services &&
-          services.map((item) => (
+          services.map((item,id) => (
             <>
-              {/* {console.log(item[dataId])} */}
-
+{/* {console.log(item)} */}
+{() => (setData(item.services),setNameData(item.name))}
               <ServicesCoponent
+              // onClick={() => (setData(item.services),setNameData(item.name))}
                 item={item}
-                toggleHandler={() => toggleHandler(item.id, item.services)}
+                toggleHandler={() => toggleHandler(id, item.services)}
                 key={item.id}
                 // moshkel az injas va bayad data az samt api dorost she yebar araye miad yebar object
                 subTitle={item.unique_subs}
@@ -88,12 +93,16 @@ const ServicePage = () => {
                 name={item.name}
                 category={item.cat_id}
               />
+  
             </>
           ))}
       </Grid>
       {isShowModal && (
+        <>
+
         <ModalIncrease
           // data={data[dataObjectKeys]}
+          
           // isShowModal={isShowModal}
           // toggleHandler={toggleHandler}
           // nameData={nameData}
@@ -101,11 +110,12 @@ const ServicePage = () => {
           data={value}
           isShowModal={isShowModal}
           toggleHandler={(() => toggleHandler())}
-          nameData={services[dataId-1].name}
+          nameData={services[dataId].name}
           // toggleHandler={() => toggleAndIndexHandler(checkIndex)}
           // checkIndex={checkIndex}
           // dataModal={products}
         />
+        </>
       )}
     </>
   );
