@@ -3,6 +3,7 @@
 /* eslint-disable react/prop-types */
 import {Box, Button, Grid, Typography} from "@mui/material";
 import toFarsiNumber, {persianPrice} from "./functions";
+import {useState} from "react";
 // import {useSelector, useDispatch} from "react-redux";
 // import {
 //   addItem,
@@ -14,7 +15,27 @@ import toFarsiNumber, {persianPrice} from "./functions";
 // import {productQuantity} from "../helper/helper";
 // import select from "../pwa/features/counter/counterSlice";
 
-const IncreaseItem = ({data, title, image, cost, id}) => {
+const IncreaseItem = ({data, title, image, cost, id, service_list}) => {
+  const [quntity, setQuntity] = useState(null);
+
+  // const findListDatas =service_list &&  service_list.map((item) => {
+  //   // console.log(item);
+  //   item.service_list.map(itemId=>{
+  //     console.log(itemId  )
+  //     return {itemId.service_id: itemId.qty}
+  //     // itemId.id==id ? setQuntity(itemId.qty): 0
+  //   })
+  // });
+
+  const findListDatas = service_list && service_list.reduce((acc, item) => {
+    item.service_list.forEach(itemId => {
+      acc[itemId.service_id] = itemId.qty; // به ازای هر service_id مقدار qty را به شیء اضافه می‌کند
+    });
+    return acc;
+  }, {});
+  
+  console.log(findListDatas);
+  
   // const state = useSelector(cart);
   // const dispatch = useDispatch();
 
@@ -104,7 +125,9 @@ const IncreaseItem = ({data, title, image, cost, id}) => {
               fontWeight: "bold",
               margin: "8px",
             }}>
-            {toFarsiNumber(0)}
+            {findListDatas&& findListDatas[id] ? findListDatas[id]: 0}
+            {/* {findListDatas &&
+              (findListDatas.id == id ? toFarsiNumber(findListDatas.qty) : 0)} */}
           </span>
           {/* check shavad baraye fix data */}
           {0 > 1 ? (

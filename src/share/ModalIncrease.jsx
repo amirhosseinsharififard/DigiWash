@@ -5,12 +5,16 @@
 
 import { Box, Grid, Typography, Button } from "@mui/material";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import IncreaseItem from "./IncreaseItemModal";
+import { fetchOpenOrder } from "../API/requests";
 
 const ModalIncrease = ({ toggleHandler, data,nameData}) => {
   const [showMore, setShowMore] = useState(false);
 const dataList= data
+const [indexData, setIndexData] = useState(null); // مقدار اولیه null به جای undefined
+const [error, setError] = useState(null); // برای مدیریت خطا
+
   const handleShowMore = () => {
     setShowMore(!showMore);
   };
@@ -18,9 +22,26 @@ const dataList= data
   //   {
   //   console.log(Array.isArray(data.services) ? false : data.services); // helper to find is array or Object
   // }
-  // console.log(nameData)
-  // console.log(toggleHandler)
-  // console.log(data)
+useEffect(()=>{
+
+    const fetchData = async () => {
+      try {
+        const data = await fetchOpenOrder();
+        setIndexData(data.data);
+
+
+      } catch (err) {
+        setError("Error fetching data");
+        console.error(err);
+      }
+    };
+ 
+
+    fetchData(); // فراخوانی تابع غیرهمزمان
+
+
+},[])
+// console.log(indexData && indexData)
   
   return (
     <Box
@@ -67,6 +88,7 @@ const dataList= data
 
      
          {dataList.map((item, id) => (
+
               <Grid
                 item
                 xs={12}
@@ -79,10 +101,12 @@ const dataList= data
                 <IncreaseItem
                   // data={item}
                   // image={item.subImage}
+                  service_list={indexData}
                   title={item.serviceType}
                   cost={item.value}
-                  id={id}
+                  id={item.id}
                 />
+          {/* {console.log(item.id)} */}
               </Grid>
             ))} 
   
