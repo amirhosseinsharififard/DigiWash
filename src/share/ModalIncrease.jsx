@@ -40,7 +40,7 @@ useEffect(()=>{
     fetchData(); // فراخوانی تابع غیرهمزمان
 
 
-},[])
+},[indexData])
 // console.log(indexData && indexData)
   
   return (
@@ -99,8 +99,8 @@ useEffect(()=>{
                 p=' .5rem 8px '
                 width='100%'>
                 <IncreaseItem
-                  // data={item}
-                  // image={item.subImage}
+                  data={item}
+                  image={item.serviceTypeImage}
                   service_list={indexData}
                   title={item.serviceType}
                   cost={item.value}

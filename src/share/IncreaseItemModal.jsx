@@ -4,6 +4,7 @@
 import {Box, Button, Grid, Typography} from "@mui/material";
 import toFarsiNumber, {persianPrice} from "./functions";
 import {useState} from "react";
+import { fetchAddToOpenOrder, fetchRemoveToOpenOrder } from "../API/requests";
 // import {useSelector, useDispatch} from "react-redux";
 // import {
 //   addItem,
@@ -27,15 +28,25 @@ const IncreaseItem = ({data, title, image, cost, id, service_list}) => {
   //   })
   // });
 
-  const findListDatas = service_list && service_list.reduce((acc, item) => {
-    item.service_list.forEach(itemId => {
-      acc[itemId.service_id] = itemId.qty; // به ازای هر service_id مقدار qty را به شیء اضافه می‌کند
-    });
-    return acc;
-  }, {});
-  
-  console.log(findListDatas);
-  
+  const findListDatas =
+    service_list &&
+    service_list.reduce((acc, item) => {
+      item.service_list.forEach((itemId) => {
+        acc[itemId.service_id] = itemId.qty; // به ازای هر service_id مقدار qty را به شیء اضافه می‌کند
+      });
+      return acc;
+    }, {});
+
+  console.log();
+
+  const buttonAddHandler=(id,condition)=>{
+    fetchAddToOpenOrder(id)
+
+  }
+  const buttonRemoveHandler=(id,condition)=>{
+    fetchRemoveToOpenOrder(id)
+
+  }
   // const state = useSelector(cart);
   // const dispatch = useDispatch();
 
@@ -55,13 +66,14 @@ const IncreaseItem = ({data, title, image, cost, id, service_list}) => {
         m='.2rem auto'
         borderRadius={"16px"}
         height='80px'
+        position="relative"
         p={1}>
         <Grid item xs={8} sm={8} md={8} lg={8} display={"flex"}>
-          <Box>
-            {/* <img src={image} style={{ maxWidth: "48px", maxHeight: "48px" }} /> */}
+          <Box ml={2}>
+            <img src={image} style={{ maxWidth: "48px", maxHeight: "48px" }} />
           </Box>
           <Box display='flex' flexDirection={"column"} justifyContent='center'>
-            <Typography variant='h6' fontSize='16px' fontFamily='Vazir-Bold'>
+            <Typography variant='h6' fontSize='16px' >
               {title}
             </Typography>
             <Typography variant='h6' fontSize='16px' fontFamily='Vazir'>
@@ -76,13 +88,15 @@ const IncreaseItem = ({data, title, image, cost, id, service_list}) => {
           md={4}
           lg={4}
           display='flex'
-          justifyContent='center'
+          justifyContent='end'
           alignItems='center'
           alignContent='center'
-          sx={{textAlign: "right"}}>
-          {0 == 0 ? (
+          left='0'
+          position='absolute'
+          sx={{textAlign: "left"}}>
+          {
             <Button
-              // onClick={() => dispatch(addItem(data))}
+              onClick={() => buttonAddHandler(id)}
               sx={{
                 minWidth: "48px",
                 height: "48px",
@@ -98,25 +112,7 @@ const IncreaseItem = ({data, title, image, cost, id, service_list}) => {
               }}>
               +
             </Button>
-          ) : (
-            <Button
-              // onClick={() => dispatch(increase(data))}
-              sx={{
-                minWidth: "48px",
-                height: "48px",
-                bgcolor: "rgba(12, 174, 202,.5)",
-                borderRadius: "50%",
-                display: "flex",
-                alignItems: "center",
-                alignContent: "center",
-                color: "white",
-                "&:hover": {
-                  bgcolor: "rgba(12, 174, 202,.5)",
-                },
-              }}>
-              +
-            </Button>
-          )}
+    }
 
           <span
             style={{
@@ -125,7 +121,9 @@ const IncreaseItem = ({data, title, image, cost, id, service_list}) => {
               fontWeight: "bold",
               margin: "8px",
             }}>
-            {findListDatas&& findListDatas[id] ? findListDatas[id]: 0}
+            {findListDatas && findListDatas[id]
+              ? toFarsiNumber(findListDatas[id])
+              : toFarsiNumber(0)}
             {/* {findListDatas &&
               (findListDatas.id == id ? toFarsiNumber(findListDatas.qty) : 0)} */}
           </span>
@@ -133,6 +131,8 @@ const IncreaseItem = ({data, title, image, cost, id, service_list}) => {
           {0 > 1 ? (
             <Button
               // onClick={() => dispatch(decrease(data))}
+              onClick={() => buttonRemoveHandler(id)}
+
               sx={{
                 minWidth: "48px",
                 height: "48px",
@@ -153,6 +153,8 @@ const IncreaseItem = ({data, title, image, cost, id, service_list}) => {
           ) : (
             <Button
               // onClick={() => dispatch(removeItem(data))}
+              onClick={() => buttonRemoveHandler(id)}
+
               sx={{
                 minWidth: "48px",
                 height: "48px",
