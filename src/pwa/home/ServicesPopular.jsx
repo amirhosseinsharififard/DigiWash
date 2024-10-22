@@ -31,6 +31,9 @@ const ServicesPopular = ({indexData}) => {
   const [checkIndex, setCheckIndex] = useState();
   const [data, setData] = useState();
   const [nameData,setNameData]=useState()
+
+
+  const [uniqeSubTitle,setUniqeSubTitle]=useState()
   const dataObjectKeys = data && Object.keys(data);
   // const dispatch = useDispatch();
   // const products = useSelector(product);
@@ -46,7 +49,7 @@ const ServicesPopular = ({indexData}) => {
   };
 
 
-  console.log(indexData)
+  // console.log(uniqeSubTitle)
   return (
     <>
       <Box
@@ -81,9 +84,11 @@ const ServicesPopular = ({indexData}) => {
           {indexData
             ? indexData.map((item) => (
                 <SwiperSlide style={{background: "none"}} key={item.id}>
+                {/* {console.log(item.services)} */}
+                {/* {console.log(uniqeSubTitleButton)} */}
                   <Link
                     style={{textDecoration: "none", color: "black"}}
-                    onClick={() => (setData(item.services),setNameData(item.name))}>
+                    onClick={() => (setData(item.services),setNameData(item.name),setUniqeSubTitle(item.unique_subs))}>
                
                     <ServicesPopularComponent
                       toggleHandler={() => toggleAndIndexHandler(item.id)}
@@ -99,15 +104,21 @@ const ServicesPopular = ({indexData}) => {
         </Swiper>
       </Box>
       {isShowModal && (
+        <>
+
+        
         <ModalIncrease
           data={data[dataObjectKeys]}
           isShowModal={isShowModal}
           toggleHandler={toggleHandler}
           nameData={nameData}
+          uniqeSubTitle={uniqeSubTitle}
           // toggleHandler={() => toggleAndIndexHandler(checkIndex)}
           // checkIndex={checkIndex}
           // dataModal={products}
         />
+    </>
+
       )}
     </>
   );

@@ -30,7 +30,7 @@ function App() {
           <Route path='/' element={<HomePage setIsPhoneRegisterModalOpen={setIsPhoneRegisterModalOpen}/>} />
           <Route path='/services/:id' element={<ServicePage />} />
           <Route path='' element={<ModalIncrease />} />
-          {/* <Route path='/profile' element={<ProfilePage />} /> */}
+          <Route path='/profile' element={<ProfilePage />} />
           {/* <Route path='/profile/address' element={<AddressPage />} /> */}
           {/* <Route path='/profile/transactions' element={<TransactionsPage />} /> */}
           {/* <Route path='/profile/edit' element={<EditPage />} /> */}

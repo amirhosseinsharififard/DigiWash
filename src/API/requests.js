@@ -88,11 +88,14 @@ const fetchRegisterOtp = async (firstName, phoneNumber, code, lastName) => {
   }
 };
 
+
+
+//  ************ inja dare modam request mifreste**************
 const fetchOpenOrder = async () => {
   // console.log("object")
   try {
     const response = await axiosInstance.get(`api/open-orders`);
-    console.log(response.data);
+    // console.log(response.data);
     return response.data;
   } catch (error) {
     console.error("Error fetching send Otp:", error);
@@ -104,7 +107,7 @@ const fetchAddToOpenOrder = async (idForAdd) => {
   // console.log("object")
   try {
     const response = await axiosInstance.get(`api/addToOpenOrder/${idForAdd}`);
-    console.log(response.data);
+    // console.log(response.data);
     return response.data;
   } catch (error) {
     console.error("Error fetching send Otp:", error);
@@ -115,7 +118,7 @@ const fetchRemoveToOpenOrder = async (idForAdd) => {
   // console.log("object")
   try {
     const response = await axiosInstance.get(`api/removeFromOpenOrder/${idForAdd}`);
-    console.log(response.data);
+    // console.log(response.data);
     return response.data;
   } catch (error) {
     console.error("Error fetching send Otp:", error);

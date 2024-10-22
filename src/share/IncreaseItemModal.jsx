@@ -37,7 +37,7 @@ const IncreaseItem = ({data, title, image, cost, id, service_list}) => {
       return acc;
     }, {});
 
-  console.log();
+  
 
   const buttonAddHandler=(id,condition)=>{
     fetchAddToOpenOrder(id)
