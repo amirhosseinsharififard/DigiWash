@@ -10,8 +10,9 @@ const PhoneRegisterModal = ({
   setIsPhoneRegisterModalOpen,
 }) => {
   const [fieldRegister, setFieldRegister] = useState({
-    phoneNumber: null,
-    send: false,
+    // phoneNumber: null,
+    phoneNumber: "09172384087",
+    send: true,
     codeConfirm: null,
   });
 
@@ -35,13 +36,20 @@ const PhoneRegisterModal = ({
     setIsPhoneRegisterModalOpen(false);
   };
 
+  const handleKeyPress=(event)=>{
+    if(!/[0-9]/.test(event.key)){
+      event.preventDefault()
+    }
+  }
   let regex = new RegExp("^(\\+98|0)?9\\d{9}$");
   let result = regex.test(fieldRegister.phoneNumber);
 
   console.log(result);
   return (
     <>
-      {isPhoneRegisterModalOpen && (
+      {
+      // isPhoneRegisterModalOpen && (
+        isPhoneRegisterModalOpen && (
         <Box
           sx={{
             position: "fixed",
@@ -80,11 +88,14 @@ const PhoneRegisterModal = ({
             {!fieldRegister.send && (
               <>
                 <Grid item xs={12} sm={12} md={12} lg={12}>
-                  <Typography>ورود/نام‌نویسی</Typography>
+                  <Typography variant="h5" component='h5' fontSize={"18px"} fontWeight={"bold"}>ورود/نام‌نویسی</Typography>
                 </Grid>
 
                 <Grid item xs={12} sm={12} md={12} lg={12}>
-                  <Typography>
+                  <Typography variant="subtitle1" component="p"
+                  sx={{
+                    color:"rgb(0, 52, 67)",mt:"24px"
+                  }}>
                     لطفا شماره موبایل خود را وارد کنید تا کد فعال سازی برایتان
                     فرستاده شود.
                   </Typography>
@@ -97,8 +108,12 @@ const PhoneRegisterModal = ({
                     id='outlined-basic'
                     variant='outlined'
                     placeholder='مثلا 09172384087'
-                    type='number'
+                    type='phone'
                     onChange={changeHandler}
+                    onKeyPress={handleKeyPress}
+                    fullWidth
+                    sx={{"& .css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input":{textAlign:"center !important"},borderRadius:"16px",fontSize:"14px",font:"Vazir",mt:'16px',bgcolor:"rgb(240, 244, 244)"}}
+                    inputProps={{maxLength:11}}
                   />
                 </Grid>
 
@@ -130,15 +145,16 @@ const PhoneRegisterModal = ({
                       justifyContent: "center",
                       alignContent: "center",
                       alignItems: "center",
+                      textDecoration:"none"
                     }}
                     onClick={buttonHandler}>
                     <ArrowForwardIos style={{fontSize: "14px"}} />
-                    <Typography>اصلاح شماره موبایل</Typography>
-                  </Link>
+                    <Typography variant="h5" component='h5' fontSize={"16px"} color={"rgb(97, 97, 97)"} fontWeight="bold">اصلاح شماره موبایل</Typography>
+                  </Link> 
                 </Grid>
 
                 <Grid item xs={12} sm={12} md={12} lg={12}>
-                  <Typography>
+                  <Typography mt={"24px"}>
                     کد ارسال شده به {fieldRegister.phoneNumber} را وارد کنید.
                   </Typography>
                 </Grid>
@@ -151,11 +167,12 @@ const PhoneRegisterModal = ({
                     margin='auto'
                     position='absolute'
                     top='0'
-                    mt='1rem'>
-                    {fieldRegister.codeConfirm ? (
+                    mt='1rem'
+                    >
+                    {/* {fieldRegister.codeConfirm ? (
                       fieldRegister.codeConfirm.split("").map((item, i) => (
                         <Typography mr={5} key={i}>
-                          {toFarsiNumber(item)}
+                          {item ? toFarsiNumber(item) : "____"}
                         </Typography>
                       ))
                     ) : (
@@ -165,7 +182,35 @@ const PhoneRegisterModal = ({
                         <Typography>-</Typography>
                         <Typography>-</Typography>
                       </>
-                    )}
+                    )} */}
+            {/* {
+            Array.from({length:4}).map((_,i)=>(
+              <Typography mr={5}key={i} sx={{direction:"ltr",textAlign:"left"}}>
+                {fieldRegister.codeConfirm && fieldRegister.codeConfirm[i]
+                ? toFarsiNumber(fieldRegister.codeConfirm[i]):'=='}
+              </Typography>
+            ))
+            } */}
+<Box sx={{ direction: 'ltr' ,display:"flex",justifyContent:"center",alignItems:"center",margin:"auto"}}>
+  {Array.from({ length: 4 }).map((_, i) => (
+    <Typography m={"0 5rem"} key={i} opacity=".7">
+      {fieldRegister.codeConfirm && fieldRegister.codeConfirm[i]
+        ? toFarsiNumber(fieldRegister.codeConfirm[i])
+        :     <Box 
+        component="span" 
+        sx={{ 
+          display: 'inline-block', 
+          borderBottom: '2px solid black', // خط زیر
+          padding: '0 14px', // فاصله داخلی
+          margin: '0 2px', // فاصله خارجی
+ opacity:"0.5",
+          color: 'black' // رنگ متن
+        }}
+        />}
+    </Typography>
+  ))}
+</Box>
+
                   </Box>
                 </Grid>
                 <TextField
