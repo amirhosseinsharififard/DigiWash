@@ -3,7 +3,7 @@
 /* eslint-disable react/prop-types */
 import {Box, Button, Grid, Typography} from "@mui/material";
 import toFarsiNumber, {persianPrice} from "./functions";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import { fetchAddToOpenOrder, fetchRemoveToOpenOrder } from "../API/requests";
 // import {useSelector, useDispatch} from "react-redux";
 // import {
@@ -16,7 +16,7 @@ import { fetchAddToOpenOrder, fetchRemoveToOpenOrder } from "../API/requests";
 // import {productQuantity} from "../helper/helper";
 // import select from "../pwa/features/counter/counterSlice";
 
-const IncreaseItem = ({data, title, image, cost, id, service_list}) => {
+const IncreaseItem = ({data, title, image, cost, id, service_list,setReloadKey,reloadKey}) => {
   const [quntity, setQuntity] = useState(null);
 
   // const findListDatas =service_list &&  service_list.map((item) => {
@@ -28,6 +28,11 @@ const IncreaseItem = ({data, title, image, cost, id, service_list}) => {
   //   })
   // });
 
+  // هر بار که reloadKey تغییر کند، این useEffect اجرا می‌شود
+  useEffect(() => {
+    
+  }, [reloadKey]);
+
   const findListDatas =
     service_list &&
     service_list.reduce((acc, item) => {
@@ -35,16 +40,19 @@ const IncreaseItem = ({data, title, image, cost, id, service_list}) => {
         acc[itemId.service_id] = itemId.qty; // به ازای هر service_id مقدار qty را به شیء اضافه می‌کند
       });
       return acc;
-    }, {});
+    });
 
   
 
   const buttonAddHandler=(id,condition)=>{
     fetchAddToOpenOrder(id)
+    setReloadKey(prev => prev + 1);
 
   }
   const buttonRemoveHandler=(id,condition)=>{
     fetchRemoveToOpenOrder(id)
+    setReloadKey(prev => prev + 1);
+    
 
   }
   // const state = useSelector(cart);

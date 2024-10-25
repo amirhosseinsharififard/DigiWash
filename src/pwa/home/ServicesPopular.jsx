@@ -31,7 +31,7 @@ const ServicesPopular = ({indexData}) => {
   const [checkIndex, setCheckIndex] = useState();
   const [data, setData] = useState();
   const [nameData,setNameData]=useState()
-
+const [itemServices,setItemServices]=useState()
 
   const [uniqeSubTitle,setUniqeSubTitle]=useState()
   const dataObjectKeys = data && Object.keys(data);
@@ -42,9 +42,9 @@ const ServicesPopular = ({indexData}) => {
     setIsShowModal(!isShowModal);
   };
 
-  const toggleAndIndexHandler = (id) => {
+  const toggleAndIndexHandler = (id,itemServices) => {
     setCheckIndex(id);
-
+setItemServices(itemServices)
     toggleHandler();
   };
 
@@ -84,14 +84,14 @@ const ServicesPopular = ({indexData}) => {
           {indexData
             ? indexData.map((item) => (
                 <SwiperSlide style={{background: "none"}} key={item.id}>
-                {/* {console.log(item.services)} */}
+                {/* {console.log(item)} */}
                 {/* {console.log(uniqeSubTitleButton)} */}
                   <Link
                     style={{textDecoration: "none", color: "black"}}
                     onClick={() => (setData(item.services),setNameData(item.name),setUniqeSubTitle(item.unique_subs))}>
                
                     <ServicesPopularComponent
-                      toggleHandler={() => toggleAndIndexHandler(item.id)}
+                      toggleHandler={() => toggleAndIndexHandler(item.id,item)}
                       checkIndex={item.id}
                       title={item.name}
                       subTitle={item.unique_subs}
@@ -113,6 +113,7 @@ const ServicesPopular = ({indexData}) => {
           toggleHandler={toggleHandler}
           nameData={nameData}
           uniqeSubTitle={uniqeSubTitle}
+          itemServices={itemServices}
           // toggleHandler={() => toggleAndIndexHandler(checkIndex)}
           // checkIndex={checkIndex}
           // dataModal={products}
