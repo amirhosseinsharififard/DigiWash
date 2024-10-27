@@ -41,19 +41,19 @@ const IncreaseItem = ({data, title, image, cost, id, service_list,setReloadKey,r
       });
       return acc;
     });
-console.log(service_list)
+// console.log(service_list)
   
 
   const buttonAddHandler=(id,condition)=>{
     fetchAddToOpenOrder(id)
     setReloadKey(prev => prev + 1);
-    console.log(id)
+    // console.log(id)
 
   }
   const buttonRemoveHandler=(id,condition)=>{
     fetchRemoveToOpenOrder(id)
     setReloadKey(prev => prev + 1);
-    console.log(id)
+    // console.log(id)
     
 
   }
@@ -85,6 +85,7 @@ console.log(service_list)
           <Box display='flex' flexDirection={"column"} justifyContent='center'>
             <Typography variant='h6' fontSize='16px' >
               {title}
+              {/* {console.log(title)} */}
             </Typography>
             <Typography variant='h6' fontSize='16px' fontFamily='Vazir'>
               {persianPrice(cost)} تومان

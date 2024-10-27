@@ -23,7 +23,7 @@ const ServicePage = () => {
   const [error, setError] = useState(null); // برای مدیریت خطا
   const [uniqeSubTitle, setUniqeSubTitle] = useState();
   const [itemServices, setItemServices] = useState();
-
+  const [items, setItems] = useState([]);
   let buttonFilter = ["کت", "شلوار", "لباس"];
 
   const locationIndex = useLocation().pathname.split("/")[2];
@@ -53,18 +53,21 @@ const ServicePage = () => {
 
   const toggleHandler = (id, services) => {
     setIsShowModal((prev) => !prev);
-    setItemServices(itemServices)
+    setItemServices(services);
     setDataID(id);
     Object.entries(services).forEach(([key, val]) => {
       setKey(key); // تنظیم کلید
       setValue(val); // تنظیم مقدار
-      console.log(val)
+     
     });
+    // Object.entries(services).forEach(([key, val]) => {
+    //   setItems(prevItems => [...prevItems, { key, val }]);
+    // });
+    // console.log(items)
   };
 
   // console.log(key && key)
   // console.log(value && value)
-
 
   return (
     <>
@@ -87,7 +90,10 @@ const ServicePage = () => {
               <ServicesCoponent
                 // onClick={() => (setData(item.services),setNameData(item.name))}
                 item={item}
-                toggleHandler={() => (toggleHandler(id, item.services),setUniqeSubTitle(item.unique_subs))}
+                toggleHandler={() => (
+                  toggleHandler(id, item.services),
+                  setUniqeSubTitle(item.unique_subs)
+                )}
                 key={item.id}
                 // moshkel az injas va bayad data az samt api dorost she yebar araye miad yebar object
                 subTitle={item.unique_subs}
@@ -108,7 +114,9 @@ const ServicePage = () => {
             nameData={services[dataId].name}
             uniqeSubTitle={uniqeSubTitle}
             itemServices={itemServices}
+            items={items}
           />
+          {console.log(itemServices)}
         </>
       )}
     </>

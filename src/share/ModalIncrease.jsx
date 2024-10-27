@@ -20,6 +20,7 @@ const ModalIncrease = ({
   uniqeSubTitle,
   itemServices,
 }) => {
+
   // const [showMore, setShowMore] = useState(false);
   // const dataList = data;
   // const [indexData, setIndexData] = useState(null); // مقدار اولیه null به جای undefined
@@ -83,7 +84,7 @@ const ModalIncrease = ({
       try {
         const data = await fetchOpenOrder();
         setIndexData(data.data);
-        console.log(data)
+        // console.log(data)
       } catch (err) {
         setError("Error fetching data");
         console.error(err);
@@ -237,9 +238,10 @@ value.map((item, id) => (
                 sm={12}
                 md={12}
                 lg={12}
-                key={id}
+                key={`${key}-${id}`}
                 p=' .5rem 8px '
                 width='100%'>
+                {console.log(item)}
                 <IncreaseItem
                   data={item}
                   image={item.serviceTypeImage}
@@ -250,7 +252,6 @@ value.map((item, id) => (
                   setReloadKey={setReloadKey}
                   reloadKey={reloadKey}
                 />
-                {/* {console.log(indexData)} */}
               </Grid>
             ))
     
