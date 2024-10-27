@@ -17,7 +17,7 @@ import { fetchAddToOpenOrder, fetchRemoveToOpenOrder } from "../API/requests";
 // import select from "../pwa/features/counter/counterSlice";
 
 const IncreaseItem = ({data, title, image, cost, id, service_list,setReloadKey,reloadKey}) => {
-  const [quntity, setQuntity] = useState(null);
+
 
   // const findListDatas =service_list &&  service_list.map((item) => {
   //   // console.log(item);
@@ -41,17 +41,19 @@ const IncreaseItem = ({data, title, image, cost, id, service_list,setReloadKey,r
       });
       return acc;
     });
-
+console.log(service_list)
   
 
   const buttonAddHandler=(id,condition)=>{
     fetchAddToOpenOrder(id)
     setReloadKey(prev => prev + 1);
+    console.log(id)
 
   }
   const buttonRemoveHandler=(id,condition)=>{
     fetchRemoveToOpenOrder(id)
     setReloadKey(prev => prev + 1);
+    console.log(id)
     
 
   }

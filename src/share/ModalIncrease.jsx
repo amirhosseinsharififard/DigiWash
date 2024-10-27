@@ -7,7 +7,6 @@ import {
   Typography,
   Button,
   ButtonGroup,
-  ToggleButtonGroup,
 } from "@mui/material";
 import {Link} from "react-router-dom";
 import {useEffect, useState} from "react";
@@ -84,6 +83,7 @@ const ModalIncrease = ({
       try {
         const data = await fetchOpenOrder();
         setIndexData(data.data);
+        console.log(data)
       } catch (err) {
         setError("Error fetching data");
         console.error(err);
@@ -250,7 +250,7 @@ value.map((item, id) => (
                   setReloadKey={setReloadKey}
                   reloadKey={reloadKey}
                 />
-                {/* {console.log(item.id)} */}
+                {/* {console.log(indexData)} */}
               </Grid>
             ))
     

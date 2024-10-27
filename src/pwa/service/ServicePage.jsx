@@ -21,7 +21,9 @@ const ServicePage = () => {
   const [key, setKey] = useState(null); // key modal
   const [value, setValue] = useState(null); // key modal
   const [error, setError] = useState(null); // برای مدیریت خطا
-  
+  const [uniqeSubTitle, setUniqeSubTitle] = useState();
+  const [itemServices, setItemServices] = useState();
+
   let buttonFilter = ["کت", "شلوار", "لباس"];
 
   const locationIndex = useLocation().pathname.split("/")[2];
@@ -51,18 +53,19 @@ const ServicePage = () => {
 
   const toggleHandler = (id, services) => {
     setIsShowModal((prev) => !prev);
+    setItemServices(itemServices)
     setDataID(id);
     Object.entries(services).forEach(([key, val]) => {
       setKey(key); // تنظیم کلید
       setValue(val); // تنظیم مقدار
+      console.log(val)
     });
   };
 
   // console.log(key && key)
   // console.log(value && value)
-  console.log(data)
 
-  
+
   return (
     <>
       <HeaderPwa
@@ -77,14 +80,14 @@ const ServicePage = () => {
         p='0 1rem'
         spacing='2rem'>
         {services &&
-          services.map((item,id) => (
+          services.map((item, id) => (
             <>
-{/* {console.log(item)} */}
-{() => (setData(item.services),setNameData(item.name))}
+              {/* {console.log(item)} */}
+              {() => (setData(item.services), setNameData(item.name))}
               <ServicesCoponent
-              // onClick={() => (setData(item.services),setNameData(item.name))}
+                // onClick={() => (setData(item.services),setNameData(item.name))}
                 item={item}
-                toggleHandler={() => toggleHandler(id, item.services)}
+                toggleHandler={() => (toggleHandler(id, item.services),setUniqeSubTitle(item.unique_subs))}
                 key={item.id}
                 // moshkel az injas va bayad data az samt api dorost she yebar araye miad yebar object
                 subTitle={item.unique_subs}
@@ -93,28 +96,19 @@ const ServicePage = () => {
                 name={item.name}
                 category={item.cat_id}
               />
-  
             </>
           ))}
       </Grid>
       {isShowModal && (
         <>
-
-        <ModalIncrease
-          // data={data[dataObjectKeys]}
-          
-          // isShowModal={isShowModal}
-          // toggleHandler={toggleHandler}
-          // nameData={nameData}
-          // data={services[dataId].services} // negahesh dar
-          data={value}
-          isShowModal={isShowModal}
-          toggleHandler={(() => toggleHandler())}
-          nameData={services[dataId].name}
-          // toggleHandler={() => toggleAndIndexHandler(checkIndex)}
-          // checkIndex={checkIndex}
-          // dataModal={products}
-        />
+          <ModalIncrease
+            data={value}
+            isShowModal={isShowModal}
+            toggleHandler={() => toggleHandler()}
+            nameData={services[dataId].name}
+            uniqeSubTitle={uniqeSubTitle}
+            itemServices={itemServices}
+          />
         </>
       )}
     </>
