@@ -32,10 +32,10 @@ const CountdownTimer = () => {
     <>
       {isExpired ? (
         <Box display='flex'>
-          <Typography color='initial'>
-            کد را دریافت نکرده‌اید؟
+          <Typography color='black' fontSize="16px" fontWeight="500">
+            کد را دریافت نکرده‌ اید؟
           </Typography>
-          <Link to="/resend-code">فرستادن دوباره کد</Link>
+          <Link to="/resend-code" style={{textDecoration:"none",color:"rgb(12, 174, 202)",marginRight:'1rem',fontWeight:"900",fontSizeL:'16px'}}>فرستادن دوباره کد</Link>
         </Box>
       ) : (
         <>
