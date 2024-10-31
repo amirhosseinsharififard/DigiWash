@@ -169,11 +169,11 @@ const PhoneRegisterModal = ({
                   </Box>
                 </Grid>
                 <TextField
-                  // onInput={(e) => {
-                  //   e.target.value = Math.max(0, parseInt(e.target.value))
-                  //     .toString()
-                  //     .slice(0, 4);
-                  // }}
+                  onInput={(e) => {
+                    e.target.value = Math.max(0, parseInt(e.target.value))
+                      .toString()
+                      .slice(0, 4);
+                  }}
                   onChange={(e) => {
     const value = e.target.value;
     if (/^\d*$/.test(value)) {

@@ -30,7 +30,7 @@ const Basket = () => {
     fetchData(); // فراخوانی تابع غیرهمزمان
   }, []);
 
-  console.log(collectAllProductLength.length)
+  // console.log(collectAllProductLength.length)
   return (
     <>
       <HeaderBasket pageAddress={"تکمیل سفارش"} collectAllProductLength={collectAllProductLength?collectAllProductLength.length:0}/>

@@ -107,7 +107,7 @@ const fetchAddToOpenOrder = async (idForAdd) => {
   // console.log("object")
   try {
     const response = await axiosInstance.get(`api/addToOpenOrder/${idForAdd}`);
-    // console.log(response.data);
+    console.log(response.data);
     return response.data;
   } catch (error) {
     console.error("Error fetching send Otp:", error);

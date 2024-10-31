@@ -4,14 +4,6 @@ import OrederSectionItemContent from "./OrederSectionItemContent";
 import {useEffect, useState} from "react";
 
 const OrederSectionItem = ({orders, setCollectAllProductLength}) => {
-  // ایجاد یک Map برای ذخیره مجموع هزینه‌ها
-  const reduceCost = new Map();
-
-  // تابع برای اضافه کردن مقدار به آرایه
-  const addValueToArrayInMap = (key, value) => {
-    // اضافه کردن یا به‌روزرسانی آرایه برای یک کلید مشخص
-    reduceCost.set(key, [...(reduceCost.get(key) || []), value]);
-  };
 
   const [sums, setSums] = useState(new Map()); // state برای ذخیره مجموع هزینه‌ها
 

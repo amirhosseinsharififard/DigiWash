@@ -31,10 +31,10 @@ function App() {
           <Route path='/services/:id' element={<ServicePage />} />
           <Route path='' element={<ModalIncrease />} />
           <Route path='/profile' element={<ProfilePage />} />
-          {/* <Route path='/profile/address' element={<AddressPage />} /> */}
+          <Route path='/profile/address' element={<AddressPage />} />
           {/* <Route path='/profile/transactions' element={<TransactionsPage />} /> */}
           {/* <Route path='/profile/edit' element={<EditPage />} /> */}
-          {/* <Route path='/basket' element={<Basket />} /> */}
+          <Route path='/basket' element={<Basket />} />
         </Routes>
         <Footer />
         <PhoneRegisterModal isPhoneRegisterModalOpen={isPhoneRegisterModalOpen} setIsPhoneRegisterModalOpen={setIsPhoneRegisterModalOpen}/>
