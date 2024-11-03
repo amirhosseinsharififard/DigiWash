@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import {Route, Routes} from "react-router-dom";
 
 // header site asli
@@ -34,7 +35,7 @@ function App() {
           <Route path='/profile/address' element={<AddressPage />} />
           {/* <Route path='/profile/transactions' element={<TransactionsPage />} /> */}
           {/* <Route path='/profile/edit' element={<EditPage />} /> */}
-          <Route path='/basket' element={<Basket />} />
+          {/* <Route path='/basket' element={<Basket />} /> */}
         </Routes>
         <Footer />
         <PhoneRegisterModal isPhoneRegisterModalOpen={isPhoneRegisterModalOpen} setIsPhoneRegisterModalOpen={setIsPhoneRegisterModalOpen}/>
