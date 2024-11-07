@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = "https://laundry.rahcode.co/";
+const BASE_URL = "https://laundry.rahcode.co/api/";
 const BEARER_TOKEN =
   "KsbRD6PjiJ7v1paGMZP6au8VIbQFO6VvilLeKVkSpWLyNq0jhBmbTxMZesfy";
 
@@ -13,7 +13,7 @@ const axiosInstance = axios.create({
 
 const fetchHomePage = async () => {
   try {
-    const response = await axiosInstance.get("api/index");
+    const response = await axiosInstance.get("index");
     // console.log(response.data);
     return response.data;
   } catch (error) {
@@ -24,7 +24,7 @@ const fetchHomePage = async () => {
 
 const fetchCategoryServices = async (index) => {
   try {
-    const response = await axiosInstance.get(`api/category-services/${index}`);
+    const response = await axiosInstance.get(`category-services/${index}`);
     // console.log(response.data);
     return response.data;
   } catch (error) {
@@ -39,7 +39,7 @@ const fetchSendOtp = async (phoneNumber) => {
 
   try {
     const response = await axiosInstance.post(
-      `api/send-otp?phone_number=${phoneNumber}`
+      `send-otp?phone_number=${phoneNumber}`
     );
 
     // console.log(response.data);
@@ -57,7 +57,7 @@ const fetchVerifyOtp = async (phoneNumber, code) => {
 
   try {
     const response = await axiosInstance.post(
-      `api/verify-otp?phone_number=${phoneNumber}&code=${code}`
+      `verify-otp?phone_number=${phoneNumber}&code=${code}`
     );
 
     // console.log(response.data);
@@ -77,7 +77,7 @@ const fetchRegisterOtp = async (firstName, phoneNumber, code, lastName) => {
 
   try {
     const response = await axiosInstance.post(
-      `api/register?first_name=${firstName}&phone_number=${phoneNumber}&code=${code}&last_name=${lastName}`
+      `register?first_name=${firstName}&phone_number=${phoneNumber}&code=${code}&last_name=${lastName}`
     );
 
     // console.log(response.data);
@@ -88,13 +88,11 @@ const fetchRegisterOtp = async (firstName, phoneNumber, code, lastName) => {
   }
 };
 
-
-
 //  ************ inja dare modam request mifreste**************
 const fetchOpenOrder = async () => {
   // console.log("object")
   try {
-    const response = await axiosInstance.get(`api/open-orders`);
+    const response = await axiosInstance.get(`open-orders`);
     // console.log(response.data);
     return response.data;
   } catch (error) {
@@ -106,7 +104,7 @@ const fetchOpenOrder = async () => {
 const fetchAddToOpenOrder = async (idForAdd) => {
   // console.log("object")
   try {
-    const response = await axiosInstance.get(`api/addToOpenOrder/${idForAdd}`);
+    const response = await axiosInstance.get(`addToOpenOrder/${idForAdd}`);
     console.log(response.data);
     return response.data;
   } catch (error) {
@@ -117,7 +115,9 @@ const fetchAddToOpenOrder = async (idForAdd) => {
 const fetchRemoveToOpenOrder = async (idForAdd) => {
   // console.log("object")
   try {
-    const response = await axiosInstance.get(`api/removeFromOpenOrder/${idForAdd}`);
+    const response = await axiosInstance.get(
+      `removeFromOpenOrder/${idForAdd}`
+    );
     // console.log(response.data);
     return response.data;
   } catch (error) {
@@ -125,7 +125,44 @@ const fetchRemoveToOpenOrder = async (idForAdd) => {
     throw error; // بازگرداندن خطا برای مدیریت در جای دیگر
   }
 };
+// const fetchAddAddress = async (name, driverAddress, lat, lng) => {
 
+
+//   try {
+//     const response = await axiosInstance.post(
+//       `addAddress?name=${name}&address=${driverAddress}&lat=${lat}&lng=${lng}`
+//     );
+
+//     console.log(response.data);
+//     return response.data;
+//   } catch (error) {
+//     console.error("Error fetching send Otp:", error);
+//     throw error; // بازگرداندن خطا برای مدیریت در جای دیگر
+//   }
+// };
+const fetchAddAddress = async ({name, driverAddress, lat, lng}) => {
+
+  try {
+
+    const response = await axiosInstance.post(
+
+      `addAddress?name=${name}&address=${driverAddress}&lat=${lat}&lng=${lng}`
+
+    );
+
+    console.log(response.data);
+
+    return response.data;
+
+  } catch (error) {
+
+    console.error("Error adding address:", error);
+
+    throw error; // بازگرداندن خطا برای مدیریت در جای دیگر
+
+  }
+
+};
 export {
   BASE_URL,
   BEARER_TOKEN,
@@ -134,5 +171,8 @@ export {
   fetchSendOtp,
   fetchVerifyOtp,
   fetchRegisterOtp,
-  fetchOpenOrder,fetchRemoveToOpenOrder,fetchAddToOpenOrder
+  fetchOpenOrder,
+  fetchRemoveToOpenOrder,
+  fetchAddToOpenOrder,
+  fetchAddAddress,
 };

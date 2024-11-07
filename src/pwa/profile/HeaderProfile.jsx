@@ -19,24 +19,24 @@ const HeaderProfile = () => {
     cellPhoneNumber: "09172384087",
     costAccount: "0",
   };
-  console.log(pathName);
+  // console.log(pathName);
 
-  
   useEffect(() => {
     const fetchData = async () => {
-      setUser( await axios
-        .get(`${BASE_URL}api/findUser`, {
-          headers: {Authorization: "Bearer " + BEARER_TOKEN},
-        })
-        .then((result) => {
-          console.log(result.data.message);
-          return result.data.message;
-        }));
+      setUser(
+        await axios
+          .get(`${BASE_URL}api/findUser`, {
+            headers: {Authorization: "Bearer " + BEARER_TOKEN},
+          })
+          .then((result) => {
+            // console.log(result.data.message);
+            return result.data.message;
+          })
+      );
     };
     fetchData();
-   
   }, []);
-  
+
   return (
     <>
       <Box sx={{bgcolor: "#0caeca", borderRadius: "0 0 24px 24px "}}>
@@ -69,14 +69,14 @@ const HeaderProfile = () => {
                     fontSize='16px'
                     fontFamily='Vazir-Bold'
                     fontWeight='bold'>
-                    {(user ? user.name:'')}
+                    {user ? user.name : ""}
                   </Typography>
                   <Typography
                     variant='body2'
                     fontSize='14px'
                     fontFamily='Vazir'
                     fontWeight='bold'>
-                    {toFarsiNumber(user ? user.number : '')}
+                    {toFarsiNumber(user ? user.number : "")}
                   </Typography>
                 </Box>
               </Grid>
@@ -213,7 +213,6 @@ const HeaderProfile = () => {
               fontFamily='Vazir-Light'
               fontSize='14px'>
               need Api
-
               <span>{toFarsiNumber(personAccout.costAccount)}</span> تومان
             </Typography>
           </Grid>

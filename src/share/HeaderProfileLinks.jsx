@@ -1,17 +1,21 @@
 /* eslint-disable react/prop-types */
 import { Box, Grid, Typography } from "@mui/material";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 // icon
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 
 const HeaderProfileLinks = ({ pageAddress }) => {
+  const openFooter = useLocation().pathname.split("/");
+  const lastIndex = openFooter.length - 1;
+  // console.log(openFooter[lastIndex] == "address");
+
   return (
     <Box sx={{ bgcolor: "#0caeca" }}>
       <Box
         sx={{
           maxWidth: "768px",
-          m: "0rem auto 5rem",
+          m: `0rem auto  ${openFooter[lastIndex] == "address" ? '0':'5rem'}`,
           display: "flex",
           alignItems: "container",
           flexDirection: "column",
