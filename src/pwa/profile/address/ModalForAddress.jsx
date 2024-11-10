@@ -15,7 +15,10 @@ const ModalForAddress = ({
   openModal,
 }) => {
   const {nameAddress, addressDriver, getPosition} = dataCompletedForSend;
-
+console.log(dataCompletedForSend)
+console.log(nameAddress)
+console.log(addressDriver)
+console.log(getPosition)
   const sendAddressToServer = async () => {
     if (
       !nameAddress ||

@@ -1,8 +1,10 @@
-import { Box, Grid, Stack, Typography } from "@mui/material";
+import {Box, Grid, Stack, Typography} from "@mui/material";
 import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
 import DeleteForeverOutlinedIcon from "@mui/icons-material/DeleteForeverOutlined";
+import {fetchRemoveAddress} from "../../../API/requests";
+import {useEffect} from "react";
 // eslint-disable-next-line react/prop-types
-const AddressBodyChildren = ({namePlace,typeAddress}) => {
+const AddressBodyChildren = ({id, name, addressDriver}) => {
   return (
     <Grid
       item
@@ -11,7 +13,7 @@ const AddressBodyChildren = ({namePlace,typeAddress}) => {
       sm={12}
       md={12}
       lg={12}
-      sx={{ display: "flex", flexDirection: "column", m: "1rem 0" }}>
+      sx={{display: "flex", flexDirection: "column", m: "1rem 0"}}>
       <Box
         sx={{
           display: "flex",
@@ -20,12 +22,12 @@ const AddressBodyChildren = ({namePlace,typeAddress}) => {
           color: "black",
           bgcolor: "rgb(235, 248, 250)",
           borderRadius: "16px 16px 0 0",
-          p: ".3rem"
+          p: ".3rem",
         }}>
         <Stack display='flex' flexDirection='row' alignItems='center'>
-          <LocationOnOutlinedIcon sx={{ color: "#0caeca" }} />
+          <LocationOnOutlinedIcon sx={{color: "#0caeca"}} />
           <Typography variant='h6' mr={1} fontWeight={600}>
-            {namePlace}
+            {name}
           </Typography>
         </Stack>
         <button
@@ -36,10 +38,11 @@ const AddressBodyChildren = ({namePlace,typeAddress}) => {
             height: "50px",
             border: "none",
             cursor: "pointer",
-            "&:hover": { background: "none" },
-            "&:target": { background: "none" }
-          }}>
-          <DeleteForeverOutlinedIcon sx={{ color: "rgba(0,0,0,0.5)" }} />
+            "&:hover": {background: "none"},
+            "&:target": {background: "none"},
+          }}
+          onClick={() => fetchRemoveAddress(id)}>
+          <DeleteForeverOutlinedIcon sx={{color: "rgba(0,0,0,0.5)"}} />
         </button>
       </Box>
       <Box
@@ -48,9 +51,9 @@ const AddressBodyChildren = ({namePlace,typeAddress}) => {
           bgcolor: "rgb(235, 248, 250)",
           borderRadius: "0 0 16px 16px ",
           p: ".5rem 1rem",
-          mt: ".3rem"
+          mt: ".3rem",
         }}>
-        <Typography>{typeAddress}</Typography>
+        <Typography>{addressDriver}</Typography>
       </Box>
     </Grid>
   );
