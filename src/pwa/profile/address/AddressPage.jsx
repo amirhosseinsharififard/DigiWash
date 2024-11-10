@@ -1,34 +1,31 @@
 /* eslint-disable no-unused-vars */
-import {Box, Button, Grid} from "@mui/material";
+import { Box, Button, Grid } from "@mui/material";
 import useButtonClick from "../../../helper/customHooks";
 import HeaderProfileLinks from "../../../share/HeaderProfileLinks";
 import BodyProfiles from "./BodyProfiles";
-import {useLocation} from "react-router-dom";
+import { useState, useEffect } from "react";
 import ModalForAddress from "./ModalForAddress";
-import {useState} from "react";
 
 const AddressPage = () => {
-  const [nameAddress, setNameAddress] = useState(null);
-  const [addressDriver, setAddressDriver] = useState(null);
+  const [nameAddress, setNameAddress] = useState("");
+  const [addressDriver, setAddressDriver] = useState("");
   const [openModal, setOpenModal] = useState(false);
-  const [getPosition, setGetPostiton] = useState("");
+  const [getPosition, setGetPostiton] = useState([]);
+  const { result, handleButtonClick } = useButtonClick();
 
-  const {result, handleButtonClick} = useButtonClick();
-  // console.log(result && result);
   const dataCompletedForSend = {
     getPosition,
     addressDriver,
     nameAddress,
   };
-  console.log(dataCompletedForSend)
-  // modalForAddress Handler
+
   const modalForAddresstoggleHandler = () => {
     setOpenModal((prev) => !prev);
   };
+
   return (
     <>
       <HeaderProfileLinks />
-
       <BodyProfiles
         pageAddress='آدرس ها'
         result={result}
@@ -81,7 +78,7 @@ const AddressPage = () => {
                   boxShadow: "none",
                 },
               }}>
-              ثبت ادرس {"> بذارم"}
+              ثبت آدرس {"> بذارم"}
             </Button>
           </Grid>
         </Grid>

@@ -16,19 +16,33 @@ const ModalForAddress = ({
 }) => {
   const {nameAddress, addressDriver, getPosition} = dataCompletedForSend;
 
-    const sendAddressToServer = async () => {
-      if (!nameAddress || !addressDriver || !getPosition || getPosition.length < 2) {
-        console.error("مقادیر ورودی معتبر نیستند");
-        return; // از ادامه کار جلوگیری کنید
-      }
-    
-      try {
-        await fetchAddAddress("nameAddress", addressDriver, getPosition[0].toFixed(4), getPosition[1].toFixed(4));
-        console.log("آدرس با موفقیت ارسال شد");
-      } catch (error) {
-        console.error("خطا در ارسال آدرس:", error);
-      }
-    };
+  const sendAddressToServer = async () => {
+    if (
+      !nameAddress ||
+      !addressDriver ||
+      !getPosition ||
+      getPosition.length < 2
+    ) {
+      console.error("مقادیر ورودی معتبر نیستند");
+      return; // از ادامه کار جلوگیری کنید
+    }
+
+    console.log(nameAddress)
+    console.log(addressDriver)
+    console.log(getPosition)
+    try {
+      console.log("Sending to server:", nameAddress, addressDriver, getPosition);
+      await fetchAddAddress(
+        nameAddress,
+        addressDriver,
+        getPosition[0].toFixed(4),
+        getPosition[1].toFixed(4)
+      );
+      console.log("آدرس با موفقیت ارسال شد");
+    } catch (error) {
+      console.error("خطا در ارسال آدرس:", error);
+    }
+  };
   return (
     <Box
       sx={{

@@ -115,9 +115,7 @@ const fetchAddToOpenOrder = async (idForAdd) => {
 const fetchRemoveToOpenOrder = async (idForAdd) => {
   // console.log("object")
   try {
-    const response = await axiosInstance.get(
-      `removeFromOpenOrder/${idForAdd}`
-    );
+    const response = await axiosInstance.get(`removeFromOpenOrder/${idForAdd}`);
     // console.log(response.data);
     return response.data;
   } catch (error) {
@@ -126,7 +124,6 @@ const fetchRemoveToOpenOrder = async (idForAdd) => {
   }
 };
 // const fetchAddAddress = async (name, driverAddress, lat, lng) => {
-
 
 //   try {
 //     const response = await axiosInstance.post(
@@ -140,28 +137,33 @@ const fetchRemoveToOpenOrder = async (idForAdd) => {
 //     throw error; // بازگرداندن خطا برای مدیریت در جای دیگر
 //   }
 // };
-const fetchAddAddress = async ({name, driverAddress, lat, lng}) => {
-
+const fetchAddAddress = async (nameAddress, addressDriver, lat, lng) => {
+console.log(nameAddress)
+console.log(addressDriver)
+console.log(lat)
+console.log(lng)
   try {
-
     const response = await axiosInstance.post(
-
-      `addAddress?name=${name}&address=${driverAddress}&lat=${lat}&lng=${lng}`
-
+      `addAddress?name=${nameAddress}&address=${addressDriver}&lat=${lat}&lng=${lng}`
     );
+    // const response = await axiosInstance.post('addAddress', {
+    //   name: String(dataCompletedForSend.name),
+    //   address: String(dataCompletedForSend.driverAddress),
+    //   lat: dataCompletedForSend.lat,
+    //   lng: dataCompletedForSend.lng
+    // });
 
     console.log(response.data);
 
-    return response.data;
-
+    return response.data; // بررسی کنید که آیا نیاز به دسترسی به داده‌ها به صورت خاصی دارید
   } catch (error) {
-
-    console.error("Error adding address:", error);
-
-    throw error; // بازگرداندن خطا برای مدیریت در جای دیگر
-
+    if (error.response) {
+      console.error("خطا در داده‌ها:", error.response.data);
+      console.error("وضعیت خطا:", error.response.status);
+    } else {
+      console.error("خطا:", error.message);
+    }
   }
-
 };
 export {
   BASE_URL,
