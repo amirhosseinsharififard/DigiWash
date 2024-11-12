@@ -164,6 +164,26 @@ const fetchRemoveAddress = async (id) => {
     }
   }
 };
+const fetchAddresses = async () => {
+  // console.log(nameAddress)
+  // console.log(addressDriver)
+  // console.log(lat)
+  // console.log(lng)
+  try {
+    const response = await axiosInstance.get(`addresses`);
+
+    console.log(response.data);
+
+    return response.data; // بررسی کنید که آیا نیاز به دسترسی به داده‌ها به صورت خاصی دارید
+  } catch (error) {
+    if (error.response) {
+      console.error("خطا در داده‌ها:", error.response.data);
+      console.error("وضعیت خطا:", error.response.status);
+    } else {
+      console.error("خطا:", error.message);
+    }
+  }
+};
 export {
   BASE_URL,
   BEARER_TOKEN,
@@ -176,5 +196,6 @@ export {
   fetchRemoveToOpenOrder,
   fetchAddToOpenOrder,
   fetchAddAddress,
-  fetchRemoveAddress
+  fetchRemoveAddress,
+  fetchAddresses
 };
