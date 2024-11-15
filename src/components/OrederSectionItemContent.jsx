@@ -15,7 +15,7 @@ const OrderSectionItemContent = ({ data, title, image, cost, id, whichButton,qua
 
 //   // bayad data khas behesh ersal beshe
   const quantiy = productQuantity(state, id, data);
-
+console.log(quantity)
   // console.log("data");
   // console.log(data);
   // console.log("state");

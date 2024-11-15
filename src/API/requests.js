@@ -1,9 +1,25 @@
 import axios from "axios";
+import { checkLocalStorageUserData } from "../hooks/useLocalStorage";
 
 const BASE_URL = "https://laundry.rahcode.co/api/";
-const BEARER_TOKEN =
-  "KsbRD6PjiJ7v1paGMZP6au8VIbQFO6VvilLeKVkSpWLyNq0jhBmbTxMZesfy";
 
+// ************************************************ moshkel dare
+// const BEARER_TOKEN = localStorage.getItem("userData").api_token
+//   "KsbRD6PjiJ7v1paGMZP6au8VIbQFO6VvilLeKVkSpWLyNq0jhBmbTxMZesfy";
+
+const BEARER_TOKEN =
+checkLocalStorageUserData().api_token
+
+
+// console.log(
+//   localStorage.getItem("userData") &&
+//     JSON.parse(localStorage.getItem("userData")).api_token
+// );
+// const setBT = (BT) => {
+//   return BT;
+// };
+
+// *********************************************** moshkel dare
 const axiosInstance = axios.create({
   baseURL: BASE_URL,
   headers: {
@@ -124,13 +140,15 @@ const fetchRemoveToOpenOrder = async (idForAdd) => {
   }
 };
 
-const fetchAddAddress = async (name,driverAddress,lat,lng) => {
+const fetchAddAddress = async (name, driverAddress, lat, lng) => {
   // console.log(nameAddress)
   // console.log(addressDriver)
   // console.log(lat)
   // console.log(lng)
   try {
-    const response = await axiosInstance.post(`addAddress?name=${name}&address=${driverAddress}&lat=${lat}&lng=${lng}`);
+    const response = await axiosInstance.post(
+      `addAddress?name=${name}&address=${driverAddress}&lat=${lat}&lng=${lng}`
+    );
 
     console.log(response);
 
@@ -197,5 +215,6 @@ export {
   fetchAddToOpenOrder,
   fetchAddAddress,
   fetchRemoveAddress,
-  fetchAddresses
+  fetchAddresses,
+  // setBT,
 };

@@ -11,7 +11,7 @@ const sumPrice = (products) => {
 const productQuantity = (state, id, data) => {
   const index = state.selectedItems.findIndex(
     (item) =>
-      item.id === id && item.category === data.category 
+      item.id === id && item.category === data.category && item.service_id === data.service_id
   );
   if (index === -1) {
     return 0;

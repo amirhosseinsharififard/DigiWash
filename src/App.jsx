@@ -20,32 +20,51 @@ import theme from "./Theme";
 import EditPage from "./pwa/profile/edit/EditPage";
 import Basket from "./page/Basket";
 import PhoneRegisterModal from "./components/PhoneRegisterModal";
-import { useEffect, useState } from "react";
-import { checkLocalStorageUserData } from "./hooks/useLocalStorage";
+import {useEffect, useState} from "react";
+import {checkLocalStorageUserData} from "./hooks/useLocalStorage";
+import { BEARER_TOKEN } from "./API/requests";
+import HeaderPwa from "./pwa/home/HeaderPwa";
+// import {BEARER_TOKEN, setBT} from "./API/requests";
 
 function App() {
-  const  [isPhoneRegisterModalOpen,setIsPhoneRegisterModalOpen]=useState(false)
-  const localStorageGetItem= localStorage.getItem("userData")
-  useEffect(()=>{
-    checkLocalStorageUserData()
-
-  },[localStorageGetItem])
+  const [isPhoneRegisterModalOpen, setIsPhoneRegisterModalOpen] =
+    useState(false);
+  const localStorageGetItem = localStorage.getItem("userData")
+  useEffect(() => {
+    // console.log(checkLocalStorageUserData().api_token);
+    // setBT(checkLocalStorageUserData().api_token)
+    console.log("BEARER_TOKEN")
+    console.log(BEARER_TOKEN)
+  
+  
+  }, [localStorageGetItem]);
   return (
     <>
       <ThemeProvider theme={theme}>
+      <HeaderPwa setIsPhoneRegisterModalOpen={setIsPhoneRegisterModalOpen} />
+
         <Routes>
-          <Route path='/' element={<HomePage setIsPhoneRegisterModalOpen={setIsPhoneRegisterModalOpen}/>} />
+          <Route
+            path='/'
+            element={
+              <HomePage
+                setIsPhoneRegisterModalOpen={setIsPhoneRegisterModalOpen}
+              />
+            }
+          />
           <Route path='/services/:id' element={<ServicePage />} />
           <Route path='' element={<ModalIncrease />} />
           <Route path='/profile' element={<ProfilePage />} />
           <Route path='/profile/address' element={<AddressPage />} />
           {/* <Route path='/profile/transactions' element={<TransactionsPage />} /> */}
           {/* <Route path='/profile/edit' element={<EditPage />} /> */}
-          {/* <Route path='/basket' element={<Basket />} /> */}
+          <Route path='/basket' element={<Basket />} />
         </Routes>
         <Footer />
-        <PhoneRegisterModal isPhoneRegisterModalOpen={isPhoneRegisterModalOpen} setIsPhoneRegisterModalOpen={setIsPhoneRegisterModalOpen}/>
-
+        <PhoneRegisterModal
+          isPhoneRegisterModalOpen={isPhoneRegisterModalOpen}
+          setIsPhoneRegisterModalOpen={setIsPhoneRegisterModalOpen}
+        />
       </ThemeProvider>
     </>
   );

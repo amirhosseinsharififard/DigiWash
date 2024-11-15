@@ -4,7 +4,6 @@ import OrederSectionItemContent from "./OrederSectionItemContent";
 import {useEffect, useState} from "react";
 
 const OrederSectionItem = ({orders, setCollectAllProductLength}) => {
-
   const [sums, setSums] = useState(new Map()); // state برای ذخیره مجموع هزینه‌ها
 
   const calculateSums = () => {
@@ -60,64 +59,63 @@ const OrederSectionItem = ({orders, setCollectAllProductLength}) => {
             p: "1.50rem",
           }}>
           {orders &&
-            orders.map((item) => (
-              <>
-                <Grid
-                  container
-                  sx={{
-                    border: "1px solid rgb(235, 241, 242)",
-                    borderRadius: "12px",
-                    bgcolor: "rgb(237, 252, 255)",
-                    display: "flex",
-                    justifyContent: "space-between",
-                   
-                    mb:2
-                  }}>
-                  {/* {console.log(item.name)} */}
-                  <Grid
-                    key={item.id}
-                    item
-                    m='1rem .7rem '
-                    display='flex'
-                    justifyContent='space-between'
-                    xs={12}
-                    sm={12}
-                    md={12}
-                    lg={12}>
-                    <>
-                      <Typography fontSize='16px' fontFamily='Vazir'>
-                        {item.name}
-                      </Typography>
-                      <Typography fontSize='12px' fontFamily='Vazir'>
-                        درمجموع:
-                        <span
-                          style={{
-                            fontFamily: "Vazir",
-                            fontWeight: "bold",
-                            marginRight: "2px",
-                          }}>
-                          {persianPrice(sums && sums.get(item.name))} تومان
-                        </span>
-                      </Typography>
+            orders.map((item, i) => (
+              <Grid
+                key={i}
+                container
+                sx={{
+                  border: "1px solid rgb(235, 241, 242)",
+                  borderRadius: "12px",
+                  bgcolor: "rgb(237, 252, 255)",
+                  display: "flex",
+                  justifyContent: "space-between",
 
-                      {/* {console.log(sums["شلوار"])} برای بررسی مقادیر */}
-                      {/* {console.log(reduceCost)} برای بررسی مقادیر */}
-                    </>
-                  </Grid>
-                  <Grid item m='1rem .7rem ' xs={12} sm={12} md={12} lg={12}>
-                    {item.service_list.map((item2) => (
-                      <OrederSectionItemContent
-                        key={item2.id}
-                        id={item2.id}
-                        cost={item2.value}
-                        title={item2.service_type}
-                        quantity={item2.qty}
-                        data={item2}
-                      />
-                    ))}
-                  </Grid>
+                  mb: 2,
+                }}>
+                {/* {console.log(item.name)} */}
+                <Grid
+                  key={item.id}
+                  item
+                  m='1rem .7rem '
+                  display='flex'
+                  justifyContent='space-between'
+                  xs={12}
+                  sm={12}
+                  md={12}
+                  lg={12}>
+                  <>
+                    <Typography fontSize='16px' fontFamily='Vazir'>
+                      {item.name}
+                    </Typography>
+                    <Typography fontSize='12px' fontFamily='Vazir'>
+                      درمجموع:
+                      <span
+                        style={{
+                          fontFamily: "Vazir",
+                          fontWeight: "bold",
+                          marginRight: "2px",
+                        }}>
+                        {persianPrice(sums && sums.get(item.name))} تومان
+                      </span>
+                    </Typography>
+
+                    {/* {console.log(sums["شلوار"])} برای بررسی مقادیر */}
+                    {/* {console.log(reduceCost)} برای بررسی مقادیر */}
+                  </>
                 </Grid>
-              </>
+                <Grid item m='1rem .7rem ' xs={12} sm={12} md={12} lg={12}>
+                  {item.service_list.map((item2) => (
+                    <OrederSectionItemContent
+                      key={item2.id}
+                      id={item2.id}
+                      cost={item2.value}
+                      title={item2.service_type}
+                      quantity={item2.qty}
+                      data={item2}
+                    />
+                  ))}
+                </Grid>
+              </Grid>
             ))}
         </Box>
       </Grid>

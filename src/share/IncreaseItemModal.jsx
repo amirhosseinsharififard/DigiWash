@@ -41,7 +41,7 @@ const IncreaseItem = ({data, title, image, cost, id, service_list,setReloadKey,r
       });
       return acc;
     });
-// console.log(service_list)
+console.log(service_list)
   
 
   const buttonAddHandler=(id,condition)=>{

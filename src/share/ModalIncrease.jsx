@@ -21,6 +21,7 @@ const ModalIncrease = ({
   itemServices,
 }) => {
 
+console.log(itemServices)
   // const [showMore, setShowMore] = useState(false);
   // const dataList = data;
   // const [indexData, setIndexData] = useState(null); // مقدار اولیه null به جای undefined

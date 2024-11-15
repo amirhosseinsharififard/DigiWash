@@ -6,6 +6,7 @@ import {useEffect, useState} from "react";
 import CountdownTimer from "./CountdownTimer";
 import {fetchRegisterOtp, fetchSendOtp, fetchVerifyOtp} from "../API/requests";
 import toFarsiNumber from "../share/functions";
+import { setLocalStorageHandler } from "../hooks/useLocalStorage";
 
 const PhoneRegisterModal = ({
   isPhoneRegisterModalOpen,
@@ -56,7 +57,8 @@ const PhoneRegisterModal = ({
     try {
       const response = await fetchSendOtp(fieldRegister.phoneNumber);
 
-      setResponseSms(response); // Update the response state with the fetched data
+      setResponseSms(response); // Update the response state with the fetched dataclg
+      console.log(response);
     } catch (error) {
       console.error("Error sending OTP:", error);
 
@@ -94,6 +96,9 @@ const PhoneRegisterModal = ({
       );
       setResponseVerify(response);
       console.log(response);
+      if (response.message == "با موفقیت تایید شد.") {
+        setLocalStorageHandler(response.data);
+      }
     } catch (error) {
       console.log("error", error);
     }
@@ -117,10 +122,11 @@ const PhoneRegisterModal = ({
     ) {
       setIsPhoneRegisterModalOpen(false);
     }
+    // console.log(responseVerify);
   }, [responseVerify]); // وابستگی به responseVerify
 
-  console.log(responseSms && responseSms);
-  console.log(responseVerify && responseVerify);
+  // console.log(responseSms && responseSms);
+  // console.log(responseVerify && responseVerify);
 
   return (
     <>

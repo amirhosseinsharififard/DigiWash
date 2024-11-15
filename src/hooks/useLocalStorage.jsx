@@ -8,7 +8,7 @@ const setLocalStorageHandler = (userSetData) => {
 
 const checkLocalStorageUserData = () => {
   const localStorageGetItem = localStorage.getItem("userData");
-  console.log(localStorageGetItem);
+  // console.log(JSON.parse(localStorageGetItem));
   if (localStorageGetItem) {
     const userData = JSON.parse(localStorageGetItem);
     const {first_name, last_name, number, api_token, is_online} = userData;

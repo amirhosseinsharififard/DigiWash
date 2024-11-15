@@ -5,9 +5,7 @@ import OrderPhone from "./OrderPhone";
 import Services from "./Services";
 import ServicesPopular from "./ServicesPopular";
 import ServicesCategory from "./ServicesCategory";
-import HeaderPwa from "./HeaderPwa";
 import {fetchHomePage} from "../../API/requests"; // import کردن فقط متغیرهای لازم
-import { checkLocalStorageUserData } from "../../hooks/useLocalStorage";
 
 // eslint-disable-next-line react/prop-types
 const HomePage = ({setIsPhoneRegisterModalOpen}) => {
@@ -34,7 +32,6 @@ const HomePage = ({setIsPhoneRegisterModalOpen}) => {
 
   return (
     <>
-      <HeaderPwa setIsPhoneRegisterModalOpen={setIsPhoneRegisterModalOpen} />
       <Box sx={{maxWidth: "768px", m: "0rem auto 5rem"}}>
         <Offday />
         <OrderPhone />

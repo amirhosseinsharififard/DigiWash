@@ -24,17 +24,17 @@ const ServicePage = () => {
   const [uniqeSubTitle, setUniqeSubTitle] = useState();
   const [itemServices, setItemServices] = useState();
   const [items, setItems] = useState([]);
-  let buttonFilter = ["کت", "شلوار", "لباس"];
+  // let buttonFilter = ["کت", "شلوار", "لباس"];
 
   const locationIndex = useLocation().pathname.split("/")[2];
-  const handleFilterButtonClick = (selectedCategory) => {
-    if (selectedFilters.includes(selectedCategory)) {
-      let filters = selectedFilters.filter((el) => el !== selectedCategory);
-      setSelectedFilters(filters);
-    } else {
-      setSelectedFilters([...selectedFilters, selectedCategory]);
-    }
-  };
+  // const handleFilterButtonClick = (selectedCategory) => {
+  //   if (selectedFilters.includes(selectedCategory)) {
+  //     let filters = selectedFilters.filter((el) => el !== selectedCategory);
+  //     setSelectedFilters(filters);
+  //   } else {
+  //     setSelectedFilters([...selectedFilters, selectedCategory]);
+  //   }
+  // };
 
   useEffect(() => {
     const fetchData = async (fetchIndex) => {
@@ -53,13 +53,15 @@ const ServicePage = () => {
 
   const toggleHandler = (id, services) => {
     setIsShowModal((prev) => !prev);
-    setItemServices(services);
-    setDataID(id);
-    Object.entries(services).forEach(([key, val]) => {
-      setKey(key); // تنظیم کلید
-      setValue(val); // تنظیم مقدار
-     
-    });
+    if(!isShowModal){
+      setItemServices(services);
+      setDataID(id);
+      Object.entries(services).forEach(([key, val]) => {
+        setKey(key); // تنظیم کلید
+        setValue(val); // تنظیم مقدار
+        
+      });
+  }
     // Object.entries(services).forEach(([key, val]) => {
     //   setItems(prevItems => [...prevItems, { key, val }]);
     // });
@@ -71,10 +73,7 @@ const ServicePage = () => {
 
   return (
     <>
-      <HeaderPwa
-        handleFilterButtonClick={handleFilterButtonClick}
-        buttonFilter={buttonFilter}
-      />
+ {error && <div>{error}</div>}
 
       <Grid
         container
@@ -84,9 +83,9 @@ const ServicePage = () => {
         spacing='2rem'>
         {services &&
           services.map((item, id) => (
-            <>
-              {/* {console.log(item)} */}
-              {() => (setData(item.services), setNameData(item.name))}
+            
+   
+           
               <ServicesCoponent
                 // onClick={() => (setData(item.services),setNameData(item.name))}
                 item={item}
@@ -102,7 +101,7 @@ const ServicePage = () => {
                 name={item.name}
                 category={item.cat_id}
               />
-            </>
+            
           ))}
       </Grid>
       {isShowModal && (
@@ -111,7 +110,7 @@ const ServicePage = () => {
             data={value}
             isShowModal={isShowModal}
             toggleHandler={() => toggleHandler()}
-            nameData={services[dataId].name}
+            nameData={services[dataId]?.name}
             uniqeSubTitle={uniqeSubTitle}
             itemServices={itemServices}
             items={items}
