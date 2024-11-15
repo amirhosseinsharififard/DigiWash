@@ -25,11 +25,11 @@ const HeaderProfile = () => {
     const fetchData = async () => {
       setUser(
         await axios
-          .get(`${BASE_URL}api/findUser`, {
+          .get(`${BASE_URL}findUser`, {
             headers: {Authorization: "Bearer " + BEARER_TOKEN},
           })
           .then((result) => {
-            // console.log(result.data.message);
+            console.log(result.data.message);
             return result.data.message;
           })
       );

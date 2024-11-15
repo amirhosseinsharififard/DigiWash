@@ -80,7 +80,7 @@ const fetchRegisterOtp = async (firstName, phoneNumber, code, lastName) => {
       `register?first_name=${firstName}&phone_number=${phoneNumber}&code=${code}&last_name=${lastName}`
     );
 
-    // console.log(response.data);
+    console.log(response.data);
     return response.data;
   } catch (error) {
     console.error("Error fetching send Otp:", error);
