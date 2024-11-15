@@ -7,6 +7,7 @@ import ServicesPopular from "./ServicesPopular";
 import ServicesCategory from "./ServicesCategory";
 import HeaderPwa from "./HeaderPwa";
 import {fetchHomePage} from "../../API/requests"; // import کردن فقط متغیرهای لازم
+import { checkLocalStorageUserData } from "../../hooks/useLocalStorage";
 
 // eslint-disable-next-line react/prop-types
 const HomePage = ({setIsPhoneRegisterModalOpen}) => {
@@ -23,7 +24,6 @@ const HomePage = ({setIsPhoneRegisterModalOpen}) => {
         console.error(err);
       }
     };
-
     fetchData(); // فراخوانی تابع غیرهمزمان
   }, []);
 

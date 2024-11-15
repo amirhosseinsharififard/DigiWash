@@ -20,10 +20,16 @@ import theme from "./Theme";
 import EditPage from "./pwa/profile/edit/EditPage";
 import Basket from "./page/Basket";
 import PhoneRegisterModal from "./components/PhoneRegisterModal";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { checkLocalStorageUserData } from "./hooks/useLocalStorage";
 
 function App() {
   const  [isPhoneRegisterModalOpen,setIsPhoneRegisterModalOpen]=useState(false)
+  const localStorageGetItem= localStorage.getItem("userData")
+  useEffect(()=>{
+    checkLocalStorageUserData()
+
+  },[localStorageGetItem])
   return (
     <>
       <ThemeProvider theme={theme}>

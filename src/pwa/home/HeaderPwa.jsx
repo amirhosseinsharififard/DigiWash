@@ -14,11 +14,14 @@ const HeaderPwa = ({
 }) => {
   const pathName = useLocation().pathname;
   const isLogin = false;
-  console.log(pathName);
+  // console.log(pathName);
 
   const registerHandler = () => {
+
+    console.log(setIsPhoneRegisterModalOpen); // این خط را اضافه کنید
+  
     setIsPhoneRegisterModalOpen(true);
-    console.log("object")
+  
   };
   return (
     <Box sx={{bgcolor: "#0caeca"}}>
@@ -106,7 +109,8 @@ const HeaderPwa = ({
                         background: "#0caeca",
                       },
                     }}
-                    onClick={registerHandler}>
+                    onClick={registerHandler}
+                    >
                     ثبتنام / ورود
                   </Button>
                 </Grid>

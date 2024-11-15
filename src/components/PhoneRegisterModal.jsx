@@ -40,6 +40,13 @@ const PhoneRegisterModal = ({
       [name]: value,
     }));
   };
+  const handleButtonClick = () => {
+    setFieldRegister((prevState) => ({
+      ...prevState,
+
+      codeConfirm: "", // مقدار codeConfirm را به صفر برمی‌گرداند
+    }));
+  };
 
   const buttonHandler = async () => {
     setFieldRegister((prevState) => ({
@@ -60,14 +67,20 @@ const PhoneRegisterModal = ({
   const toggleHandler = () => {
     setIsPhoneRegisterModalOpen(false);
   };
-  const registerhandler = () => {
-    fetchRegisterOtp(
-      fieldRegister.userName,
-      fieldRegister.phoneNumber,
-      fieldRegister.codeConfirm,
-      fieldRegister.userLastName
-    );
+  const registerhandler = async () => {
     setIsPhoneRegisterModalOpen(false);
+    try {
+      const response = await fetchRegisterOtp(
+        fieldRegister.userName,
+        fieldRegister.phoneNumber,
+        fieldRegister.codeConfirm,
+        fieldRegister.userLastName
+      );
+      setResponseVerify(response);
+      console.log(response);
+    } catch (error) {
+      console.log("error", error);
+    }
   };
 
   let regex = new RegExp("^(\\+98|0)?9\\d{9}$");
@@ -80,7 +93,7 @@ const PhoneRegisterModal = ({
         fieldRegister.codeConfirm
       );
       setResponseVerify(response);
-      console.log(responseVerify);
+      console.log(response);
     } catch (error) {
       console.log("error", error);
     }
@@ -176,7 +189,9 @@ const PhoneRegisterModal = ({
                   <Button
                     variant='outlined'
                     disabled={!result}
-                    onClick={buttonHandler}>
+                    onClick={() => {
+                      buttonHandler(), handleButtonClick();
+                    }}>
                     لطفا شماره موبایل خود را وارد کنید تا کد فعال سازی برایتان
                     فرستاده شود.
                   </Button>
@@ -185,62 +200,75 @@ const PhoneRegisterModal = ({
             )}
 
             {/* check sms code  */}
-            {fieldRegister.send && fieldRegister.verifyOtp && (
-              <>
-                <Grid
-                  item
-                  xs={12}
-                  sm={12}
-                  md={12}
-                  lg={12}
-                  display='flex'
-                  justifyContent='start'>
-                  <Link
-                    style={{
-                      display: "flex",
-                      justifyContent: "center",
-                      alignContent: "center",
-                      alignItems: "center",
-                    }}
-                    onClick={buttonHandler}>
-                    <ArrowForwardIos style={{fontSize: "14px"}} />
-                    <Typography>اصلاح شماره موبایل</Typography>
-                  </Link>
-                </Grid>
-
-                <Grid item xs={12} sm={12} md={12} lg={12}>
-                  <Typography>
-                    کد ارسال شده به {fieldRegister.phoneNumber} را وارد کنید.
-                  </Typography>
-                </Grid>
-
-                <Grid item xs={12} sm={12} md={12} lg={12} position='relative'>
-                  <Box
+            {fieldRegister.send &&
+              fieldRegister.verifyOtp &&
+              !(
+                responseVerify &&
+                responseVerify.message ===
+                  "با موفقیت تایید شد اما کاربری یافت نشد." &&
+                responseVerify.status === 100
+              ) && (
+                <>
+                  <Grid
+                    item
+                    xs={12}
+                    sm={12}
+                    md={12}
+                    lg={12}
                     display='flex'
-                    justifyContent='space-evenly'
-                    width='100%'
-                    margin='auto'
-                    position='absolute'
-                    top='0'
-                    mt='1rem'
-                    sx={{direction:'ltr'}}>
-                    {fieldRegister.codeConfirm ? (
-                      fieldRegister.codeConfirm.split("").map((item, i) => (
-                        <Typography mr={5} key={i} sx={{direction: "ltr"}}>
-                          {toFarsiNumber(item)}
-                        </Typography>
-                      ))
-                    ) : (
-                      <>
-                        <Typography>-</Typography>
-                        <Typography>-</Typography>
-                        <Typography>-</Typography>
-                        <Typography>-</Typography>
-                      </>
-                    )}
-                  </Box>
-                </Grid>
-                {/* <TextField
+                    justifyContent='start'>
+                    <Link
+                      style={{
+                        display: "flex",
+                        justifyContent: "center",
+                        alignContent: "center",
+                        alignItems: "center",
+                      }}
+                      onClick={buttonHandler}>
+                      <ArrowForwardIos style={{fontSize: "14px"}} />
+                      <Typography>اصلاح شماره موبایل</Typography>
+                    </Link>
+                  </Grid>
+
+                  <Grid item xs={12} sm={12} md={12} lg={12}>
+                    <Typography>
+                      کد ارسال شده به {fieldRegister.phoneNumber} را وارد کنید.
+                    </Typography>
+                  </Grid>
+
+                  <Grid
+                    item
+                    xs={12}
+                    sm={12}
+                    md={12}
+                    lg={12}
+                    position='relative'>
+                    <Box
+                      display='flex'
+                      justifyContent='space-evenly'
+                      width='100%'
+                      margin='auto'
+                      position='absolute'
+                      top='0'
+                      mt='1rem'
+                      sx={{direction: "ltr"}}>
+                      {fieldRegister.codeConfirm ? (
+                        fieldRegister.codeConfirm.split("").map((item, i) => (
+                          <Typography mr={5} key={i} sx={{direction: "ltr"}}>
+                            {toFarsiNumber(item)}
+                          </Typography>
+                        ))
+                      ) : (
+                        <>
+                          <Typography>-</Typography>
+                          <Typography>-</Typography>
+                          <Typography>-</Typography>
+                          <Typography>-</Typography>
+                        </>
+                      )}
+                    </Box>
+                  </Grid>
+                  {/* <TextField
                   onInput={(e) => {
                     e.target.value = Math.max(0, parseInt(e.target.value))
                       .toString()
@@ -286,56 +314,61 @@ const PhoneRegisterModal = ({
                       fetchVerifyOtpverify();
                   }}
                 /> */}
-                <TextField
-                  onChange={(e) => {
-                    const value = e.target.value;
+                  <TextField
+                    onChange={(e) => {
+                      const value = e.target.value;
 
-                    if (/^\d*$/.test(value)) {
-                      // چک می‌کند که آیا ورودی فقط شامل اعداد است
+                      if (/^\d*$/.test(value)) {
+                        // چک می‌کند که آیا ورودی فقط شامل اعداد است
 
-                      const newValue = value.slice(0, 4); // محدودیت به 4 کاراکتر
+                        const newValue = value.slice(0, 4); // محدودیت به 4 کاراکتر
 
-                      setFieldRegister((prevState) => ({
-                        ...prevState,
+                        setFieldRegister((prevState) => ({
+                          ...prevState,
 
-                        codeConfirm: newValue,
-                      }));
+                          codeConfirm: newValue,
+                        }));
 
-                      // اگر طول کد تأیید بزرگتر یا مساوی 2 باشد، تابع تأیید OTP را فراخوانی کنید
+                        // اگر طول کد تأیید بزرگتر یا مساوی 2 باشد، تابع تأیید OTP را فراخوانی کنید
 
-                      if (newValue.length >= 2) {
-                        fetchVerifyOtpverify();
+                        if (newValue.length == 4) {
+                          console.log(newValue.length);
+                        }
                       }
+                    }}
+                    onKeyUp={() =>
+                      fieldRegister.codeConfirm &&
+                      fieldRegister.codeConfirm.length == 4 &&
+                      fetchVerifyOtpverify()
                     }
-                  }}
-                  name='codeConfirm'
-                  value={fieldRegister.codeConfirm || ""}
-                  id='outlined-basic'
-                  variant='outlined'
-                  placeholder='کد تایید'
-                  type='text'
-                  style={{opacity: "0%"}}
-                  fullWidth
-                  inputProps={{min: 0, style: {textAlign: "left"}}}
-                  sx={{
-                    cursor: "default",
+                    name='codeConfirm'
+                    value={fieldRegister.codeConfirm || ""}
+                    id='outlined-basic'
+                    variant='outlined'
+                    placeholder='کد تایید'
+                    type='text'
+                    style={{opacity: "0%"}}
+                    fullWidth
+                    inputProps={{min: 0, style: {textAlign: "left"}}}
+                    sx={{
+                      cursor: "default",
 
-                    zIndex: "3",
+                      zIndex: "3",
 
-                    textAlign: "left",
-                  }}
-                />
-                <Grid
-                  item
-                  xs={12}
-                  sm={12}
-                  md={12}
-                  lg={12}
-                  borderTop='1px solid rgba(0,0,0,0.2)'>
-                  <CountdownTimer />
-                </Grid>
-              </>
-            )}
+                      textAlign: "left",
+                    }}
+                  />
+                  <Grid
+                    item
+                    xs={12}
+                    sm={12}
+                    md={12}
+                    lg={12}
+                    borderTop='1px solid rgba(0,0,0,0.2)'>
+                    <CountdownTimer />
+                  </Grid>
+                </>
+              )}
 
             {/* if isn't exist in datas */}
             {responseVerify &&
