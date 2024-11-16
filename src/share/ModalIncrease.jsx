@@ -93,7 +93,7 @@ const ModalIncrease = ({
       }
     };
 
-    fetchData(); // فراخوانی تابع واکشی داده‌ها
+    localStorage.getItem("userData") && fetchData(); // فراخوانی تابع واکشی داده‌ها
   }, [reloadKey]); // حذف indexData از وابستگی‌ها
 
   // اگر خطایی وجود داشت نمایش خطا

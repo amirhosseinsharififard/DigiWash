@@ -121,7 +121,7 @@ const IncreaseItem = ({
               (findListDatas.id == id
                 ? toFarsiNumber(findListDatas.qty)
                 : toFarsiNumber(0))} */}
-
+                {!service_list && toFarsiNumber(0)}
                 {findListDatas ? findListDatas[id] : toFarsiNumber(0)}
           </span>
           {/* check shavad baraye fix data */}
