@@ -1,26 +1,28 @@
 /* eslint-disable react/prop-types */
-import { Box, Button, Grid, Typography } from "@mui/material";
-import { addItem, cart, decrease, increase, removeItem } from "../pwa/features/cart/cartSlice";
+import {Box, Button, Grid, Typography} from "@mui/material";
+// import { addItem, cart, decrease, increase, removeItem } from "../pwa/features/cart/cartSlice";
 // import select from "../pwa/features/counter/counterSlice";
 
-import washMashin from "../../assets/wash.c4124479.svg"
-import toFarsiNumber, { persianPrice } from "../share/functions";
-import { useDispatch, useSelector } from "react-redux";
-import { productQuantity } from "../helper/helper";
+// import washMashin from "../../assets/wash.c4124479.svg"
+import toFarsiNumber, {persianPrice} from "../share/functions";
+// import { useDispatch, useSelector } from "react-redux";
+// import { productQuantity } from "../helper/helper";
+import {fetchAddToOpenOrder, fetchRemoveToOpenOrder} from "../API/requests";
+import {useEffect, useState} from "react";
 
 // eslint-disable-next-line no-unused-vars
-const OrderSectionItemContent = ({ data, title, image, cost, id, whichButton,quantity ,reduceCostEachMap}) => {
-  const state = useSelector(cart);
-  const dispatch = useDispatch();
-
-//   // bayad data khas behesh ersal beshe
-  const quantiy = productQuantity(state, id, data);
-console.log(quantity)
-  // console.log("data");
-  // console.log(data);
-  // console.log("state");
-  // console.log(state);
-  // console.log(reduceCostEachMap  )
+const OrderSectionItemContent = ({
+  data,
+  title,
+  image,
+  cost,
+  id,
+  whichButton,
+  quantity,
+  reduceCostEachMap,
+  findListDatas,
+}) => {
+ 
   return (
     <>
       <Grid
@@ -33,21 +35,25 @@ console.log(quantity)
         borderRadius={"16px"}
         height='80px'
         p={1}
-        bgcolor="white" >
-        <Grid item xs={7} sm={7} md={7} lg={7} display={"flex"}  alignItems={"center"}>
+        bgcolor='white'>
+        <Grid
+          item
+          xs={7}
+          sm={7}
+          md={7}
+          lg={7}
+          display={"flex"}
+          alignItems={"center"}>
           <Box>
             {/* <img src={washMashin} style={{ maxWidth: "32px", maxHeight: "32px",marginLeft:"1rem" }} /> */}
           </Box>
           <Box display='flex' flexDirection={"column"} justifyContent='center'>
             <Typography variant='h6' fontSize='14px' fontFamily='Vazir-Bold'>
               {title}
-   
             </Typography>
             <Typography variant='h6' fontSize='14px' fontFamily='Vazir'>
               {persianPrice(cost)}
-           
-
-               تومان
+              تومان
             </Typography>
           </Box>
         </Grid>
@@ -60,11 +66,12 @@ console.log(quantity)
           display='flex'
           justifyContent='flex-end'
           alignItems='center'
-          textAlign="left"
-    >
-          {quantiy == 0 ? (
+          textAlign='left'>
+          {findListDatas == 0 ? (
             <Button
-              onClick={() => dispatch(addItem(data))}
+              onClick={() => 
+                fetchAddToOpenOrder(id)
+              }
               sx={{
                 minWidth: "32px",
                 height: "32px",
@@ -82,7 +89,9 @@ console.log(quantity)
             </Button>
           ) : (
             <Button
-              onClick={() => dispatch(increase(data))}
+              onClick={() => 
+                fetchAddToOpenOrder(id)
+              }
               sx={{
                 minWidth: "32px",
                 height: "32px",
@@ -107,13 +116,15 @@ console.log(quantity)
               fontWeight: "bold",
               margin: "8px",
             }}>
-            {toFarsiNumber(quantity)}
+            {toFarsiNumber(findListDatas[id])}
             {/* {toFarsiNumber(10)} */}
           </span>
 
-          {quantiy > 1 ? (
+          {findListDatas > 1 ? (
             <Button
-              onClick={() => dispatch(decrease(data))}
+              onClick={() => 
+                fetchRemoveToOpenOrder(id)
+              }
               sx={{
                 minWidth: "32px",
                 height: "32px",
@@ -121,7 +132,7 @@ console.log(quantity)
                 alignItems: "center",
                 color: "white",
 
-                bgcolor: quantiy >= 1 ? "rgba(12, 174, 202,.5)" : "white",
+                bgcolor: findListDatas >= 1 ? "rgba(12, 174, 202,.5)" : "white",
                 // bgcolor:  "rgba(12, 174, 202,.5)" ,
 
                 ml: "2rem",
@@ -134,14 +145,16 @@ console.log(quantity)
             </Button>
           ) : (
             <Button
-              onClick={() => dispatch(removeItem(data))}
+              onClick={() => 
+                fetchRemoveToOpenOrder(id)
+              }
               sx={{
                 minWidth: "32px",
                 height: "32px",
-                bgcolor:  "rgba(12, 174, 202,.5)" ,
+                bgcolor: "rgba(12, 174, 202,.5)",
                 borderRadius: "50%",
                 alignItems: "center",
-                color:"white" ,
+                color: "white",
                 ml: "2rem",
                 fontSize: "2rem",
 

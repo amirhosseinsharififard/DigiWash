@@ -21,7 +21,7 @@ const ModalIncrease = ({
   itemServices,
 }) => {
 
-console.log(itemServices)
+// console.log(itemServices)
   // const [showMore, setShowMore] = useState(false);
   // const dataList = data;
   // const [indexData, setIndexData] = useState(null); // مقدار اولیه null به جای undefined
@@ -67,6 +67,7 @@ console.log(itemServices)
   const [error, setError] = useState(null);
   const [reloadKey, setReloadKey] = useState(0);
 
+  console.log(indexData)
   // تابع برای پیدا کردن مقادیر یکتا از ساب‌تایتل
   const uniqeSubTitleButton = (subTitle) => {
     return [...new Set(Object.values(subTitle))];

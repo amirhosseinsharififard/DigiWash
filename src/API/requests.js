@@ -1,5 +1,5 @@
 import axios from "axios";
-import { checkLocalStorageUserData } from "../hooks/useLocalStorage";
+import {checkLocalStorageUserData} from "../hooks/useLocalStorage";
 
 const BASE_URL = "https://laundry.rahcode.co/api/";
 
@@ -7,9 +7,9 @@ const BASE_URL = "https://laundry.rahcode.co/api/";
 // const BEARER_TOKEN = localStorage.getItem("userData").api_token
 //   "KsbRD6PjiJ7v1paGMZP6au8VIbQFO6VvilLeKVkSpWLyNq0jhBmbTxMZesfy";
 
-const BEARER_TOKEN =
-checkLocalStorageUserData().api_token
-
+const BEARER_TOKEN = localStorage.getItem("userData")
+  ? checkLocalStorageUserData().api_token
+  : "";
 
 // console.log(
 //   localStorage.getItem("userData") &&
@@ -128,11 +128,11 @@ const fetchAddToOpenOrder = async (idForAdd) => {
     throw error; // بازگرداندن خطا برای مدیریت در جای دیگر
   }
 };
-const fetchRemoveToOpenOrder = async (idForAdd) => {
+const fetchRemoveToOpenOrder = async (idForRemove) => {
   // console.log("object")
   try {
-    const response = await axiosInstance.get(`removeFromOpenOrder/${idForAdd}`);
-    // console.log(response.data);
+    const response = await axiosInstance.get(`removeFromOpenOrder/${idForRemove}`);
+    console.log(response.data);
     return response.data;
   } catch (error) {
     console.error("Error fetching send Otp:", error);

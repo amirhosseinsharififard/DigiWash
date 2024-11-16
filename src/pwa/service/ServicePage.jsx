@@ -27,14 +27,14 @@ const ServicePage = () => {
   // let buttonFilter = ["کت", "شلوار", "لباس"];
 
   const locationIndex = useLocation().pathname.split("/")[2];
-  // const handleFilterButtonClick = (selectedCategory) => {
-  //   if (selectedFilters.includes(selectedCategory)) {
-  //     let filters = selectedFilters.filter((el) => el !== selectedCategory);
-  //     setSelectedFilters(filters);
-  //   } else {
-  //     setSelectedFilters([...selectedFilters, selectedCategory]);
-  //   }
-  // };
+  const handleFilterButtonClick = (selectedCategory) => {
+    if (selectedFilters.includes(selectedCategory)) {
+      let filters = selectedFilters.filter((el) => el !== selectedCategory);
+      setSelectedFilters(filters);
+    } else {
+      setSelectedFilters([...selectedFilters, selectedCategory]);
+    }
+  };
 
   useEffect(() => {
     const fetchData = async (fetchIndex) => {

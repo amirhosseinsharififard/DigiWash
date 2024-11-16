@@ -79,6 +79,10 @@ const PhoneRegisterModal = ({
         fieldRegister.userLastName
       );
       setResponseVerify(response);
+      if (response.message == "کاربر با موفقیت ثبت شد.") {
+        setLocalStorageHandler(response.data);
+        localStorage.getItem("userData")
+      }
       console.log(response);
     } catch (error) {
       console.log("error", error);

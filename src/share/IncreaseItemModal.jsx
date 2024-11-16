@@ -4,66 +4,48 @@
 import {Box, Button, Grid, Typography} from "@mui/material";
 import toFarsiNumber, {persianPrice} from "./functions";
 import {useEffect, useState} from "react";
-import { fetchAddToOpenOrder, fetchRemoveToOpenOrder } from "../API/requests";
-// import {useSelector, useDispatch} from "react-redux";
-// import {
-//   addItem,
-//   cart,
-//   decrease,
-//   increase,
-//   removeItem,
-// } from "../pwa/features/cart/cartSlice";
-// import {productQuantity} from "../helper/helper";
-// import select from "../pwa/features/counter/counterSlice";
+import {
+  fetchAddToOpenOrder,
+  fetchOpenOrder,
+  fetchRemoveToOpenOrder,
+} from "../API/requests";
+import {productQuantity} from "../helper/helper";
 
-const IncreaseItem = ({data, title, image, cost, id, service_list,setReloadKey,reloadKey}) => {
-
-
-  // const findListDatas =service_list &&  service_list.map((item) => {
-  //   // console.log(item);
-  //   item.service_list.map(itemId=>{
-  //     console.log(itemId  )
-  //     return {itemId.service_id: itemId.qty}
-  //     // itemId.id==id ? setQuntity(itemId.qty): 0
-  //   })
-  // });
-
+const IncreaseItem = ({
+  data,
+  title,
+  image,
+  cost,
+  id,
+  service_list,
+  setReloadKey,
+  reloadKey,
+}) => {
   // هر بار که reloadKey تغییر کند، این useEffect اجرا می‌شود
-  useEffect(() => {
-    
-  }, [reloadKey]);
+  useEffect(() => {}, [reloadKey]);
 
   const findListDatas =
-    service_list &&
-    service_list.reduce((acc, item) => {
-      item.service_list.forEach((itemId) => {
-        acc[itemId.service_id] = itemId.qty; // به ازای هر service_id مقدار qty را به شیء اضافه می‌کند
-      });
-      return acc;
-    });
-console.log(service_list)
-  
+    service_list && service_list.length > 0
+      ? service_list.reduce((acc, item) => {
+          item.service_list.forEach((itemId) => {
+            acc[itemId.service_id] = itemId.qty; // به ازای هر service_id مقدار qty را به شیء اضافه می‌کند
+          });
+          return acc;
+        }, {}) // مقدار اولیه را به عنوان یک شیء خالی مشخص کنید
+      : {};
+  console.log(findListDatas && findListDatas);
 
-  const buttonAddHandler=(id,condition)=>{
-    fetchAddToOpenOrder(id)
-    setReloadKey(prev => prev + 1);
+  const buttonAddHandler = (id, condition) => {
+    fetchAddToOpenOrder(id);
+    setReloadKey((prev) => prev + 1);
+    // console.log(id);
+  };
+  const buttonRemoveHandler = (id, condition) => {
+    fetchRemoveToOpenOrder(id);
+    setReloadKey((prev) => prev + 1);
     // console.log(id)
+  };
 
-  }
-  const buttonRemoveHandler=(id,condition)=>{
-    fetchRemoveToOpenOrder(id)
-    setReloadKey(prev => prev + 1);
-    // console.log(id)
-    
-
-  }
-  // const state = useSelector(cart);
-  // const dispatch = useDispatch();
-
-  // bayad data khas behesh ersal beshe
-  // const quantiy = productQuantity(state, id, data);
-
-  // console.log(state);
   return (
     <>
       <Grid
@@ -76,14 +58,14 @@ console.log(service_list)
         m='.2rem auto'
         borderRadius={"16px"}
         height='80px'
-        position="relative"
+        position='relative'
         p={1}>
         <Grid item xs={8} sm={8} md={8} lg={8} display={"flex"}>
           <Box ml={2}>
-            <img src={image} style={{ maxWidth: "48px", maxHeight: "48px" }} />
+            <img src={image} style={{maxWidth: "48px", maxHeight: "48px"}} />
           </Box>
           <Box display='flex' flexDirection={"column"} justifyContent='center'>
-            <Typography variant='h6' fontSize='16px' >
+            <Typography variant='h6' fontSize='16px'>
               {title}
               {/* {console.log(title)} */}
             </Typography>
@@ -123,7 +105,7 @@ console.log(service_list)
               }}>
               +
             </Button>
-    }
+          }
 
           <span
             style={{
@@ -132,18 +114,21 @@ console.log(service_list)
               fontWeight: "bold",
               margin: "8px",
             }}>
-            {findListDatas && findListDatas[id]
+            {/* {findListDatas 
               ? toFarsiNumber(findListDatas[id])
-              : toFarsiNumber(0)}
+              : toFarsiNumber(0)} */}
             {/* {findListDatas &&
-              (findListDatas.id == id ? toFarsiNumber(findListDatas.qty) : 0)} */}
+              (findListDatas.id == id
+                ? toFarsiNumber(findListDatas.qty)
+                : toFarsiNumber(0))} */}
+
+                {findListDatas ? findListDatas[id] : toFarsiNumber(0)}
           </span>
           {/* check shavad baraye fix data */}
           {0 > 1 ? (
             <Button
               // onClick={() => dispatch(decrease(data))}
               onClick={() => buttonRemoveHandler(id)}
-
               sx={{
                 minWidth: "48px",
                 height: "48px",
@@ -165,7 +150,6 @@ console.log(service_list)
             <Button
               // onClick={() => dispatch(removeItem(data))}
               onClick={() => buttonRemoveHandler(id)}
-
               sx={{
                 minWidth: "48px",
                 height: "48px",

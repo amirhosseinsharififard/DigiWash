@@ -11,6 +11,9 @@ import {fetchOpenOrder} from "../API/requests";
 
 const Basket = () => {
   const [openOrders, setOpenOrders] = useState();
+  const [idexData, setIndexData] = useState();
+  // const [reloadKey, setReloadKey] = useState(0);
+
   const [error, setError] = useState(null); // برای مدیریت خطا
   const selectedItems = openOrders ? openOrders.data.length : 0;
 
@@ -21,6 +24,7 @@ const Basket = () => {
       try {
         const data = await fetchOpenOrder();
         setOpenOrders(data);
+        setIndexData(data.data)
       } catch (err) {
         setError("Error fetching data");
         console.error(err);
@@ -28,8 +32,8 @@ const Basket = () => {
     };
 
     fetchData(); // فراخوانی تابع غیرهمزمان
-  }, []);
-
+  }, [openOrders]);
+console.log(idexData)
   // console.log(collectAllProductLength.length)
   return (
     <>
@@ -43,6 +47,7 @@ const Basket = () => {
               <OrederSectionItem
                 orders={openOrders ? openOrders.data : null}
                 setCollectAllProductLength={setCollectAllProductLength}
+                service_list={idexData}
               />
             )}
           </Box>

@@ -17,6 +17,7 @@ const HeaderPwa = ({
   const pathName = useLocation().pathname;
   const [isLogin, setIsOpen] = useState(false);
   console.log(pathName);
+  const checkLocalStorage = localStorage.getItem("userData");
   const registerHandler = () => {
     console.log(setIsPhoneRegisterModalOpen); // این خط را اضافه کنید
 
@@ -24,8 +25,8 @@ const HeaderPwa = ({
   };
 
   useEffect(() => {
-    setIsOpen(checkLocalStorageUserData().is_online);
-  }, []);
+    checkLocalStorage && setIsOpen(checkLocalStorageUserData().is_online);
+  }, [checkLocalStorage]);
 
   if (pathName !== "/profile" && pathName !== "/basket") {
     return (

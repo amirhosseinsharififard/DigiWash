@@ -3,9 +3,18 @@ import {persianPrice} from "../share/functions";
 import OrederSectionItemContent from "./OrederSectionItemContent";
 import {useEffect, useState} from "react";
 
-const OrederSectionItem = ({orders, setCollectAllProductLength}) => {
+const OrederSectionItem = ({orders, setCollectAllProductLength,service_list}) => {
   const [sums, setSums] = useState(new Map()); // state برای ذخیره مجموع هزینه‌ها
-
+  const findListDatas =
+    service_list && service_list.length > 0
+      ? service_list.reduce((acc, item) => {
+          item.service_list.forEach((itemId) => {
+            acc[itemId.service_id] = itemId.qty; // به ازای هر service_id مقدار qty را به شیء اضافه می‌کند
+          });
+          return acc;
+        }, {}) // مقدار اولیه را به عنوان یک شیء خالی مشخص کنید
+      : {};
+  console.log(findListDatas && findListDatas);
   const calculateSums = () => {
     const reduceCost = new Map(); // Map برای ذخیره مجموع هزینه‌ها
 
@@ -41,8 +50,8 @@ const OrederSectionItem = ({orders, setCollectAllProductLength}) => {
 
   const productLength = (item) => {
     const keys = Array.from(item.keys()); // گرفتن کلیدهای Map
-    console.log(item); // نمایش Map
-    console.log(keys); // نمایش کلیدها
+    // console.log(item); // نمایش Map
+    // console.log(keys); // نمایش کلیدها
     return keys;
   };
 
@@ -107,11 +116,12 @@ const OrederSectionItem = ({orders, setCollectAllProductLength}) => {
                   {item.service_list.map((item2) => (
                     <OrederSectionItemContent
                       key={item2.id}
-                      id={item2.id}
+                      id={item2.service_id}
                       cost={item2.value}
                       title={item2.service_type}
                       quantity={item2.qty}
                       data={item2}
+                      findListDatas={findListDatas}
                     />
                   ))}
                 </Grid>
