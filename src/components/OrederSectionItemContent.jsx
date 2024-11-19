@@ -8,19 +8,14 @@ import toFarsiNumber, {persianPrice} from "../share/functions";
 // import { useDispatch, useSelector } from "react-redux";
 // import { productQuantity } from "../helper/helper";
 import {fetchAddToOpenOrder, fetchRemoveToOpenOrder} from "../API/requests";
-import {useEffect, useState} from "react";
 
 // eslint-disable-next-line no-unused-vars
 const OrderSectionItemContent = ({
-  data,
   title,
-  image,
   cost,
   id,
-  whichButton,
-  quantity,
-  reduceCostEachMap,
   findListDatas,
+  setReloadKey
 }) => {
  
   return (
@@ -70,7 +65,7 @@ const OrderSectionItemContent = ({
           {findListDatas == 0 ? (
             <Button
               onClick={() => 
-                fetchAddToOpenOrder(id)
+                {fetchAddToOpenOrder(id),setReloadKey(prev=> prev+1)}
               }
               sx={{
                 minWidth: "32px",
@@ -90,7 +85,7 @@ const OrderSectionItemContent = ({
           ) : (
             <Button
               onClick={() => 
-                fetchAddToOpenOrder(id)
+                {fetchAddToOpenOrder(id),setReloadKey(prev=> prev+1)}
               }
               sx={{
                 minWidth: "32px",
@@ -123,7 +118,7 @@ const OrderSectionItemContent = ({
           {findListDatas > 1 ? (
             <Button
               onClick={() => 
-                fetchRemoveToOpenOrder(id)
+                {fetchRemoveToOpenOrder(id),setReloadKey(prev=> prev+1)}
               }
               sx={{
                 minWidth: "32px",
@@ -146,7 +141,7 @@ const OrderSectionItemContent = ({
           ) : (
             <Button
               onClick={() => 
-                fetchRemoveToOpenOrder(id)
+                {fetchRemoveToOpenOrder(id),setReloadKey(prev=> prev+1)}
               }
               sx={{
                 minWidth: "32px",

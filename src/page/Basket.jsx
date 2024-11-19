@@ -12,7 +12,7 @@ import {fetchOpenOrder} from "../API/requests";
 const Basket = () => {
   const [openOrders, setOpenOrders] = useState();
   const [idexData, setIndexData] = useState();
-  // const [reloadKey, setReloadKey] = useState(0);
+  const [reloadKey, setReloadKey] = useState(0);
 
   const [error, setError] = useState(null); // برای مدیریت خطا
   const selectedItems = openOrders ? openOrders.data.length : 0;
@@ -32,7 +32,7 @@ const Basket = () => {
     };
 
     fetchData(); // فراخوانی تابع غیرهمزمان
-  }, [openOrders]);
+  }, [reloadKey]);
 console.log(idexData)
   // console.log(collectAllProductLength.length)
   return (
@@ -48,6 +48,7 @@ console.log(idexData)
                 orders={openOrders ? openOrders.data : null}
                 setCollectAllProductLength={setCollectAllProductLength}
                 service_list={idexData}
+                setReloadKey={setReloadKey}
               />
             )}
           </Box>
