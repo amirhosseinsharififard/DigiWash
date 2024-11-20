@@ -8,6 +8,7 @@ import PhoneInTalkOutlinedIcon from "@mui/icons-material/PhoneInTalkOutlined";
 import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined";
 import DescriptionIcon from "@mui/icons-material/Description";
 import LogoutIcon from "@mui/icons-material/Logout";
+import { Link } from "react-router-dom";
 
 // data
 const dataMyDigiWash = [
@@ -16,6 +17,8 @@ const dataMyDigiWash = [
     specialStyle: "",
     address: "/profile/address",
     title: "ادرس",
+    leaveAccount:false
+,
     dataIcon: (
       <LocationOnIcon
         style={{ color: "#0caeca", width: "24px", height: "24px" }}
@@ -27,6 +30,8 @@ const dataMyDigiWash = [
     specialStyle: "",
     address: "/profile/transactions",
     title: "لیست تراکنش ها",
+    leaveAccount:false
+,
     dataIcon: (
       <CreditCardIcon
         style={{ color: "#0caeca", width: "24px", height: "24px" }}
@@ -41,6 +46,8 @@ const dataMyDigiWashSecond = [
     specialStyle: "",
     address: "",
     title: "تماس با پشتیبانی",
+    leaveAccount:false
+,
     dataIcon: (
       <PhoneInTalkOutlinedIcon style={{ opacity: "50%", fontSize: "35" }} />
     )
@@ -50,6 +57,8 @@ const dataMyDigiWashSecond = [
     specialStyle: "",
     address: "/profile/question",
     title: "سوالات متداول",
+    leaveAccount:false
+,
     dataIcon: (
       <HelpOutlineOutlinedIcon style={{ opacity: "50%", fontSize: "35" }} />
     )
@@ -59,6 +68,8 @@ const dataMyDigiWashSecond = [
     specialStyle: "",
     address: "/profile/rules",
     title: "قوانین و مقررات",
+    leaveAccount:false
+,
     dataIcon: <DescriptionIcon style={{ opacity: "50%", fontSize: "35" }} />
   }
 ];
@@ -73,12 +84,13 @@ const dataMyDigiWashLive = [
       />
     ),
     specialStyle: "red",
-    clickData: false
+    clickData: true,
+    leaveAccount:true
   }
 ];
 const MyDigiWash = () => {
   return (
-    <Box sx={{ maxWidth: "768px", m: "3rem auto" }}>
+    <Box sx={{ maxWidth: "768px", m: "3rem auto 5rem" }}>
       <Typography
         variant='h5'
         fontSize='18px'

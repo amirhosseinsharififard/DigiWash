@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
-import { Box, Grid, Typography } from "@mui/material";
-import { Link } from "react-router-dom";
+import {Box, Grid, Typography} from "@mui/material";
+import {Link} from "react-router-dom";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 
 // eslint-disable-next-line react/prop-types
@@ -9,7 +9,8 @@ const MyDigiwashSectionsIncrease = ({
   title,
   dataIcon,
   address,
-  clickData
+  clickData,
+  leaveAccount,
 }) => {
   return (
     <Grid
@@ -25,13 +26,18 @@ const MyDigiwashSectionsIncrease = ({
       m='1rem'>
       <Link
         to={address}
-        onClick={
-          clickData &&
-          (() =>
+        onClick={() => {
+          if (clickData) {
             navigator.clipboard.writeText(
               "AmirHosseinSHarifiFard 0917-238-4087"
-            ))
-        }
+            );
+          }
+
+          if (clickData && leaveAccount) {
+            console.log("okay")
+            localStorage.clear();
+          }
+        }}
         style={{
           display: "flex",
           alignContent: "center",
@@ -40,15 +46,15 @@ const MyDigiwashSectionsIncrease = ({
           textDecoration: "none",
           color: "black",
           width: "100%",
-          padding: ".5rem"
+          padding: ".5rem",
         }}>
         <Box
           sx={{
             display: "flex",
             alignContent: "center",
-            alignItems: "center"
+            alignItems: "center",
           }}>
-          <span style={{ maxWidth: "24px", maxHeight: "24px" }}>{dataIcon}</span>
+          <span style={{maxWidth: "24px", maxHeight: "24px"}}>{dataIcon}</span>
 
           <Typography
             variant='h6'
@@ -58,7 +64,7 @@ const MyDigiwashSectionsIncrease = ({
             {title}
           </Typography>
         </Box>
-        <ArrowBackIosIcon style={{ opacity: "50%" }} />
+        <ArrowBackIosIcon style={{opacity: "50%"}} />
       </Link>
     </Grid>
   );

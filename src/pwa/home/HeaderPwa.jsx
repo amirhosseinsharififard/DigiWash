@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import {Box, Button, Container, Grid, Typography} from "@mui/material";
 
 // logo
@@ -17,18 +18,25 @@ const HeaderPwa = ({
   const pathName = useLocation().pathname;
   const [isLogin, setIsOpen] = useState(false);
   console.log(pathName);
-  const checkLocalStorage = localStorage.getItem("userData");
+  const checkLocalStorage = localStorage.getItem("userData")
+    ? localStorage.getItem("userData")
+    : "";
   const registerHandler = () => {
     console.log(setIsPhoneRegisterModalOpen); // این خط را اضافه کنید
 
-    setIsPhoneRegisterModalOpen(true);
+    setIsPhoneRegisterModalOpen((prev) => !prev);
   };
 
   useEffect(() => {
-    checkLocalStorage && setIsOpen(checkLocalStorageUserData().is_online);
+    checkLocalStorage && setIsOpen(checkLocalStorageUserData());
   }, [checkLocalStorage]);
 
-  if (pathName !== "/profile" && pathName !== "/basket") {
+  if (
+    pathName !== "/profile" &&
+    pathName !== "/basket" &&
+    pathName !== "/profile/transactions" &&
+    pathName !== "/profile/address"
+  ) {
     return (
       <Box sx={{bgcolor: "#0caeca"}}>
         <Box sx={{maxWidth: "768px", m: "auto"}}>
@@ -76,7 +84,7 @@ const HeaderPwa = ({
                 ml: "auto",
                 mr: "auto",
               }}>
-              {isLogin ? (
+              {isLogin && checkLocalStorage ? (
                 <LoginHeader />
               ) : (
                 <Grid

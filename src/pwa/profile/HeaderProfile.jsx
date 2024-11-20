@@ -7,35 +7,22 @@ import CreateOutlinedIcon from "@mui/icons-material/CreateOutlined";
 import WalletIcon from "@mui/icons-material/Wallet";
 import CardGiftcardIcon from "@mui/icons-material/CardGiftcard";
 import toFarsiNumber from "../../share/functions";
-import {useEffect, useState} from "react";
-import {BASE_URL, BEARER_TOKEN} from "../../API/requests";
-import axios from "axios";
+import { useEffect, useState} from "react";
+import { checkLocalStorageUserData } from "../../hooks/useLocalStorage";
 
 const HeaderProfile = () => {
   const [user, setUser] = useState();
+  useEffect(()=>{
+    setUser(checkLocalStorageUserData)
+  },[])
   const pathName = useLocation().pathname;
-  const personAccout = {
-    nameAccount: "amir sharifi",
-    cellPhoneNumber: "09172384087",
-    costAccount: "0",
-  };
-  // console.log(pathName);
+  // const personAccout = {
+  //   nameAccount: "amir sharifi",
+  //   cellPhoneNumber: "09172384087",
+  //   costAccount: "0",
+  // };
+console.log(user)
 
-  useEffect(() => {
-    const fetchData = async () => {
-      setUser(
-        await axios
-          .get(`${BASE_URL}findUser`, {
-            headers: {Authorization: "Bearer " + BEARER_TOKEN},
-          })
-          .then((result) => {
-            console.log(result.data.message);
-            return result.data.message;
-          })
-      );
-    };
-    fetchData();
-  }, []);
 
   return (
     <>
@@ -69,7 +56,7 @@ const HeaderProfile = () => {
                     fontSize='16px'
                     fontFamily='Vazir-Bold'
                     fontWeight='bold'>
-                    {user ? user.name : ""}
+                    {user ? user.first_name : ""}
                   </Typography>
                   <Typography
                     variant='body2'
@@ -114,7 +101,7 @@ const HeaderProfile = () => {
                 fontWeight='bold'
                 fontFamily='Vazir-Bold'
                 fontSize='16px'>
-                <span>{toFarsiNumber(personAccout.costAccount)}</span> تومان
+                {/* <span>{toFarsiNumber(personAccout.costAccount)}</span> تومان */}
                 اعتبار
               </Typography>
             </Grid>
@@ -177,7 +164,7 @@ const HeaderProfile = () => {
               fontFamily='Vazir-Light'
               fontSize='14px'>
               need Api
-              <span>{toFarsiNumber(personAccout.costAccount)}</span> تومان
+              {/* <span>{toFarsiNumber(personAccout.costAccount)}</span> تومان */}
             </Typography>
           </Grid>
           <Grid
@@ -213,7 +200,7 @@ const HeaderProfile = () => {
               fontFamily='Vazir-Light'
               fontSize='14px'>
               need Api
-              <span>{toFarsiNumber(personAccout.costAccount)}</span> تومان
+               {/* <span>{toFarsiNumber(personAccout.costAccount)}</span> تومان */}
             </Typography>
           </Grid>
         </Grid>

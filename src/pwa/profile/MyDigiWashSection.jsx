@@ -24,6 +24,7 @@ const MyDigiWashSection = ({data}) => {
           address={data.address}
           speciaStyle={data.specialStyle}
           clickData={data.clickData}
+          leaveAccount={data.leaveAccount}
         />
       ))}
     </Grid>
