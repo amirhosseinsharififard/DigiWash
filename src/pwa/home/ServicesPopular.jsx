@@ -26,7 +26,7 @@ import { useState} from "react";
 import ModalIncrease from "../../share/ModalIncrease";
 // import {useDispatch, useSelector} from "react-redux";
 // import {fetchProducts, product} from "../features/products/productsSlice";
-const ServicesPopular = ({indexData}) => {
+const ServicesPopular = ({indexData,setIsPhoneRegisterModalOpen}) => {
   const [isShowModal, setIsShowModal] = useState(false);
   const [checkIndex, setCheckIndex] = useState();
   const [data, setData] = useState();
@@ -114,6 +114,7 @@ setItemServices(itemServices)
           nameData={nameData}
           uniqeSubTitle={uniqeSubTitle}
           itemServices={itemServices}
+          setIsPhoneRegisterModalOpen={setIsPhoneRegisterModalOpen}
           // toggleHandler={() => toggleAndIndexHandler(checkIndex)}
           // checkIndex={checkIndex}
           // dataModal={products}

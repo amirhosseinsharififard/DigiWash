@@ -12,6 +12,7 @@ import {Link} from "react-router-dom";
 import {useEffect, useState} from "react";
 import IncreaseItem from "./IncreaseItemModal";
 import {fetchOpenOrder} from "../API/requests";
+import { checkLocalStorageUserData } from "../hooks/useLocalStorage";
 
 const ModalIncrease = ({
   toggleHandler,
@@ -19,6 +20,7 @@ const ModalIncrease = ({
   nameData,
   uniqeSubTitle,
   itemServices,
+  setIsPhoneRegisterModalOpen
 }) => {
 
 // console.log(itemServices)
@@ -66,6 +68,7 @@ const ModalIncrease = ({
   const [indexData, setIndexData] = useState(null);
   const [error, setError] = useState(null);
   const [reloadKey, setReloadKey] = useState(0);
+  const checkIsLogin=localStorage.getItem("userData") && checkLocalStorageUserData().is_online
 
   console.log(indexData)
   // تابع برای پیدا کردن مقادیر یکتا از ساب‌تایتل
@@ -226,6 +229,8 @@ const ModalIncrease = ({
                   cost={item.value}
                   id={item.id}
                   setReloadKey={setReloadKey}
+                  setIsPhoneRegisterModalOpen={setIsPhoneRegisterModalOpen}
+                  toggleHandler={toggleHandler}
                 />
                 {/* {console.log(item.id)} */}
               </Grid>
@@ -253,6 +258,9 @@ value.map((item, id) => (
                   id={item.id}
                   setReloadKey={setReloadKey}
                   reloadKey={reloadKey}
+                  setIsPhoneRegisterModalOpen={setIsPhoneRegisterModalOpen}
+                  toggleHandler={toggleHandler}
+
                 />
               </Grid>
             ))

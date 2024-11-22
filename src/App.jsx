@@ -28,11 +28,10 @@ import HeaderPwa from "./pwa/home/HeaderPwa";
 
 function App() {
   const [isPhoneRegisterModalOpen, setIsPhoneRegisterModalOpen] =
-    useState(false);
+    useState(true);
   const localStorageGetItem = localStorage.getItem("userData")
   useEffect(() => {
-    // console.log(checkLocalStorageUserData().api_token);
-    // setBT(checkLocalStorageUserData().api_token)
+
     console.log("BEARER_TOKEN")
     console.log(BEARER_TOKEN)
   

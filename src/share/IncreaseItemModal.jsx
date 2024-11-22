@@ -10,6 +10,7 @@ import {
   fetchRemoveToOpenOrder,
 } from "../API/requests";
 import {productQuantity} from "../helper/helper";
+import { checkLocalStorageUserData } from "../hooks/useLocalStorage";
 
 const IncreaseItem = ({
   data,
@@ -20,9 +21,13 @@ const IncreaseItem = ({
   service_list,
   setReloadKey,
   reloadKey,
+  setIsPhoneRegisterModalOpen,
+  toggleHandler
 }) => {
   // هر بار که reloadKey تغییر کند، این useEffect اجرا می‌شود
   useEffect(() => {}, [reloadKey]);
+  const checkIsLogin=localStorage.getItem("userData") && checkLocalStorageUserData().is_online
+
 
   const findListDatas =
     service_list && service_list.length > 0
@@ -45,7 +50,11 @@ const IncreaseItem = ({
     setReloadKey((prev) => prev + 1);
     // console.log(id)
   };
-
+  const registerHandler = () => {
+    console.log(setIsPhoneRegisterModalOpen); // این خط را اضافه کنید
+    toggleHandler(prev=>!prev)
+    setIsPhoneRegisterModalOpen((prev) => !prev);
+  };
   return (
     <>
       <Grid
@@ -89,7 +98,7 @@ const IncreaseItem = ({
           sx={{textAlign: "left"}}>
           {
             <Button
-              onClick={() => buttonAddHandler(id)}
+              onClick={() =>checkIsLogin ? buttonAddHandler(id) :registerHandler()}
               sx={{
                 minWidth: "48px",
                 height: "48px",
@@ -121,14 +130,14 @@ const IncreaseItem = ({
               (findListDatas.id == id
                 ? toFarsiNumber(findListDatas.qty)
                 : toFarsiNumber(0))} */}
-                {!service_list && toFarsiNumber(0)}
-                {findListDatas ? findListDatas[id] : toFarsiNumber(0)}
+                {!findListDatas && toFarsiNumber(0)}
+                {findListDatas[id] ? findListDatas[id] : toFarsiNumber(0)}
           </span>
           {/* check shavad baraye fix data */}
           {0 > 1 ? (
             <Button
-              // onClick={() => dispatch(decrease(data))}
-              onClick={() => buttonRemoveHandler(id)}
+              // onClick={() =>checkIsLogin ? dispatch(decrease(data))}
+              onClick={() =>checkIsLogin ? buttonRemoveHandler(id) : {registerHandler,toggleHandler}}
               sx={{
                 minWidth: "48px",
                 height: "48px",
@@ -142,14 +151,15 @@ const IncreaseItem = ({
                 fontSize: "14px",
                 "&:hover": {
                   bgcolor: "rgba(12, 174, 202,.5)",
+                  color:"white"
                 },
               }}>
               -
             </Button>
           ) : (
             <Button
-              // onClick={() => dispatch(removeItem(data))}
-              onClick={() => buttonRemoveHandler(id)}
+              // onClick={() =>checkIsLogin ? dispatch(removeItem(data))}
+              onClick={() =>checkIsLogin ? buttonRemoveHandler(id): {registerHandler,toggleHandler}}
               sx={{
                 minWidth: "48px",
                 height: "48px",
@@ -164,6 +174,8 @@ const IncreaseItem = ({
 
                 "&:hover": {
                   bgcolor: "rgba(12, 174, 202,.5)",
+                  color:"white"
+
                 },
               }}>
               -

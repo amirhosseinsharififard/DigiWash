@@ -6,12 +6,14 @@ import Services from "./Services";
 import ServicesPopular from "./ServicesPopular";
 import ServicesCategory from "./ServicesCategory";
 import {fetchHomePage} from "../../API/requests"; // import کردن فقط متغیرهای لازم
+import { checkLocalStorageUserData } from "../../hooks/useLocalStorage";
 
 // eslint-disable-next-line react/prop-types
 const HomePage = ({setIsPhoneRegisterModalOpen}) => {
   const [indexData, setIndexData] = useState(null); // مقدار اولیه null به جای undefined
   const [error, setError] = useState(null); // برای مدیریت خطا
 
+  const checkIsLogin=localStorage.getItem("userData") && checkLocalStorageUserData().is_online
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -23,7 +25,7 @@ const HomePage = ({setIsPhoneRegisterModalOpen}) => {
       }
     };
     fetchData(); // فراخوانی تابع غیرهمزمان
-  }, []);
+  }, [checkIsLogin]);
 
   // اگر داده‌ها در حال لود هستند
   if (!indexData && !error) return <div>Loading...</div>;
@@ -38,7 +40,7 @@ const HomePage = ({setIsPhoneRegisterModalOpen}) => {
         <Services indexData={indexData && indexData.data.service_types} />
 
         {/* LINK ha va tedad data ha niaz be update dare alan kar nmikone */}
-        <ServicesPopular indexData={indexData.data.favorite_services} />
+        <ServicesPopular indexData={indexData.data.favorite_services} setIsPhoneRegisterModalOpen={setIsPhoneRegisterModalOpen} />
         <ServicesCategory indexData={indexData.data.categories} />
 
         {/* rigester Form completed need css */}

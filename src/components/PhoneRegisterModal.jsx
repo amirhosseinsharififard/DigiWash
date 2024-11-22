@@ -6,7 +6,7 @@ import {useEffect, useState} from "react";
 import CountdownTimer from "./CountdownTimer";
 import {fetchRegisterOtp, fetchSendOtp, fetchVerifyOtp} from "../API/requests";
 import toFarsiNumber from "../share/functions";
-import { setLocalStorageHandler } from "../hooks/useLocalStorage";
+import {setLocalStorageHandler} from "../hooks/useLocalStorage";
 
 const PhoneRegisterModal = ({
   isPhoneRegisterModalOpen,
@@ -21,9 +21,11 @@ const PhoneRegisterModal = ({
     userLastName: "",
     radioChecked: false,
   });
+  // let regex = new RegExp("^(\\+98|0)?9\\d{9}$");
+  let regex = new RegExp("^09\\d{9}$");
 
+  let result = regex.test(fieldRegister.phoneNumber);
   const [responseSms, setResponseSms] = useState();
-
   const [responseVerify, setResponseVerify] = useState();
 
   // register Page Modal
@@ -34,13 +36,43 @@ const PhoneRegisterModal = ({
     }));
   };
 
+  // use regex for handle input is it number or not
+  // if it is true writed
+  // const changeHandler = (e) => {
+  //   const {name, value} = e.target;
+
+  //     setFieldRegister((prevState) => ({
+  //       ...prevState,
+  //       [name]: value,
+  //     }));
+
+  // };
+
   const changeHandler = (e) => {
     const {name, value} = e.target;
-    setFieldRegister((prevState) => ({
-      ...prevState,
-      [name]: value,
-    }));
+
+    if (name === "phoneNumber") {
+      // محدود کردن طول شماره تلفن به 11 رقم
+      if (value.length > 11) {
+        return; // اگر طول ورودی بیشتر از 11 باشد، هیچ تغییری اعمال نشود
+      }
+    }
+    if (name === "phoneNumber") {
+      // اجازه ورود فقط به اعداد
+      const numericValue = value.replace(/[^0-9]/g, ""); // حذف تمام کاراکترهای غیرعددی
+      setFieldRegister((prevState) => ({
+        ...prevState,
+        [name]: numericValue, // مقدار فقط شامل اعداد
+      }));
+    } else {
+      // برای سایر فیلدها، مقدار بدون تغییر ذخیره می‌شود
+      setFieldRegister((prevState) => ({
+        ...prevState,
+        [name]: value,
+      }));
+    }
   };
+
   const handleButtonClick = () => {
     setFieldRegister((prevState) => ({
       ...prevState,
@@ -81,16 +113,13 @@ const PhoneRegisterModal = ({
       setResponseVerify(response);
       if (response.message == "کاربر با موفقیت ثبت شد.") {
         setLocalStorageHandler(response.data);
-        localStorage.getItem("userData")
+        localStorage.getItem("userData");
       }
       console.log(response);
     } catch (error) {
       console.log("error", error);
     }
   };
-
-  let regex = new RegExp("^(\\+98|0)?9\\d{9}$");
-  let result = regex.test(fieldRegister.phoneNumber);
 
   const fetchVerifyOtpverify = async () => {
     try {
@@ -173,11 +202,13 @@ const PhoneRegisterModal = ({
             {!fieldRegister.send && (
               <>
                 <Grid item xs={12} sm={12} md={12} lg={12}>
-                  <Typography>ورود/نام‌نویسی</Typography>
+                  <Typography sx={{fontWeight: "bold"}}>
+                    ورود/نام‌نویسی
+                  </Typography>
                 </Grid>
 
                 <Grid item xs={12} sm={12} md={12} lg={12}>
-                  <Typography>
+                  <Typography marginTop='2rem' color='rgb(0, 52, 67)'>
                     لطفا شماره موبایل خود را وارد کنید تا کد فعال سازی برایتان
                     فرستاده شود.
                   </Typography>
@@ -189,9 +220,24 @@ const PhoneRegisterModal = ({
                     value={fieldRegister.phoneNumber || ""}
                     id='outlined-basic'
                     variant='outlined'
-                    placeholder='مثلا 09172384087'
-                    type='number'
+                    placeholder={
+                      `مثلا ${toFarsiNumber("09172384087")} `
+                    }
+                    type='text'
                     onChange={changeHandler}
+                    fullWidth
+                    sx={{
+                      "& .css-1d3z3hw-MuiOutlinedInput-notchedOutline": {
+                        outline: "none",
+                        border: "none",
+                      },
+                      "& .css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input ":
+                        {
+                          textAlign: "center",
+                        },
+                      backgroundColor: "rgb(240, 244, 244)",
+                      borderRadius: "16px",
+                    }}
                   />
                 </Grid>
 
@@ -199,11 +245,18 @@ const PhoneRegisterModal = ({
                   <Button
                     variant='outlined'
                     disabled={!result}
+                    fullWidth
                     onClick={() => {
                       buttonHandler(), handleButtonClick();
+                    }}
+                    sx={{
+                      borderRadius:"16px"
+                      ,p:".5rem"
+                      ,mt:"1rem",color:'rgb(12, 174, 202)'
+                      ,borderColor:"rgb(12, 174, 202)"
+                      ,fontWeight:"700"
                     }}>
-                    لطفا شماره موبایل خود را وارد کنید تا کد فعال سازی برایتان
-                    فرستاده شود.
+                    مرحله بعد
                   </Button>
                 </Grid>
               </>
