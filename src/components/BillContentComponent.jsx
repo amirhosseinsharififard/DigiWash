@@ -2,7 +2,7 @@ import {Box, Button, Stack, TextField, Typography} from "@mui/material";
 import {persianPrice} from "../share/functions";
 import ErrorIcon from "@mui/icons-material/Error";
 import Rtl from "./RtlComponents";
-const BillContentComponent = () => {
+const BillContentComponent = ({splitReducePrices}) => {
   return (
     <>
       <Box
@@ -69,7 +69,7 @@ const BillContentComponent = () => {
             color='rgb(85, 100, 102)'
             fontSize='14px'
             fontFamily='Vazir'>
-            {persianPrice(220000)} تومان
+            {persianPrice(splitReducePrices)} تومان
           </Typography>
         </Stack>
         <Stack

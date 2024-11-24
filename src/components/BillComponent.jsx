@@ -2,7 +2,7 @@ import { Grid, Stack, Typography } from "@mui/material";
 import recipt from "../../assets/receipt.d74dde96.svg";
 import BillContentComponent from "./BillContentComponent";
 
-const BillComponent = () => {
+const BillComponent = ({splitReducePrices}) => {
   return (
     <Grid item xs={12} mt='2rem' width='100%'>
       <Stack
@@ -22,7 +22,7 @@ const BillComponent = () => {
           صورتحساب
         </Typography>
       </Stack>
-      <BillContentComponent />
+      <BillContentComponent splitReducePrices={splitReducePrices}/>
 
       
     </Grid>

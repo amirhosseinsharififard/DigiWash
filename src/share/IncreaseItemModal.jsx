@@ -79,7 +79,7 @@ const IncreaseItem = ({
               {/* {console.log(title)} */}
             </Typography>
             <Typography variant='h6' fontSize='16px' fontFamily='Vazir'>
-              {persianPrice(cost)} تومان
+              {toFarsiNumber(cost)} تومان
             </Typography>
           </Box>
         </Grid>

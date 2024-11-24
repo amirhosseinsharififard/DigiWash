@@ -30,7 +30,7 @@ const OrderSection = () => {
           </Typography>
           <Typography color="rgba(0, 0, 0, 0.5)" fontSize="12px" fontFamily="Vazir" m="1rem 0"
           width="100%" textAlign="center">
-            برای  ثبت سفارش لطفا اقلام خود را ابتدا انتهاب کنید
+            برای  ثبت سفارش لطفا اقلام خود را ابتدا انتخاب کنید
           </Typography>
         </Box>
       </Box>

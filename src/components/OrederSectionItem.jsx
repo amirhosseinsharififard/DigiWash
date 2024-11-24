@@ -3,7 +3,13 @@ import {persianPrice} from "../share/functions";
 import OrederSectionItemContent from "./OrederSectionItemContent";
 import {useEffect, useState} from "react";
 
-const OrederSectionItem = ({orders, setCollectAllProductLength,service_list,setReloadKey}) => {
+const OrederSectionItem = ({
+  orders,
+  setCollectAllProductLength,
+  service_list,
+  setReloadKey,
+  setSumPriceProducts,
+}) => {
   const [sums, setSums] = useState(new Map()); // state برای ذخیره مجموع هزینه‌ها
   const findListDatas =
     service_list && service_list.length > 0
@@ -14,7 +20,7 @@ const OrederSectionItem = ({orders, setCollectAllProductLength,service_list,setR
           return acc;
         }, {}) // مقدار اولیه را به عنوان یک شیء خالی مشخص کنید
       : {};
-  console.log(findListDatas && findListDatas);
+  // console.log(findListDatas && findListDatas);
   const calculateSums = () => {
     const reduceCost = new Map(); // Map برای ذخیره مجموع هزینه‌ها
 
@@ -35,19 +41,17 @@ const OrederSectionItem = ({orders, setCollectAllProductLength,service_list,setR
         });
       }
     });
-
     setSums(reduceCost); // به‌روزرسانی State
   };
-
   // محاسبه مجموع‌ها هنگام بارگذاری کامپوننت
   useEffect(() => {
     calculateSums(); // محاسبه مجموع هزینه‌ها
     if (sums.size > 0) {
       setCollectAllProductLength(productLength(sums)); // ارسال طول محصولات به تابع
+      setSumPriceProducts(sums && sums);
     }
     // console.log(sums)
   }, [orders]); // وابسته به orders و sums
-
   const productLength = (item) => {
     const keys = Array.from(item.keys()); // گرفتن کلیدهای Map
     // console.log(item); // نمایش Map
@@ -115,7 +119,7 @@ const OrederSectionItem = ({orders, setCollectAllProductLength,service_list,setR
                 <Grid item m='1rem .7rem ' xs={12} sm={12} md={12} lg={12}>
                   {item.service_list.map((item2) => (
                     <OrederSectionItemContent
-                    setReloadKey={setReloadKey}
+                      setReloadKey={setReloadKey}
                       key={item2.id}
                       id={item2.service_id}
                       cost={item2.value}

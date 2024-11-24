@@ -28,7 +28,7 @@ import HeaderPwa from "./pwa/home/HeaderPwa";
 
 function App() {
   const [isPhoneRegisterModalOpen, setIsPhoneRegisterModalOpen] =
-    useState(true);
+    useState(false);
   const localStorageGetItem = localStorage.getItem("userData")
   useEffect(() => {
 
