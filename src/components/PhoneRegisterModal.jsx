@@ -81,8 +81,9 @@ const PhoneRegisterModal = ({
     }));
   };
 
-  const buttonHandler = async () => {
-    setFieldRegister((prevState) => ({
+  const buttonHandler = async (dontChange) => {
+    // if user in confrim code and click on send sms they didn't back to write phone number page
+    !dontChange && setFieldRegister((prevState) => ({
       ...prevState,
       send: !prevState.send,
     }));
@@ -101,6 +102,21 @@ const PhoneRegisterModal = ({
   const toggleHandler = () => {
     setIsPhoneRegisterModalOpen(false);
   };
+  const fetchVerifyOtpverify = async () => {
+    try {
+      const response = await fetchVerifyOtp(
+        fieldRegister.phoneNumber,
+        fieldRegister.codeConfirm
+      );
+      setResponseVerify(response);
+      console.log(response);
+      if (response.message == "با موفقیت تایید شد.") {
+        setLocalStorageHandler(response.data);
+      }
+    } catch (error) {
+      console.log("error", error);
+    }
+  };
   const registerhandler = async () => {
     setIsPhoneRegisterModalOpen(false);
     try {
@@ -116,22 +132,6 @@ const PhoneRegisterModal = ({
         localStorage.getItem("userData");
       }
       console.log(response);
-    } catch (error) {
-      console.log("error", error);
-    }
-  };
-
-  const fetchVerifyOtpverify = async () => {
-    try {
-      const response = await fetchVerifyOtp(
-        fieldRegister.phoneNumber,
-        fieldRegister.codeConfirm
-      );
-      setResponseVerify(response);
-      console.log(response);
-      if (response.message == "با موفقیت تایید شد.") {
-        setLocalStorageHandler(response.data);
-      }
     } catch (error) {
       console.log("error", error);
     }
@@ -220,9 +220,7 @@ const PhoneRegisterModal = ({
                     value={fieldRegister.phoneNumber || ""}
                     id='outlined-basic'
                     variant='outlined'
-                    placeholder={
-                      `مثلا ${toFarsiNumber("09172384087")} `
-                    }
+                    placeholder={`مثلا ${toFarsiNumber("09172384087")} `}
                     type='text'
                     onChange={changeHandler}
                     fullWidth
@@ -247,14 +245,15 @@ const PhoneRegisterModal = ({
                     disabled={!result}
                     fullWidth
                     onClick={() => {
-                      buttonHandler(), handleButtonClick();
+                      buttonHandler(false), handleButtonClick();
                     }}
                     sx={{
-                      borderRadius:"16px"
-                      ,p:".5rem"
-                      ,mt:"1rem",color:'rgb(12, 174, 202)'
-                      ,borderColor:"rgb(12, 174, 202)"
-                      ,fontWeight:"700"
+                      borderRadius: "16px",
+                      p: ".5rem",
+                      mt: "1rem",
+                      color: "rgb(12, 174, 202)",
+                      borderColor: "rgb(12, 174, 202)",
+                      fontWeight: "700",
                     }}>
                     مرحله بعد
                   </Button>
@@ -286,8 +285,11 @@ const PhoneRegisterModal = ({
                         justifyContent: "center",
                         alignContent: "center",
                         alignItems: "center",
+                        color: "rgb(97, 97, 97)",
+                        textDecoration: "none",
+                        marginBottom: "1rem",
                       }}
-                      onClick={buttonHandler}>
+                      onClick={()=>buttonHandler(false)}>
                       <ArrowForwardIos style={{fontSize: "14px"}} />
                       <Typography>اصلاح شماره موبایل</Typography>
                     </Link>
@@ -295,7 +297,16 @@ const PhoneRegisterModal = ({
 
                   <Grid item xs={12} sm={12} md={12} lg={12}>
                     <Typography>
-                      کد ارسال شده به {fieldRegister.phoneNumber} را وارد کنید.
+                      کد ارسال شده به
+                      <span
+                        style={{
+                          color: "rgb(12, 174, 202)",
+                          margin: " 0 .2rem",
+                        }}>
+                        {fieldRegister.phoneNumber &&
+                          toFarsiNumber(fieldRegister.phoneNumber)}
+                      </span>
+                      را وارد کنید.
                     </Typography>
                   </Grid>
 
@@ -323,60 +334,15 @@ const PhoneRegisterModal = ({
                         ))
                       ) : (
                         <>
-                          <Typography>-</Typography>
-                          <Typography>-</Typography>
-                          <Typography>-</Typography>
-                          <Typography>-</Typography>
+                          <Typography>_____</Typography>
+                          <Typography>_____</Typography>
+                          <Typography>_____</Typography>
+                          <Typography>_____</Typography>
                         </>
                       )}
                     </Box>
                   </Grid>
-                  {/* <TextField
-                  onInput={(e) => {
-                    e.target.value = Math.max(0, parseInt(e.target.value))
-                      .toString()
-                      .slice(0, 4);
-                  }}
-                  onChange={(e) => {
-                    const value = e.target.value;
-                    if (/^\d*$/.test(value)) {
-                      // چک می‌کند که آیا ورودی فقط شامل اعداد است
-                      setFieldRegister((prevState) => ({
-                        ...prevState,
-                        codeConfirm: value.slice(0, 4), // محدودیت به 4 کاراکتر
-                      }));
-                    }
-                    fieldRegister.codeConfirm.length >= 2 &&
-                      fetchVerifyOtpverify();
-                  }}
-                  name='codeConfirm'
-                  value={fieldRegister.codeConfirm || ""}
-                  id='outlined-basic'
-                  variant='outlined'
-                  placeholder='مثلا 09172384087'
-                  type='text'
-                  style={{opacity: "0%"}}
-                  fullWidth
-           
-                  inputProps={{min: 0, style: {textAlign: "left"}}}
-                  sx={{
-                    cursor: "default", zIndex:'3',
-                    textAlign:"left"
-                  }}
-                  // onChange={changeHandler}
-                  onKeyUp={(e) => {
-                    const value = e.target.value;
-                    if (/^\d*$/.test(value)) {
-                      // چک می‌کند که آیا ورودی فقط شامل اعداد است
-                      setFieldRegister((prevState) => ({
-                        ...prevState,
-                        codeConfirm: value.slice(0, 4), // محدودیت به 4 کاراکتر
-                      }));
-                    }
-                    fieldRegister.codeConfirm.length >= 2 &&
-                      fetchVerifyOtpverify();
-                  }}
-                /> */}
+
                   <TextField
                     onChange={(e) => {
                       const value = e.target.value;
@@ -427,8 +393,9 @@ const PhoneRegisterModal = ({
                     sm={12}
                     md={12}
                     lg={12}
-                    borderTop='1px solid rgba(0,0,0,0.2)'>
-                    <CountdownTimer />
+                    borderTop='1px solid rgba(0,0,0,0.2)'
+                    pt={"1rem"}>
+                    <CountdownTimer buttonHandler={buttonHandler} />
                   </Grid>
                 </>
               )}
