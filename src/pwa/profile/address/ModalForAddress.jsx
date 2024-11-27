@@ -12,13 +12,11 @@ const ModalForAddress = ({
   setNameAddress,
   modalForAddresstoggleHandler,
   dataCompletedForSend,
-  openModal,
+  handleButtonClick,
+  setOpenModal,
 }) => {
   const {nameAddress, addressDriver, getPosition} = dataCompletedForSend;
-console.log(dataCompletedForSend)
-console.log(nameAddress)
-console.log(addressDriver)
-console.log(getPosition)
+
   const sendAddressToServer = async () => {
     if (
       !nameAddress ||
@@ -30,9 +28,7 @@ console.log(getPosition)
       return; // از ادامه کار جلوگیری کنید
     }
 
-    console.log(nameAddress)
-    console.log(addressDriver)
-    console.log(getPosition)
+
     try {
       console.log("Sending to server:", nameAddress, addressDriver, getPosition);
       await fetchAddAddress(
@@ -42,6 +38,8 @@ console.log(getPosition)
         getPosition[1].toFixed(4)
       );
       console.log("آدرس با موفقیت ارسال شد");
+      handleButtonClick(false)
+      setOpenModal(false)
     } catch (error) {
       console.error("خطا در ارسال آدرس:", error);
     }

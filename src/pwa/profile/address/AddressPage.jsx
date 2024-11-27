@@ -18,7 +18,7 @@ const AddressPage = () => {
     addressDriver,
     nameAddress,
   };
-
+useEffect(()=>{},[result,openModal,dataCompletedForSend])
   const modalForAddresstoggleHandler = () => {
     setOpenModal((prev) => !prev);
   };
@@ -33,6 +33,7 @@ const AddressPage = () => {
         addressDriver={addressDriver}
         modalForAddresstoggleHandler={modalForAddresstoggleHandler}
         setGetPostiton={setGetPostiton}
+        dataCompletedForSend={dataCompletedForSend}
       />
       {!result && (
         <Button
@@ -60,7 +61,7 @@ const AddressPage = () => {
       )}
       {result && (
         <Grid container>
-          <Grid xs={12} sm={12} md={12} lg={12} textAlign={"center"}>
+          <Grid item xs={12} sm={12} md={12} lg={12} textAlign={"center"}>
             <Button
               variant='contained'
               onClick={modalForAddresstoggleHandler}
@@ -89,6 +90,8 @@ const AddressPage = () => {
           setAddressDriver={setAddressDriver}
           modalForAddresstoggleHandler={modalForAddresstoggleHandler}
           dataCompletedForSend={dataCompletedForSend}
+          handleButtonClick={handleButtonClick}
+          setOpenModal={setOpenModal}
         />
       )}
     </>

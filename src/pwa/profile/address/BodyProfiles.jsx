@@ -8,7 +8,7 @@ import { fetchAddresses } from "../../../API/requests";
 
 const dataAddress = [{namePlace: "خانه", typeAddress: "اتشنانی و..."}];
 
-const ProfileBody = ({result, setGetPostiton}) => {
+const ProfileBody = ({result, setGetPostiton,handleButtonClick,dataCompletedForSend}) => {
   const [indexData, setIndexData] = useState([]);
   const [error, setError] = useState();
   useEffect(() => {
@@ -23,7 +23,8 @@ const ProfileBody = ({result, setGetPostiton}) => {
       }
     };
     fetchData();
-  }, []);
+  }, [dataCompletedForSend]);
+  console.log(dataCompletedForSend)
   // console.log(indexData);
   return (
     <>

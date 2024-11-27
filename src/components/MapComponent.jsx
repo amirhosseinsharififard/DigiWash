@@ -1,5 +1,3 @@
-
-
 // /* eslint-disable react/prop-types */
 // /* eslint-disable no-unused-vars */
 // import React, {useState, useEffect} from "react";
@@ -117,14 +115,27 @@
 //     </div>
 //   );
 // };
-import React, { useState, useEffect } from 'react';
-import { MapContainer, TileLayer, Marker, Popup, useMapEvents } from 'react-leaflet';
-import L from 'leaflet';
-import 'leaflet/dist/leaflet.css';
-import 'leaflet-control-geocoder/dist/Control.Geocoder.css';
-import { Geocoder } from 'leaflet-control-geocoder';
 
-const LocationPicker = () => {
+// *******************************************************--------------------------------------------
+import React, {useState, useEffect} from "react";
+import {
+  MapContainer,
+  TileLayer,
+  Marker,
+  Popup,
+  useMapEvents,
+} from "react-leaflet";
+import L, { latLng, map } from "leaflet";
+import "leaflet/dist/leaflet.css";
+import "leaflet-control-geocoder/dist/Control.Geocoder.css";
+import {Geocoder} from "leaflet-control-geocoder";
+import { Button } from "@mui/material";
+
+
+
+import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
+import MyLocationIcon from '@mui/icons-material/MyLocation';
+const LocationPicker = ({setGetPostiton}) => {
   // وضعیت موقعیت مکانی کاربر
   const [userLocation, setUserLocation] = useState(null);
   const [selectedLocation, setSelectedLocation] = useState(null);
@@ -134,42 +145,75 @@ const LocationPicker = () => {
   const [lng, setLng] = useState(null);
 
   // استفاده از Geolocation API برای دریافت موقعیت مکانی پیش‌فرض
+
   useEffect(() => {
     if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          const { latitude, longitude } = position.coords;
-          setUserLocation([latitude, longitude]);
-          setLat(latitude);
-          setLng(longitude);
-        },
-        (error) => {
-          console.error("Error getting location", error);
-        }
-      );
-    } else {
-      alert("Geolocation is not supported by this browser.");
+      navigator.geolocation.getCurrentPosition((position) => {
+        const {latitude, longitude} = position.coords;
+        setUserLocation([latitude,longitude])
+        setGetPostiton([latitude,longitude])
+        setLat(latitude)
+        setLng(longitude)
+      },
+    (error)=>{
+      console.log("error getting location", error)
+    })
+  }
+    else{
+alert("geolocation is not supported by this borwser")
     }
-  }, []);
 
+  }, []);
+  // useEffect(() => {
+  //   if (navigator.geolocation) {
+  //     navigator.geolocation.getCurrentPosition(
+  //       (position) => {
+  //         const {latitude, longitude} = position.coords;
+  //         setUserLocation([latitude, longitude]);
+  //         setLat(latitude);
+  //         setLng(longitude);
+  //       },
+  //       (error) => {
+  //         console.error("Error getting location", error);
+  //       }
+  //     );
+  //   } else {
+  //     alert("Geolocation is not supported by this browser.");
+  //   }
+  // }, []);
+// console.log(selectedLocation&&selectedLocation)
   // کامپوننتی برای تغییر موقعیت
+  // function LocationChange() {
+  //   useMapEvents({
+  //     click(e) {
+
+  //       setSelectedLocation(e.latlng);
+  //       setLat(e.latlng.lat);
+  //       setLng(e.latlng.lng);
+  //       // بعد از انتخاب مارکر، زوم به 20 انجام می‌شود
+  //       map.setView(e.latlng, 20);
+  //     },
+  //   });
+  //   return null;
+  // }
+
+  // ********* live change location user for change in map  *********
   function LocationChange() {
     useMapEvents({
-      click(e) {
-        setSelectedLocation(e.latlng);
-        setLat(e.latlng.lat);
-        setLng(e.latlng.lng);
-        // بعد از انتخاب مارکر، زوم به 20 انجام می‌شود
-        map.setView(e.latlng, 20);
+      move(e) {
+        const center = e.target.getCenter();  // دریافت موقعیت مرکزی نقشه
+        setSelectedLocation(center);  // ذخیره موقعیت جدید
+        setLat(center.lat);
+        setLng(center.lng);
+
       },
     });
     return null;
   }
-
   // تابع برای بازگشت به موقعیت فعلی
   const goToCurrentLocation = () => {
     if (userLocation) {
-      setSelectedLocation(null);  // بازگشت به موقعیت پیش‌فرض
+      setSelectedLocation(null); // بازگشت به موقعیت پیش‌فرض
       setLat(userLocation[0]);
       setLng(userLocation[1]);
     }
@@ -179,51 +223,61 @@ const LocationPicker = () => {
   const mapRef = React.useRef();
 
   // افزودن کنترل جستجو به نقشه
+  // useEffect(() => {
+  //   if (mapRef.current) {
+  //     const map = mapRef.current;
+  //     const geocoder = L.Control.geocoder().addTo(map);
+  //   }
+  // }, [mapRef.current]);
+
   useEffect(() => {
     if (mapRef.current) {
       const map = mapRef.current;
+
+      // افزودن Geocoder به نقشه
       const geocoder = L.Control.geocoder().addTo(map);
+
+      // اگر می‌خواهید در هنگام جستجو موقعیت پیدا شده را روی نقشه نشان دهید:
+      geocoder.on('markgeocode', function(e) {
+        // پس از جستجو، موقعیت انتخابی را ذخیره می‌کنیم
+        setSelectedLocation(e.geocode.center);
+        setLat(e.geocode.center.lat);
+        setLng(e.geocode.center.lng);
+
+        // زوم به موقعیت پیدا شده
+        map.setView(e.geocode.center, 13);
+      });
     }
   }, [mapRef.current]);
 
   return (
-    <div>
-      <div>
-        {lat && lng && (
-          <div>
-            <h3>Coordinates:</h3>
-            <p>Latitude: {lat}</p>
-            <p>Longitude: {lng}</p>
-          </div>
-        )}
-      </div>
+    <div style={{position:"relative",height:"100%"}}>
+
 
       {userLocation && (
         <MapContainer
           center={selectedLocation || userLocation}
-          zoom={13}
-          style={{ width: "100%", height: "400px" }}
-          whenCreated={(map) => { mapRef.current = map; }}  // ذخیره شیء نقشه
+          zoom={20}
+          style={{width: "100%", height: "70vh"}}
+          whenCreated={(map) => {
+            mapRef.current = map;
+          }} // ذخیره شیء نقشه
         >
-          <TileLayer
-            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          />
-          
+          <TileLayer url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png' />
+
           <LocationChange />
 
           {/* مارکر برای موقعیت پیش‌فرض یا موقعیت انتخابی */}
           <Marker position={selectedLocation || userLocation}>
-            <Popup>
-              موقعیت انتخابی یا موقعیت پیش‌فرض
-            </Popup>
+            <Popup>موقعیت انتخابی یا موقعیت پیش‌فرض</Popup>
           </Marker>
         </MapContainer>
       )}
 
       {/* دکمه بازگشت به موقعیت فعلی */}
-      <button onClick={goToCurrentLocation} style={{ marginTop: '10px' }}>
-        Go to Current Location
-      </button>
+      <Button onClick={goToCurrentLocation} style={{position:'absolute',bottom:"15px",zIndex:"400",}}>
+      <MyLocationIcon />
+      </Button>
     </div>
   );
 };
