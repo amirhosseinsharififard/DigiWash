@@ -27,14 +27,14 @@ const ServicePage = () => {
   // let buttonFilter = ["کت", "شلوار", "لباس"];
 
   const locationIndex = useLocation().pathname.split("/")[2];
-  const handleFilterButtonClick = (selectedCategory) => {
-    if (selectedFilters.includes(selectedCategory)) {
-      let filters = selectedFilters.filter((el) => el !== selectedCategory);
-      setSelectedFilters(filters);
-    } else {
-      setSelectedFilters([...selectedFilters, selectedCategory]);
-    }
-  };
+  // const handleFilterButtonClick = (selectedCategory) => {
+  //   if (selectedFilters.includes(selectedCategory)) {
+  //     let filters = selectedFilters.filter((el) => el !== selectedCategory);
+  //     setSelectedFilters(filters);
+  //   } else {
+  //     setSelectedFilters([...selectedFilters, selectedCategory]);
+  //   }
+  // };
 
   useEffect(() => {
     const fetchData = async (fetchIndex) => {
@@ -42,6 +42,7 @@ const ServicePage = () => {
         const data = await fetchCategoryServices(fetchIndex);
         setCategories(data.data.categories);
         setServices(data.data.services);
+        console.log(data)
       } catch (err) {
         setError("Error fetching data");
         console.error(err);
@@ -70,7 +71,6 @@ const ServicePage = () => {
 
   // console.log(key && key)
   // console.log(value && value)
-
   return (
     <>
  {error && <div>{error}</div>}
@@ -96,7 +96,7 @@ const ServicePage = () => {
                 key={item.id}
                 // moshkel az injas va bayad data az samt api dorost she yebar araye miad yebar object
                 subTitle={item.unique_subs}
-                image={item.icon}
+                image={item.image}
                 cost={item.cost}
                 name={item.name}
                 category={item.cat_id}

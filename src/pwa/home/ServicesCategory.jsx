@@ -4,6 +4,7 @@ import CategoryContent from "./CategoryContent";
 
 import {Link} from "react-router-dom";
 const ServicesCategory = ({indexData}) => {
+  console.log(indexData)
   return (
     <>
       <Typography
