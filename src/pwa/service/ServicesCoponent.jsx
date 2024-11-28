@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 const ServicesCoponent = ({ image, cost, name, subTitle ,toggleHandler,item}) => {
 
   
-  // console.log(item)
+  console.log(subTitle)
   return (
     
     
@@ -38,19 +38,17 @@ const ServicesCoponent = ({ image, cost, name, subTitle ,toggleHandler,item}) =>
             {name}
           </Typography>
           
-          <Typography
+      {subTitle.map(item=><Typography
+      key={item}
             variant='body1'
             sx={{
               fontFamily: "Vazir",
               fontSize: "14px",
-              height: "auto"
+              height: "auto",
+              color:"rgb(85, 100, 102)"
             }}>
-            {/* {
-              
-            console.log(subTitle?subTitle:'')
-           
-            } */}
-          </Typography>
+           {console.log(item)}
+          </Typography>)}
         </Stack>
         <Stack
           display='flex'

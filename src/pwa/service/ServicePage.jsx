@@ -69,6 +69,7 @@ const ServicePage = () => {
 
   // console.log(key && key)
   // console.log(value && value)
+  console.log(services)
   return (
     <>
  {error && <div>{error}</div>}
