@@ -1,14 +1,15 @@
-import { Button, Typography } from "@mui/material";
+import {Button, Typography} from "@mui/material";
+import {Link} from "react-router-dom";
 
 // eslint-disable-next-line react/prop-types
-const TagConent = ({ tagName,handleFilterButtonClick }) => {
+const TagConent = ({tagName, item}) => {
+  // console.log(item.id)
   return (
     <>
       <Button
         variant='contained'
         fontFamily='Vazir-Bold'
         fontSize='16px'
-        onClick={() => handleFilterButtonClick(tagName)}
         sx={{
           width: "100px",
           height: "40px",
@@ -20,16 +21,34 @@ const TagConent = ({ tagName,handleFilterButtonClick }) => {
           "&:hover": {
             bgcolor: "rgb(66, 192, 212)",
 
-            boxShadow: "none"
-          }
+            boxShadow: "none",
+          },
         }}>
-        <Typography
-          variant='h6'
-          color='white'
-          fontFamily='Vazir-Bold'
-          fontSize='16px'>
-          {tagName}
-        </Typography>
+        <Link
+          to={`/services/${item.id}`}
+          style={{
+            padding:"2.1rem",
+            width: "100%",
+            height: "100%",
+            borderRadius: "30px",
+            bgcolor: "rgb(66, 192, 212)",
+            textDecoration:"none",
+
+            border: "none",
+            boxShadow: "none",
+            "&:hover": {
+              bgcolor: "rgb(66, 192, 212)",
+
+            }
+          }}>
+          <Typography
+            variant='h6'
+            color='white'
+            fontFamily='Vazir-Bold'
+            fontSize='16px'>
+            {tagName}
+          </Typography>
+        </Link>
       </Button>
     </>
   );

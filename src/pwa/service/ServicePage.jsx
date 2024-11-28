@@ -24,7 +24,6 @@ const ServicePage = () => {
   const [uniqeSubTitle, setUniqeSubTitle] = useState();
   const [itemServices, setItemServices] = useState();
   const [items, setItems] = useState([]);
-  // let buttonFilter = ["کت", "شلوار", "لباس"];
 
   const locationIndex = useLocation().pathname.split("/")[2];
   // const handleFilterButtonClick = (selectedCategory) => {
@@ -42,7 +41,6 @@ const ServicePage = () => {
         const data = await fetchCategoryServices(fetchIndex);
         setCategories(data.data.categories);
         setServices(data.data.services);
-        console.log(data)
       } catch (err) {
         setError("Error fetching data");
         console.error(err);
@@ -50,7 +48,7 @@ const ServicePage = () => {
     };
 
     fetchData(locationIndex); // فراخوانی تابع غیرهمزمان
-  }, []);
+  }, [locationIndex]);
 
   const toggleHandler = (id, services) => {
     setIsShowModal((prev) => !prev);
@@ -115,7 +113,7 @@ const ServicePage = () => {
             itemServices={itemServices}
             items={items}
           />
-          {console.log(itemServices)}
+          {/* {console.log(itemServices)} */}
         </>
       )}
     </>

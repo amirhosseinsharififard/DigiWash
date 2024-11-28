@@ -12,17 +12,16 @@ import {checkLocalStorageUserData} from "../../hooks/useLocalStorage";
 const HeaderPwa = ({
   // eslint-disable-next-line react/prop-types
   handleFilterButtonClick,
-  buttonFilter,
   setIsPhoneRegisterModalOpen,
 }) => {
   const pathName = useLocation().pathname;
   const [isLogin, setIsOpen] = useState(false);
-  console.log(pathName);
+  // console.log(pathName);
   const checkLocalStorage = localStorage.getItem("userData")
     ? localStorage.getItem("userData")
     : "";
   const registerHandler = () => {
-    console.log(setIsPhoneRegisterModalOpen); // این خط را اضافه کنید
+    // console.log(setIsPhoneRegisterModalOpen); // این خط را اضافه کنید
 
     setIsPhoneRegisterModalOpen((prev) => !prev);
   };
@@ -30,12 +29,13 @@ const HeaderPwa = ({
   useEffect(() => {
     checkLocalStorage && setIsOpen(checkLocalStorageUserData());
   }, [checkLocalStorage]);
-
+  const isHeaderServices = useLocation().pathname.startsWith('/services/')
   if (
     pathName !== "/profile" &&
     pathName !== "/basket" &&
     pathName !== "/profile/transactions" &&
     pathName !== "/profile/address"
+    
   ) {
     return (
       <Box sx={{bgcolor: "#0caeca"}}>
@@ -49,10 +49,9 @@ const HeaderPwa = ({
               ml: "auto",
               mr: "auto",
             }}>
-            {pathName == "/services" ? (
+            {isHeaderServices ? (
               <HeaderService
                 handleFilterButtonClick={handleFilterButtonClick}
-                buttonFilter={buttonFilter}
               />
             ) : (
               <Box sx={{m: " auto "}}>

@@ -2,7 +2,7 @@
 /* eslint-disable no-unused-vars */
 import { Container, Grid, Typography } from "@mui/material";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import TagConent from "./TagConent";
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -14,12 +14,32 @@ import "../home/SwiperStyle.css";
 
 // import required modules
 import { FreeMode, Pagination } from "swiper/modules";
+import { useEffect, useState } from "react";
+import { fetchCategoryServices } from "../../API/requests";
 
 // eslint-disable-next-line react/prop-types
-const HeaderService = ({ handleFilterButtonClick, buttonFilter }) => {
+const HeaderService = () => {
+const [categories,setCategories]=useState()
+const [error,setError]=useState()
+const locationIndex = useLocation().pathname.split("/")[2];
+
+  useEffect(() => {
+    const fetchData = async (fetchIndex) => {
+      try {
+        const data = await fetchCategoryServices(fetchIndex);
+        setCategories(data.data.categories);
+        console.log(data)
+      } catch (err) {
+        setError("Error fetching data");
+        console.error(err);
+      }
+    };
+
+    fetchData(locationIndex); // فراخوانی تابع غیرهمزمان
+  }, []);
   return (
     <>
-      <Grid container m='2rem 0'>
+      <Grid container m='1rem 0'>
         <Grid item lg={5} md={5} xs={5}>
           <Link to='/'>
             <ArrowForwardIosIcon sx={{ color: "white" }} />
@@ -29,9 +49,9 @@ const HeaderService = ({ handleFilterButtonClick, buttonFilter }) => {
           <Typography
             variant='h5'
             color={"white"}
-            fontFamily='Vazir-Bold'
+            fontFamily='Vazir'
             fontSize='18px'
-            fontWeight='bold'>
+            fontWeight='900'>
             انتخاب لباس ها
           </Typography>
         </Grid>
@@ -44,10 +64,11 @@ const HeaderService = ({ handleFilterButtonClick, buttonFilter }) => {
           modules={[FreeMode, Pagination]}
           className='mySwiper'
           style={{ marginBottom: "2rem" }}>
-          {buttonFilter.map((item, index) => (
+          {categories && categories.map((item, index) => (
             <SwiperSlide style={{ backgroundColor: "transparent" }} key={index}>
               <Link style={{ textDecoration: "none", color: "black" }}>
-                <TagConent tagName={item} handleFilterButtonClick={handleFilterButtonClick} />
+              {/* {console.log(item.name)} */}
+                <TagConent tagName={item.name} item={item} />
               </Link>
             </SwiperSlide>
           ))}
