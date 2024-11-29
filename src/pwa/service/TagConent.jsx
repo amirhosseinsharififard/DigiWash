@@ -24,23 +24,7 @@ const TagConent = ({tagName, item}) => {
             boxShadow: "none",
           },
         }}>
-        <Link
-          to={`/services/${item.id}`}
-          style={{
-            padding:"2.1rem",
-            width: "100%",
-            height: "100%",
-            borderRadius: "30px",
-            bgcolor: "rgb(66, 192, 212)",
-            textDecoration:"none",
-
-            border: "none",
-            boxShadow: "none",
-            "&:hover": {
-              bgcolor: "rgb(66, 192, 212)",
-
-            }
-          }}>
+       
           <Typography
             variant='h6'
             color='white'
@@ -48,7 +32,6 @@ const TagConent = ({tagName, item}) => {
             fontSize='16px'>
             {tagName}
           </Typography>
-        </Link>
       </Button>
     </>
   );
