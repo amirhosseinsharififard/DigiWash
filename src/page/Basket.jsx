@@ -16,8 +16,8 @@ const Basket = () => {
   const [reloadKey, setReloadKey] = useState(0);
 
   const [error, setError] = useState(null); // برای مدیریت خطا
-  const selectedItems = openOrders ? openOrders.data.length : 0;
-
+  const selectedItems = openOrders ? openOrders.data.services.length : 0;
+// console.log(selectedItems)
   const [collectAllProductLength, setCollectAllProductLength] = useState(); // for calculate all amounts of the products in orderSectionItems
 
   // First get products here
@@ -32,13 +32,14 @@ const Basket = () => {
       (accumulator, currentValue) => accumulator + currentValue,
       0
     );
-  console.log( splitReducePrices);
+  // console.log( splitReducePrices);
   useEffect(() => {
     const fetchData = async () => {
       try {
         const data = await fetchOpenOrder();
         setOpenOrders(data);
-        setIndexData(data.data);
+        setIndexData(data);
+        // console.log(data)
       } catch (err) {
         setError("Error fetching data");
         console.error(err);
@@ -47,7 +48,9 @@ const Basket = () => {
 
     checkLocalStorageUserData() && fetchData(); // فراخوانی تابع غیرهمزمان
   }, [reloadKey]);
-  // console.log(idexData)
+  console.log(idexData&&idexData.data)
+  // console.log(idexData&&openOrders.data.services)
+  // console.log(idexData&&openOrders)
   return (
     <>
       <HeaderBasket
@@ -61,11 +64,12 @@ const Basket = () => {
         <Grid container m='auto' maxWidth='768px'>
           <Box alignItems='center' alignContent='center' width='100%'>
             {selectedItems === 0 && <OrderSection />}
-            {selectedItems >= 1 && (
+            {selectedItems >= 1 && 
+            (
               <OrederSectionItem
-                orders={openOrders ? openOrders.data : null}
+                orders={openOrders ? openOrders.data.services : null}
                 setCollectAllProductLength={setCollectAllProductLength}
-                service_list={idexData}
+                service_list={idexData && idexData.data.services}
                 setReloadKey={setReloadKey}
                 setSumPriceProducts={setSumPriceProducts}
               />

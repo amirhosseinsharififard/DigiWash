@@ -17,7 +17,6 @@ const OrderSectionItemContent = ({
   findListDatas,
   setReloadKey
 }) => {
- 
   return (
     <>
       <Grid
@@ -112,7 +111,6 @@ const OrderSectionItemContent = ({
               margin: "8px",
             }}>
             {toFarsiNumber(findListDatas[id])}
-            {/* {toFarsiNumber(10)} */}
           </span>
 
           {findListDatas > 1 ? (

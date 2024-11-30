@@ -133,7 +133,6 @@ import { Button } from "@mui/material";
 
 
 
-import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import MyLocationIcon from '@mui/icons-material/MyLocation';
 const LocationPicker = ({setGetPostiton}) => {
   // وضعیت موقعیت مکانی کاربر
@@ -222,13 +221,6 @@ alert("geolocation is not supported by this borwser")
   // استفاده از useRef برای دسترسی به شیء نقشه و کنترل جستجو
   const mapRef = React.useRef();
 
-  // افزودن کنترل جستجو به نقشه
-  // useEffect(() => {
-  //   if (mapRef.current) {
-  //     const map = mapRef.current;
-  //     const geocoder = L.Control.geocoder().addTo(map);
-  //   }
-  // }, [mapRef.current]);
 
   useEffect(() => {
     if (mapRef.current) {

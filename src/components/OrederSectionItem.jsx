@@ -1,7 +1,9 @@
+/* eslint-disable react/prop-types */
 import {Box, Grid, Typography} from "@mui/material";
-import {persianPrice} from "../share/functions";
+// import {persianPrice} from "../share/functions";
 import OrederSectionItemContent from "./OrederSectionItemContent";
 import {useEffect, useState} from "react";
+import {persianPrice} from "../share/functions";
 
 const OrederSectionItem = ({
   orders,
@@ -20,7 +22,6 @@ const OrederSectionItem = ({
           return acc;
         }, {}) // مقدار اولیه را به عنوان یک شیء خالی مشخص کنید
       : {};
-  // console.log(findListDatas && findListDatas);
   const calculateSums = () => {
     const reduceCost = new Map(); // Map برای ذخیره مجموع هزینه‌ها
 
@@ -58,7 +59,6 @@ const OrederSectionItem = ({
     // console.log(keys); // نمایش کلیدها
     return keys;
   };
-
   return (
     <>
       <Grid

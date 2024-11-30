@@ -1,24 +1,26 @@
 /* eslint-disable no-unused-vars */
-import { Box, Button, Grid } from "@mui/material";
+import {Box, Button, Grid} from "@mui/material";
 import useButtonClick from "../../../helper/customHooks";
 import HeaderProfileLinks from "../../../share/HeaderProfileLinks";
 import BodyProfiles from "./BodyProfiles";
-import { useState, useEffect } from "react";
+import {useState, useEffect} from "react";
 import ModalForAddress from "./ModalForAddress";
+import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 
+import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 const AddressPage = () => {
   const [nameAddress, setNameAddress] = useState("");
   const [addressDriver, setAddressDriver] = useState("");
   const [openModal, setOpenModal] = useState(false);
   const [getPosition, setGetPostiton] = useState([]);
-  const { result, handleButtonClick } = useButtonClick();
+  const {result, handleButtonClick} = useButtonClick();
 
   const dataCompletedForSend = {
     getPosition,
     addressDriver,
     nameAddress,
   };
-useEffect(()=>{},[result,openModal,dataCompletedForSend])
+  useEffect(() => {}, [result, openModal, dataCompletedForSend]);
   const modalForAddresstoggleHandler = () => {
     setOpenModal((prev) => !prev);
   };
@@ -73,13 +75,15 @@ useEffect(()=>{},[result,openModal,dataCompletedForSend])
                 m: "auto",
                 zIndex: 500,
                 boxShadow: "none",
+                textAlign: "center",
                 ":hover": {
                   bgcolor: "rgb(0, 173, 159)",
                   color: "white",
                   boxShadow: "none",
                 },
               }}>
-              ثبت آدرس {"> بذارم"}
+              ثبت آدرس
+              <ArrowBackIosIcon style={{width: "14px", height: "14px"}} />
             </Button>
           </Grid>
         </Grid>
