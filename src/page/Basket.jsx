@@ -13,6 +13,8 @@ import {checkLocalStorageUserData} from "../hooks/useLocalStorage";
 const Basket = () => {
   const [openOrders, setOpenOrders] = useState();
   const [idexData, setIndexData] = useState();
+  const [tax_percentage, setTax_percentage] = useState();
+  const [locations, setLocations] = useState();
   const [reloadKey, setReloadKey] = useState(0);
 
   const [error, setError] = useState(null); // برای مدیریت خطا
@@ -39,7 +41,9 @@ const Basket = () => {
         const data = await fetchOpenOrder();
         setOpenOrders(data);
         setIndexData(data);
-        // console.log(data)
+        setTax_percentage(data.data.tax_percentage)
+        setLocations(data.data.locations)
+        console.log(data.data.locations)
       } catch (err) {
         setError("Error fetching data");
         console.error(err);
@@ -48,7 +52,7 @@ const Basket = () => {
 
     checkLocalStorageUserData() && fetchData(); // فراخوانی تابع غیرهمزمان
   }, [reloadKey]);
-  console.log(idexData&&idexData.data)
+  // console.log(idexData&&idexData.data)
   // console.log(idexData&&openOrders.data.services)
   // console.log(idexData&&openOrders)
   return (
@@ -75,8 +79,8 @@ const Basket = () => {
               />
             )}
           </Box>
-          <Transportations />
-          <BillComponent splitReducePrices={splitReducePrices} />
+          <Transportations  locations={locations}/>
+          <BillComponent splitReducePrices={splitReducePrices} tax_percentage={tax_percentage} />
         </Grid>
       </Box>
     </>

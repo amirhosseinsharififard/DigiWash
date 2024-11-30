@@ -4,7 +4,9 @@ import {Box, Button,  TextField,Grid, Stack, Typography} from "@mui/material";
 import {persianPrice} from "../share/functions";
 import ErrorIcon from "@mui/icons-material/Error";
 import Rtl from "./RtlComponents";
-const BillComponent = ({splitReducePrices}) => {
+const BillComponent = ({splitReducePrices,tax_percentage}) => {
+  console.log(tax_percentage)
+  const finalPrice= splitReducePrices+tax_percentage
   return (
     <Grid item xs={12} mt='2rem' width='100%'>
       <Stack
@@ -107,7 +109,8 @@ const BillComponent = ({splitReducePrices}) => {
             color='rgb(85, 100, 102)'
             fontSize='14px'
             fontFamily='Vazir'>
-            {persianPrice(220000)} تومان
+            {persianPrice(tax_percentage && +tax_percentage)} تومان
+            {/* {Number(tax_percentage)} */}
           </Typography>
         </Stack>
         <Stack
@@ -174,7 +177,7 @@ const BillComponent = ({splitReducePrices}) => {
           fontWeight='bold'
           justifyContent='space-between'>
           <Typography>قابل پرداخت</Typography>
-          <Typography>{persianPrice(220000)} تومان</Typography>
+          <Typography>{persianPrice(finalPrice)} تومان</Typography>
         </Stack>
       </Box>
 
