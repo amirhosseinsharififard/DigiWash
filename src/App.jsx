@@ -20,6 +20,7 @@ import theme from "./Theme";
 import EditPage from "./pwa/profile/edit/EditPage";
 import Basket from "./page/Basket";
 import PhoneRegisterModal from "./components/PhoneRegisterModal";
+import ModalBasketTransfer from "./components/ModalBasketTransfer";
 import {useEffect, useState} from "react";
 import {checkLocalStorageUserData} from "./hooks/useLocalStorage";
 import { BEARER_TOKEN } from "./API/requests";
@@ -43,27 +44,28 @@ function App() {
       <HeaderPwa setIsPhoneRegisterModalOpen={setIsPhoneRegisterModalOpen} />
 
         <Routes>
-          <Route
+          {/* <Route
             path='/'
             element={
               <HomePage
                 setIsPhoneRegisterModalOpen={setIsPhoneRegisterModalOpen}
               />
             }
-          />
-          <Route path='/services/:id' element={<ServicePage />} />
+          /> */}
+          {/* <Route path='/services/:id' element={<ServicePage />} />
           <Route path='' element={<ModalIncrease />} />
           <Route path='/profile' element={<ProfilePage />} />
           <Route path='/profile/address' element={<AddressPage />} />
-          <Route path='/profile/transactions' element={<TransactionsPage />} />
+          <Route path='/profile/transactions' element={<TransactionsPage />} /> */}
           {/* <Route path='/profile/edit' element={<EditPage />} /> */}
-          <Route path='/basket' element={<Basket />} />
+          <Route path='/' element={<Basket />} />
         </Routes>
         <Footer />
         <PhoneRegisterModal
           isPhoneRegisterModalOpen={isPhoneRegisterModalOpen}
           setIsPhoneRegisterModalOpen={setIsPhoneRegisterModalOpen}
         />
+        <ModalBasketTransfer />
       </ThemeProvider>
     </>
   );
