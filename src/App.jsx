@@ -32,9 +32,6 @@ function App() {
     useState(false);
   const localStorageGetItem = localStorage.getItem("userData")
   useEffect(() => {
-
-    console.log("BEARER_TOKEN")
-    console.log(BEARER_TOKEN)
   
   
   }, [localStorageGetItem]);
