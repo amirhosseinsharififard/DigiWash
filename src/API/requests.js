@@ -202,6 +202,28 @@ const fetchAddresses = async () => {
     }
   }
 };
+
+
+const fetchModalTransfer = async (address_id,delivery_date,orderDate,orderUnix) => {
+  // console.log(nameAddress)
+  // console.log(addressDriver)
+  // console.log(lat)
+  // console.log(lng)
+  try {
+    const response = await axiosInstance.post(`FinalizeOrder?address_id=${address_id}&delivery_date=${delivery_date}&orderDate=${orderDate}&orderUnix=${orderUnix}`);
+
+    console.log(response.data);
+
+    return response.data; // بررسی کنید که آیا نیاز به دسترسی به داده‌ها به صورت خاصی دارید
+  } catch (error) {
+    if (error.response) {
+      console.error("خطا در داده‌ها:", error.response.data);
+      console.error("وضعیت خطا:", error.response.status);
+    } else {
+      console.error("خطا:", error.message);
+    }
+  }
+};
 export {
   BASE_URL,
   BEARER_TOKEN,
@@ -216,5 +238,6 @@ export {
   fetchAddAddress,
   fetchRemoveAddress,
   fetchAddresses,
+  fetchModalTransfer
   // setBT,
 };

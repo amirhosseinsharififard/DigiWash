@@ -1,21 +1,37 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 
-import { Check, CheckBox } from "@mui/icons-material";
-import {
-  Box,
-  Grid,
-  Typography,
-  Button,
-  ButtonGroup,
-  FormControlLabel,
-  Checkbox,
-  Stack,
-  Radio,
-} from "@mui/material";
+import {Box, Grid, Typography, Button, Checkbox} from "@mui/material";
 import {Link} from "react-router-dom";
+import ModalAddressContent from "./ModalAddressContent";
+import {useEffect, useState} from "react";
+import {fetchModalTransfer} from "../API/requests";
 
-const ModalBasketTransfer = () => {
+const ModalBasketTransfer = ({
+  locations,
+  setOpenModalBasketTransfer,
+  selectedData,
+  setSelectedData,
+  selectedValue,
+  setSelectedValue,
+  responseAddress,setResponseAddress
+}) => {
+  const handleRadioChange = (name) => {
+    setSelectedValue(name); // Update the selected radio name
+  };
+  const getNow = new Date().toLocaleString("fa-IR");
+
+const handleFetchModalTransfer=()=>{
+  fetchModalTransfer(
+    selectedData.id,
+    getNow,
+    getNow,
+    Math.random() * 500
+  ).then(res=> setResponseAddress(res))
+}
+useEffect(()=>{
+
+},[responseAddress])
   return (
     <Box
       sx={{
@@ -38,22 +54,20 @@ const ModalBasketTransfer = () => {
           zIndex: 2,
           position: "absolute",
         }}
+        onClick={() => setOpenModalBasketTransfer(false)}
       />
 
       <Grid
         container
         sx={{
           backgroundColor: "white",
-          //   borderRadius: "16px 16px 0 0",
-          //   m: "0 auto",
-          //   maxWidth: "768px",
-          //   p: "2rem 1rem",
+
           zIndex: 3,
           borderRadius: "16px 16px 0 0",
           m: "0 auto",
           maxWidth: "768px",
           maxHeight: "70vh",
-          overflow: "auto",
+          overflowY: "scroll",
         }}>
         <Grid
           container
@@ -87,25 +101,20 @@ const ModalBasketTransfer = () => {
             </Typography>
           </Grid>
 
-          {true && <>
-            <Grid item xs={12} bgcolor={"white"} borderRadius={"16px"} m={'1rem 0'} >
-            <Link style={{textDecoration:"none"}}>
-
-            <Stack bgcolor={"white"}>
-            <Typography color={"rgb(12, 174, 202)"} fontSize={"16px"}>
-            <Radio checked={true}  onChange={''} value={'خونه'} />
-            خونه
-            </Typography>
-
-            <Typography m={'auto'} color={'rgba(0, 0, 0, 0.5)'} fontSize={"12px"} mb={"1rem"}>
-              khane
-            </Typography>
-            </Stack>
-            </Link>
-
-          </Grid>
-     
-          </>}
+          {true &&
+            locations &&
+            locations.map((item) => (
+              <ModalAddressContent
+                key={item.id}
+                address={item.address}
+                name={item.name}
+                in_range={item.in_range}
+                id={item.id}
+                handleRadioChange={handleRadioChange}
+                setSelectedData={setSelectedData}
+                selectedValue={selectedValue}
+              />
+            ))}
           <Grid item xs={12} textAlign='left'>
             <Button
               variant='contained'
@@ -115,6 +124,7 @@ const ModalBasketTransfer = () => {
                 fontSize: "900",
                 borderRadius: "16px",
                 boxShadow: "none",
+                ml: ".5rem",
                 "&:hover": {
                   bgcolor: "white",
                   color: "rgb(12, 174, 202)",
@@ -156,7 +166,11 @@ const ModalBasketTransfer = () => {
                   boxShadow: "none",
                 },
               }}
-              fullWidth>
+              fullWidth
+              disabled={selectedData && !selectedData.in_range}
+              onClick={
+                handleFetchModalTransfer
+              }>
               تایید
             </Button>
           </Grid>

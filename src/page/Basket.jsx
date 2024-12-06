@@ -1,14 +1,16 @@
+/* eslint-disable no-unused-vars */
 import {Box, Grid} from "@mui/material";
 import HeaderBasket from "../components/HeaderBasket";
 import OrderSection from "../components/OrderSection";
 import OrederSectionItem from "../components/OrederSectionItem";
 import Transportations from "../components/Transportations";
-import {useSelector} from "react-redux";
-import {cart} from "../pwa/features/cart/cartSlice";
+// import {useSelector} from "react-redux";
+// import {cart} from "../pwa/features/cart/cartSlice";
 import BillComponent from "../components/BillComponent";
 import {useEffect, useState} from "react";
 import {fetchOpenOrder} from "../API/requests";
 import {checkLocalStorageUserData} from "../hooks/useLocalStorage";
+import ModalBasketTransfer from "../components/ModalBasketTransfer";
 
 const Basket = () => {
   const [openOrders, setOpenOrders] = useState();
@@ -16,10 +18,14 @@ const Basket = () => {
   const [tax_percentage, setTax_percentage] = useState();
   const [locations, setLocations] = useState();
   const [reloadKey, setReloadKey] = useState(0);
+  const [openModalBasketTransfer, setOpenModalBasketTransfer] = useState(false);
+  const [selectedData, setSelectedData] = useState();
+  const [selectedValue, setSelectedValue] = useState(""); // Initialize with an empty string
+  const [responseAddress, setResponseAddress] = useState();
 
   const [error, setError] = useState(null); // برای مدیریت خطا
   const selectedItems = openOrders ? openOrders.data.services.length : 0;
-// console.log(selectedItems)
+  // console.log(selectedItems)
   const [collectAllProductLength, setCollectAllProductLength] = useState(); // for calculate all amounts of the products in orderSectionItems
 
   // First get products here
@@ -27,8 +33,8 @@ const Basket = () => {
   // second splited prices here
   const spplitValues =
     sumPriceProducts && Array.from(sumPriceProducts.values());
-  // Third sum prices here 
-    const splitReducePrices =
+  // Third sum prices here
+  const splitReducePrices =
     spplitValues &&
     spplitValues.reduce(
       (accumulator, currentValue) => accumulator + currentValue,
@@ -41,9 +47,9 @@ const Basket = () => {
         const data = await fetchOpenOrder();
         setOpenOrders(data);
         setIndexData(data);
-        setTax_percentage(data.data.tax_percentage)
-        setLocations(data.data.locations)
-        console.log(data.data.locations)
+        setTax_percentage(data.data.tax_percentage);
+        setLocations(data.data.locations);
+        console.log(data.data.locations);
       } catch (err) {
         setError("Error fetching data");
         console.error(err);
@@ -55,6 +61,8 @@ const Basket = () => {
   // console.log(idexData&&idexData.data)
   // console.log(idexData&&openOrders.data.services)
   // console.log(idexData&&openOrders)
+  // console.log(selectedData)
+  console.log(selectedValue && selectedValue);
   return (
     <>
       <HeaderBasket
@@ -68,8 +76,7 @@ const Basket = () => {
         <Grid container m='auto' maxWidth='768px'>
           <Box alignItems='center' alignContent='center' width='100%'>
             {selectedItems === 0 && <OrderSection />}
-            {selectedItems >= 1 && 
-            (
+            {selectedItems >= 1 && (
               <OrederSectionItem
                 orders={openOrders ? openOrders.data.services : null}
                 setCollectAllProductLength={setCollectAllProductLength}
@@ -79,10 +86,29 @@ const Basket = () => {
               />
             )}
           </Box>
-          <Transportations  locations={locations}/>
-          <BillComponent splitReducePrices={splitReducePrices} tax_percentage={tax_percentage} />
+          <Transportations
+            locations={locations}
+            setOpenModalBasketTransfer={setOpenModalBasketTransfer}
+            responseAddress={responseAddress}
+          />
+          <BillComponent
+            splitReducePrices={splitReducePrices}
+            tax_percentage={tax_percentage}
+          />
         </Grid>
       </Box>
+      {openModalBasketTransfer && (
+        <ModalBasketTransfer
+          locations={locations}
+          setOpenModalBasketTransfer={setOpenModalBasketTransfer}
+          selectedData={selectedData}
+          setSelectedData={setSelectedData}
+          setSelectedValue={setSelectedValue}
+          selectedValue={selectedValue}
+          setResponseAddress={setResponseAddress}
+          responseAddress={responseAddress}
+        />
+      )}
     </>
   );
 };
