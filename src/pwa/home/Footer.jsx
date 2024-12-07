@@ -12,14 +12,14 @@ const Footer = () => {
   const openFooter = useLocation().pathname.split("/");
   const lastIndex = openFooter.length - 1;
   // console.log(openFooter[lastIndex] == "address");
-
+  const pathName = useLocation().pathname;
   const toggleHandler = () => {
     setIsShowModal(!isShowModal);
   };
   // console.log(result)
   return (
     <>
-      {!(openFooter[lastIndex] == "address") && (
+     {!pathName == '/basket' && !(openFooter[lastIndex] == "address") && (
         <Grid
           container
           sx={{
@@ -107,8 +107,8 @@ const Footer = () => {
             </Link>
           </Grid>
         </Grid>
-      )}
-
+      )
+}
       {isShowModal && (
         <ModalIncrease
           isShowModal={isShowModal}

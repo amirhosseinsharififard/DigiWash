@@ -1,12 +1,13 @@
 /* eslint-disable react/prop-types */
 import recipt from "../../assets/receipt.d74dde96.svg";
-import {Box, Button,  TextField,Grid, Stack, Typography} from "@mui/material";
+import {Box, Button, TextField, Grid, Stack, Typography} from "@mui/material";
 import {persianPrice} from "../share/functions";
 import ErrorIcon from "@mui/icons-material/Error";
 import Rtl from "./RtlComponents";
-const BillComponent = ({splitReducePrices,tax_percentage}) => {
-  console.log(tax_percentage)
-  const finalPrice= splitReducePrices+tax_percentage
+const BillComponent = ({splitReducePrices, tax_percentage, deliveriPrice}) => {
+  console.log(tax_percentage);
+  console.log(deliveriPrice + tax_percentage);
+  const finalPrice = Number(splitReducePrices) + Number(tax_percentage) + Number(deliveriPrice)
   return (
     <Grid item xs={12} mt='2rem' width='100%'>
       <Stack
@@ -14,7 +15,7 @@ const BillComponent = ({splitReducePrices,tax_percentage}) => {
         display='flex'
         flexDirection='row'
         justifyContent='start'
-        alignItems="center"
+        alignItems='center'
         alignContent='center'>
         <img src={recipt} />
         <Typography
@@ -148,7 +149,7 @@ const BillComponent = ({splitReducePrices,tax_percentage}) => {
             color='rgb(85, 100, 102)'
             fontSize='14px'
             fontFamily='Vazir'>
-            {persianPrice(220000)} تومان
+            {persianPrice(deliveriPrice ? deliveriPrice : 0)} تومان
           </Typography>
         </Stack>
         <Box
@@ -180,8 +181,6 @@ const BillComponent = ({splitReducePrices,tax_percentage}) => {
           <Typography>{persianPrice(finalPrice)} تومان</Typography>
         </Stack>
       </Box>
-
-      
     </Grid>
   );
 };

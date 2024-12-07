@@ -8,7 +8,7 @@ const ModalAddressContent = ({
   name,
   address,
   id,
-  in_range,
+  in_range,price,
   handleRadioChange,
   selectedValue,setSelectedData
 }) => {
@@ -16,7 +16,7 @@ const ModalAddressContent = ({
 
   const HandleChoseData = ({name, address, in_range, id}) => {
     handleRadioChange(name)
-    setChoseData({name, address, in_range, id});
+    setChoseData({name, address, in_range, id,price});
 
   };
 
@@ -48,7 +48,7 @@ HandleChoseData({ name, address, in_range, id });
               value={name}
      
             />
-            {`${in_range}`}
+            {name}
           </Typography>
 
           <Typography

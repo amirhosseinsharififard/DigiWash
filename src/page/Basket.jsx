@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import {Box, Grid} from "@mui/material";
+import {Box, Button, Grid} from "@mui/material";
 import HeaderBasket from "../components/HeaderBasket";
 import OrderSection from "../components/OrderSection";
 import OrederSectionItem from "../components/OrederSectionItem";
@@ -8,7 +8,7 @@ import Transportations from "../components/Transportations";
 // import {cart} from "../pwa/features/cart/cartSlice";
 import BillComponent from "../components/BillComponent";
 import {useEffect, useState} from "react";
-import {fetchOpenOrder} from "../API/requests";
+import {fetchModalTransfer, fetchOpenOrder} from "../API/requests";
 import {checkLocalStorageUserData} from "../hooks/useLocalStorage";
 import ModalBasketTransfer from "../components/ModalBasketTransfer";
 
@@ -22,6 +22,19 @@ const Basket = () => {
   const [selectedData, setSelectedData] = useState();
   const [selectedValue, setSelectedValue] = useState(""); // Initialize with an empty string
   const [responseAddress, setResponseAddress] = useState();
+  console.log(selectedData);
+  console.log(selectedValue);
+
+  const getNow = new Date().toLocaleString("fa-IR");
+
+  const handleFetchModalTransfer = () => {
+    fetchModalTransfer(
+      selectedData.id,
+      getNow,
+      getNow,
+      Math.random() * 500
+    ).then((res) => setResponseAddress(res));
+  };
 
   const [error, setError] = useState(null); // برای مدیریت خطا
   const selectedItems = openOrders ? openOrders.data.services.length : 0;
@@ -58,11 +71,7 @@ const Basket = () => {
 
     checkLocalStorageUserData() && fetchData(); // فراخوانی تابع غیرهمزمان
   }, [reloadKey]);
-  // console.log(idexData&&idexData.data)
-  // console.log(idexData&&openOrders.data.services)
-  // console.log(idexData&&openOrders)
-  // console.log(selectedData)
-  console.log(selectedValue && selectedValue);
+
   return (
     <>
       <HeaderBasket
@@ -86,16 +95,61 @@ const Basket = () => {
               />
             )}
           </Box>
+          {/* {console.log(locations)} */}
           <Transportations
             locations={locations}
             setOpenModalBasketTransfer={setOpenModalBasketTransfer}
-            responseAddress={responseAddress}
+            selectedData={selectedData}
           />
           <BillComponent
             splitReducePrices={splitReducePrices}
             tax_percentage={tax_percentage}
+            deliveriPrice={selectedData ? selectedData.price : 0}
           />
         </Grid>
+        {
+          /* selectedData*/
+          selectedData && (
+            <>
+
+         
+            <Grid
+          container
+          sx={{
+            m: "auto",
+            border: "1px solid rgb(204, 204, 204)",
+            borderRadius: "8px 8px 0 0",
+            maxWidth: "768px",
+            paddingTop: "1rem",
+            bgcolor: "white",
+            position: "fixed",
+            left: 0,
+            bottom: "0%",
+            right: 0,
+            zIndex: 4,
+          }}>
+          <Grid
+            item
+            xs={12}
+            sm={12}
+            md={12}
+            lg={12}
+            display='flex'
+            alignItems='center'
+            justifyContent='center'
+            alignContent='center'>
+              <Button onClick={handleFetchModalTransfer} sx={{mb: "3rem",bgcolor:'rgb(12, 174, 202)',m:"0 1rem",borderRadius:"16px",color:"white",":hover":{
+                color:"white",bgcolor:'rgb(12, 174, 202)'
+              }}} fullWidth>
+       ثبت سفارش
+            </Button>
+          </Grid>
+    
+        </Grid>
+            </>
+
+          )
+        }
       </Box>
       {openModalBasketTransfer && (
         <ModalBasketTransfer

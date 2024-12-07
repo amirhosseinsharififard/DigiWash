@@ -13,11 +13,10 @@ import {TimelineOppositeContent} from "@mui/lab";
 const Transportations = ({
   locations,
   setOpenModalBasketTransfer,
-  responseAddress,
+  selectedData,
 }) => {
   //  locations&& locations.map(item=> console.log(item.in_range))
-  console.log(new Date());
-  console.log(new Date().toLocaleString("fa-IR"));
+console.log(selectedData&&selectedData)
   return (
     <Grid item xs={12} mt='2rem' width='100%'>
       <Stack
@@ -66,7 +65,7 @@ const Transportations = ({
                 جمع آوری
               </Typography>
 
-              {responseAddress && responseAddress.success
+              {selectedData 
                   ? <>
                   <Typography
                 fontFamily='Vazir'
@@ -74,7 +73,7 @@ const Transportations = ({
                 fontWeight='bold'
                 textAlign='right'
                 mb='8px'>
-                {responseAddress.data.name}
+                {selectedData.address}
               
               </Typography>
               <Typography

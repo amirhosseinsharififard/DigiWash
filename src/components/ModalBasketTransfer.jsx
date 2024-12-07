@@ -5,7 +5,6 @@ import {Box, Grid, Typography, Button, Checkbox} from "@mui/material";
 import {Link} from "react-router-dom";
 import ModalAddressContent from "./ModalAddressContent";
 import {useEffect, useState} from "react";
-import {fetchModalTransfer} from "../API/requests";
 
 const ModalBasketTransfer = ({
   locations,
@@ -14,24 +13,13 @@ const ModalBasketTransfer = ({
   setSelectedData,
   selectedValue,
   setSelectedValue,
-  responseAddress,setResponseAddress
+
 }) => {
   const handleRadioChange = (name) => {
     setSelectedValue(name); // Update the selected radio name
   };
-  const getNow = new Date().toLocaleString("fa-IR");
 
-const handleFetchModalTransfer=()=>{
-  fetchModalTransfer(
-    selectedData.id,
-    getNow,
-    getNow,
-    Math.random() * 500
-  ).then(res=> setResponseAddress(res))
-}
-useEffect(()=>{
-
-},[responseAddress])
+console.log(locations)
   return (
     <Box
       sx={{
@@ -109,6 +97,7 @@ useEffect(()=>{
                 address={item.address}
                 name={item.name}
                 in_range={item.in_range}
+                price={item.price}
                 id={item.id}
                 handleRadioChange={handleRadioChange}
                 setSelectedData={setSelectedData}
@@ -168,9 +157,8 @@ useEffect(()=>{
               }}
               fullWidth
               disabled={selectedData && !selectedData.in_range}
-              onClick={
-                handleFetchModalTransfer
-              }>
+              onClick={() => setOpenModalBasketTransfer(false)}
+>
               تایید
             </Button>
           </Grid>
