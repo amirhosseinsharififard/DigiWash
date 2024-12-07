@@ -95,7 +95,9 @@ const MyDigiWash = () => {
         variant='h5'
         fontSize='18px'
         fontFamily='Vazir-bOLD'
-        fontWeight='Bold'>
+        fontWeight='Bold'
+        mr="2rem"
+        >
         دیجی واش من
       </Typography>
       <MyDigiWashSection data={dataMyDigiWash} />

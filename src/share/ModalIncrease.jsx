@@ -1,18 +1,12 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 
-import {
-  Box,
-  Grid,
-  Typography,
-  Button,
-  ButtonGroup,
-} from "@mui/material";
+import {Box, Grid, Typography, Button, ButtonGroup} from "@mui/material";
 import {Link} from "react-router-dom";
 import {useEffect, useState} from "react";
 import IncreaseItem from "./IncreaseItemModal";
 import {fetchOpenOrder} from "../API/requests";
-import { checkLocalStorageUserData } from "../hooks/useLocalStorage";
+import {checkLocalStorageUserData} from "../hooks/useLocalStorage";
 
 const ModalIncrease = ({
   toggleHandler,
@@ -20,10 +14,9 @@ const ModalIncrease = ({
   nameData,
   uniqeSubTitle,
   itemServices,
-  setIsPhoneRegisterModalOpen
+  setIsPhoneRegisterModalOpen,
 }) => {
-
-// console.log(itemServices)
+  // console.log(itemServices)
   // const [showMore, setShowMore] = useState(false);
   // const dataList = data;
   // const [indexData, setIndexData] = useState(null); // مقدار اولیه null به جای undefined
@@ -68,9 +61,10 @@ const ModalIncrease = ({
   const [indexData, setIndexData] = useState(null);
   const [error, setError] = useState(null);
   const [reloadKey, setReloadKey] = useState(0);
-  const checkIsLogin=localStorage.getItem("userData") && checkLocalStorageUserData().is_online
+  const checkIsLogin =
+    localStorage.getItem("userData") && checkLocalStorageUserData().is_online;
 
-  console.log(indexData)
+  console.log(indexData);
   // تابع برای پیدا کردن مقادیر یکتا از ساب‌تایتل
   const uniqeSubTitleButton = (subTitle) => {
     return [...new Set(Object.values(subTitle))];
@@ -88,7 +82,7 @@ const ModalIncrease = ({
     const fetchData = async () => {
       try {
         const data = await fetchOpenOrder();
-        setIndexData(data.data);
+        setIndexData(data.data.services);
         // console.log(data)
       } catch (err) {
         setError("Error fetching data");
@@ -104,7 +98,7 @@ const ModalIncrease = ({
     return <div>{error}</div>;
   }
 
-
+  console.log(indexData);
   return (
     <Box
       sx={{
@@ -235,42 +229,83 @@ const ModalIncrease = ({
                 {/* {console.log(item.id)} */}
               </Grid>
             ))
-          :   Object.entries(itemServices.services)
-          .filter(([key, value]) => key === activeButton) // فقط کلیدی که برابر با targetKey است
-  .map(([key, value]) => (
-value.map((item, id) => (
-              <Grid
-                item
-                xs={12}
-                sm={12}
-                md={12}
-                lg={12}
-                key={`${key}-${id}`}
-                p=' .5rem 8px '
-                width='100%'>
-                {console.log(item)}
-                <IncreaseItem
-                  data={item}
-                  image={item.serviceTypeImage}
-                  service_list={indexData}
-                  title={item.serviceType}
-                  cost={item.value}
-                  id={item.id}
-                  setReloadKey={setReloadKey}
-                  reloadKey={reloadKey}
-                  setIsPhoneRegisterModalOpen={setIsPhoneRegisterModalOpen}
-                  toggleHandler={toggleHandler}
-
-                />
-              </Grid>
-            ))
-    
-  ))}
+          : Object.entries(itemServices.services)
+              .filter(([key, value]) => key === activeButton) // فقط کلیدی که برابر با targetKey است
+              .map(([key, value]) =>
+                value.map((item, id) => (
+                  <Grid
+                    item
+                    xs={12}
+                    sm={12}
+                    md={12}
+                    lg={12}
+                    key={`${key}-${id}`}
+                    p=' .5rem 8px '
+                    width='100%'>
+                    {console.log(item)}
+                    <IncreaseItem
+                      data={item}
+                      image={item.serviceTypeImage}
+                      service_list={indexData}
+                      title={item.serviceType}
+                      cost={item.value}
+                      id={item.id}
+                      setReloadKey={setReloadKey}
+                      reloadKey={reloadKey}
+                      setIsPhoneRegisterModalOpen={setIsPhoneRegisterModalOpen}
+                      toggleHandler={toggleHandler}
+                    />
+                  </Grid>
+                ))
+              )}
+        <Grid
+          item
+          xs={12}
+          sm={12}
+          md={12}
+          lg={12}
+          p=' .5rem 8px '
+          width='100%'
+          display={"flex"}
+          flexDirection={"row-reverse"}>
+          <Button
+            sx={{
+              bgcolor: "white",
+              color: "rgb(12, 174, 202)",
+              fontSize: "16px",
+              fontWeight: "bold",
+              borderRadius: "16px",
+              border:"1px solid rgb(12, 174, 202)",m:'0 .5rem',
+              ":hover": {
+                bgcolor: "white",
+                color: "rgb(12, 174, 202)",
+              },
+            }}
+            onClick={toggleHandler}
+            fullWidth>
+            ثبت سفارش
+          </Button>
+          <Button
+            sx={{
+              bgcolor: "rgb(12, 174, 202)",
+              color: "white",
+              fontSize: "16px",
+              fontWeight: "bold",
+              borderRadius: "16px",
+              m:'0 .5rem',
+              ":hover": {
+                bgcolor: "rgb(12, 174, 202)",
+                color: "white",
+              },
+            }}
+            onClick={toggleHandler}
+            fullWidth>
+            ثبت سفارش
+          </Button>
+        </Grid>
       </Grid>
     </Box>
   );
 };
 
 export default ModalIncrease;
-
-

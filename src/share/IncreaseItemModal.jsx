@@ -71,7 +71,7 @@ const IncreaseItem = ({
         p={1}>
         <Grid item xs={8} sm={8} md={8} lg={8} display={"flex"}>
           <Box ml={2}>
-            <img src={image} style={{maxWidth: "48px", maxHeight: "48px"}} />
+            <img src={image} style={{maxWidth: "48px", maxHeight: "48px",borderRadius:"16px"}} />
           </Box>
           <Box display='flex' flexDirection={"column"} justifyContent='center'>
             <Typography variant='h6' fontSize='16px'>
