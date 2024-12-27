@@ -1,30 +1,30 @@
 /* eslint-disable no-unused-vars */
 import {Route, Routes} from "react-router-dom";
+import {useEffect, useState} from "react";
 
-// header site asli
-// import Header from "./web/Header";
 
 //pwa site component
 
-import HomePage from "./pwa/home/HomePage";
-// import TestResponsive from "./pwa/TestResponsive";
-import ServicePage from "./pwa/service/ServicePage";
-import Footer from "./pwa/home/Footer";
-import ModalIncrease from "./share/ModalIncrease";
-import ProfilePage from "./pwa/profile/ProfilePage";
-import AddressPage from "./pwa/profile/address/AddressPage";
-import TransactionsPage from "./pwa/profile/transactions/TransactionsPage";
-
+import HomePage from './pages/HomePage';
+import ServicePage from "./pages/ServicePage";
+import Footer from "./components/layout/Footer";
+import ModalIncrease from "./components/common/ModalIncrease";
+import ProfilePage from "./pages/ProfilePage";
+import AddressPage from "./components/address/AddressPage";
+import TransactionsPage from "./components/transactions/TransactionsPage";
+// theme provider mui
 import {ThemeProvider} from "@mui/material";
 import theme from "./Theme";
-import EditPage from "./pwa/profile/edit/EditPage";
-import Basket from "./page/Basket";
-import PhoneRegisterModal from "./components/PhoneRegisterModal";
-import ModalBasketTransfer from "./components/ModalBasketTransfer";
-import {useEffect, useState} from "react";
-import {checkLocalStorageUserData} from "./hooks/useLocalStorage";
-import { BEARER_TOKEN } from "./API/requests";
-import HeaderPwa from "./pwa/home/HeaderPwa";
+
+import EditPage from "./components/edit/EditPage";
+import Basket from "./pages/Basket";
+import PhoneRegisterModal from "./components/common/PhoneRegisterModal";
+import Header from "./components/layout/Header";
+
+// TODO check konam
+// import ModalBasketTransfer from "./components/ModalBasketTransfer";
+// import {checkLocalStorageUserData} from "./hooks/useLocalStorage";
+// import { BEARER_TOKEN } from "./API/requests";
 // import {BEARER_TOKEN, setBT} from "./API/requests";
 
 function App() {
@@ -38,7 +38,7 @@ function App() {
   return (
     <>
       <ThemeProvider theme={theme}>
-      <HeaderPwa setIsPhoneRegisterModalOpen={setIsPhoneRegisterModalOpen} />
+      <Header setIsPhoneRegisterModalOpen={setIsPhoneRegisterModalOpen} />
 
         <Routes>
           <Route
