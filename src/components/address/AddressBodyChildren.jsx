@@ -1,10 +1,13 @@
 import {Box, Grid, Stack, Typography} from "@mui/material";
 import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
 import DeleteForeverOutlinedIcon from "@mui/icons-material/DeleteForeverOutlined";
-import {fetchRemoveAddress} from "../../API/requests";
+import { fetchRemoveAddress} from "../../API/requests";
+import PropTypes from "prop-types";
 // eslint-disable-next-line react/prop-types
 const AddressBodyChildren = ({id, name, addressDriver}) => {
-
+  const handleRemoveAddress = () => {
+    fetchRemoveAddress(id);
+  };
   return (
     <Grid
       item
@@ -41,7 +44,7 @@ const AddressBodyChildren = ({id, name, addressDriver}) => {
             "&:hover": {background: "none"},
             "&:target": {background: "none"},
           }}
-          onClick={() => fetchRemoveAddress(id)}>
+          onClick={handleRemoveAddress}>
           <DeleteForeverOutlinedIcon sx={{color: "rgba(0,0,0,0.5)"}} />
         </button>
       </Box>
@@ -59,4 +62,9 @@ const AddressBodyChildren = ({id, name, addressDriver}) => {
   );
 };
 
+AddressBodyChildren.propTypes = {
+  id: PropTypes.number.isRequired,
+  name: PropTypes.string.isRequired,
+  addressDriver: PropTypes.string.isRequired,
+};
 export default AddressBodyChildren;

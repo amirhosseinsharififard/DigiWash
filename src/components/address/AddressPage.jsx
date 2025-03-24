@@ -14,13 +14,14 @@ const AddressPage = () => {
   const [openModal, setOpenModal] = useState(false);
   const [getPosition, setGetPostiton] = useState([]);
   const {result, handleButtonClick} = useButtonClick();
+  const [refreshKey, setRefreshKey] = useState(0);
 
   const dataCompletedForSend = {
     getPosition,
     addressDriver,
     nameAddress,
   };
-  useEffect(() => {}, [result, openModal, dataCompletedForSend]);
+  const handleRefreshKey = () => setRefreshKey((prevKey) => prevKey+1);
   const modalForAddresstoggleHandler = () => {
     setOpenModal((prev) => !prev);
   };
@@ -29,6 +30,7 @@ const AddressPage = () => {
     <>
       <HeaderProfileLinks />
       <BodyProfiles
+      key={refreshKey}
         pageAddress='آدرس ها'
         result={result}
         nameAddress={nameAddress}
@@ -57,7 +59,7 @@ const AddressPage = () => {
               color: "rgb(12, 174, 202)",
             },
           }}
-          onClick={handleButtonClick}>
+          onClick={(handleButtonClick,handleRefreshKey)}>
           + اضافه کردن آدرس جدید
         </Button>
       )}
