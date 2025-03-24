@@ -1,26 +1,29 @@
 import {useState} from "react";
 import {Link, useLocation} from "react-router-dom";
-import { Grid, Typography} from "@mui/material";
+import {Grid, Typography} from "@mui/material";
 //icon
 import HomeIcon from "@mui/icons-material/Home";
 import LocalLaundryServiceOutlinedIcon from "@mui/icons-material/LocalLaundryServiceOutlined";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
-import ModalIncrease from "../common/ModalIncrease";
+import {checkLocalStorageUserData} from "../../hooks/useLocalStorage";
+import PhoneRegisterModal from "../common/PhoneRegisterModal";
 
 const Footer = () => {
   const [isShowModal, setIsShowModal] = useState(false);
   const openFooter = useLocation().pathname.split("/");
   const lastIndex = openFooter.length - 1;
-  console.log(openFooter[lastIndex] == "address");
-  console.log(openFooter[lastIndex] );
-  const pathName = useLocation().pathname;
+
   const toggleHandler = () => {
     setIsShowModal(!isShowModal);
   };
-  // console.log(result)
+
+  const {is_online} = checkLocalStorageUserData() || "";
+
   return (
     <>
-     { !(openFooter[lastIndex] == "address" || openFooter[lastIndex] == 'basket' ) && (
+      {!(
+        openFooter[lastIndex] == "address" || openFooter[lastIndex] == "basket"
+      ) && (
         <Grid
           container
           sx={{
@@ -93,8 +96,9 @@ const Footer = () => {
             alignItems='center'
             justifyContent='center'
             alignContent='center'>
-            <Link
-              to='/profile'
+            {/* <Link
+              to='#'
+              onClick={() => handleProfileClick("/profile")}
               style={{
                 textDecoration: "none",
                 color: "#0caeca",
@@ -105,15 +109,45 @@ const Footer = () => {
                 style={{width: "24px", height: "24px"}}
               />
               <Typography>پروفایل</Typography>
-            </Link>
+            </Link> */}
+            {is_online ? (
+              <Link
+                to='/profile'
+                style={{
+                  textDecoration: "none",
+                  color: "#0caeca",
+                  width: "100%",
+                  textAlign: "center",
+                }}>
+                <AccountCircleOutlinedIcon
+                  style={{width: "24px", height: "24px"}}
+                />
+                <Typography>پروفایل</Typography>
+              </Link>
+            ) : (
+              <div
+                onClick={toggleHandler}
+                style={{
+                  textDecoration: "none",
+                  color: "#0caeca",
+                  width: "100%",
+                  textAlign: "center",
+                  cursor: "pointer",
+                }}>
+                <AccountCircleOutlinedIcon
+                  style={{width: "24px", height: "24px"}}
+                />
+                <Typography>پروفایل</Typography>
+              </div>
+            )}
           </Grid>
         </Grid>
-      )
-}
+      )}
+      {/* {console.log(!isShowModal)} */}
       {isShowModal && (
-        <ModalIncrease
-          isShowModal={isShowModal}
-          toggleHandler={() => toggleHandler()}
+        <PhoneRegisterModal
+          isPhoneRegisterModalOpen={isShowModal}
+          setIsPhoneRegisterModalOpen={() => toggleHandler()}
         />
       )}
     </>

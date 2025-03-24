@@ -10,9 +10,11 @@ import ServicesCoponent from "../components/services/ServicesCoponent";
 import Header from "../components/layout/Header";
 import {fetchCategoryServices} from "../API/requests";
 import ModalIncrease from "../components/common/ModalIncrease";
+import PhoneRegisterModal from "../components/common/PhoneRegisterModal";
 
 const ServicePage = () => {
   const [isShowModal, setIsShowModal] = useState(false);
+  const [isShowModalRegister, setIsShowModalRegister] = useState(false);
 
   const [categories, setCategories] = useState(null); // مقدار اولیه null به جای undefined
   const [services, setServices] = useState(null); // مقدار اولیه null به جای undefined
@@ -52,15 +54,14 @@ const ServicePage = () => {
 
   const toggleHandler = (id, services) => {
     setIsShowModal((prev) => !prev);
-    if(!isShowModal){
+    if (!isShowModal) {
       setItemServices(services);
       setDataID(id);
       Object.entries(services).forEach(([key, val]) => {
         setKey(key); // تنظیم کلید
         setValue(val); // تنظیم مقدار
-        
       });
-  }
+    }
     // Object.entries(services).forEach(([key, val]) => {
     //   setItems(prevItems => [...prevItems, { key, val }]);
     // });
@@ -72,7 +73,7 @@ const ServicePage = () => {
   // console.log(services)
   return (
     <>
- {error && <div>{error}</div>}
+      {error && <div>{error}</div>}
 
       <Grid
         container
@@ -82,25 +83,23 @@ const ServicePage = () => {
         spacing='2rem'>
         {services &&
           services.map((item, id) => (
-            
-   
-           
-              <ServicesCoponent
-                // onClick={() => (setData(item.services),setNameData(item.name))}
-                item={item}
-                toggleHandler={() => (
-                  toggleHandler(id, item.services),
-                  setUniqeSubTitle(item.unique_subs)
-                )}
-                key={item.id}
-                // moshkel az injas va bayad data az samt api dorost she yebar araye miad yebar object
-                subTitle={item.unique_subs}
-                image={item.image}
-                cost={item.cost}
-                name={item.name}
-                category={item.cat_id}
-              />
-            
+            <ServicesCoponent
+              // onClick={() => (setData(item.services),setNameData(item.name))}
+              item={item}
+              toggleHandler={() => (
+                toggleHandler(id, item.services),
+                setUniqeSubTitle(item.unique_subs)
+              )}
+              key={item.id}
+              // moshkel az injas va bayad data az samt api dorost she yebar araye miad yebar object
+              subTitle={item.unique_subs}
+              image={item.image}
+              cost={item.cost}
+              name={item.name}
+              category={item.cat_id}
+              isShowModalRegister={isShowModalRegister}
+              setIsShowModalRegister={setIsShowModalRegister}
+            />
           ))}
       </Grid>
       {isShowModal && (
@@ -117,6 +116,12 @@ const ServicePage = () => {
           {/* {console.log(itemServices)} */}
         </>
       )}
+      {isShowModalRegister && (
+              <PhoneRegisterModal
+                isPhoneRegisterModalOpen={isShowModalRegister}
+                setIsPhoneRegisterModalOpen={() => setIsShowModalRegister()}
+              />
+            )}
     </>
   );
 };
