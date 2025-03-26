@@ -43,12 +43,10 @@ const Services = ({indexData}) => {
               xs={3}
               key={item.id}
               textAlign='center'
-              sx={{
-                width: "auto",
-              }}>
+              sx={{}}>
               <img
                 src={item.image ? item.image : "nadarad"}
-                style={{margin: "0 auto", height: "32px", width: "32px"}}
+                style={{height: "32px", width: "32px"}}
               />
 
               <Typography

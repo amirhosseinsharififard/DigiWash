@@ -8,6 +8,8 @@ const ServicesPopularComponent = ({
   subTitle,
   image,
   toggleHandler,
+  setIsPhoneRegisterModalOpen,
+  is_online,
 }) => {
   // {
   //   console.log(Array.isArray(subTitle) ? false : subTitle); // helper to find is array or Object
@@ -16,7 +18,9 @@ const ServicesPopularComponent = ({
   return (
     <>
       <Box
-        onClick={toggleHandler}
+        onClick={() =>
+          is_online ? toggleHandler : setIsPhoneRegisterModalOpen(true)
+        }
         bgcolor='none'
         sx={{
           display: "flex",
