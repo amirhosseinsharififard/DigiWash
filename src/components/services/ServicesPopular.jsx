@@ -91,7 +91,7 @@ const ServicesPopular = ({indexData, setIsPhoneRegisterModalOpen}) => {
                     style={{textDecoration: "none", color: "black"}}
                     onClick={() => (
                       is_online ?(
-
+                        toggleHandler(),
                       setData(item.services),
                       setNameData(item.name),
                       setUniqeSubTitle(item.unique_subs)

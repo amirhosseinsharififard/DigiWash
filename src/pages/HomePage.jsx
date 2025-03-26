@@ -14,16 +14,17 @@ const HomePage = ({setIsPhoneRegisterModalOpen}) => {
   const [error, setError] = useState(null); // برای مدیریت خطا
 
   const checkIsLogin=localStorage.getItem("userData") && checkLocalStorageUserData().is_online
+  const fetchData = async () => {
+    try {
+      const data = await fetchHomePage();
+      setIndexData(data);
+    } catch (err) {
+      setError("Error fetching data");
+      console.error(err);
+    }
+  };
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const data = await fetchHomePage();
-        setIndexData(data);
-      } catch (err) {
-        setError("Error fetching data");
-        console.error(err);
-      }
-    };
+   
     fetchData(); // فراخوانی تابع غیرهمزمان
   }, [checkIsLogin]);
 

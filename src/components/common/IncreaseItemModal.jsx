@@ -10,7 +10,7 @@ import {
   fetchRemoveToOpenOrder,
 } from "../../API/requests";
 import {productQuantity} from "../../utils/helper";
-import { checkLocalStorageUserData } from "../../hooks/useLocalStorage";
+import {checkLocalStorageUserData} from "../../hooks/useLocalStorage";
 
 const IncreaseItem = ({
   data,
@@ -22,12 +22,12 @@ const IncreaseItem = ({
   setReloadKey,
   reloadKey,
   setIsPhoneRegisterModalOpen,
-  toggleHandler
+  toggleHandler,
 }) => {
   // هر بار که reloadKey تغییر کند، این useEffect اجرا می‌شود
   useEffect(() => {}, [reloadKey]);
-  const checkIsLogin=localStorage.getItem("userData") && checkLocalStorageUserData().is_online
-
+  const checkIsLogin =
+    localStorage.getItem("userData") && checkLocalStorageUserData().is_online;
 
   const findListDatas =
     service_list && service_list.length > 0
@@ -52,7 +52,7 @@ const IncreaseItem = ({
   };
   const registerHandler = () => {
     console.log(setIsPhoneRegisterModalOpen); // این خط را اضافه کنید
-    toggleHandler(prev=>!prev)
+    toggleHandler((prev) => !prev);
     setIsPhoneRegisterModalOpen((prev) => !prev);
   };
   return (
@@ -71,7 +71,14 @@ const IncreaseItem = ({
         p={1}>
         <Grid item xs={8} sm={8} md={8} lg={8} display={"flex"}>
           <Box ml={2}>
-            <img src={image} style={{maxWidth: "48px", maxHeight: "48px",borderRadius:"16px"}} />
+            <img
+              src={image}
+              style={{
+                maxWidth: "48px",
+                maxHeight: "48px",
+                borderRadius: "16px",
+              }}
+            />
           </Box>
           <Box display='flex' flexDirection={"column"} justifyContent='center'>
             <Typography variant='h6' fontSize='16px'>
@@ -98,7 +105,9 @@ const IncreaseItem = ({
           sx={{textAlign: "left"}}>
           {
             <Button
-              onClick={() =>checkIsLogin ? buttonAddHandler(id) :registerHandler()}
+              onClick={() =>
+                checkIsLogin ? buttonAddHandler(id) : registerHandler()
+              }
               sx={{
                 minWidth: "48px",
                 height: "48px",
@@ -130,14 +139,18 @@ const IncreaseItem = ({
               (findListDatas.id == id
                 ? toFarsiNumber(findListDatas.qty)
                 : toFarsiNumber(0))} */}
-                {!findListDatas && toFarsiNumber(0)}
-                {findListDatas[id] ? findListDatas[id] : toFarsiNumber(0)}
+            {!findListDatas && toFarsiNumber(0)}
+            {findListDatas[id] ? findListDatas[id] : toFarsiNumber(0)}
           </span>
           {/* check shavad baraye fix data */}
           {0 > 1 ? (
             <Button
               // onClick={() =>checkIsLogin ? dispatch(decrease(data))}
-              onClick={() =>checkIsLogin ? buttonRemoveHandler(id) : {registerHandler,toggleHandler}}
+              onClick={() =>
+                checkIsLogin
+                  ? buttonRemoveHandler(id)
+                  : {registerHandler, toggleHandler}
+              }
               sx={{
                 minWidth: "48px",
                 height: "48px",
@@ -151,7 +164,7 @@ const IncreaseItem = ({
                 fontSize: "14px",
                 "&:hover": {
                   bgcolor: "rgba(12, 174, 202,.5)",
-                  color:"white"
+                  color: "white",
                 },
               }}>
               -
@@ -159,7 +172,11 @@ const IncreaseItem = ({
           ) : (
             <Button
               // onClick={() =>checkIsLogin ? dispatch(removeItem(data))}
-              onClick={() =>checkIsLogin ? buttonRemoveHandler(id): {registerHandler,toggleHandler}}
+              onClick={() =>
+                checkIsLogin
+                  ? buttonRemoveHandler(id)
+                  : {registerHandler, toggleHandler}
+              }
               sx={{
                 minWidth: "48px",
                 height: "48px",
@@ -174,8 +191,7 @@ const IncreaseItem = ({
 
                 "&:hover": {
                   bgcolor: "rgba(12, 174, 202,.5)",
-                  color:"white"
-
+                  color: "white",
                 },
               }}>
               -

@@ -15,6 +15,7 @@ const ModalIncrease = ({
   uniqeSubTitle,
   itemServices,
   setIsPhoneRegisterModalOpen,
+  fetchData
 }) => {
   // console.log(itemServices)
   // const [showMore, setShowMore] = useState(false);
