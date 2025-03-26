@@ -10,10 +10,12 @@ import TimelineConnector from "@mui/lab/TimelineConnector";
 import TimelineContent from "@mui/lab/TimelineContent";
 import TimelineDot from "@mui/lab/TimelineDot";
 import {TimelineOppositeContent} from "@mui/lab";
+import { checkLocalStorageUserData } from "../../hooks/useLocalStorage";
 const Transportations = ({
   locations,
   setOpenModalBasketTransfer,
   selectedData,
+  setIsPhoneRegisterModalOpen
 }) => {
   //  locations&& locations.map(item=> console.log(item.in_range))
 console.log(selectedData&&selectedData)
@@ -147,7 +149,7 @@ console.log(selectedData&&selectedData)
                   "&:hover": {bgcolor: "rgb(12, 174, 202)"},
                 }}
                 variant='contained'
-                onClick={() => setOpenModalBasketTransfer(true)}>
+                onClick={() => checkLocalStorageUserData()=== undefined ? setIsPhoneRegisterModalOpen(true): setOpenModalBasketTransfer(true)}>
                 تنظیم زمان جمع آوری
               </Button>
                   </>}

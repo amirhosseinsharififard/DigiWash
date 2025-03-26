@@ -1,35 +1,40 @@
-import {Box, Grid, Stack, Typography} from "@mui/material";
+import { Box, Grid, Stack, Typography } from "@mui/material";
 import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
 import DeleteForeverOutlinedIcon from "@mui/icons-material/DeleteForeverOutlined";
-import { fetchRemoveAddress} from "../../API/requests";
+import { fetchRemoveAddress } from "../../API/requests";
 import PropTypes from "prop-types";
-// eslint-disable-next-line react/prop-types
-const AddressBodyChildren = ({id, name, addressDriver}) => {
-  const handleRemoveAddress = () => {
-    fetchRemoveAddress(id);
+
+const AddressBodyChildren = ({ id, name, addressDriver, fetchData }) => {
+  const handleRemoveAddress = async () => {
+    try {
+      await fetchRemoveAddress(id);
+      fetchData(); 
+    } catch (error) {
+      console.error("Error removing address:", error);
+    }
   };
+
   return (
     <Grid
       item
-      display='flex'
       xs={12}
       sm={12}
       md={12}
       lg={12}
-      sx={{display: "flex", flexDirection: "column", m: "1rem 0"}}>
+      sx={{ display: "flex", flexDirection: "column", m: "1rem 0" }}
+    >
       <Box
         sx={{
           display: "flex",
           justifyContent: "space-between",
-          textDecoration: "none",
-          color: "black",
           bgcolor: "rgb(235, 248, 250)",
           borderRadius: "16px 16px 0 0",
           p: ".3rem",
-        }}>
-        <Stack display='flex' flexDirection='row' alignItems='center'>
-          <LocationOnOutlinedIcon sx={{color: "#0caeca"}} />
-          <Typography variant='h6' mr={1} fontWeight={600}>
+        }}
+      >
+        <Stack display="flex" flexDirection="row" alignItems="center">
+          <LocationOnOutlinedIcon sx={{ color: "#0caeca" }} />
+          <Typography variant="h6" mr={1} fontWeight={600}>
             {name}
           </Typography>
         </Stack>
@@ -41,11 +46,10 @@ const AddressBodyChildren = ({id, name, addressDriver}) => {
             height: "50px",
             border: "none",
             cursor: "pointer",
-            "&:hover": {background: "none"},
-            "&:target": {background: "none"},
           }}
-          onClick={handleRemoveAddress}>
-          <DeleteForeverOutlinedIcon sx={{color: "rgba(0,0,0,0.5)"}} />
+          onClick={handleRemoveAddress}
+        >
+          <DeleteForeverOutlinedIcon sx={{ color: "rgba(0,0,0,0.5)" }} />
         </button>
       </Box>
       <Box
@@ -55,7 +59,8 @@ const AddressBodyChildren = ({id, name, addressDriver}) => {
           borderRadius: "0 0 16px 16px ",
           p: ".5rem 1rem",
           mt: ".3rem",
-        }}>
+        }}
+      >
         <Typography>{addressDriver}</Typography>
       </Box>
     </Grid>
@@ -66,5 +71,7 @@ AddressBodyChildren.propTypes = {
   id: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
   addressDriver: PropTypes.string.isRequired,
+  fetchData: PropTypes.func.isRequired, // اینجا اضافه شد
 };
+
 export default AddressBodyChildren;

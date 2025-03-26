@@ -11,6 +11,8 @@ import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 const AddressPage = () => {
   const [nameAddress, setNameAddress] = useState("");
   const [addressDriver, setAddressDriver] = useState("");
+  // baraye baz kardan modal
+
   const [openModal, setOpenModal] = useState(false);
   const [getPosition, setGetPostiton] = useState([]);
   const {result, handleButtonClick} = useButtonClick();
@@ -21,7 +23,8 @@ const AddressPage = () => {
     addressDriver,
     nameAddress,
   };
-  const handleRefreshKey = () => setRefreshKey((prevKey) => prevKey+1);
+  // 
+  // const handleRefreshKey = () => setRefreshKey((prevKey) => prevKey+1);
   const modalForAddresstoggleHandler = () => {
     setOpenModal((prev) => !prev);
   };
@@ -59,7 +62,7 @@ const AddressPage = () => {
               color: "rgb(12, 174, 202)",
             },
           }}
-          onClick={(handleButtonClick,handleRefreshKey)}>
+          onClick={(handleButtonClick)}>
           + اضافه کردن آدرس جدید
         </Button>
       )}

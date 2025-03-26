@@ -10,7 +10,8 @@ import {fetchModalTransfer, fetchOpenOrder} from "../API/requests";
 import {checkLocalStorageUserData} from "../hooks/useLocalStorage";
 import ModalBasketTransfer from "../components/common/ModalBasketTransfer";
 
-// i didnt use 
+import PhoneRegisterModal from '../components/common/PhoneRegisterModal'
+// i didnt use
 // import {useSelector} from "react-redux";
 // import {cart} from "../pwa/features/cart/cartSlice";
 
@@ -24,6 +25,9 @@ const Basket = () => {
   const [selectedData, setSelectedData] = useState();
   const [selectedValue, setSelectedValue] = useState(""); // Initialize with an empty string
   const [responseAddress, setResponseAddress] = useState();
+
+
+  const [isPhoneRegisterModalOpen,setIsPhoneRegisterModalOpen]=useState(false)
   console.log(selectedData);
   console.log(selectedValue);
 
@@ -99,6 +103,7 @@ const Basket = () => {
           </Box>
           {/* {console.log(locations)} */}
           <Transportations
+          setIsPhoneRegisterModalOpen={setIsPhoneRegisterModalOpen}
             locations={locations}
             setOpenModalBasketTransfer={setOpenModalBasketTransfer}
             selectedData={selectedData}
@@ -170,6 +175,13 @@ const Basket = () => {
           selectedValue={selectedValue}
           setResponseAddress={setResponseAddress}
           responseAddress={responseAddress}
+        />
+      )}
+
+      {isPhoneRegisterModalOpen && (
+        <PhoneRegisterModal
+          isPhoneRegisterModalOpen={isPhoneRegisterModalOpen}
+          setIsPhoneRegisterModalOpen={setIsPhoneRegisterModalOpen}
         />
       )}
     </>

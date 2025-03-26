@@ -11,20 +11,21 @@ import { fetchAddresses } from "../../API/requests";
 const ProfileBody = ({result, setGetPostiton,handleButtonClick,dataCompletedForSend}) => {
   const [indexData, setIndexData] = useState([]);
   const [error, setError] = useState();
+  const fetchData = async () => {
+    try {
+      const data = await fetchAddresses();
+      // console.log("Fetched Data:", data); 
+      setIndexData(data.message);
+    } catch {
+      setError("error fetching data");
+      // console.log(error);
+    }
+  };
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const data = await fetchAddresses();
-        // console.log("Fetched Data:", data); // اضافه کردن این خط
-        setIndexData(data.message);
-      } catch {
-        setError("error fetching data");
-        // console.log(error);
-      }
-    };
+   
     fetchData();
   }, [dataCompletedForSend]);
-  console.log(dataCompletedForSend)
+  // console.log(dataCompletedForSend)
   // console.log(indexData);
   return (
     <>
@@ -49,6 +50,7 @@ const ProfileBody = ({result, setGetPostiton,handleButtonClick,dataCompletedForS
                   id={item.id}
                   name={item.name }
                   addressDriver={item.address}
+                  fetchData={fetchData}
                 />
               )) 
               : console.log(error)}
