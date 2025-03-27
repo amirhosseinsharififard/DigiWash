@@ -1,38 +1,59 @@
-import {Button, Box} from "@mui/material";
+import { Button, Box } from "@mui/material";
 import DryCleaningIcon from "@mui/icons-material/DryCleaning";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
-const ServiceListButton = ({number}) => {
-  return (
-    <Box
-      sx={{
-        position: "fixed",
-        bottom: 100,
-        left: "50%",
-        transform: "translateX(-50%)",
-        zIndex: 20,
-        width: "100%",
-        maxWidth: "768px", // محدود کردن محدوده نمایش
-      }}>
-      <Button
-        sx={{
-          bgcolor: "rgb(12, 174, 202)",
-          borderRadius: "24px",
-          display:"felx",justifyContent:"center",alignContent:"center",
-          p: 1,
-          color: "#fff",
-          fontSize:14,
-          ":hover": {
-            color: "white",
-            bgcolor: "rgb(12, 174, 202)",
-          },
-        }}>
-        <DryCleaningIcon /> {number || 0} مورد{" "}
-        <span style={{fontSize:"1px"}}>
-          <ArrowBackIosNewIcon />
-        </span>
-      </Button>
-    </Box>
+import { useLocation } from "react-router-dom";
+
+const ServiceListButton = ({ openOrderData }) => {
+  const orders = openOrderData?.data?.services || [];
+  const count = orders.reduce(
+    (acc, item) => acc + (item.service_list?.length || 0),
+    0
   );
+
+  const pathName = useLocation().pathname;
+
+  console.log(pathName); // بررسی مقدار صحیح مسیر
+
+  // بررسی مسیر با توجه به پایان و شروع آن
+  if (pathName !== "/profile" && !pathName.includes("/basket")) { // اضافه کردن شرط برای مسیری که شامل "/basket" است
+    return (
+      <Box
+        sx={{
+          position: "fixed",
+          bottom: 100,
+          left: "50%",
+          transform: "translateX(-50%)",
+          zIndex: 20,
+          width: "100%",
+          maxWidth: "768px", // محدود کردن محدوده نمایش
+        }}
+      >
+        <Button
+          sx={{
+            bgcolor: "rgb(12, 174, 202)",
+            borderRadius: "24px",
+            display: "flex", // اصلاح اشتباه تایپی
+            justifyContent: "center",
+            alignItems: "center", // اصلاح تایپ "alignContent"
+            p: 1,
+            color: "#fff",
+            fontSize: 14,
+            ":hover": {
+              color: "white",
+              bgcolor: "rgb(12, 174, 202)",
+            },
+          }}
+        >
+          <DryCleaningIcon /> {count} مورد{" "}
+          <span style={{ fontSize: "1px" }}>
+            <ArrowBackIosNewIcon />
+          </span>
+        </Button>
+      </Box>
+    );
+  }
+
+  return null; // اضافه کردن این مقدار برای زمانی که مسیر "/profile" باشد
 };
 
 export default ServiceListButton;

@@ -20,6 +20,7 @@ import Basket from "./pages/Basket";
 import PhoneRegisterModal from "./components/common/PhoneRegisterModal";
 import Header from "./components/layout/Header";
 import ServiceListButton from "./components/common/ServiceListButton";
+import { fetchOpenOrder } from "./API/requests";
 
 // TODO check konam
 // import ModalBasketTransfer from "./components/ModalBasketTransfer";
@@ -31,7 +32,23 @@ function App() {
   const [isPhoneRegisterModalOpen, setIsPhoneRegisterModalOpen] =
     useState(false);
   const localStorageGetItem = localStorage.getItem("userData");
-  useEffect(() => {}, [localStorageGetItem]);
+    const [indexData, setIndexData] = useState(null); // مقدار اولیه null به جای undefined
+    const [error, setError] = useState(null); // برای مدیریت خطا
+  
+  const fetchData = async () => {
+    try {
+      const data = await fetchOpenOrder();
+      setIndexData(data);
+    } catch (err) {
+      setError("Error fetching data");
+      console.error(err);
+    }
+  };
+  useEffect(() => {
+   
+    fetchData()
+
+  }, [localStorageGetItem]);
   return (
     <>
       <ThemeProvider theme={theme}>
@@ -54,8 +71,8 @@ function App() {
           <Route path='/profile/edit' element={<EditPage />} />
           <Route path='/basket' element={<Basket />} />
         </Routes>
-        <ServiceListButton/>
-        
+        <ServiceListButton openOrderData={indexData ||''} />
+
         <Footer />
         <PhoneRegisterModal
           isPhoneRegisterModalOpen={isPhoneRegisterModalOpen}
