@@ -21,7 +21,7 @@ const ModalBasketTransfer = ({
     navigate("/profile/address");
   };
 
-  console.log(locations);
+  console.log(selectedData);
   return (
     <Box
       sx={{
@@ -158,7 +158,7 @@ const ModalBasketTransfer = ({
                 },
               }}
               fullWidth
-              disabled={selectedData && !selectedData.in_range}
+              disabled={selectedData && !selectedData.in_range && true || !selectedData}
               onClick={() => setOpenModalBasketTransfer(false)}>
               تایید
             </Button>

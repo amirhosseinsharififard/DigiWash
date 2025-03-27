@@ -2,10 +2,9 @@
 import {Route, Routes} from "react-router-dom";
 import {useEffect, useState} from "react";
 
-
 //pwa site component
 
-import HomePage from './pages/HomePage';
+import HomePage from "./pages/HomePage";
 import ServicePage from "./pages/ServicePage";
 import Footer from "./components/layout/Footer";
 import ModalIncrease from "./components/common/ModalIncrease";
@@ -20,6 +19,7 @@ import EditPage from "./components/edit/EditPage";
 import Basket from "./pages/Basket";
 import PhoneRegisterModal from "./components/common/PhoneRegisterModal";
 import Header from "./components/layout/Header";
+import ServiceListButton from "./components/common/ServiceListButton";
 
 // TODO check konam
 // import ModalBasketTransfer from "./components/ModalBasketTransfer";
@@ -30,15 +30,12 @@ import Header from "./components/layout/Header";
 function App() {
   const [isPhoneRegisterModalOpen, setIsPhoneRegisterModalOpen] =
     useState(false);
-  const localStorageGetItem = localStorage.getItem("userData")
-  useEffect(() => {
-  
-  
-  }, [localStorageGetItem]);
+  const localStorageGetItem = localStorage.getItem("userData");
+  useEffect(() => {}, [localStorageGetItem]);
   return (
     <>
       <ThemeProvider theme={theme}>
-      <Header setIsPhoneRegisterModalOpen={setIsPhoneRegisterModalOpen} />
+        <Header setIsPhoneRegisterModalOpen={setIsPhoneRegisterModalOpen} />
 
         <Routes>
           <Route
@@ -57,6 +54,8 @@ function App() {
           <Route path='/profile/edit' element={<EditPage />} />
           <Route path='/basket' element={<Basket />} />
         </Routes>
+        <ServiceListButton/>
+        
         <Footer />
         <PhoneRegisterModal
           isPhoneRegisterModalOpen={isPhoneRegisterModalOpen}

@@ -7,6 +7,7 @@ import LocalLaundryServiceOutlinedIcon from "@mui/icons-material/LocalLaundrySer
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 import {checkLocalStorageUserData} from "../../hooks/useLocalStorage";
 import PhoneRegisterModal from "../common/PhoneRegisterModal";
+import ServiceListButton from "../common/ServiceListButton";
 
 const Footer = () => {
   const [isShowModal, setIsShowModal] = useState(false);

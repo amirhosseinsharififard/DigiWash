@@ -7,6 +7,7 @@ import ServicesPopular from "../components/services/ServicesPopular";
 import ServicesCategory from "../components/services/ServicesCategory";
 import {fetchHomePage} from "../API/requests"; // import کردن فقط متغیرهای لازم
 import { checkLocalStorageUserData } from "../hooks/useLocalStorage";
+import ServiceListButton from "../components/common/ServiceListButton";
 
 // eslint-disable-next-line react/prop-types
 const HomePage = ({setIsPhoneRegisterModalOpen}) => {
@@ -35,7 +36,7 @@ const HomePage = ({setIsPhoneRegisterModalOpen}) => {
 
   return (
     <>
-      <Box sx={{maxWidth: "768px", m: "0rem auto 5rem"}}>
+      <Box sx={{maxWidth: "768px", m: "0rem auto 8rem"}}>
         <Offday />
         <OrderPhone />
         <Services indexData={indexData && indexData.data.service_types} />
