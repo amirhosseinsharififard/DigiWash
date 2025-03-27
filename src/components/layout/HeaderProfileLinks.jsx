@@ -1,21 +1,25 @@
 /* eslint-disable react/prop-types */
-import { Box, Grid, Typography } from "@mui/material";
-import { Link, useLocation } from "react-router-dom";
+import {Box, Grid, Typography} from "@mui/material";
+import {Link, useLocation, useNavigate} from "react-router-dom";
 
 // icon
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 
-const HeaderProfileLinks = ({ pageAddress }) => {
+const HeaderProfileLinks = ({pageAddress}) => {
   const openFooter = useLocation().pathname.split("/");
   const lastIndex = openFooter.length - 1;
   // console.log(openFooter[lastIndex] == "address");
+  const navigate = useNavigate();
 
+  const goBackHandler = () => {
+    navigate(-1); // برگشت به صفحه قبلی
+  };
   return (
-    <Box sx={{ bgcolor: "#0caeca" }}>
+    <Box sx={{bgcolor: "#0caeca"}}>
       <Box
         sx={{
           maxWidth: "768px",
-          m: `0rem auto  ${openFooter[lastIndex] == "address" ? '0':'5rem'}`,
+          m: `0rem auto  ${openFooter[lastIndex] == "address" ? "0" : "5rem"}`,
           display: "flex",
           alignItems: "container",
           flexDirection: "column",
@@ -33,10 +37,10 @@ const HeaderProfileLinks = ({ pageAddress }) => {
             color: "white",
           }}>
           <Grid item xs={4} sm={4} md={4} lg={4}>
-            <Link to='/profile'>
+            <Link onClick={() => goBackHandler()}>
               <Typography variant='h6' fontWeight={700}>
                 <ArrowForwardIosIcon
-                  style={{ color: "white", padding: ".5rem" }}
+                  style={{color: "white", padding: ".5rem"}}
                 />
               </Typography>
             </Link>

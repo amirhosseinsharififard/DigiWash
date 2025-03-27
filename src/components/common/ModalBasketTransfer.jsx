@@ -2,7 +2,7 @@
 /* eslint-disable react/prop-types */
 
 import {Box, Grid, Typography, Button, Checkbox} from "@mui/material";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import ModalAddressContent from "../address/ModalAddressContent";
 
 const ModalBasketTransfer = ({
@@ -13,8 +13,12 @@ const ModalBasketTransfer = ({
   selectedValue,
   setSelectedValue,
 }) => {
+  const navigate = useNavigate();
   const handleRadioChange = (name) => {
     setSelectedValue(name); // Update the selected radio name
+  };
+  const navigateHandler = () => {
+    navigate("/profile/address");
   };
 
   console.log(locations);
@@ -87,8 +91,7 @@ const ModalBasketTransfer = ({
             </Typography>
           </Grid>
 
-          {true &&
-            locations &&
+          {locations &&
             locations.map((item) => (
               <ModalAddressContent
                 key={item.id}
@@ -105,6 +108,7 @@ const ModalBasketTransfer = ({
           <Grid item xs={12} textAlign='left'>
             <Button
               variant='contained'
+              onClick={() => navigateHandler()}
               sx={{
                 bgcolor: "white",
                 color: "rgb(12, 174, 202)",

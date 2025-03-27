@@ -1,21 +1,26 @@
-import { Box, Button, Grid, Typography } from "@mui/material";
-import { Link } from "react-router-dom";
+import {Box, Button, Grid, Typography} from "@mui/material";
+import {Link, useNavigate,} from "react-router-dom";
 
 // icon
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import FormEdit from "../common/FormEdit";
 
 // eslint-disable-next-line react/prop-types
-const HeaderEdit = ({ pageAddress }) => {
+const HeaderEdit = ({pageAddress}) => {
+  const navigate = useNavigate();
+
+  const goBackHandler = () => {
+    navigate(-1);  // برگشت به صفحه قبلی
+  };
   return (
-    <Box sx={{ bgcolor: "#0caeca", height: "10rem" }}>
+    <Box sx={{bgcolor: "#0caeca", height: "10rem"}}>
       <Box
         sx={{
           m: "auto",
           display: "flex",
-          alignItems: "container",
+          alignItems: "center",
           flexDirection: "column",
-          maxWidth: "768px"
+          maxWidth: "768px",
         }}>
         {/* blue zone */}
         <Grid
@@ -28,14 +33,14 @@ const HeaderEdit = ({ pageAddress }) => {
             justifyContent: "space-between",
             p: ".5rem 1.5rem .7rem 1.5rem",
             color: "white",
-            zIndex: "1"
+            zIndex: "1",
           }}>
           <Grid item xs={4} sm={4} md={4} lg={4}>
             <Link
-              to='/profile'
-              style={{ display: "flex", alignItems: "center" }}>
+              onClick={() => goBackHandler()}
+              style={{display: "flex", alignItems: "center"}}>
               <ArrowForwardIosIcon
-                style={{ color: "white", width: "32px", height: "32px" }}
+                style={{color: "white", width: "32px", height: "32px"}}
               />
             </Link>
           </Grid>
@@ -43,7 +48,7 @@ const HeaderEdit = ({ pageAddress }) => {
             <Link
               style={{
                 textDecoration: "none",
-                color: "white"
+                color: "white",
               }}>
               <Typography
                 variant='h5'
@@ -68,12 +73,20 @@ const HeaderEdit = ({ pageAddress }) => {
             justifyContent: "space-between",
             p: "1rem 1.5rem .7rem 1.5rem",
             maxWidth: "768px",
-            m: "auto"
+            m: "auto",
           }}>
           <FormEdit name={"نام"} dataName={"amir"} />
           <FormEdit name={"نام خانوادگی"} dataName={"sharifi"} />
           <Grid item xs={12} sm={12} md={12} lg={12}>
-            <Button fullWidth variant='outlined' sx={{color:"rgb(12, 174, 202)",fontSize:"16px" ,fontFamily:"Vazir-Bold" ,fontWeight:"bold"}}>
+            <Button
+              fullWidth
+              variant='outlined'
+              sx={{
+                color: "rgb(12, 174, 202)",
+                fontSize: "16px",
+                fontFamily: "Vazir-Bold",
+                fontWeight: "bold",
+              }}>
               ذخیره تغییرات
             </Button>
           </Grid>

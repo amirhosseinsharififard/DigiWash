@@ -1,12 +1,16 @@
 /* eslint-disable react/prop-types */
 import {Box, Grid, Typography} from "@mui/material";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 
 // icon
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import BasketIcon from "../../assets/svg/ordersBasket.c57a891b.svg";
 import toFarsiNumber from "../../utils/functions";
 const HeaderProfileLinks = ({pageAddress, collectAllProductLength}) => {
+  const navigate = useNavigate();
+  const goBackHandler = () => {
+    navigate(-1);
+  };
   return (
     <Box sx={{bgcolor: "#0caeca"}}>
       <Box
@@ -31,7 +35,7 @@ const HeaderProfileLinks = ({pageAddress, collectAllProductLength}) => {
             color: "white",
           }}>
           <Grid item xs={4} sm={4} md={4} lg={4}>
-            <Link to='/profile'>
+            <Link onClick={() => goBackHandler()}>
               <Typography variant='h6' fontWeight={700}>
                 <ArrowForwardIosIcon
                   style={{color: "white", padding: ".5rem"}}
