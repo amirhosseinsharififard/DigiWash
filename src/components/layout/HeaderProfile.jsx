@@ -24,7 +24,7 @@ const HeaderProfile = () => {
   //   cellPhoneNumber: "09172384087",
   //   costAccount: "0",
   // };
-console.log(user)
+// console.log(user)
 
 
   return (

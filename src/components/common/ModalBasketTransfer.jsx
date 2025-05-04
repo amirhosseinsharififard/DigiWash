@@ -21,7 +21,7 @@ const ModalBasketTransfer = ({
     navigate("/profile/address");
   };
 
-  console.log(selectedData);
+  // console.log(selectedData);
   return (
     <Box
       sx={{

@@ -28,8 +28,8 @@ const Basket = () => {
 
 
   const [isPhoneRegisterModalOpen,setIsPhoneRegisterModalOpen]=useState(false)
-  console.log(selectedData);
-  console.log(selectedValue);
+  // console.log(selectedData);
+  // console.log(selectedValue);
 
   const getNow = new Date().toLocaleString("fa-IR");
 
@@ -68,7 +68,7 @@ const Basket = () => {
         setIndexData(data);
         setTax_percentage(data.data.tax_percentage);
         setLocations(data.data.locations);
-        console.log(data.data.locations);
+        // console.log(data.data.locations);
       } catch (err) {
         setError("Error fetching data");
         console.error(err);

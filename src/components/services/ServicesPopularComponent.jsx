@@ -26,6 +26,7 @@ const ServicesPopularComponent = ({
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
+          width:'128px',
           alignContent: "center",
         }}>
         <Stack
@@ -34,15 +35,13 @@ const ServicesPopularComponent = ({
           alignItems='center'
           bgcolor='white'
           borderRadius='8px'
-          width='128px'
-          height='124'>
-          <Box m='.5rem auto' width='120px'>
+          width='100%'>
+          <Box m='.5rem auto'>
             <Typography
               variant='h5'
               textAlign='center'
               fontSize='14px'
-              fontWeight='bold'
-              fontFamily='Vazir-Medium'
+              fontWeight='500'
               height='20px'>
               {title}
             </Typography>
@@ -50,7 +49,7 @@ const ServicesPopularComponent = ({
               variant='h6'
               fontSize='14px'
               height='20px'
-              fontFamily='Vazir-Light'
+              fontWeight='300'
               color='rgb(85, 100, 102)'>
               {/* {subTitle} */}
               {Array.isArray(subTitle)

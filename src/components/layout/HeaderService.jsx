@@ -29,7 +29,7 @@ const locationIndex = useLocation().pathname.split("/")[2];
       try {
         const data = await fetchCategoryServices(fetchIndex);
         setCategories(data.data.categories);
-        console.log(data)
+        // console.log(data)
       } catch (err) {
         setError("Error fetching data");
         console.error(err);

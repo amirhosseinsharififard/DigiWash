@@ -16,31 +16,29 @@ import {Box, Grid, Typography} from "@mui/material";
 
 // eslint-disable-next-line react/prop-types
 const Services = ({indexData}) => {
+  console.log(indexData)
   // console.log(indexData && indexData);
   return (
     <>
-      <Box maxWidth='768px'>
+      <Box maxWidth='768px' p='0 1rem'>
         <Typography
           variant='h5'
           component='p'
           fontSize='18px'
           fontFamily='Vazir'
           fontWeight='bold'
-          mr='1rem'>
+          pb='2rem'
+          >
           خدمات دیجی واش
         </Typography>
       </Box>
-      <Grid container maxWidth='420px' alignContent='center' margin='0 auto'>
+      <Grid container sx={{display:"flex",justifyContent:"space-evenly"}}  margin='0 auto'>
         {indexData &&
           // eslint-disable-next-line react/prop-types
           indexData.map((item) => (
             <Grid
               item
-              lx={3}
-              lg={3}
-              md={3}
-              sm={3}
-              xs={3}
+           
               key={item.id}
               textAlign='center'
               sx={{}}>
@@ -57,6 +55,27 @@ const Services = ({indexData}) => {
               </Typography>
             </Grid>
           ))}
+          {/* test */}
+          {/* {
+            <Grid
+              item
+           
+              key={indexData[0].id}
+              textAlign='center'
+              sx={{}}>
+              <img
+                src={indexData[0].image ? indexData[0].image : "nadarad"}
+                style={{height: "32px", width: "32px"}}
+              />
+
+              <Typography
+                variant='h6'
+                color='black'
+                sx={{fontFamily: "Vazir", fontSize: "16px"}}>
+                {indexData[0].name}
+              </Typography>
+            </Grid>
+          } */}
       </Grid>
     </>
   );

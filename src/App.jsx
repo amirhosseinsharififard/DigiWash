@@ -51,7 +51,7 @@ function App() {
   }, [localStorageGetItem]);
   return (
     <>
-      <ThemeProvider theme={theme}>
+      {/* <ThemeProvider theme={theme}> */}
         <Header setIsPhoneRegisterModalOpen={setIsPhoneRegisterModalOpen} />
 
         <Routes>
@@ -64,12 +64,12 @@ function App() {
             }
           />
           <Route path='/services/:id' element={<ServicePage />} />
-          <Route path='' element={<ModalIncrease />} />
           <Route path='/profile' element={<ProfilePage />} />
           <Route path='/profile/address' element={<AddressPage />} />
           <Route path='/profile/transactions' element={<TransactionsPage />} />
           <Route path='/profile/edit' element={<EditPage />} />
           <Route path='/basket' element={<Basket />} />
+          <Route path=''   element={<ModalIncrease />} />
         </Routes>
         <ServiceListButton openOrderData={indexData ||''} />
 
@@ -78,7 +78,7 @@ function App() {
           isPhoneRegisterModalOpen={isPhoneRegisterModalOpen}
           setIsPhoneRegisterModalOpen={setIsPhoneRegisterModalOpen}
         />
-      </ThemeProvider>
+      {/* </ThemeProvider> */}
     </>
   );
 }

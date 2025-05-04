@@ -39,7 +39,7 @@ const ServicesPopular = ({indexData, setIsPhoneRegisterModalOpen}) => {
   // const dispatch = useDispatch();
   // const products = useSelector(product);
   const {is_online} = checkLocalStorageUserData() || "";
-  console.log(is_online);
+  // console.log(is_online);
 
   const toggleHandler = () => {
     setIsShowModal(!isShowModal);
@@ -57,8 +57,8 @@ const ServicesPopular = ({indexData, setIsPhoneRegisterModalOpen}) => {
       <Box
         sx={{
           bgcolor: "rgb(242, 247, 247)",
-          p: "1rem 0",
-          m: "1rem 0",
+          m: "1rem ",
+          pb:"1.5rem",
           borderRadius: "8px",
           overflow: "hidden",
         }}>
@@ -67,7 +67,7 @@ const ServicesPopular = ({indexData, setIsPhoneRegisterModalOpen}) => {
           fontWeight='bold'
           fontSize='18px'
           fontFamily='Vazir'
-          m='1rem '>
+          m='1rem'>
           خدمات محبوب
         </Typography>
 
@@ -83,6 +83,36 @@ const ServicesPopular = ({indexData, setIsPhoneRegisterModalOpen}) => {
           className='mySwiper'
           style={{marginRight: ".5rem"}}>
           {indexData
+            ? indexData.map((item) => (
+                <SwiperSlide style={{background: "none"}} key={item.id}>
+                  {/* {console.log(item)} */}
+                  {/* {console.log(uniqeSubTitleButton)} */}
+                  <Link
+                    style={{textDecoration: "none", color: "black"}}
+                    onClick={() => (
+                      is_online ?(
+                        toggleHandler(),
+                      setData(item.services),
+                      setNameData(item.name),
+                      setUniqeSubTitle(item.unique_subs)
+                      ):(
+                        setIsPhoneRegisterModalOpen(true)
+                      )
+                    )}>
+                    <ServicesPopularComponent
+                      toggleHandler={() => toggleAndIndexHandler(item.id, item)}
+                      checkIndex={item.id}
+                      title={item.name}
+                      subTitle={item.unique_subs}
+                      image={item.image}
+                      setIsPhoneRegisterModalOpen={setIsPhoneRegisterModalOpen}
+                      is_online={is_online}
+                    />
+                  </Link>
+                </SwiperSlide>
+              ))
+            : "we need data"}
+            {indexData
             ? indexData.map((item) => (
                 <SwiperSlide style={{background: "none"}} key={item.id}>
                   {/* {console.log(item)} */}

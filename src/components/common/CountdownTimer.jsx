@@ -13,7 +13,7 @@ const CountdownTimer = ({buttonHandler}) => {
     if (timeLeft <= 0) {
       setIsExpired(true);
       // اینجا می‌توانید عمل دیگری انجام دهید
-      console.log("تایمر به پایان رسید!"); // عمل نمونه: نمایش در کنسول
+      // console.log("تایمر به پایان رسید!"); // عمل نمونه: نمایش در کنسول
       // می‌توانید هر کدی که می‌خواهید اینجا اضافه کنید، مثلاً یک درخواست API
       return; // اگر تایمر به صفر رسید، توقف کن
     }
@@ -37,7 +37,7 @@ const CountdownTimer = ({buttonHandler}) => {
   const resetHandler = () => {
    setIsExpired(false);
    setTimeLeft(300)
-    console.log("object")
+    // console.log("object")
   };
   return (
     <>

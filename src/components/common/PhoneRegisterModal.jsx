@@ -96,7 +96,7 @@ const PhoneRegisterModal = ({
       const response = await fetchSendOtp(fieldRegister.phoneNumber);
 
       setResponseSms(response); // Update the response state with the fetched dataclg
-      console.log(response);
+      // console.log(response);
     } catch (error) {
       console.error("Error sending OTP:", error);
 
@@ -114,7 +114,7 @@ const PhoneRegisterModal = ({
         fieldRegister.codeConfirm
       );
       setResponseVerify(response);
-      console.log(response);
+      // console.log(response);
       if (response.message == "با موفقیت تایید شد.") {
         setLocalStorageHandler(response.data);
       }
@@ -136,7 +136,7 @@ const PhoneRegisterModal = ({
         setLocalStorageHandler(response.data);
         localStorage.getItem("userData");
       }
-      console.log(response);
+      // console.log(response);
     } catch (error) {
       console.log("error", error);
     }
@@ -366,7 +366,7 @@ const PhoneRegisterModal = ({
                         // اگر طول کد تأیید بزرگتر یا مساوی 2 باشد، تابع تأیید OTP را فراخوانی کنید
 
                         if (newValue.length == 4) {
-                          console.log(newValue.length);
+                          // console.log(newValue.length);
                         }
                       }
                     }}

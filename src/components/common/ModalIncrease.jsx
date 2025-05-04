@@ -65,7 +65,7 @@ const ModalIncrease = ({
   const checkIsLogin =
     localStorage.getItem("userData") && checkLocalStorageUserData().is_online;
 
-  console.log(indexData);
+  // console.log(indexData);
   // تابع برای پیدا کردن مقادیر یکتا از ساب‌تایتل
   const uniqeSubTitleButton = (subTitle) => {
     return [...new Set(Object.values(subTitle))];

@@ -35,7 +35,7 @@ const MyDigiwashSectionsIncrease = ({
           }
 
           if (clickData && leaveAccount) {
-            console.log("okay")
+            // console.log("okay")
             localStorage.clear();
           }
         }}

@@ -29,7 +29,7 @@ const ModalForAddress = ({
 
 
     try {
-      console.log("Sending to server:", nameAddress, addressDriver, getPosition);
+      // console.log("Sending to server:", nameAddress, addressDriver, getPosition);
       await fetchAddAddress(
         nameAddress,
         addressDriver,

@@ -5,8 +5,8 @@ import {persianPrice} from "../../utils/functions";
 import ErrorIcon from "@mui/icons-material/Error";
 import Rtl from "./RtlComponents";
 const BillComponent = ({splitReducePrices, tax_percentage, deliveriPrice}) => {
-  console.log(tax_percentage);
-  console.log(deliveriPrice + tax_percentage);
+  // console.log(tax_percentage);
+  // console.log(deliveriPrice + tax_percentage);
   const finalPrice =
     Number(splitReducePrices) + Number(tax_percentage) + Number(deliveriPrice);
   return (

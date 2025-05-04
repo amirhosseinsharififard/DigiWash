@@ -18,7 +18,7 @@ const Transportations = ({
   setIsPhoneRegisterModalOpen
 }) => {
   //  locations&& locations.map(item=> console.log(item.in_range))
-console.log(selectedData&&selectedData)
+// console.log(selectedData&&selectedData)
   return (
     <Grid item xs={12} mt='2rem' width='100%'>
       <Stack
