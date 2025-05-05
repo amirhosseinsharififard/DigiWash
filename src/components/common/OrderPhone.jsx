@@ -1,4 +1,4 @@
-import { Box, Button, Container, Typography } from "@mui/material";
+import {Box, Button, Container, Typography} from "@mui/material";
 import toFarsiNumber from "../../utils/functions";
 const OrderPhone = () => {
   return (
@@ -12,7 +12,7 @@ const OrderPhone = () => {
           alignContent: "center",
           p: "0.5rem ",
           m: "1rem 0 ",
-          borderRadius: "8px"
+          borderRadius: "8px",
         }}>
         <Box
           m='1rem auto'
@@ -29,9 +29,10 @@ const OrderPhone = () => {
               fontWeight: "bold",
               fontFamily: "Vazir",
               borderRadius: "16px",
+              paddingX: 3,
               "&:hover": {
-                background: "#0caeca"
-              }
+                background: "#0caeca",
+              },
             }}>
             ثبت سفارش تلفنی
           </Button>
@@ -41,11 +42,10 @@ const OrderPhone = () => {
             fontFamily='vazir'
             fontWeight='bold'
             sx={{
-              
               fontSize: "16px",
               fontWeight: "bold",
               fontFamily: "Vazir",
-              textAlign:"center"
+              textAlign: "center",
             }}>
             {toFarsiNumber("02145802000")}
           </Typography>

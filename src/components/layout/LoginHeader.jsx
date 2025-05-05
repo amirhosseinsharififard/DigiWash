@@ -26,7 +26,7 @@ const LoginHeader = () => {
         </Typography>
         <Typography
           variant='h6'
-          fontWeight='bold'
+          fontFamily={"Vazir"}
           fontSize='12px'
           color='rgb(56, 90, 118)'>
           {toFarsiNumber(0)} تومان اعتبار

@@ -11,7 +11,6 @@ import {checkLocalStorageUserData} from "../../hooks/useLocalStorage";
 import LogoPwa from "../../assets/images/LogoPwa.png";
 import persianDigiWash from "../../assets/images/persianDigiWash.png";
 
-
 const Header = ({
   // eslint-disable-next-line react/prop-types
   handleFilterButtonClick,
@@ -32,13 +31,12 @@ const Header = ({
   useEffect(() => {
     checkLocalStorage && setIsOpen(checkLocalStorageUserData());
   }, [checkLocalStorage]);
-  const isHeaderServices = useLocation().pathname.startsWith('/services/')
+  const isHeaderServices = useLocation().pathname.startsWith("/services/");
   if (
     pathName !== "/profile" &&
     pathName !== "/basket" &&
     pathName !== "/profile/transactions" &&
     pathName !== "/profile/address"
-    
   ) {
     return (
       <Box sx={{bgcolor: "#0caeca"}}>
@@ -61,7 +59,11 @@ const Header = ({
                 <Link to='/'>
                   <img
                     src={persianDigiWash}
-                    style={{width: "98px", height: "22px", padding: "16px"}}
+                    style={{
+                      width: "98px",
+                      height: "22px",
+                      padding: "16px 0 0 0",
+                    }}
                   />
                 </Link>
               </Box>
@@ -78,7 +80,7 @@ const Header = ({
               container
               sx={{
                 bgcolor: "white",
-                borderRadius: "50px 50px 0 0",
+                borderRadius: "30px 30px 0 0",
                 display: "flex",
                 alignContent: "space-betweens",
                 justifyContent: "space-between",
@@ -108,6 +110,8 @@ const Header = ({
                       </Typography>
                       <Typography
                         variant='body2'
+                        fontFamily={"Vazir"}
+                        fontWeight={"bold"}
                         fontSize='12px'
                         color='rgb(56, 90, 118)'
                         width='auto'>
@@ -120,16 +124,18 @@ const Header = ({
                       variant='contained'
                       sx={{
                         bgcolor: "#0caeca",
-                        p: ".5rem 1rem",
-                        fontWeight: "bold",
+                        fontFamily:"Vazir",
                         borderRadius: "30px",
+                        paddingX: 2,
+                        boxShadow: "none",
                         width: "auto",
                         "&:hover": {
                           background: "#0caeca",
+                          boxShadow: "none",
                         },
                       }}
                       onClick={registerHandler}>
-                      ثبتنام / ورود
+                      ثبت نام / ورود
                     </Button>
                   </Grid>
                 </Grid>
