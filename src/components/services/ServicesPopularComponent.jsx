@@ -39,6 +39,7 @@ const ServicesPopularComponent = ({
           <Box m='.5rem auto'>
             <Typography
               variant='h5'
+              fontFamily={"Vazir"}
               textAlign='center'
               fontSize='14px'
               fontWeight='500'
@@ -48,6 +49,7 @@ const ServicesPopularComponent = ({
             <Typography
               variant='h6'
               fontSize='14px'
+              fontFamily={"Vazir"}
               height='20px'
               fontWeight='300'
               color='rgb(85, 100, 102)'>
