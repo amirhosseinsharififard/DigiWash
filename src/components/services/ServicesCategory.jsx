@@ -11,7 +11,7 @@ const ServicesCategory = ({indexData}) => {
         fontWeight='bold'
         fontSize='18px'
         fontFamily='Vazir'
-        m='1rem 1rem 0'>
+        m='2rem 1rem 0'>
         دسته بندی خدمات
       </Typography>
 

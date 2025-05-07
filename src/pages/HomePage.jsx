@@ -7,7 +7,7 @@ import ServicesPopular from "../components/services/ServicesPopular";
 import ServicesCategory from "../components/services/ServicesCategory";
 import {fetchHomePage} from "../API/requests"; // import کردن فقط متغیرهای لازم
 import { checkLocalStorageUserData } from "../hooks/useLocalStorage";
-import ServiceListButton from "../components/common/ServiceListButton";
+// import ServiceListButton from "../components/common/ServiceListButton";
 
 // eslint-disable-next-line react/prop-types
 const HomePage = ({setIsPhoneRegisterModalOpen}) => {

@@ -51,7 +51,7 @@ function App() {
   }, [localStorageGetItem]);
   return (
     <>
-      {/* <ThemeProvider theme={theme}> */}
+      <ThemeProvider theme={theme}>
         <Header setIsPhoneRegisterModalOpen={setIsPhoneRegisterModalOpen} />
 
         <Routes>
@@ -78,7 +78,7 @@ function App() {
           isPhoneRegisterModalOpen={isPhoneRegisterModalOpen}
           setIsPhoneRegisterModalOpen={setIsPhoneRegisterModalOpen}
         />
-      {/* </ThemeProvider> */}
+      </ThemeProvider>
     </>
   );
 }

@@ -21,7 +21,7 @@ const ServicesCoponent = ({
   const lastObjectValue = objectValues[objectValues.length - 1];
   const {is_online} = checkLocalStorageUserData() || false;
   return (
-    <Grid item lx={4} lg={4} md={4} sm={4} xs={6}>
+    <Grid item lx={4} lg={4} md={4} sm={6} xs={6}>
       {!is_online && <Link
         style={{textDecoration: "none", color: "black"}}
         onClick={()=>setIsShowModalRegister(true)}>

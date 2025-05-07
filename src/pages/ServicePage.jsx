@@ -91,7 +91,6 @@ const ServicePage = () => {
                 setUniqeSubTitle(item.unique_subs)
               )}
               key={item.id}
-              // moshkel az injas va bayad data az samt api dorost she yebar araye miad yebar object
               subTitle={item.unique_subs}
               image={item.image}
               cost={item.cost}
@@ -102,6 +101,9 @@ const ServicePage = () => {
             />
           ))}
       </Grid>
+
+
+
       {isShowModal && (
         <>
           <ModalIncrease

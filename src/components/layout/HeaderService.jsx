@@ -69,7 +69,7 @@ const locationIndex = useLocation().pathname.split("/")[2];
             <SwiperSlide style={{ backgroundColor: "transparent" }} key={index}>
               <Link to={`/services/${index+1}`} style={{ textDecoration: "none", color: "black" }}>
              
-                <TagConent tagName={item.name} item={item} />
+                <TagConent tagName={item.name} item={item} locationIndex={locationIndex} />
               </Link>
             </SwiperSlide>
           ))}
