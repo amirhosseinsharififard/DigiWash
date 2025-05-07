@@ -69,7 +69,7 @@ const OrederSectionItem = ({
         }}>
         <Box
           sx={{
-            p: "1.50rem",
+            p: "1.50rem ",
           }}>
           {orders &&
             orders.map((item, i) => (
@@ -89,7 +89,7 @@ const OrederSectionItem = ({
                 <Grid
                   key={item.id}
                   item
-                  m='1rem .7rem '
+                  m='1rem .7rem 0.2rem '
                   display='flex'
                   justifyContent='space-between'
                   xs={12}
@@ -116,19 +116,42 @@ const OrederSectionItem = ({
                     {/* {console.log(reduceCost)} برای بررسی مقادیر */}
                   </>
                 </Grid>
-                <Grid item m='1rem .7rem ' xs={12} sm={12} md={12} lg={12}>
+                <Grid item m='1rem .7rem ' xs={12} sm={12} md={12} lg={12}
+                 sx={{
+    '& > :nth-last-child(2)': {
+      mb: '2rem', // دومین آیتم از آخر
+    },
+  }}
+                >
                   {item.service_list.map((item2) => (
-                    <OrederSectionItemContent
-                      setReloadKey={setReloadKey}
-                      key={item2.id}
-                      id={item2.service_id}
-                      cost={item2.value}
-                      title={item2.service_type}
-                      quantity={item2.qty}
-                      data={item2}
-                      findListDatas={findListDatas}
-                    />
+                    <>
+                      <OrederSectionItemContent
+                        setReloadKey={setReloadKey}
+                        key={item2.id}
+                        id={item2.service_id}
+                        cost={item2.value}
+                        title={item2.service_type}
+                        quantity={item2.qty}
+                        data={item2}
+                        findListDatas={findListDatas}
+                      />
+                    </>
                   ))}
+
+                  <Box display={"flex"} gap={1} flexDirection={"row"} mt="">
+                    {item?.service_list.map((item3) => (
+                      <Typography
+                        key={item3.id}
+                        borderRadius={"16px"}
+                        p='8px'
+                        bgcolor='white'
+                        display='inline-block' fontFamily={"Vazir"} fontWeight={500}>
+                        {item3.qty} <span style={{color: "#7fcfdd"}}>|</span>{" "}
+                        {item3.service_type}
+                      </Typography>
+                    ))}
+                  </Box>
+                  {console.log(item.service_list)}
                 </Grid>
               </Grid>
             ))}

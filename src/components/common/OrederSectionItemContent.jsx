@@ -15,7 +15,8 @@ const OrderSectionItemContent = ({
   cost,
   id,
   findListDatas,
-  setReloadKey
+  setReloadKey,
+  data,
 }) => {
   return (
     <>
@@ -25,11 +26,13 @@ const OrderSectionItemContent = ({
         justifyContent={"space-between"}
         alignItems='center'
         alignContent={"center"}
-        m='.2rem auto'
         borderRadius={"16px"}
+        mb='1rem'
         height='80px'
+        
         p={1}
-        bgcolor='white'>
+        bgcolor='white'
+       >
         <Grid
           item
           xs={7}
@@ -39,7 +42,11 @@ const OrderSectionItemContent = ({
           display={"flex"}
           alignItems={"center"}>
           <Box>
-            {/* <img src={washMashin} style={{ maxWidth: "32px", maxHeight: "32px",marginLeft:"1rem" }} /> */}
+            <img
+              src={"washMashin"}
+              style={{maxWidth: "32px", maxHeight: "32px", marginLeft: "1rem"}}
+              alt='need icon from api'
+            />
           </Box>
           <Box display='flex' flexDirection={"column"} justifyContent='center'>
             <Typography variant='h6' fontSize='14px' fontFamily='Vazir-Bold'>
@@ -63,9 +70,9 @@ const OrderSectionItemContent = ({
           textAlign='left'>
           {findListDatas == 0 ? (
             <Button
-              onClick={() => 
-                {fetchAddToOpenOrder(id),setReloadKey(prev=> prev+1)}
-              }
+              onClick={() => {
+                fetchAddToOpenOrder(id), setReloadKey((prev) => prev + 1);
+              }}
               sx={{
                 minWidth: "32px",
                 height: "32px",
@@ -83,9 +90,9 @@ const OrderSectionItemContent = ({
             </Button>
           ) : (
             <Button
-              onClick={() => 
-                {fetchAddToOpenOrder(id),setReloadKey(prev=> prev+1)}
-              }
+              onClick={() => {
+                fetchAddToOpenOrder(id), setReloadKey((prev) => prev + 1);
+              }}
               sx={{
                 minWidth: "32px",
                 height: "32px",
@@ -115,9 +122,9 @@ const OrderSectionItemContent = ({
 
           {findListDatas > 1 ? (
             <Button
-              onClick={() => 
-                {fetchRemoveToOpenOrder(id),setReloadKey(prev=> prev+1)}
-              }
+              onClick={() => {
+                fetchRemoveToOpenOrder(id), setReloadKey((prev) => prev + 1);
+              }}
               sx={{
                 minWidth: "32px",
                 height: "32px",
@@ -138,9 +145,9 @@ const OrderSectionItemContent = ({
             </Button>
           ) : (
             <Button
-              onClick={() => 
-                {fetchRemoveToOpenOrder(id),setReloadKey(prev=> prev+1)}
-              }
+              onClick={() => {
+                fetchRemoveToOpenOrder(id), setReloadKey((prev) => prev + 1);
+              }}
               sx={{
                 minWidth: "32px",
                 height: "32px",

@@ -20,9 +20,9 @@ const Transportations = ({
   //  locations&& locations.map(item=> console.log(item.in_range))
 // console.log(selectedData&&selectedData)
   return (
-    <Grid item xs={12} mt='2rem' width='100%'>
+    <Grid item xs={12} mt='3rem' width='100%'>
       <Stack
-        m='0 1rem 2rem 0'
+        m='0 1rem 1rem 0'
         display='flex'
         flexDirection='row'
         justifyContent='start'
@@ -44,6 +44,7 @@ const Transportations = ({
             justifyContent: "center",
             alignContent: "center",
             alignItems: "flex-start",
+            gap:3
           }}>
           <TimelineItem>
             <TimelineSeparator>

@@ -80,13 +80,17 @@ const Basket = () => {
 
   return (
     <>
+    {/* done */}
       <HeaderBasket
         pageAddress={"تکمیل سفارش"}
         collectAllProductLength={
           collectAllProductLength ? collectAllProductLength.length : 0
         }
       />
+
+
       {/* <HeaderBasket pageAddress={"تکمیل سفارش"} /> */}
+      {/* DONE */}
       <Box sx={{bgcolor: "rgb(242, 247, 247)", pb: "5rem", height: "100%"}}>
         <Grid container m='auto' maxWidth='768px'>
           <Box alignItems='center' alignContent='center' width='100%'>
@@ -101,13 +105,20 @@ const Basket = () => {
               />
             )}
           </Box>
+
+
+
+
           {/* {console.log(locations)} */}
+          {/* Done */}
           <Transportations
           setIsPhoneRegisterModalOpen={setIsPhoneRegisterModalOpen}
             locations={locations}
             setOpenModalBasketTransfer={setOpenModalBasketTransfer}
             selectedData={selectedData}
           />
+
+          
           <BillComponent
             splitReducePrices={splitReducePrices}
             tax_percentage={tax_percentage}

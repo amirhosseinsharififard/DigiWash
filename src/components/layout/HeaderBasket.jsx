@@ -8,6 +8,8 @@ import BasketIcon from "../../assets/svg/ordersBasket.c57a891b.svg";
 import toFarsiNumber from "../../utils/functions";
 const HeaderProfileLinks = ({pageAddress, collectAllProductLength}) => {
   const navigate = useNavigate();
+
+  console.log(collectAllProductLength)
   const goBackHandler = () => {
     navigate(-1);
   };
@@ -103,15 +105,15 @@ const HeaderProfileLinks = ({pageAddress, collectAllProductLength}) => {
               alignItems={"center"}>
               <span
                 style={{
-                  fontSize: "16px",
+                  fontSize: "18px",
                   fontFamily: "Vazir",
                   fontWeight: "bold",
                   color: "rgb(0, 77, 100)",
                 }}>
-                {toFarsiNumber(collectAllProductLength)}
+                {toFarsiNumber(collectAllProductLength??0)}
               </span>
               <Typography
-                fontSize='16px'
+                fontSize='18px'
                 fontFamily='Vazir'
                 fontWeight='bold'
                 color='rgb(0, 77, 100)'
