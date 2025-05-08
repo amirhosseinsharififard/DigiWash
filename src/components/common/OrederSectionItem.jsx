@@ -116,18 +116,24 @@ const OrederSectionItem = ({
                     {/* {console.log(reduceCost)} برای بررسی مقادیر */}
                   </>
                 </Grid>
-                <Grid item m='1rem .7rem ' xs={12} sm={12} md={12} lg={12}
-                 sx={{
-    '& > :nth-last-child(2)': {
-      mb: '2rem', // دومین آیتم از آخر
-    },
-  }}
-                >
-                  {item.service_list.map((item2) => (
-                    <>
+                <Grid
+                  item
+                  m='1rem .7rem '
+                  xs={12}
+                  sm={12}
+                  md={12}
+                  lg={12}
+                  sx={{
+                    "& > :nth-last-of-child(2)": {
+                      mb: "2rem", // دومین آیتم از آخر
+                    },
+                  }}>
+                  {item.service_list.map((item2,index) => (
+                    
                       <OrederSectionItemContent
                         setReloadKey={setReloadKey}
-                        key={item2.id}
+                        // key={item2.id}
+                        key={item2.service_id} // ✅ بهتر و امن‌تر
                         id={item2.service_id}
                         cost={item2.value}
                         title={item2.service_type}
@@ -135,23 +141,24 @@ const OrederSectionItem = ({
                         data={item2}
                         findListDatas={findListDatas}
                       />
-                    </>
+                 
                   ))}
 
-                  <Box display={"flex"} gap={1} flexDirection={"row"} mt="">
-                    {item?.service_list.map((item3) => (
+                  <Box display={"flex"} gap={1} flexDirection={"row"} mt=''>
+                    {item?.service_list.map((item3, index) => (
                       <Typography
                         key={item3.id}
                         borderRadius={"16px"}
                         p='8px'
                         bgcolor='white'
-                        display='inline-block' fontFamily={"Vazir"} fontWeight={500}>
+                        display='inline-block'
+                        fontFamily={"Vazir"}
+                        fontWeight={500}>
                         {item3.qty} <span style={{color: "#7fcfdd"}}>|</span>{" "}
                         {item3.service_type}
                       </Typography>
                     ))}
                   </Box>
-                  {console.log(item.service_list)}
                 </Grid>
               </Grid>
             ))}

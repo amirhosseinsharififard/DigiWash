@@ -4,7 +4,7 @@ import {Box, Button, TextField, Grid, Stack, Typography} from "@mui/material";
 import {persianPrice} from "../../utils/functions";
 import ErrorIcon from "@mui/icons-material/Error";
 import Rtl from "./RtlComponents";
-const BillComponent = ({splitReducePrices, tax_percentage, deliveriPrice}) => {
+const BillComponent = ({splitReducePrices, tax_percentage, deliveriPrice,isLoading}) => {
   // console.log(tax_percentage);
   // console.log(deliveriPrice + tax_percentage);
   const finalPrice =
@@ -46,7 +46,7 @@ const BillComponent = ({splitReducePrices, tax_percentage, deliveriPrice}) => {
           position='relative'>
           <Rtl dir='rtl'>
             <TextField
-              label='کد تخفیف خود را وارد کنید need api' 
+              label='کد تخفیف خود را وارد کنید need api'
               sx={{
                 width: "100%",
                 dir: "rtl",
@@ -59,7 +59,7 @@ const BillComponent = ({splitReducePrices, tax_percentage, deliveriPrice}) => {
             />
           </Rtl>
           <Button
-          disabled
+            disabled
             sx={{
               bgcolor: "rgb(204, 204, 204)",
               height: "30px",
@@ -93,7 +93,7 @@ const BillComponent = ({splitReducePrices, tax_percentage, deliveriPrice}) => {
             color='rgb(85, 100, 102)'
             fontSize='14px'
             fontFamily='Vazir'>
-            {persianPrice(splitReducePrices??0)} تومان
+            {persianPrice(splitReducePrices ?? 0)} تومان
           </Typography>
         </Stack>
         <Stack
@@ -132,8 +132,7 @@ const BillComponent = ({splitReducePrices, tax_percentage, deliveriPrice}) => {
             color='rgb(85, 100, 102)'
             fontSize='14px'
             fontFamily='Vazir'>
-            {persianPrice(220000)} تومان
-            need data api
+            {persianPrice(220000)} تومان need data api
           </Typography>
         </Stack>
         <Stack
@@ -180,8 +179,13 @@ const BillComponent = ({splitReducePrices, tax_percentage, deliveriPrice}) => {
           flexDirection='row'
           fontWeight='bold'
           justifyContent='space-between'>
-          <Typography fontFamily={"Vazir"} fontWeight={"700"}>قابل پرداخت</Typography>
-          <Typography  fontFamily={"Vazir"} fontWeight={"700"} fontSize={18}>{persianPrice(finalPrice)} تومان</Typography>
+          <Typography fontFamily={"Vazir"} fontWeight={"700"}>
+            قابل پرداخت
+          </Typography>
+          <Typography fontFamily={"Vazir"} fontWeight={"700"} fontSize={18}>
+          {/* {isLoading && persianPrice(0)} */}
+            {!isLoading ? persianPrice(finalPrice) : persianPrice(0) } تومان
+          </Typography>
         </Stack>
       </Box>
     </Grid>

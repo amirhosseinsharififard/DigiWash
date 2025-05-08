@@ -9,7 +9,6 @@ import toFarsiNumber from "../../utils/functions";
 const HeaderProfileLinks = ({pageAddress, collectAllProductLength}) => {
   const navigate = useNavigate();
 
-  console.log(collectAllProductLength)
   const goBackHandler = () => {
     navigate(-1);
   };

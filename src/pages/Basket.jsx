@@ -10,7 +10,7 @@ import {fetchModalTransfer, fetchOpenOrder} from "../API/requests";
 import {checkLocalStorageUserData} from "../hooks/useLocalStorage";
 import ModalBasketTransfer from "../components/common/ModalBasketTransfer";
 
-import PhoneRegisterModal from '../components/common/PhoneRegisterModal'
+import PhoneRegisterModal from "../components/common/PhoneRegisterModal";
 // i didnt use
 // import {useSelector} from "react-redux";
 // import {cart} from "../pwa/features/cart/cartSlice";
@@ -25,9 +25,10 @@ const Basket = () => {
   const [selectedData, setSelectedData] = useState();
   const [selectedValue, setSelectedValue] = useState(""); // Initialize with an empty string
   const [responseAddress, setResponseAddress] = useState();
+  const [isLoading, setIsLoading] = useState(false);
 
-
-  const [isPhoneRegisterModalOpen,setIsPhoneRegisterModalOpen]=useState(false)
+  const [isPhoneRegisterModalOpen, setIsPhoneRegisterModalOpen] =
+    useState(false);
   // console.log(selectedData);
   // console.log(selectedValue);
 
@@ -61,6 +62,8 @@ const Basket = () => {
     );
   // console.log( splitReducePrices);
   useEffect(() => {
+    setIsLoading(true);
+
     const fetchData = async () => {
       try {
         const data = await fetchOpenOrder();
@@ -69,6 +72,7 @@ const Basket = () => {
         setTax_percentage(data.data.tax_percentage);
         setLocations(data.data.locations);
         // console.log(data.data.locations);
+        setIsLoading(false);
       } catch (err) {
         setError("Error fetching data");
         console.error(err);
@@ -80,14 +84,13 @@ const Basket = () => {
 
   return (
     <>
-    {/* done */}
+      {/* done */}
       <HeaderBasket
         pageAddress={"تکمیل سفارش"}
         collectAllProductLength={
           collectAllProductLength ? collectAllProductLength.length : 0
         }
       />
-
 
       {/* <HeaderBasket pageAddress={"تکمیل سفارش"} /> */}
       {/* DONE */}
@@ -106,24 +109,22 @@ const Basket = () => {
             )}
           </Box>
 
-
-
-
           {/* {console.log(locations)} */}
           {/* Done */}
           <Transportations
-          setIsPhoneRegisterModalOpen={setIsPhoneRegisterModalOpen}
+            setIsPhoneRegisterModalOpen={setIsPhoneRegisterModalOpen}
             locations={locations}
             setOpenModalBasketTransfer={setOpenModalBasketTransfer}
             selectedData={selectedData}
           />
 
-          
-          <BillComponent
+          {isLoading ?
+          "loading ...":<BillComponent
             splitReducePrices={splitReducePrices}
             tax_percentage={tax_percentage}
             deliveriPrice={selectedData ? selectedData.price : 0}
-          />
+            isLoading={isLoading}
+          />}
         </Grid>
         {
           /* selectedData*/
@@ -176,7 +177,9 @@ const Basket = () => {
           )
         }
       </Box>
-      {openModalBasketTransfer && (
+
+      {/* change it  */}
+      {!openModalBasketTransfer && (
         <ModalBasketTransfer
           locations={locations}
           setOpenModalBasketTransfer={setOpenModalBasketTransfer}

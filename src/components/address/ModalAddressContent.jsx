@@ -1,27 +1,27 @@
 /* eslint-disable react/prop-types */
 import {Grid, Radio, Stack, Typography} from "@mui/material";
-import { useEffect, useState } from "react";
+import {useEffect, useState} from "react";
 import {Link} from "react-router-dom";
 
 const ModalAddressContent = ({
   name,
   address,
   id,
-  in_range,price,
+  in_range,
+  price,
   handleRadioChange,
-  selectedValue,setSelectedData
+  selectedValue,
+  setSelectedData,
 }) => {
   const [choseData, setChoseData] = useState();
 
   const HandleChoseData = ({name, address, in_range, id}) => {
-    handleRadioChange(name)
-    setChoseData({name, address, in_range, id,price});
-
+    handleRadioChange(name);
+    setChoseData({name, address, in_range, id, price});
   };
 
   useEffect(() => {
     setSelectedData(choseData);
-
   }, [choseData]);
   return (
     <Grid
@@ -32,12 +32,9 @@ const ModalAddressContent = ({
       sx={{borderRadius: "16px", overflow: "hidden"}}>
       <Link
         style={{textDecoration: "none"}}
-      
         onClick={() => {
-
-HandleChoseData({ name, address, in_range, id });
-
-}}// Handle radio change
+          HandleChoseData({name, address, in_range, id});
+        }} // Handle radio change
       >
         {/* <Link style={{ textDecoration: "none" }} onClick={() => onChange(name)}> */}
         <Stack bgcolor={"white"}>
@@ -45,7 +42,12 @@ HandleChoseData({ name, address, in_range, id });
             <Radio
               checked={selectedValue === name} // Check if this radio is selected
               value={name}
-     
+              sx={{
+                color: "rgb(12, 174, 202)",
+                "&.Mui-checked": {
+                  color: "rgb(12, 174, 202)",
+                },
+              }}
             />
             {name}
           </Typography>

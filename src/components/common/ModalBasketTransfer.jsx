@@ -1,9 +1,18 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 
-import {Box, Grid, Typography, Button, Checkbox} from "@mui/material";
+import {
+  Box,
+  Grid,
+  Typography,
+  Button,
+  Checkbox,
+  Stack,
+  Radio,
+} from "@mui/material";
 import {Link, useNavigate} from "react-router-dom";
 import ModalAddressContent from "../address/ModalAddressContent";
+import toFarsiNumber from "../../utils/functions";
 
 const ModalBasketTransfer = ({
   locations,
@@ -21,7 +30,7 @@ const ModalBasketTransfer = ({
     navigate("/profile/address");
   };
 
-  // console.log(selectedData);
+  console.log(selectedData);
   return (
     <Box
       sx={{
@@ -105,7 +114,7 @@ const ModalBasketTransfer = ({
                 selectedValue={selectedValue}
               />
             ))}
-          <Grid item xs={12} textAlign='left'>
+          <Grid item xs={12} textAlign='left' pb={"2rem"}>
             <Button
               variant='contained'
               onClick={() => navigateHandler()}
@@ -126,14 +135,239 @@ const ModalBasketTransfer = ({
             </Button>
           </Grid>
         </Grid>
-        <Grid item xs={12} m={"2rem 1rem"} textAlign='center'>
-          <Typography
-            variant='subtitle1'
-            color={"rgb(116, 116, 116)"}
-            fontWeight={"bold"}>
-            آدرس انتخاب شده تحت پوشش دیجی‌واش نیست.
-          </Typography>
+        {/* time service */}
+        <Grid
+          item
+          xs={12}
+          bgcolor={"white"}
+          border={"2px solid #EBF8Fa"}
+          position={"relative"}
+          top='-2.5rem'
+          m={".3rem 0.5rem"}
+          p='12px 8px'
+          sx={{
+            borderRadius: "16px",
+            overflow: "hidden",
+            display: "flex",
+            gap: ".2rem",
+          }}>
+          <Link to={"/"}>
+            <Box
+              bgcolor={true ? "rgb(12, 174, 202)" : "white"}
+              display='inline-block'
+              maxWidth={"67px"}
+              p={"8px 16px"}
+              borderRadius={3}
+              textAlign={"center"}
+              color={true ? "white" : "rgb(12, 174, 202)"}>
+              <Typography fontFamily={"Vazir"} fontWeight={"bold"}>
+                {" "}
+                need data
+              </Typography>
+              <Typography fontFamily={"Vazir"} fontWeight={"bold"}>
+                19
+              </Typography>
+            </Box>
+          </Link>
+          <Link to={"/"}>
+            <Box
+              bgcolor={false ? "rgb(12, 174, 202)" : "white"}
+              display='inline-block'
+              maxWidth={"67px"}
+              p={"8px 16px"}
+              borderRadius={3}
+              textAlign={"center"}
+              color={false ? "white" : "rgb(12, 174, 202)"}>
+              <Typography fontFamily={"Vazir"} fontWeight={"bold"}>
+                {" "}
+                need data
+              </Typography>
+              <Typography fontFamily={"Vazir"} fontWeight={"bold"}>
+                19
+              </Typography>
+            </Box>
+          </Link>
+          <Link to={"/"}>
+            <Box
+              bgcolor={false ? "rgb(12, 174, 202)" : "white"}
+              display='inline-block'
+              maxWidth={"67px"}
+              p={"8px 16px"}
+              borderRadius={3}
+              textAlign={"center"}
+              color={false ? "white" : "rgb(12, 174, 202)"}>
+              <Typography fontFamily={"Vazir"} fontWeight={"bold"}>
+                {" "}
+                need data
+              </Typography>
+              <Typography fontFamily={"Vazir"} fontWeight={"bold"}>
+                19
+              </Typography>
+            </Box>
+          </Link>
+          <Link to={"/"}>
+            <Box
+              bgcolor={false ? "rgb(12, 174, 202)" : "white"}
+              display='inline-block'
+              maxWidth={"67px"}
+              p={"8px 16px"}
+              borderRadius={3}
+              textAlign={"center"}
+              color={false ? "white" : "rgb(12, 174, 202)"}>
+              <Typography fontFamily={"Vazir"} fontWeight={"bold"}>
+                {" "}
+                need data
+              </Typography>
+              <Typography fontFamily={"Vazir"} fontWeight={"bold"}>
+                19
+              </Typography>
+            </Box>
+          </Link>
         </Grid>
+        <Grid
+          item
+          xs={12}
+          bgcolor={"white"}
+          border={"2px solid #EBF8Fa"}
+          position={"relative"}
+          top='-2.5rem'
+          m={".3rem 0.5rem"}
+          p='8px'
+          sx={{
+            borderRadius: "16px",
+            overflow: "hidden",
+            display: "flex",
+          }}>
+          <Link style={{width: "100%", textDecoration: "none", color: "black"}}>
+            <Typography fontFamily={"Vazir"} fontSize={"16px"}>
+              <Radio
+                // checked={selectedValue === name} // Check if this radio is selected
+                // value={name}
+                sx={{
+                  color: "rgb(12, 174, 202)",
+                  "&.Mui-checked": {
+                    color: "rgb(12, 174, 202)",
+                  },
+                }}
+              />
+              13:00 تا 17:00
+            </Typography>
+          </Link>
+        </Grid>{" "}
+        <Grid
+          item
+          xs={12}
+          bgcolor={"white"}
+          border={"2px solid #EBF8Fa"}
+          position={"relative"}
+          top='-2.5rem'
+          m={".3rem 0.5rem"}
+          p='8px'
+          sx={{
+            borderRadius: "16px",
+            overflow: "hidden",
+            display: "flex",
+          }}>
+          <Link style={{width: "100%", textDecoration: "none", color: "black"}}>
+            <Typography fontFamily={"Vazir"} fontSize={"16px"}>
+              <Radio
+                // checked={selectedValue === name} // Check if this radio is selected
+                // value={name}
+                sx={{
+                  color: "rgb(12, 174, 202)",
+                  "&.Mui-checked": {
+                    color: "rgb(12, 174, 202)",
+                  },
+                }}
+              />
+              13:00 تا 17:00
+            </Typography>
+          </Link>
+        </Grid>{" "}
+        <Grid
+          item
+          xs={12}
+          bgcolor={"white"}
+          border={"2px solid #EBF8Fa"}
+          position={"relative"}
+          top='-2.5rem'
+          m={".3rem 0.5rem"}
+          p='8px'
+          sx={{
+            borderRadius: "16px",
+            overflow: "hidden",
+            display: "flex",
+          }}>
+          <Link style={{width: "100%", textDecoration: "none", color: "black"}}>
+            <Typography fontFamily={"Vazir"} fontSize={"16px"}>
+              <Radio
+                // checked={selectedValue === name} // Check if this radio is selected
+                // value={name}
+                sx={{
+                  color: "rgb(12, 174, 202)",
+                  "&.Mui-checked": {
+                    color: "rgb(12, 174, 202)",
+                  },
+                }}
+              />
+              13:00 تا 17:00
+            </Typography>
+          </Link>
+        </Grid>{" "}
+        <Grid
+          item
+          xs={12}
+          bgcolor={"white"}
+          border={"2px solid #EBF8Fa"}
+          position={"relative"}
+          top='-2.5rem'
+          m={".3rem 0.5rem"}
+          p='8px'
+          sx={{
+            borderRadius: "16px",
+            overflow: "hidden",
+            display: "flex",
+          }}>
+          <Link
+            style={{
+              width: "100%",
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+              textDecoration: "none",
+              color: "black",
+            }}>
+            <Typography fontFamily={"Vazir"} fontSize={"16px"}>
+              <Radio
+                // checked={selectedValue === name} // Check if this radio is selected
+                // value={name}
+                sx={{
+                  color: "rgb(12, 174, 202)",
+                  "&.Mui-checked": {
+                    color: "rgb(12, 174, 202)",
+                  },
+                }}
+              />
+              13:00 تا 17:00
+            </Typography>
+            <Typography
+              color='rgb(255, 158, 104)'
+              fontFamily='Vazir'
+              fontSize={"12px"}>
+              ظرفیت تکمیل شده
+            </Typography>
+          </Link>
+        </Grid>
+        {selectedData?.in_range ? null : (
+          <Grid item xs={12} m={"2rem 1rem"} textAlign='center'>
+            <Typography
+              variant='subtitle1'
+              color={"rgb(116, 116, 116)"}
+              fontWeight={"bold"}>
+              آدرس انتخاب شده تحت پوشش دیجی‌واش نیست.
+            </Typography>
+          </Grid>
+        )}
         <Grid
           container
           sx={{
@@ -158,9 +392,15 @@ const ModalBasketTransfer = ({
                 },
               }}
               fullWidth
-              disabled={selectedData && !selectedData.in_range && true || !selectedData}
+              // disabled={
+              //   (selectedData && !selectedData.in_range && true) ||
+              //   !selectedData
+              // }
+              disabled={!selectedData?.in_range}
               onClick={() => setOpenModalBasketTransfer(false)}>
-              تایید
+              {selectedData?.in_range
+                ? "تایید"
+                : "آدرس انتخاب شده تحت پوشش دیجی‌واش نیست."}
             </Button>
           </Grid>
         </Grid>
